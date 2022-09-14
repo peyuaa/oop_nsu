@@ -3,6 +3,19 @@
  */
 package task_1_1_1;
 
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+
 class HeapSortTest {
-    HeapSort heapSort = new HeapSort();
+    private final HeapSort heapSort = new HeapSort();
+
+    @Test
+    void usualArray() {
+        int expected[] = {1, 2, 3, 4, 5, 6};
+        int got[] = {3, 4, 1, 2, 6, 5};
+
+        heapSort.heapSort(got);
+        assertArrayEquals(expected, got);
+    }
 }
