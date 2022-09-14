@@ -29,7 +29,7 @@ public class HeapSort {
         }
     }
 
-    void heapify(int arr[], int n, int i) {
+    private void heapify(int arr[], int n, int i) {
         int largest = i;
         int l = 2 * i + 1;
         int r = 2 * i + 2;
@@ -49,18 +49,5 @@ public class HeapSort {
 
             heapify(arr, n, largest);
         }
-    }
-
-    public static void main(String[] args) {
-        HeapSort sorter = new HeapSort();
-
-        int arr[] = {5,6,3,456,2,-43,4,57,2};
-
-        printArray(arr);
-
-        sorter.heapSort(arr);
-
-        printArray(arr);
-
     }
 }
