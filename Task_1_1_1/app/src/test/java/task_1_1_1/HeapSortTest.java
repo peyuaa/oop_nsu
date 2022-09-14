@@ -18,4 +18,13 @@ class HeapSortTest {
         heapSort.heapSort(got);
         assertArrayEquals(expected, got);
     }
+
+    @Test
+    void equalElements() {
+        int expected[] = {1, 1, 1, 1, 1, 1};
+        int got[] = {1, 1, 1, 1, 1, 1};
+
+        heapSort.heapSort(got);
+        assertArrayEquals(expected, got);
+    }
 }
