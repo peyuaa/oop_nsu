@@ -3,7 +3,7 @@
  */
 package task_1_1_1;
 
-public class App {
+public class HeapSort {
 
     static void printArray(int arr[])
     {
@@ -52,7 +52,7 @@ public class App {
     }
 
     public static void main(String[] args) {
-        App sorter = new App();
+        HeapSort sorter = new HeapSort();
 
         int arr[] = {5,6,3,456,2,-43,4,57,2};
 
