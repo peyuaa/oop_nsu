@@ -172,8 +172,8 @@ Temporary Items
 ### Gradle ###
 .gradle
 **/build/
+!**/build/reports
 !src/**/build/
-!src/**/build/reports
 
 # Ignore Gradle GUI config
 gradle-app.setting
