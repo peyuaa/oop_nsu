@@ -4,9 +4,9 @@
 
 package ru.nsu.peyuaa;
 
-import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+
+import org.junit.jupiter.api.Test;
 
 class HeapSortTest {
     private final HeapSort heapSort = new HeapSort();
