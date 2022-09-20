@@ -14,8 +14,7 @@ public class HeapSort {
      *
      * @param arr is the array we need to print
      */
-    static void printArray(int[] arr)
-    {
+    static void printArray(int[] arr) {
         for (int i = 0; i < arr.length; i++) {
             System.out.print(arr[i] + " ");
         }
@@ -75,7 +74,7 @@ public class HeapSort {
     /**
      * entry point.
      *
-     * @param args
+     * @param args cmd arguments
      */
     public static void main(String[] args) {
 
