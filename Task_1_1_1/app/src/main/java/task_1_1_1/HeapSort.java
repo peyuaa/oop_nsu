@@ -3,8 +3,15 @@
  */
 package task_1_1_1;
 
+/**
+ * HeapSort implementationg
+ */
 public class HeapSort {
 
+    /**
+     * prints array
+     * @param arr
+     */
     static void printArray(int arr[])
     {
         for (int i = 0; i < arr.length; i++) {
@@ -13,6 +20,11 @@ public class HeapSort {
         System.out.println();
     }
 
+    /**
+     * sorts using heapsort
+     *
+     * @param arr
+     */
     public void heapSort(int arr[]) {
         int n = arr.length;
 
@@ -29,6 +41,13 @@ public class HeapSort {
         }
     }
 
+    /**
+     * build the max heap
+     *
+     * @param arr
+     * @param n
+     * @param i
+     */
     private void heapify(int arr[], int n, int i) {
         int largest = i;
         int l = 2 * i + 1;
