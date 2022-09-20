@@ -5,7 +5,7 @@
 package task_1_1_1;
 
 /**
- * HeapSort implementationg
+ * HeapSort implementation.
  */
 public class HeapSort {
 
@@ -14,7 +14,7 @@ public class HeapSort {
      *
      * @param arr
      */
-    static void printArray(int arr[])
+    static void printArray(int[] arr)
     {
         for (int i = 0; i < arr.length; i++) {
             System.out.print(arr[i] + " ");
@@ -27,7 +27,7 @@ public class HeapSort {
      *
      * @param arr
      */
-    public void heapSort(int arr[]) {
+    public void heapSort(int[] arr) {
         int n = arr.length;
 
         for (int i = n / 2 - 1; i >= 0; i--) {
@@ -50,7 +50,7 @@ public class HeapSort {
      * @param n
      * @param i
      */
-    private void heapify(int arr[], int n, int i) {
+    private void heapify(int[] arr, int n, int i) {
         int largest = i;
         int l = 2 * i + 1;
         int r = 2 * i + 2;
