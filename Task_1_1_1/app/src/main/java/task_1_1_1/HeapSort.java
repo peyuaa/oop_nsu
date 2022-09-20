@@ -12,7 +12,7 @@ public class HeapSort {
     /**
      * prints array.
      *
-     * @param arr
+     * @param arr is the array we need to print
      */
     static void printArray(int[] arr)
     {
@@ -25,7 +25,7 @@ public class HeapSort {
     /**
      * sorts using heapsort.
      *
-     * @param arr
+     * @param arr is the array we want to sort
      */
     public void heapSort(int[] arr) {
         int n = arr.length;
@@ -46,9 +46,9 @@ public class HeapSort {
     /**
      * build the max heap.
      *
-     * @param arr
-     * @param n
-     * @param i
+     * @param arr is the array with data
+     * @param n is the length of array
+     * @param i is the index of root node of subtree we're going heapify
      */
     private void heapify(int[] arr, int n, int i) {
         int largest = i;
