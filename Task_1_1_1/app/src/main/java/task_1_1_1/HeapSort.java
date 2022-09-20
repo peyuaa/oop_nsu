@@ -69,4 +69,12 @@ public class HeapSort {
             heapify(arr, n, largest);
         }
     }
+
+    /**
+     * entry point
+     * @param args
+     */
+    public static void main(String[] args) {
+
+    }
 }
