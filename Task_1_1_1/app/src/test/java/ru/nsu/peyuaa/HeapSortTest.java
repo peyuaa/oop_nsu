@@ -28,4 +28,13 @@ class HeapSortTest {
         heapSort.heapSort(got);
         assertArrayEquals(expected, got);
     }
+
+    @Test
+    void oneElementArray() {
+        int[] expected = {5};
+        int[] got = {5};
+
+        heapSort.heapSort(got);
+        assertArrayEquals(expected, got);
+    }
 }
