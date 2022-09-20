@@ -12,8 +12,8 @@ class HeapSortTest {
 
     @Test
     void usualArray() {
-        int expected[] = {1, 2, 3, 4, 5, 6};
-        int got[] = {3, 4, 1, 2, 6, 5};
+        int[] expected = {1, 2, 3, 4, 5, 6};
+        int[] got = {3, 4, 1, 2, 6, 5};
 
         heapSort.heapSort(got);
         assertArrayEquals(expected, got);
@@ -21,8 +21,8 @@ class HeapSortTest {
 
     @Test
     void equalElements() {
-        int expected[] = {1, 1, 1, 1, 1, 1};
-        int got[] = {1, 1, 1, 1, 1, 1};
+        int[] expected = {1, 1, 1, 1, 1, 1};
+        int[] got = {1, 1, 1, 1, 1, 1};
 
         heapSort.heapSort(got);
         assertArrayEquals(expected, got);

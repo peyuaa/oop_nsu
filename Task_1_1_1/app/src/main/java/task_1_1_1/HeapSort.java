@@ -11,6 +11,7 @@ public class HeapSort {
 
     /**
      * prints array.
+     *
      * @param arr
      */
     static void printArray(int arr[])
@@ -73,6 +74,7 @@ public class HeapSort {
 
     /**
      * entry point.
+     *
      * @param args
      */
     public static void main(String[] args) {
