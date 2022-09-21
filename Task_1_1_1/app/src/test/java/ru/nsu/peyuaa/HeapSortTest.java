@@ -8,6 +8,9 @@ import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+import java.util.Random;
+
 class HeapSortTest {
     private final HeapSort heapSort = new HeapSort();
 
@@ -42,6 +45,28 @@ class HeapSortTest {
     void emptyArray() {
         int[] expected = {};
         int[] got = {};
+
+        heapSort.heapSort(got);
+        assertArrayEquals(expected, got);
+    }
+
+    @Test
+    void randomArray() {
+        Random rand = new Random();
+        int generatorUpperBound = 150;
+
+        int arrayLength = rand.nextInt(generatorUpperBound) + 150;
+
+        int[] expected = new int[arrayLength];
+        int[] got = new int[arrayLength];
+
+        for (int i = 0; i < arrayLength; i++) {
+            int generatedElement = rand.nextInt();
+            expected[i] = generatedElement;
+            got[i] = generatedElement;
+        }
+
+        Arrays.sort(expected);
 
         heapSort.heapSort(got);
         assertArrayEquals(expected, got);
