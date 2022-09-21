@@ -37,4 +37,13 @@ class HeapSortTest {
         heapSort.heapSort(got);
         assertArrayEquals(expected, got);
     }
+
+    @Test
+    void emptyArray() {
+        int[] expected = {};
+        int[] got = {};
+
+        heapSort.heapSort(got);
+        assertArrayEquals(expected, got);
+    }
 }
