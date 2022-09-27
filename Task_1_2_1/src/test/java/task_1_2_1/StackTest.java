@@ -6,9 +6,9 @@ package task_1_2_1;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-class AppTest {
+class StackTest {
     @Test void appHasAGreeting() {
-        App classUnderTest = new App();
+        Stack classUnderTest = new Stack();
         assertNotNull(classUnderTest.getGreeting(), "app should have a greeting");
     }
 }
