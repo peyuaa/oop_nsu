@@ -58,4 +58,29 @@ class StackTest {
 
         assertArrayEquals(expected, got);
     }
+
+    @Test
+    void isPopStackWorking() {
+        int length = 5;
+        int poppedLength = 2;
+        Stack<Integer> stack = new Stack<Integer>(Integer.class, length);
+        Integer[] elements = new Integer[length];
+        Integer[] expected = new Integer[poppedLength];
+        Integer[] got = new Integer[poppedLength];
+
+        for (int i = 0; i < length; i++) {
+            stack.push(i);
+            elements[i] = i;
+        }
+
+        expected[poppedLength - 2] = 4;
+        expected[poppedLength - 1] = 3;
+
+        Stack<Integer> poppedStack = stack.popStack(poppedLength);
+        for (int i = 0; i < poppedLength; i++) {
+            got[i] = poppedStack.pop();
+        }
+
+        assertArrayEquals(expected, got);
+    }
 }
