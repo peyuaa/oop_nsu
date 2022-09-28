@@ -27,19 +27,16 @@ public class Stack<T> {
     /**
      * Type of elements in the stack.
      */
-    private final Class<T> clazz;
 
     /**
      * Stack constructor.
      *
-     * @param clazz type of elements
      * @param capacity capacity of stack
      */
-    public Stack(Class<T> clazz, int capacity) {
-        elements = (T[]) Array.newInstance(clazz, capacity);
+    public Stack(int capacity) {
+        elements = (T[])new Object[capacity];
         this.capacity = capacity;
         this.length = 0;
-        this.clazz = clazz;
     }
 
     /**
@@ -71,7 +68,7 @@ public class Stack<T> {
      */
     public void pushStack(Stack<T> stack) {
         int length = stack.count();
-        T[] elements = (T[]) Array.newInstance(clazz, capacity);
+        T[] elements = (T[]) new Object[length];
         for (int i = 0; i < length; i++) {
             elements[i] = stack.pop();
         }
@@ -101,8 +98,8 @@ public class Stack<T> {
      * @return stack object with popped elements
      */
     public Stack<T> popStack(int length) {
-        Stack<T> newStack = new Stack<T>(this.clazz, length);
-        T[] elements = (T[]) Array.newInstance(clazz, capacity);
+        Stack<T> newStack = new Stack<>(length);
+        T[] elements = (T[]) new Object[capacity];
         for (int i = 0; i < length; i++) {
             elements[i] = pop();
         }

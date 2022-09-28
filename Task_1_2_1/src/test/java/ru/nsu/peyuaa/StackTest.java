@@ -8,12 +8,14 @@ import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
 import org.junit.jupiter.api.Test;
 
+// переопределить equals() and hashCode()
+
 class StackTest {
 
     @Test
     void isPushAndPopWorking() {
         int length = 10;
-        Stack<Integer> stack = new Stack<Integer>(Integer.class, length);
+        Stack<Integer> stack = new Stack<Integer>(length);
         Integer[] elements = new Integer[length];
         Integer[] expected = new Integer[length];
         Integer[] got = new Integer[length];
@@ -39,8 +41,8 @@ class StackTest {
     @Test
     void isPushStackWorking() {
         int length = 5;
-        Stack<Integer> stack = new Stack<Integer>(Integer.class, length);
-        Stack<Integer> pushedStack = new Stack<Integer>(Integer.class, length);
+        Stack<Integer> stack = new Stack<Integer>(length);
+        Stack<Integer> pushedStack = new Stack<Integer>(length);
         Integer[] expected = new Integer[length];
         Integer[] got = new Integer[length];
 
@@ -65,7 +67,7 @@ class StackTest {
     void isPopStackWorking() {
         int length = 5;
         int poppedLength = 2;
-        Stack<Integer> stack = new Stack<Integer>(Integer.class, length);
+        Stack<Integer> stack = new Stack<Integer>(length);
         Integer[] elements = new Integer[length];
         Integer[] expected = new Integer[poppedLength];
         Integer[] got = new Integer[poppedLength];
