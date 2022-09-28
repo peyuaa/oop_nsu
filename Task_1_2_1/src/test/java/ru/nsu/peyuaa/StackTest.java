@@ -86,4 +86,20 @@ class StackTest {
 
         assertEquals(expected, got);
     }
+
+    @Test
+    void growTest() {
+        int gotCapacity = 1;
+        int expectedCapacity = 5;
+
+        Stack<Integer> got = new Stack<>(gotCapacity);
+        Stack<Integer> expected = new Stack<>(expectedCapacity);
+
+        for (int i = 0; i < expectedCapacity; i++) {
+            got.push(i);
+            expected.push(i);
+        }
+
+        assertEquals(expected, got);
+    }
 }
