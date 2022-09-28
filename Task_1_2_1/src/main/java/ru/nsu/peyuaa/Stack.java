@@ -4,7 +4,6 @@
 
 package ru.nsu.peyuaa;
 
-import java.util.Arrays;
 import java.util.Objects;
 
 /**
@@ -120,7 +119,17 @@ public class Stack<T> {
 
         Stack s = (Stack) o;
 
-        return Arrays.equals(elements, s.elements);
+        if (s.length != length) {
+            return false;
+        }
+
+        for (int i = 0; i < s.length; i++) {
+            if (!s.elements[i].equals(elements[i])) {
+                return false;
+            }
+        }
+
+        return true;
     }
 
     @Override
