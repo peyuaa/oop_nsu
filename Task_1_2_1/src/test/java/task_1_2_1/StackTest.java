@@ -7,8 +7,30 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class StackTest {
-    @Test void appHasAGreeting() {
-        Stack classUnderTest = new Stack();
-        assertNotNull(classUnderTest.getGreeting(), "app should have a greeting");
+
+    @Test
+    void isPushAndPopWorking() {
+        int length = 10;
+
+        Integer[] expected = new Integer[length];
+        Integer[] got = new Integer[length];
+        for (int i = length - 1; i >= 0; i--) {
+            expected[length - i - 1] = i;
+        }
+
+        Integer[] elements = new Integer[length];
+        for (int i = 0; i < length; i++) {
+            elements[i] = i;
+        }
+        Stack<Integer> stack = new Stack<Integer>(Integer.class, length);
+        for (int i = 0; i < length; i++) {
+            stack.push(elements[i]);
+        }
+
+        for (int i = 0; i < length; i++) {
+            got[i] = stack.pop();
+        }
+
+        assertArrayEquals(expected, got);
     }
 }
