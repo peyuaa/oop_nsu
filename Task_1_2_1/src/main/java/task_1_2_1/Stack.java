@@ -5,12 +5,35 @@ package task_1_2_1;
 
 import java.lang.reflect.Array;
 
+/**
+ * Stack implementation.
+ *
+ * @param <T> type of the parameter
+ */
 public class Stack<T> {
+    /**
+     * Capacity of the stack.
+     */
     private int capacity;
+    /**
+     * Number of elements in the stack.
+     */
     private int length;
+    /**
+     * Array containing elements of stack.
+     */
     private T[] elements;
+    /**
+     * Type of elements in the stack.
+     */
     private final Class<T> clazz;
 
+    /**
+     * Stack constructor.
+     *
+     * @param clazz type of elements
+     * @param capacity capacity of stack
+     */
     public Stack(Class<T> clazz, int capacity) {
         elements = (T[]) Array.newInstance(clazz, capacity);
         this.capacity = capacity;
@@ -18,10 +41,20 @@ public class Stack<T> {
         this.clazz = clazz;
     }
 
+    /**
+     * Return number of elements in stack.
+     *
+     * @return
+     */
     public int count() {
         return length;
     }
 
+    /**
+     * Push element into stack.
+     *
+     * @param element is element to push
+     */
     public void push(T element) {
         if (length >= capacity) {
             throw new RuntimeException("Stack is full");
@@ -30,6 +63,11 @@ public class Stack<T> {
         length += 1;
     }
 
+    /**
+     * Push elements of stack given in parameters into current stack.
+     *
+     * @param stack containt elements to push into our stack
+     */
     public void pushStack(Stack<T> stack) {
         int length = stack.count();
         T[] elements = (T[]) Array.newInstance(clazz, capacity);
@@ -41,6 +79,11 @@ public class Stack<T> {
         }
     }
 
+    /**
+     * Pop element from stack.
+     *
+     * @return
+     */
     public T pop() {
         if (length < 1) {
             throw new RuntimeException("Stack is empty");
@@ -50,6 +93,12 @@ public class Stack<T> {
         return element;
     }
 
+    /**
+     * Pop length elements from stack in Stack object.
+     *
+     * @param length number of elements to pop.
+     * @return
+     */
     public Stack<T> popStack(int length) {
         Stack<T> newStack = new Stack<T>(this.clazz, length);
         T[] elements = (T[]) Array.newInstance(clazz, capacity);
