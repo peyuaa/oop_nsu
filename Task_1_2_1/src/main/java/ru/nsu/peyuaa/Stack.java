@@ -25,9 +25,6 @@ public class Stack<T> {
      * Array containing elements of stack.
      */
     private T[] elements;
-    /**
-     * Type of elements in the stack.
-     */
 
     /**
      * Stack constructor.
