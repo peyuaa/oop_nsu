@@ -52,7 +52,7 @@ public class Stack<T> {
      */
     public void push(T element) {
         if (length >= capacity) {
-            throw new RuntimeException("Stack is full");
+            grow();
         }
         elements[length] = element;
         length += 1;
@@ -81,7 +81,7 @@ public class Stack<T> {
      */
     public T pop() {
         if (length < 1) {
-            throw new RuntimeException("Stack is empty");
+            grow();
         }
         T element = elements[length - 1];
         length -= 1;
@@ -135,5 +135,20 @@ public class Stack<T> {
     @Override
     public int hashCode() {
         return Objects.hashCode(this);
+    }
+
+    /**
+     * Grow underlying array.
+     */
+    private void grow() {
+        int newCapacity = capacity * 2;
+        T[] newElements = (T[]) new Object[newCapacity];
+
+        for (int i = 0; i < length; i++) {
+            newElements[i] = elements[i];
+        }
+
+        elements = newElements;
+        capacity = newCapacity;
     }
 }
