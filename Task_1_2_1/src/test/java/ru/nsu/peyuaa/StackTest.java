@@ -67,4 +67,23 @@ class StackTest {
 
         assertEquals(expected, got);
     }
+
+    @Test
+    void isPopStackWorkingCorrect() {
+        int length = 5;
+        int poppedLength = 2;
+        Stack<Integer> got = new Stack<>(length);
+        Stack<Integer> expected = new Stack<>(length);
+
+        for (int i = 0; i < length; i++) {
+            got.push(i);
+        }
+        for (int i = 0; i < length - poppedLength; i++) {
+            expected.push(i);
+        }
+
+        got.popStack(2);
+
+        assertEquals(expected, got);
+    }
 }
