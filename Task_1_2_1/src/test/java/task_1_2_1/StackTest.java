@@ -11,21 +11,46 @@ class StackTest {
     @Test
     void isPushAndPopWorking() {
         int length = 10;
-
+        Stack<Integer> stack = new Stack<Integer>(Integer.class, length);
+        Integer[] elements = new Integer[length];
         Integer[] expected = new Integer[length];
         Integer[] got = new Integer[length];
+
         for (int i = length - 1; i >= 0; i--) {
             expected[length - i - 1] = i;
         }
 
-        Integer[] elements = new Integer[length];
         for (int i = 0; i < length; i++) {
             elements[i] = i;
         }
-        Stack<Integer> stack = new Stack<Integer>(Integer.class, length);
         for (int i = 0; i < length; i++) {
             stack.push(elements[i]);
         }
+
+        for (int i = 0; i < length; i++) {
+            got[i] = stack.pop();
+        }
+
+        assertArrayEquals(expected, got);
+    }
+
+    @Test
+    void isPushStackWorking() {
+        int length = 5;
+        Stack<Integer> stack = new Stack<Integer>(Integer.class, length);
+        Stack<Integer> pushedStack = new Stack<Integer>(Integer.class, length);
+        Integer[] expected = new Integer[length];
+        Integer[] got = new Integer[length];
+
+        for (int i = 0; i < length; i++) {
+            pushedStack.push(i);
+        }
+
+        for (int i = length - 1; i >= 0; i--) {
+            expected[length - i - 1] = i;
+        }
+
+        stack.pushStack(pushedStack);
 
         for (int i = 0; i < length; i++) {
             got[i] = stack.pop();
