@@ -4,7 +4,8 @@
 
 package ru.nsu.peyuaa;
 
-import java.lang.reflect.Array;
+import java.util.Arrays;
+import java.util.Objects;
 
 /**
  * Stack implementation.
@@ -110,4 +111,23 @@ public class Stack<T> {
         return newStack;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (o == this) {
+            return true;
+        }
+
+        if (!(o instanceof Stack<?>)) {
+            return false;
+        }
+
+        Stack s = (Stack) o;
+
+        return Arrays.equals(elements, s.elements);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(this);
+    }
 }
