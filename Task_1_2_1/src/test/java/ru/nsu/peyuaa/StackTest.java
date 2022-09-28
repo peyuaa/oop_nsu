@@ -60,7 +60,7 @@ class StackTest {
         }
 
         for (int i = 0; i < poppedLength; i++) {
-            expected.push(i+3);
+            expected.push(i + 3);
         }
 
         Stack<Integer> got = stack.popStack(poppedLength);

@@ -32,7 +32,7 @@ public class Stack<T> {
      * @param capacity capacity of stack
      */
     public Stack(int capacity) {
-        elements = (T[])new Object[capacity];
+        elements = (T[]) new Object[capacity];
         this.capacity = capacity;
         this.length = 0;
     }
