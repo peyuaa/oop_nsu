@@ -4,6 +4,7 @@
 
 package ru.nsu.peyuaa;
 
+import java.util.Arrays;
 import java.util.Objects;
 
 /**
@@ -34,6 +35,17 @@ public class Stack<T> {
         elements = (T[]) new Object[capacity];
         this.capacity = capacity;
         this.length = 0;
+    }
+
+    /**
+     * Stack constructor, initializes Stack with elements from array.
+     *
+     * @param array is an array with elements in stack
+     */
+    private Stack(T[] array) {
+        this.elements = array;
+        this.length = array.length;
+        this.capacity = array.length;
     }
 
     /**
@@ -87,16 +99,13 @@ public class Stack<T> {
      * @return stack object with popped elements
      */
     public Stack<T> popStack(int length) {
-        Stack<T> newStack = new Stack<>(length);
-        T[] elements = (T[]) new Object[capacity];
+        T[] poppedElements = Arrays.copyOfRange(elements,this.length - length, this.length);
+
         for (int i = 0; i < length; i++) {
-            elements[i] = pop();
-        }
-        for (int i = length - 1; i >= 0; i--) {
-            newStack.push(elements[i]);
+            pop();
         }
 
-        return newStack;
+        return new Stack<>(poppedElements);
     }
 
     @Override
