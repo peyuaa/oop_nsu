@@ -75,9 +75,6 @@ public class Stack<T> {
      * @return element of stack
      */
     public T pop() {
-        if (length < 1) {
-            grow();
-        }
         T element = elements[length - 1];
         length -= 1;
         return element;
