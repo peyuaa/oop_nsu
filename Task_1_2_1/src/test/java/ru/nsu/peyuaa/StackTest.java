@@ -9,8 +9,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 
-// переопределить equals() and hashCode()
-
 class StackTest {
     @Test
     void isPushAndPopWorking() {
@@ -34,9 +32,9 @@ class StackTest {
     @Test
     void isPushStackWorking() {
         int length = 5;
-        Stack<Integer> expected = new Stack<Integer>(length);
-        Stack<Integer> got = new Stack<Integer>(length);
-        Stack<Integer> pushedStack = new Stack<Integer>(length);
+        Stack<Integer> expected = new Stack<>(length);
+        Stack<Integer> got = new Stack<>(length);
+        Stack<Integer> pushedStack = new Stack<>(length);
 
         for (int i = 0; i < length; i++) {
             expected.push(i);
