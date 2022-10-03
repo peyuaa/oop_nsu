@@ -99,7 +99,7 @@ public class Stack<T> {
      * @return stack object with popped elements
      */
     public Stack<T> popStack(int length) {
-        T[] poppedElements = Arrays.copyOfRange(elements,this.length - length, this.length);
+        T[] poppedElements = Arrays.copyOfRange(elements, this.length - length, this.length);
 
         for (int i = 0; i < length; i++) {
             pop();
