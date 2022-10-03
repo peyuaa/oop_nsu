@@ -64,13 +64,8 @@ public class Stack<T> {
      * @param stack containt elements to push into our stack
      */
     public void pushStack(Stack<T> stack) {
-        int length = stack.count();
-        T[] elements = (T[]) new Object[length];
-        for (int i = 0; i < length; i++) {
-            elements[i] = stack.pop();
-        }
-        for (int i = length - 1; i >= 0; i--) {
-            push(elements[i]);
+        for (int i = 0; i < stack.length; i++) {
+            push(stack.elements[i]);
         }
     }
 
