@@ -8,6 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
+import java.util.Random;
 
 class StackTest {
     @Test
@@ -96,6 +97,23 @@ class StackTest {
         for (int i = 0; i < expectedCapacity; i++) {
             got.push(i);
             expected.push(i);
+        }
+
+        assertEquals(expected, got);
+    }
+
+    @Test
+    void stackEqualityObjects() {
+        Random random = new Random();
+        int capacity = random.nextInt(300);
+
+        Stack<Object> got = new Stack<>(capacity);
+        Stack<Object> expected = new Stack<>(capacity);
+
+        for (int i = 0; i < capacity; i++) {
+            Object object = new Object();
+            got.push(object);
+            expected.push(object);
         }
 
         assertEquals(expected, got);
