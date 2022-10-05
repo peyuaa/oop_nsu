@@ -132,8 +132,8 @@ public class Stack<T> {
             return false;
         }
         Stack<?> stack = (Stack<?>) o;
-        return length == stack.length &&
-                Arrays.equals(elements, 0, length, stack.elements, 0, stack.length);
+        return length == stack.length
+                && Arrays.equals(elements, 0, length, stack.elements, 0, stack.length);
     }
 
     @Override
