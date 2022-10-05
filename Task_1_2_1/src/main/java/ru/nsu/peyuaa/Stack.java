@@ -108,36 +108,6 @@ public class Stack<T> {
         return new Stack<>(poppedElements);
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (o == this) {
-            return true;
-        }
-
-        if (!(o instanceof Stack<?>)) {
-            return false;
-        }
-
-        Stack s = (Stack) o;
-
-        if (s.length != length) {
-            return false;
-        }
-
-        for (int i = 0; i < s.length; i++) {
-            if (!s.elements[i].equals(elements[i])) {
-                return false;
-            }
-        }
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(this);
-    }
-
     /**
      * Grow underlying array.
      */
@@ -151,5 +121,20 @@ public class Stack<T> {
 
         elements = newElements;
         capacity = newCapacity;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Stack<?> stack = (Stack<?>) o;
+        return capacity == stack.capacity && length == stack.length && Arrays.equals(elements, stack.elements);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = Objects.hash(capacity, length);
+        result = 31 * result + Arrays.hashCode(elements);
+        return result;
     }
 }
