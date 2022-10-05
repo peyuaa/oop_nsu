@@ -128,7 +128,7 @@ public class Stack<T> {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Stack<?> stack = (Stack<?>) o;
-        return capacity == stack.capacity && length == stack.length && Arrays.equals(elements, stack.elements);
+        return length == stack.length && Arrays.equals(elements, 0, length, stack.elements, 0, stack.length);
     }
 
     @Override
