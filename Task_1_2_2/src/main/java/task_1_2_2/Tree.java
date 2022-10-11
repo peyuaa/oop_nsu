@@ -3,12 +3,32 @@
  */
 package task_1_2_2;
 
-public class Tree {
-    public String getGreeting() {
-        return "Hello World!";
-    }
+public class Tree<T> {
+    class Node<T> {
 
-    public static void main(String[] args) {
-        System.out.println(new Tree().getGreeting());
+        T value;
+        Node[] children;
+        int childrenCapacity = 3;
+        int childrenLength = 0;
+
+        public Node(T value) {
+            this.value = value;
+            this.children = new Node[childrenCapacity];
+        }
+
+        private void growChildren() {
+            int newChildrenCapacity = (int)(childrenCapacity * 1.5);
+            Node[] newChildren = new Node[newChildrenCapacity];
+            System.arraycopy(children, 0, newChildren, 0, childrenLength);
+            children = newChildren;
+            childrenCapacity = newChildrenCapacity;
+        }
+
+        private void addChild(Node child) {
+            if (childrenLength == childrenCapacity) {
+                growChildren();
+            }
+            children[childrenLength] = child;
+        }
     }
 }
