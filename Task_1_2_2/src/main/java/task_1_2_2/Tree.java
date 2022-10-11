@@ -3,12 +3,12 @@
  */
 package task_1_2_2;
 
-public class App {
+public class Tree {
     public String getGreeting() {
         return "Hello World!";
     }
 
     public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
+        System.out.println(new Tree().getGreeting());
     }
 }
