@@ -3,38 +3,75 @@
  */
 package task_1_2_2;
 
-public class Tree<T> {
-    class Node<T> {
+import org.checkerframework.checker.formatter.qual.ReturnsFormat;
 
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+
+public class Tree<Node> implements Iterable<Node>{
+    @Override
+    public Iterator<Node> iterator() {
+        return new BreadthFirstSearchIterator();
+    }
+
+    class BreadthFirstSearchIterator implements Iterator<Node> {
+        LinkedList<Node> queue = new LinkedList<>();
+
+        @Override
+        public boolean hasNext() {
+            if (queue.size() == 0) {
+                return false;
+            }
+            return true;
+        }
+
+        @Override
+        public Node next() {
+            return queue.poll();
+        }
+
+        @Override
+        public void remove() {
+            Iterator.super.remove();
+        }
+    }
+
+    class Node<T> {
         T value;
-        Node parent;
-        Node[] children;
-        int childrenCapacity = 3;
-        int childrenLength = 0;
+        Node<T> parent;
+        List<Node<T>> children;
 
         public Node(T value) {
             this.value = value;
-            this.children = new Node[childrenCapacity];
-        }
-
-        private void growChildren() {
-            int newChildrenCapacity = (int)(childrenCapacity * 1.5);
-            Node[] newChildren = new Node[newChildrenCapacity];
-            System.arraycopy(children, 0, newChildren, 0, childrenLength);
-            children = newChildren;
-            childrenCapacity = newChildrenCapacity;
+            this.children = new LinkedList<>();
         }
 
         private void addChild(Node child) {
-            if (childrenLength == childrenCapacity) {
-                growChildren();
-            }
             child.parent = this;
-            children[childrenLength] = child;
+            children.add(child);
         }
     }
 
     Node root;
+
+    private Node breadthFirstSearch(T value) {
+        LinkedList<Node> queue = new LinkedList<>();
+        queue.add(root);
+
+        while (queue.size() != 0) {
+            Node currentNode = queue.poll();
+            if (currentNode.value.equals(value)) {
+                return currentNode;
+            }
+
+            for (int i = 0; i < currentNode.childrenLength; i++) {
+                queue.add(currentNode.children[i]);
+            }
+        }
+
+        return null;
+    }
 
     public void add(String value) {
         if (root.value == null) {
@@ -47,5 +84,4 @@ public class Tree<T> {
     public void add(Node parent, String value) {
         parent.addChild(new Node<>(value));
     }
-
 }
