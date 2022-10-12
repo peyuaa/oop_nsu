@@ -1,1 +1,1 @@
-memberSearchIndex = [{"p":"task_1_2_2","c":"Tree","l":"Tree()","url":"%3Cinit%3E()"}]
+memberSearchIndex = [{"p":"task_1_2_2","c":"Tree","l":"add(String)","url":"add(java.lang.String)"},{"p":"task_1_2_2","c":"Tree","l":"add(Tree.Node, String)","url":"add(task_1_2_2.Tree.Node,java.lang.String)"},{"p":"task_1_2_2","c":"Tree","l":"Tree()","url":"%3Cinit%3E()"}]
