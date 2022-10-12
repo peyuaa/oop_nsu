@@ -7,6 +7,7 @@ public class Tree<T> {
     class Node<T> {
 
         T value;
+        Node parent;
         Node[] children;
         int childrenCapacity = 3;
         int childrenLength = 0;
@@ -28,7 +29,23 @@ public class Tree<T> {
             if (childrenLength == childrenCapacity) {
                 growChildren();
             }
+            child.parent = this;
             children[childrenLength] = child;
         }
     }
+
+    Node root;
+
+    public void add(String value) {
+        if (root.value == null) {
+            root.value = value;
+        } else {
+            root.addChild(new Node(value));
+        }
+    }
+
+    public void add(Node parent, String value) {
+        parent.addChild(new Node<>(value));
+    }
+
 }
