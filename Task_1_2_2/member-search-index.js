@@ -1,1 +1,1 @@
-memberSearchIndex = [{"p":"task_1_2_2","c":"Tree","l":"getGreeting()"},{"p":"task_1_2_2","c":"Tree","l":"main(String[])","url":"main(java.lang.String[])"},{"p":"task_1_2_2","c":"Tree","l":"Tree()","url":"%3Cinit%3E()"}]
+memberSearchIndex = [{"p":"task_1_2_2","c":"Tree","l":"Tree()","url":"%3Cinit%3E()"}]
