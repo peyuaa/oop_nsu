@@ -28,11 +28,6 @@ public class Tree<T> implements Iterable<Tree.Node>{
         public Node next() {
             return queue.poll();
         }
-
-        @Override
-        public void remove() {
-            Iterator.super.remove();
-        }
     }
 
     class Node<T> {
