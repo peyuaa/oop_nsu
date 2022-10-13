@@ -3,8 +3,29 @@
  */
 package task_1_2_2;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class TreeTest {
+
+    @Test
+    void bfs() {
+        Tree<String> tree = new Tree<>();
+        tree.add("A");
+        tree.add("B");
+        tree.add("C");
+
+
+        List<String> expected = new ArrayList<>();
+        expected.add("A");
+        expected.add("B");
+        expected.add("C");
+        List<String> got = tree.breadthFirstTraversal();
+        Assertions.assertEquals(expected, got);
+    }
 }
