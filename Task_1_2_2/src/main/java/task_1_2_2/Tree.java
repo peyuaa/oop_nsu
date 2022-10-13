@@ -3,34 +3,13 @@
  */
 package task_1_2_2;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
-public class Tree<T> implements Iterable<Tree.Node>{
-    @Override
-    public Iterator<Tree.Node> iterator() {
-        return new BreadthFirstSearchIterator();
-    }
-
-    class BreadthFirstSearchIterator implements Iterator<Tree.Node> {
-        LinkedList<Node> queue = new LinkedList<>();
-
-        @Override
-        public boolean hasNext() {
-            if (queue.size() == 0) {
-                return false;
-            }
-            return true;
-        }
-
-        @Override
-        public Node next() {
-            return queue.poll();
-        }
-    }
-
-    class Node<T> {
+public class Tree<T> implements Iterable<Tree.Node<T>>{
+    static class Node<T> {
         T value;
         Node<T> parent;
         List<Node<T>> children;
@@ -40,16 +19,47 @@ public class Tree<T> implements Iterable<Tree.Node>{
             this.children = new LinkedList<>();
         }
 
-        private void addChild(Node child) {
+        private void addChild(Node<T> child) {
             child.parent = this;
             children.add(child);
         }
     }
+    @Override
+    public Iterator<Node<T>> iterator() {
+        return new BreadthFirstSearchIterator();
+    }
 
-    Node root;
+    class BreadthFirstSearchIterator implements Iterator<Node<T>> {
+        LinkedList<Node<T>> queue = new LinkedList<>();
+        boolean isRootAdded = false;
 
-    private Node breadthFirstSearch(T value) {
-        Iterator<Tree.Node> bfsIterator = new BreadthFirstSearchIterator();
+        @Override
+        public boolean hasNext() {
+            if (!isRootAdded) {
+                queue.add(root);
+                isRootAdded = true;
+            }
+
+            if (queue.size() == 0) {
+                return false;
+            }
+            return true;
+        }
+
+        @Override
+        public Node<T> next() {
+            Node<T> currentNode = queue.poll();
+            currentNode.children.forEach(
+                    child -> queue.add(child)
+            );
+            return currentNode;
+        }
+    }
+
+    private Node<T> root;
+
+    private Node<T> breadthFirstSearch(T value) {
+        Iterator<Node<T>> bfsIterator = new BreadthFirstSearchIterator();
 
         while (bfsIterator.hasNext()) {
             Node currentNode = bfsIterator.next();
@@ -61,15 +71,27 @@ public class Tree<T> implements Iterable<Tree.Node>{
         return null;
     }
 
-    public void add(String value) {
-        if (root.value == null) {
-            root.value = value;
+    public void add(T value) {
+        if (root == null) {
+            root = new Node<>(value);
         } else {
-            root.addChild(new Node(value));
+            root.addChild(new Node<>(value));
         }
     }
 
-    public void add(Node parent, String value) {
+    public void add(Node<T> parent, T value) {
         parent.addChild(new Node<>(value));
+    }
+
+    public List<T> breadthFirstTraversal() {
+        List<T> traverseResult = new ArrayList<>();
+
+        Iterator<Node<T>> bfsIterator = new BreadthFirstSearchIterator();
+        while (bfsIterator.hasNext()) {
+            Node<T> currentNode = bfsIterator.next();
+            traverseResult.add(currentNode.value);
+        }
+
+        return traverseResult;
     }
 }
