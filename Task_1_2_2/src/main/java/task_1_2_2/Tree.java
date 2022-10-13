@@ -3,19 +3,17 @@
  */
 package task_1_2_2;
 
-import org.checkerframework.checker.formatter.qual.ReturnsFormat;
-
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
-public class Tree<Node> implements Iterable<Node>{
+public class Tree<T> implements Iterable<Tree.Node>{
     @Override
-    public Iterator<Node> iterator() {
+    public Iterator<Tree.Node> iterator() {
         return new BreadthFirstSearchIterator();
     }
 
-    class BreadthFirstSearchIterator implements Iterator<Node> {
+    class BreadthFirstSearchIterator implements Iterator<Tree.Node> {
         LinkedList<Node> queue = new LinkedList<>();
 
         @Override
@@ -56,17 +54,12 @@ public class Tree<Node> implements Iterable<Node>{
     Node root;
 
     private Node breadthFirstSearch(T value) {
-        LinkedList<Node> queue = new LinkedList<>();
-        queue.add(root);
+        Iterator<Tree.Node> bfsIterator = new BreadthFirstSearchIterator();
 
-        while (queue.size() != 0) {
-            Node currentNode = queue.poll();
+        while (bfsIterator.hasNext()) {
+            Node currentNode = bfsIterator.next();
             if (currentNode.value.equals(value)) {
                 return currentNode;
-            }
-
-            for (int i = 0; i < currentNode.childrenLength; i++) {
-                queue.add(currentNode.children[i]);
             }
         }
 
