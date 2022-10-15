@@ -21,6 +21,10 @@ public class Tree<T> implements Iterable<Tree.Node<T>>{
             children.add(child);
         }
 
+        private void deleteChild(Node<T> child) {
+            children.remove(child);
+        }
+
         @Override
         public boolean equals(Object o) {
             if (this == o) return true;
@@ -126,7 +130,7 @@ public class Tree<T> implements Iterable<Tree.Node<T>>{
         if (node == root) {
             root = null;
         } else {
-            node.parent.children.remove(node);
+            node.parent.deleteChild(node);
         }
     }
 
