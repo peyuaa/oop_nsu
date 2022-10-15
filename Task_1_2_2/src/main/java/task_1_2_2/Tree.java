@@ -36,11 +36,7 @@ public class Tree<T> implements Iterable<Tree.Node<T>>{
                 queue.add(root);
                 isRootAdded = true;
             }
-
-            if (queue.size() == 0) {
-                return false;
-            }
-            return true;
+            return queue.size() != 0;
         }
 
         @Override
