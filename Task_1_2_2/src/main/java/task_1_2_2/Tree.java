@@ -3,10 +3,7 @@
  */
 package task_1_2_2;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 public class Tree<T> implements Iterable<Tree.Node<T>>{
     static class Node<T> {
@@ -51,6 +48,29 @@ public class Tree<T> implements Iterable<Tree.Node<T>>{
             Node<T> currentNode = queue.poll();
             currentNode.children.forEach(
                     child -> queue.add(child)
+            );
+            return currentNode;
+        }
+    }
+
+    class DepthFirstSearchIterator implements Iterator<Node<T>> {
+        Stack<Node<T>> stack = new Stack<>();
+        boolean isRootAdded = false;
+
+        @Override
+        public boolean hasNext() {
+            if (!isRootAdded) {
+                stack.push(root);
+                isRootAdded = true;
+            }
+            return !stack.isEmpty();
+        }
+
+        @Override
+        public Node<T> next() {
+            Node<T> currentNode = stack.pop();
+            currentNode.children.forEach(
+                    child -> stack.push(child)
             );
             return currentNode;
         }
