@@ -101,8 +101,10 @@ public class Tree<T> implements Iterable<Tree.Node<T>>{
         return node;
     }
 
-    public void add(Node<T> parent, T value) {
-        parent.addChild(new Node<>(value));
+    public Node<T> add(Node<T> parent, T value) {
+        Node<T> node = new Node<>(value);
+        parent.addChild(node);
+        return node;
     }
 
     public List<T> breadthFirstTraversal() {
