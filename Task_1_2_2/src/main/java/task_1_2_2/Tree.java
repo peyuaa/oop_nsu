@@ -107,6 +107,15 @@ public class Tree<T> implements Iterable<Tree.Node<T>>{
         return node;
     }
 
+    public void delete(T value) {
+        Node<T> node = breadthFirstSearch(value);
+        if (node == root) {
+            root = null;
+        } else {
+            node.parent.children.remove(node);
+        }
+    }
+
     public List<T> breadthFirstTraversal() {
         List<T> traverseResult = new ArrayList<>();
 
