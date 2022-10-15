@@ -65,4 +65,28 @@ class TreeTest {
 
         Assertions.assertEquals(expected, got);
     }
+
+    @Test
+    void deleteElementByNode() {
+        Tree<String> got = new Tree<>();
+        Tree.Node<String> nodeA = got.add("A");
+        Tree.Node<String> nodeB = got.add("B");
+        Tree.Node<String> nodeC = got.add("C");
+        Tree.Node<String> nodeK = got.add(nodeB, "K");
+        got.add(nodeA, "D");
+        got.add(nodeB, "M");
+        got.add(nodeC, "F");
+        got.add(nodeK, "Z");
+        got.delete(nodeC);
+
+        Tree<String> expected = new Tree<>();
+        expected.add("A");
+        Tree.Node<String> expectedNodeB = expected.add("B");
+        expected.add("D");
+        Tree.Node<String> expectedNodeK = expected.add(expectedNodeB, "K");
+        expected.add(expectedNodeK, "Z");
+        expected.add(expectedNodeB, "M");
+
+        Assertions.assertEquals(expected, got);
+    }
 }
