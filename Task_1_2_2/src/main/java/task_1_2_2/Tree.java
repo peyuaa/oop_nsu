@@ -91,12 +91,14 @@ public class Tree<T> implements Iterable<Tree.Node<T>>{
         return null;
     }
 
-    public void add(T value) {
+    public Node<T> add(T value) {
+        Node<T> node = new Node<>(value);
         if (root == null) {
-            root = new Node<>(value);
+            root = node;
         } else {
-            root.addChild(new Node<>(value));
+            root.addChild(node);
         }
+        return node;
     }
 
     public void add(Node<T> parent, T value) {
