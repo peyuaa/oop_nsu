@@ -45,7 +45,24 @@ class TreeTest {
     }
 
     @Test
-    void deleteElement() {
+    void deleteElementByValue() {
+        Tree<String> got = new Tree<>();
+        Tree.Node<String> nodeA = got.add("A");
+        Tree.Node<String> nodeB = got.add("B");
+        Tree.Node<String> nodeC = got.add("C");
+        Tree.Node<String> nodeK = got.add(nodeB, "K");
+        got.add(nodeA, "D");
+        got.add(nodeB, "M");
+        got.add(nodeC, "F");
+        got.add(nodeK, "Z");
+        got.delete("B");
 
+        Tree<String> expected = new Tree<>();
+        expected.add("A");
+        Tree.Node<String> expectedNodeC = expected.add("C");
+        expected.add("D");
+        expected.add(expectedNodeC, "F");
+
+        Assertions.assertEquals(expected, got);
     }
 }
