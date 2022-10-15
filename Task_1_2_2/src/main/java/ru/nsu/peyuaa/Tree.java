@@ -6,7 +6,7 @@ package ru.nsu.peyuaa;
 
 import java.util.*;
 
-public class Tree<T> implements Iterable<Tree.Node<T>>{
+public class Tree<T> implements Iterable<Tree.Node<T>> {
     static class Node<T> {
         T value;
         Node<T> parent;
@@ -28,8 +28,12 @@ public class Tree<T> implements Iterable<Tree.Node<T>>{
 
         @Override
         public boolean equals(Object o) {
-            if (this == o) return true;
-            if (o == null || getClass() != o.getClass()) return false;
+            if (this == o) {
+                return true;
+            }
+            if (o == null || getClass() != o.getClass()) {
+                return false;
+            }
             Node<?> node = (Node<?>) o;
             return Objects.equals(value, node.value) && children.equals(node.children);
         }
@@ -42,8 +46,12 @@ public class Tree<T> implements Iterable<Tree.Node<T>>{
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         Tree<?> tree = (Tree<?>) o;
         return Objects.equals(root, tree.root);
     }
