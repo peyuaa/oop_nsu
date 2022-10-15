@@ -129,6 +129,10 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <ul class="blockList">
 <li class="blockList">
 <dl>
+<dt><span class="paramLabel">Type Parameters:</span></dt>
+<dd><code>T</code> - value type.</dd>
+</dl>
+<dl>
 <dt>All Implemented Interfaces:</dt>
 <dd><code>java.lang.Iterable&lt;ru.nsu.peyuaa.Tree.Node&lt;T&gt;&gt;</code></dd>
 </dl>
@@ -136,6 +140,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <pre>public class <span class="typeNameLabel">Tree&lt;T&gt;</span>
 extends java.lang.Object
 implements java.lang.Iterable&lt;ru.nsu.peyuaa.Tree.Node&lt;T&gt;&gt;</pre>
+<div class="block">Tree class is acyclic oriented graph.</div>
 </li>
 </ul>
 </div>
@@ -181,32 +186,44 @@ implements java.lang.Iterable&lt;ru.nsu.peyuaa.Tree.Node&lt;T&gt;&gt;</pre>
 <td class="colFirst"><code>ru.nsu.peyuaa.Tree.Node&lt;<a href="Tree.html" title="type parameter in Tree">T</a>&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#add(ru.nsu.peyuaa.Tree.Node,T)">add</a></span>&#8203;(ru.nsu.peyuaa.Tree.Node&lt;<a href="Tree.html" title="type parameter in Tree">T</a>&gt;&nbsp;parent,
    <a href="Tree.html" title="type parameter in Tree">T</a>&nbsp;value)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Add node as parent's child.</div>
+</td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>ru.nsu.peyuaa.Tree.Node&lt;<a href="Tree.html" title="type parameter in Tree">T</a>&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#add(T)">add</a></span>&#8203;(<a href="Tree.html" title="type parameter in Tree">T</a>&nbsp;value)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Make node with specified value and set is as root in case root is not set yet.</div>
+</td>
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code>java.util.List&lt;<a href="Tree.html" title="type parameter in Tree">T</a>&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#breadthFirstTraversal()">breadthFirstTraversal</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Traverse a tree using breadth first search.</div>
+</td>
 </tr>
 <tr id="i3" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#delete(ru.nsu.peyuaa.Tree.Node)">delete</a></span>&#8203;(ru.nsu.peyuaa.Tree.Node&lt;<a href="Tree.html" title="type parameter in Tree">T</a>&gt;&nbsp;node)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Delete node.</div>
+</td>
 </tr>
 <tr id="i4" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#delete(T)">delete</a></span>&#8203;(<a href="Tree.html" title="type parameter in Tree">T</a>&nbsp;value)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Delete node with that value from tree.</div>
+</td>
 </tr>
 <tr id="i5" class="rowColor">
 <td class="colFirst"><code>java.util.List&lt;<a href="Tree.html" title="type parameter in Tree">T</a>&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#depthFirstTraversal()">depthFirstTraversal</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Traverse tree using depth first search.</div>
+</td>
 </tr>
 <tr id="i6" class="altColor">
 <td class="colFirst"><code>boolean</code></td>
@@ -321,6 +338,14 @@ implements java.lang.Iterable&lt;ru.nsu.peyuaa.Tree.Node&lt;T&gt;&gt;</pre>
 <li class="blockList">
 <h4>add</h4>
 <pre class="methodSignature">public&nbsp;ru.nsu.peyuaa.Tree.Node&lt;<a href="Tree.html" title="type parameter in Tree">T</a>&gt;&nbsp;add&#8203;(<a href="Tree.html" title="type parameter in Tree">T</a>&nbsp;value)</pre>
+<div class="block">Make node with specified value and set is as root in case root is not set yet.
+ In other case set that node root's child.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>value</code> - of the new node.</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>new added node.</dd>
+</dl>
 </li>
 </ul>
 <a id="add(ru.nsu.peyuaa.Tree.Node,java.lang.Object)">
@@ -333,6 +358,14 @@ implements java.lang.Iterable&lt;ru.nsu.peyuaa.Tree.Node&lt;T&gt;&gt;</pre>
 <h4>add</h4>
 <pre class="methodSignature">public&nbsp;ru.nsu.peyuaa.Tree.Node&lt;<a href="Tree.html" title="type parameter in Tree">T</a>&gt;&nbsp;add&#8203;(ru.nsu.peyuaa.Tree.Node&lt;<a href="Tree.html" title="type parameter in Tree">T</a>&gt;&nbsp;parent,
                                       <a href="Tree.html" title="type parameter in Tree">T</a>&nbsp;value)</pre>
+<div class="block">Add node as parent's child.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>parent</code> - of the new node.</dd>
+<dd><code>value</code> - of the new node.</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>new node.</dd>
+</dl>
 </li>
 </ul>
 <a id="delete(java.lang.Object)">
@@ -344,6 +377,11 @@ implements java.lang.Iterable&lt;ru.nsu.peyuaa.Tree.Node&lt;T&gt;&gt;</pre>
 <li class="blockList">
 <h4>delete</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;delete&#8203;(<a href="Tree.html" title="type parameter in Tree">T</a>&nbsp;value)</pre>
+<div class="block">Delete node with that value from tree.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>value</code> - to be deleted.</dd>
+</dl>
 </li>
 </ul>
 <a id="delete(ru.nsu.peyuaa.Tree.Node)">
@@ -353,6 +391,11 @@ implements java.lang.Iterable&lt;ru.nsu.peyuaa.Tree.Node&lt;T&gt;&gt;</pre>
 <li class="blockList">
 <h4>delete</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;delete&#8203;(ru.nsu.peyuaa.Tree.Node&lt;<a href="Tree.html" title="type parameter in Tree">T</a>&gt;&nbsp;node)</pre>
+<div class="block">Delete node.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>node</code> - to be deleted.</dd>
+</dl>
 </li>
 </ul>
 <a id="breadthFirstTraversal()">
@@ -362,6 +405,11 @@ implements java.lang.Iterable&lt;ru.nsu.peyuaa.Tree.Node&lt;T&gt;&gt;</pre>
 <li class="blockList">
 <h4>breadthFirstTraversal</h4>
 <pre class="methodSignature">public&nbsp;java.util.List&lt;<a href="Tree.html" title="type parameter in Tree">T</a>&gt;&nbsp;breadthFirstTraversal()</pre>
+<div class="block">Traverse a tree using breadth first search.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>traversal list.</dd>
+</dl>
 </li>
 </ul>
 <a id="depthFirstTraversal()">
@@ -371,6 +419,11 @@ implements java.lang.Iterable&lt;ru.nsu.peyuaa.Tree.Node&lt;T&gt;&gt;</pre>
 <li class="blockList">
 <h4>depthFirstTraversal</h4>
 <pre class="methodSignature">public&nbsp;java.util.List&lt;<a href="Tree.html" title="type parameter in Tree">T</a>&gt;&nbsp;depthFirstTraversal()</pre>
+<div class="block">Traverse tree using depth first search.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>traversal list.</dd>
+</dl>
 </li>
 </ul>
 </li>
