@@ -94,9 +94,9 @@ public class Tree<T> implements Iterable<Tree.Node<T>>{
         @Override
         public Node<T> next() {
             Node<T> currentNode = stack.pop();
-            currentNode.children.forEach(
-                    child -> stack.push(child)
-            );
+            for (int i = currentNode.children.size() - 1; i >= 0; i--) {
+                stack.push(currentNode.children.get(i));
+            }
             return currentNode;
         }
     }
