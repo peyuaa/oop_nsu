@@ -39,6 +39,20 @@ public class Tree<T> implements Iterable<Tree.Node<T>>{
             return Objects.hash(value, parent, children);
         }
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Tree<?> tree = (Tree<?>) o;
+        return Objects.equals(root, tree.root);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(root);
+    }
+
     @Override
     public Iterator<Node<T>> iterator() {
         return new BreadthFirstSearchIterator();
