@@ -26,6 +26,25 @@ class TreeTest {
     }
 
     @Test
+    void dfs() {
+        Tree<Integer> tree = new Tree<>();
+        Tree.Node<Integer> node1 = tree.add(1);
+        Tree.Node<Integer> node2 = tree.add(2);
+        Tree.Node<Integer> node3 = tree.add(3);
+        Tree.Node<Integer> node4 = tree.add(node2, 4);
+        tree.add(node1, 5);
+        tree.add(node2, 6);
+        tree.add(node3, 7);
+        tree.add(node4, 8);
+
+        List<Integer> got = tree.depthFirstTraversal();
+        List<Integer> expected = new ArrayList<>();
+        Collections.addAll(expected, 1, 2, 4, 8, 6, 3, 7, 5);
+
+        Assertions.assertEquals(expected, got);
+    }
+
+    @Test
     void addElement() {
         Tree<String> tree = new Tree<>();
         Tree.Node<String> nodeA = tree.add("A");
