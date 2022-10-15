@@ -109,6 +109,10 @@ public class Tree<T> implements Iterable<Tree.Node<T>>{
 
     public void delete(T value) {
         Node<T> node = breadthFirstSearch(value);
+        delete(node);
+    }
+
+    public void delete(Node<T> node) {
         if (node == root) {
             root = null;
         } else {
