@@ -28,4 +28,30 @@ class TreeTest {
         List<String> got = tree.breadthFirstTraversal();
         Assertions.assertEquals(expected, got);
     }
+
+    @Test
+    void addElement() {
+        Tree<String> tree = new Tree<>();
+        Tree.Node<String> nodeA = tree.add("A");
+        Tree.Node<String> nodeB = tree.add("B");
+        Tree.Node<String> nodeC = tree.add("C");
+        Tree.Node<String> nodeK = tree.add(nodeB, "K");
+        tree.add(nodeA, "D");
+        tree.add(nodeB, "M");
+        tree.add(nodeC, "F");
+        tree.add(nodeK, "Z");
+
+        List<String> got = tree.breadthFirstTraversal();
+        List<String> expected = new ArrayList<>();
+        expected.add("A");
+        expected.add("B");
+        expected.add("C");
+        expected.add("D");
+        expected.add("K");
+        expected.add("M");
+        expected.add("F");
+        expected.add("Z");
+
+        Assertions.assertEquals(expected, got);
+    }
 }
