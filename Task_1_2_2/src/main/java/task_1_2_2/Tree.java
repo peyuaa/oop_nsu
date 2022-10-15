@@ -155,7 +155,17 @@ public class Tree<T> implements Iterable<Tree.Node<T>>{
             Node<T> currentNode = bfsIterator.next();
             traverseResult.add(currentNode.value);
         }
+        return traverseResult;
+    }
 
+    public List<T> depthFirstTraversal() {
+        List<T> traverseResult = new ArrayList<>();
+
+        Iterator<Node<T>> dfsIterator = new DepthFirstSearchIterator();
+        while (dfsIterator.hasNext()) {
+            Node<T> currentNode = dfsIterator.next();
+            traverseResult.add(currentNode.value);
+        }
         return traverseResult;
     }
 }
