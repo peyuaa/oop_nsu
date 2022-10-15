@@ -26,7 +26,8 @@ public class Tree<T> implements Iterable<Tree.Node<T>>{
             if (this == o) return true;
             if (o == null || getClass() != o.getClass()) return false;
             Node<?> node = (Node<?>) o;
-            return Objects.equals(value, node.value) && Objects.equals(parent, node.parent) && Objects.equals(children, node.children);
+            return Objects.equals(value, node.value) && Objects.equals(parent, node.parent)
+                    && children.equals(node.children);
         }
 
         @Override
