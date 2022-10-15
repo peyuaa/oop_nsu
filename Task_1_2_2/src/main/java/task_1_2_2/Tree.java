@@ -42,9 +42,7 @@ public class Tree<T> implements Iterable<Tree.Node<T>>{
         @Override
         public Node<T> next() {
             Node<T> currentNode = queue.poll();
-            currentNode.children.forEach(
-                    child -> queue.add(child)
-            );
+            queue.addAll(currentNode.children);
             return currentNode;
         }
     }
@@ -78,7 +76,7 @@ public class Tree<T> implements Iterable<Tree.Node<T>>{
         Iterator<Node<T>> bfsIterator = new BreadthFirstSearchIterator();
 
         while (bfsIterator.hasNext()) {
-            Node currentNode = bfsIterator.next();
+            Node<T> currentNode = bfsIterator.next();
             if (currentNode.value.equals(value)) {
                 return currentNode;
             }
