@@ -11,6 +11,11 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Stack;
 
+/**
+ * Tree class is acyclic oriented graph.
+ *
+ * @param <T> value type.
+ */
 public class Tree<T> implements Iterable<Tree.Node<T>> {
     static class Node<T> {
         T value;
@@ -130,6 +135,13 @@ public class Tree<T> implements Iterable<Tree.Node<T>> {
         return null;
     }
 
+    /**
+     * Make node with specified value and set is as root in case root is not set yet.
+     * In other case set that node root's child.
+     *
+     * @param value of the new node.
+     * @return new added node.
+     */
     public Node<T> add(T value) {
         Node<T> node = new Node<>(value);
         if (root == null) {
@@ -140,12 +152,24 @@ public class Tree<T> implements Iterable<Tree.Node<T>> {
         return node;
     }
 
+    /**
+     * Add node as parent's child.
+     *
+     * @param parent of the new node.
+     * @param value of the new node.
+     * @return new node.
+     */
     public Node<T> add(Node<T> parent, T value) {
         Node<T> node = new Node<>(value);
         parent.addChild(node);
         return node;
     }
 
+    /**
+     * Delete node with that value from tree.
+     *
+     * @param value to be deleted.
+     */
     public void delete(T value) {
         Node<T> node = breadthFirstSearch(value);
         if (node != null) {
@@ -153,6 +177,11 @@ public class Tree<T> implements Iterable<Tree.Node<T>> {
         }
     }
 
+    /**
+     * Delete node.
+     *
+     * @param node to be deleted.
+     */
     public void delete(Node<T> node) {
         if (node == root) {
             root = null;
@@ -161,6 +190,11 @@ public class Tree<T> implements Iterable<Tree.Node<T>> {
         }
     }
 
+    /**
+     * Traverse a tree using breadth first search.
+     *
+     * @return traversal list.
+     */
     public List<T> breadthFirstTraversal() {
         List<T> traverseResult = new ArrayList<>();
 
@@ -172,6 +206,11 @@ public class Tree<T> implements Iterable<Tree.Node<T>> {
         return traverseResult;
     }
 
+    /**
+     * Traverse tree using depth first search.
+     *
+     * @return traversal list.
+     */
     public List<T> depthFirstTraversal() {
         List<T> traverseResult = new ArrayList<>();
 
