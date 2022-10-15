@@ -5,11 +5,9 @@ package task_1_2_2;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class TreeTest {
 
@@ -20,12 +18,10 @@ class TreeTest {
         tree.add("B");
         tree.add("C");
 
-
         List<String> expected = new ArrayList<>();
-        expected.add("A");
-        expected.add("B");
-        expected.add("C");
+        Collections.addAll(expected, "A", "B", "C");
         List<String> got = tree.breadthFirstTraversal();
+
         Assertions.assertEquals(expected, got);
     }
 
@@ -43,15 +39,13 @@ class TreeTest {
 
         List<String> got = tree.breadthFirstTraversal();
         List<String> expected = new ArrayList<>();
-        expected.add("A");
-        expected.add("B");
-        expected.add("C");
-        expected.add("D");
-        expected.add("K");
-        expected.add("M");
-        expected.add("F");
-        expected.add("Z");
+        Collections.addAll(expected, "A", "B", "C", "D", "K", "M", "F", "Z");
 
         Assertions.assertEquals(expected, got);
+    }
+
+    @Test
+    void deleteElement() {
+
     }
 }
