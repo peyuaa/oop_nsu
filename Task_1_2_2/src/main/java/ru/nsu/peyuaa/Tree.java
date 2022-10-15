@@ -4,7 +4,12 @@
 
 package ru.nsu.peyuaa;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Objects;
+import java.util.Stack;
 
 public class Tree<T> implements Iterable<Tree.Node<T>> {
     static class Node<T> {
