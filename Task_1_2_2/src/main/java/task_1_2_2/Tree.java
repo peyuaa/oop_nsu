@@ -20,6 +20,19 @@ public class Tree<T> implements Iterable<Tree.Node<T>>{
             child.parent = this;
             children.add(child);
         }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+            Node<?> node = (Node<?>) o;
+            return Objects.equals(value, node.value) && Objects.equals(parent, node.parent) && Objects.equals(children, node.children);
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(value, parent, children);
+        }
     }
     @Override
     public Iterator<Node<T>> iterator() {
