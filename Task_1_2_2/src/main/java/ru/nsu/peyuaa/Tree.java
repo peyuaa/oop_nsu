@@ -18,9 +18,9 @@ import java.util.Stack;
  */
 public class Tree<T> implements Iterable<Tree.Node<T>> {
     static class Node<T> {
-        T value;
-        Node<T> parent;
-        List<Node<T>> children;
+        private T value;
+        private Node<T> parent;
+        private List<Node<T>> children;
 
         public Node(T value) {
             this.value = value;
