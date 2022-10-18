@@ -4,12 +4,7 @@
 
 package ru.nsu.peyuaa;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Objects;
-import java.util.Stack;
+import java.util.*;
 
 /**
  * Tree class is acyclic oriented graph.
@@ -98,23 +93,23 @@ public class Tree<T> implements Iterable<Tree.Node<T>> {
     }
 
     class DepthFirstSearchIterator implements Iterator<Node<T>> {
-        Stack<Node<T>> stack = new Stack<>();
+        Deque<Node<T>> deque = new ArrayDeque<>();
         boolean isRootAdded = false;
 
         @Override
         public boolean hasNext() {
             if (!isRootAdded) {
-                stack.push(root);
+                deque.offer(root);
                 isRootAdded = true;
             }
-            return !stack.isEmpty();
+            return !deque.isEmpty();
         }
 
         @Override
         public Node<T> next() {
-            Node<T> currentNode = stack.pop();
+            Node<T> currentNode = deque.pollLast();
             for (int i = currentNode.children.size() - 1; i >= 0; i--) {
-                stack.push(currentNode.children.get(i));
+                deque.offer(currentNode.children.get(i));
             }
             return currentNode;
         }
