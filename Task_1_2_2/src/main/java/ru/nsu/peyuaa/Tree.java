@@ -13,9 +13,9 @@ import java.util.*;
  */
 public class Tree<T> implements Iterable<Tree.Node<T>> {
     static class Node<T> {
-        private T value;
+        private final T value;
         private Node<T> parent;
-        private List<Node<T>> children;
+        private final List<Node<T>> children;
 
         public Node(T value) {
             this.value = value;
@@ -77,7 +77,7 @@ public class Tree<T> implements Iterable<Tree.Node<T>> {
     class BreadthFirstSearchIterator implements Iterator<Node<T>> {
         LinkedList<Node<T>> queue = new LinkedList<>();
         boolean isRootAdded = false;
-        private int modificationCounter;
+        private final int modificationCounter;
 
         public BreadthFirstSearchIterator() {
             modificationCounter = Tree.this.modificationCounter;
@@ -106,7 +106,7 @@ public class Tree<T> implements Iterable<Tree.Node<T>> {
     class DepthFirstSearchIterator implements Iterator<Node<T>> {
         Deque<Node<T>> deque = new ArrayDeque<>();
         boolean isRootAdded = false;
-        private int modificationCounter;
+        private final int modificationCounter;
 
         public DepthFirstSearchIterator() {
             modificationCounter = Tree.this.modificationCounter;
