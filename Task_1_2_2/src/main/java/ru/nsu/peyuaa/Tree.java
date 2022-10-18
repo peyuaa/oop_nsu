@@ -4,13 +4,7 @@
 
 package ru.nsu.peyuaa;
 
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.Deque;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 /**
  * Tree class is acyclic oriented graph.
@@ -55,6 +49,9 @@ public class Tree<T> implements Iterable<Tree.Node<T>> {
         }
     }
 
+    private Node<T> root;
+    private int modificationCounter = 0;
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -80,6 +77,11 @@ public class Tree<T> implements Iterable<Tree.Node<T>> {
     class BreadthFirstSearchIterator implements Iterator<Node<T>> {
         LinkedList<Node<T>> queue = new LinkedList<>();
         boolean isRootAdded = false;
+        private int modificationCounter;
+
+        public BreadthFirstSearchIterator() {
+            modificationCounter = Tree.this.modificationCounter;
+        }
 
         @Override
         public boolean hasNext() {
@@ -92,6 +94,9 @@ public class Tree<T> implements Iterable<Tree.Node<T>> {
 
         @Override
         public Node<T> next() {
+            if (modificationCounter != Tree.this.modificationCounter) {
+                throw new ConcurrentModificationException();
+            }
             Node<T> currentNode = queue.poll();
             queue.addAll(currentNode.children);
             return currentNode;
@@ -101,6 +106,11 @@ public class Tree<T> implements Iterable<Tree.Node<T>> {
     class DepthFirstSearchIterator implements Iterator<Node<T>> {
         Deque<Node<T>> deque = new ArrayDeque<>();
         boolean isRootAdded = false;
+        private int modificationCounter;
+
+        public DepthFirstSearchIterator() {
+            modificationCounter = Tree.this.modificationCounter;
+        }
 
         @Override
         public boolean hasNext() {
@@ -113,6 +123,9 @@ public class Tree<T> implements Iterable<Tree.Node<T>> {
 
         @Override
         public Node<T> next() {
+            if (modificationCounter != Tree.this.modificationCounter) {
+                throw new ConcurrentModificationException();
+            }
             Node<T> currentNode = deque.pollLast();
             for (int i = currentNode.children.size() - 1; i >= 0; i--) {
                 deque.offer(currentNode.children.get(i));
@@ -120,8 +133,6 @@ public class Tree<T> implements Iterable<Tree.Node<T>> {
             return currentNode;
         }
     }
-
-    private Node<T> root;
 
     private Node<T> breadthFirstSearch(T value) {
         Iterator<Node<T>> bfsIterator = new BreadthFirstSearchIterator();
@@ -150,6 +161,7 @@ public class Tree<T> implements Iterable<Tree.Node<T>> {
         } else {
             root.addChild(node);
         }
+        modificationCounter++;
         return node;
     }
 
@@ -163,6 +175,7 @@ public class Tree<T> implements Iterable<Tree.Node<T>> {
     public Node<T> add(Node<T> parent, T value) {
         Node<T> node = new Node<>(value);
         parent.addChild(node);
+        modificationCounter++;
         return node;
     }
 
@@ -176,6 +189,7 @@ public class Tree<T> implements Iterable<Tree.Node<T>> {
         if (node != null) {
             delete(node);
         }
+        modificationCounter++;
     }
 
     /**
@@ -189,6 +203,7 @@ public class Tree<T> implements Iterable<Tree.Node<T>> {
         } else {
             node.parent.deleteChild(node);
         }
+        modificationCounter++;
     }
 
     /**
