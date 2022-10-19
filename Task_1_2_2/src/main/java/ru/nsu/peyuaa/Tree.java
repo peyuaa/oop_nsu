@@ -82,8 +82,8 @@ public class Tree<T> implements Iterable<Tree.Node<T>> {
     }
 
     class BreadthFirstSearchIterator implements Iterator<Node<T>> {
-        LinkedList<Node<T>> queue = new LinkedList<>();
-        boolean isRootAdded = false;
+        private LinkedList<Node<T>> queue = new LinkedList<>();
+        private boolean isRootAdded = false;
         private final int modificationCounter;
 
         public BreadthFirstSearchIterator() {
@@ -111,8 +111,8 @@ public class Tree<T> implements Iterable<Tree.Node<T>> {
     }
 
     class DepthFirstSearchIterator implements Iterator<Node<T>> {
-        Deque<Node<T>> deque = new ArrayDeque<>();
-        boolean isRootAdded = false;
+        private Deque<Node<T>> deque = new ArrayDeque<>();
+        private boolean isRootAdded = false;
         private final int modificationCounter;
 
         public DepthFirstSearchIterator() {
