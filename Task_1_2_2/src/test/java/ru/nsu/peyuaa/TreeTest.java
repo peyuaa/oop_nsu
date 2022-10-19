@@ -4,11 +4,12 @@
 
 package ru.nsu.peyuaa;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class TreeTest {
 
@@ -108,5 +109,29 @@ class TreeTest {
         expected.add(expectedNodeB, "M");
 
         Assertions.assertEquals(expected, got);
+    }
+
+    @Test
+    void modificationDuringIterationBFS() {
+        Tree<String> tree = new Tree<>();
+        Tree.Node<String> nodeA = tree.add("A");
+        Tree.Node<String> nodeB = tree.add("B");
+        Tree.Node<String> nodeC = tree.add("C");
+        Tree.Node<String> nodeK = tree.add(nodeB, "K");
+        tree.add(nodeA, "D");
+        tree.add(nodeB, "M");
+        tree.add(nodeC, "F");
+        tree.add(nodeK, "Z");
+        Iterator<Tree.Node<String>> iterator = tree.iterator();
+
+        Exception thrown = assertThrows(
+                ConcurrentModificationException.class,
+                () -> {
+                    while(iterator.hasNext()) {
+                        tree.delete(nodeK);
+                        iterator.next();
+                    }
+                }
+        );
     }
 }
