@@ -9,7 +9,6 @@ import java.util.Collections;
 import java.util.ConcurrentModificationException;
 import java.util.Iterator;
 import java.util.List;
-
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -116,7 +115,7 @@ class TreeTest {
     }
 
     @Test
-    void modificationDuringIterationBFS() {
+    void modificationDuringIteration() {
         Tree<String> tree = new Tree<>();
         Tree.Node<String> nodeA = tree.add("A");
         Tree.Node<String> nodeB = tree.add("B");
