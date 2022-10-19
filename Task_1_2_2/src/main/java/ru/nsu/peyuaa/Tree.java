@@ -81,6 +81,10 @@ public class Tree<T> implements Iterable<Tree.Node<T>> {
         return new BreadthFirstSearchIterator();
     }
 
+    public Iterator<Node<T>> dfsIterator() {
+        return new DepthFirstSearchIterator();
+    }
+
     class BreadthFirstSearchIterator implements Iterator<Node<T>> {
         private LinkedList<Node<T>> queue = new LinkedList<>();
         private boolean isRootAdded = false;
