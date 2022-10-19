@@ -137,4 +137,28 @@ class TreeTest {
                 }
         );
     }
+
+    @Test
+    void modificationDuringIterationDfs() {
+        Tree<String> tree = new Tree<>();
+        Tree.Node<String> nodeA = tree.add("A");
+        Tree.Node<String> nodeB = tree.add("B");
+        Tree.Node<String> nodeC = tree.add("C");
+        Tree.Node<String> nodeK = tree.add(nodeB, "K");
+        tree.add(nodeA, "D");
+        tree.add(nodeB, "M");
+        tree.add(nodeC, "F");
+        tree.add(nodeK, "Z");
+        Iterator<Tree.Node<String>> iterator = tree.dfsIterator();
+
+        assertThrows(
+                ConcurrentModificationException.class,
+                () -> {
+                    while (iterator.hasNext()) {
+                        tree.delete(nodeK);
+                        iterator.next();
+                    }
+                }
+        );
+    }
 }
