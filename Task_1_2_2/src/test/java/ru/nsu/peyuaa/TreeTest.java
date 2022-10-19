@@ -4,6 +4,8 @@
 
 package ru.nsu.peyuaa;
 
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.ConcurrentModificationException;
@@ -11,8 +13,6 @@ import java.util.Iterator;
 import java.util.List;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class TreeTest {
 
@@ -127,10 +127,10 @@ class TreeTest {
         tree.add(nodeK, "Z");
         Iterator<Tree.Node<String>> iterator = tree.iterator();
 
-        Exception thrown = assertThrows(
+        assertThrows(
                 ConcurrentModificationException.class,
                 () -> {
-                    while(iterator.hasNext()) {
+                    while (iterator.hasNext()) {
                         tree.delete(nodeK);
                         iterator.next();
                     }
