@@ -115,7 +115,7 @@ class TreeTest {
     }
 
     @Test
-    void modificationDuringIteration() {
+    void modificationDuringIterationBfs() {
         Tree<String> tree = new Tree<>();
         Tree.Node<String> nodeA = tree.add("A");
         Tree.Node<String> nodeB = tree.add("B");
