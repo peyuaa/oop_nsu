@@ -1,1 +1,1 @@
-memberSearchIndex = [{"p":"ru.nsu.peyuaa","c":"Graph","l":"Graph()","url":"%3Cinit%3E()"}]
+memberSearchIndex = [{"p":"ru.nsu.peyuaa","c":"Graph","l":"addVertex(T)"},{"p":"ru.nsu.peyuaa","c":"Graph","l":"Graph()","url":"%3Cinit%3E()"}]
