@@ -4,12 +4,17 @@
 
 package ru.nsu.peyuaa;
 
+import java.util.LinkedList;
 import java.util.List;
 
 public class Graph<T> {
     private static class Vertex<T> {
         T value;
         List<Edge<T>> edges;
+
+        public Vertex(T value) {
+            this.value = value;
+        }
     }
 
     private static class Edge<T> {
@@ -20,4 +25,13 @@ public class Graph<T> {
 
     private List<Vertex<T>> vertices;
     private List<Edge<T>> edges;
+
+    public Graph() {
+        vertices = new LinkedList<>();
+        edges = new LinkedList<>();
+    }
+
+    public void addVertex(T value) {
+        vertices.add(new Vertex<>(value));
+    }
 }
