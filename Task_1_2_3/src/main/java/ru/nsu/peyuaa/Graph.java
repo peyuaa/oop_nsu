@@ -9,6 +9,7 @@ import java.util.List;
 public class Graph<T> {
     private static class Vertex<T> {
         T value;
+        List<Edge<T>> edges;
     }
 
     private static class Edge<T> {
