@@ -4,11 +4,5 @@
 package ru.nsu.peyuaa;
 
 public class Graph {
-    public String getGreeting() {
-        return "Hello World!";
-    }
 
-    public static void main(String[] args) {
-        System.out.println(new Graph().getGreeting());
-    }
 }
