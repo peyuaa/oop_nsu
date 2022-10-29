@@ -66,4 +66,8 @@ public class Graph<T> {
         edge.to.edges.remove(edge);
         edges.remove(edge);
     }
+
+    public T getValue(Vertex<T> vertex) {
+        return vertex.value;
+    }
 }
