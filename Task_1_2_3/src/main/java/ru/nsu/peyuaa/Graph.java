@@ -70,4 +70,8 @@ public class Graph<T> {
     public T getValue(Vertex<T> vertex) {
         return vertex.value;
     }
+
+    public void changeValue(Vertex<T> vertex, T value) {
+        vertex.value = value;
+    }
 }
