@@ -74,4 +74,8 @@ public class Graph<T> {
     public void changeValue(Vertex<T> vertex, T value) {
         vertex.value = value;
     }
+
+    public void changeWeight(Edge<T> edge, int weight) {
+        edge.weight = weight;
+    }
 }
