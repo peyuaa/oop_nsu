@@ -4,6 +4,7 @@
 
 package ru.nsu.peyuaa;
 
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -21,6 +22,12 @@ public class Graph<T> {
         int weight;
         Vertex<T> from;
         Vertex<T> to;
+
+        public Edge(int weight, Vertex<T> from, Vertex<T> to) {
+            this.weight = weight;
+            this.from = from;
+            this.to = to;
+        }
     }
 
     private List<Vertex<T>> vertices;
@@ -33,5 +40,30 @@ public class Graph<T> {
 
     public void addVertex(T value) {
         vertices.add(new Vertex<>(value));
+    }
+
+    public void deleteVertex(T value) {
+        for (Iterator<Vertex<T>> iterator = vertices.listIterator(); iterator.hasNext();) {
+            Vertex<T> vertex = iterator.next();
+            if (vertex.value.equals(value)) {
+                for (Edge<T> edge : vertex.edges) {
+                    removeEdge(edge);
+                }
+                iterator.remove();
+            }
+        }
+    }
+
+    public void addEdge(int weight, Vertex<T> from, Vertex<T> to) {
+        Edge<T> edge = new Edge<>(weight, from, to);
+        edges.add(edge);
+        from.edges.add(edge);
+        to.edges.add(edge);
+    }
+
+    public void removeEdge(Edge<T> edge) {
+        edge.from.edges.remove(edge);
+        edge.to.edges.remove(edge);
+        edges.remove(edge);
     }
 }
