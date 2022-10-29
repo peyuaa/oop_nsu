@@ -78,4 +78,8 @@ public class Graph<T> {
     public void changeWeight(Edge<T> edge, int weight) {
         edge.weight = weight;
     }
+
+    public int getWeight(Edge<T> edge) {
+        return edge.weight;
+    }
 }
