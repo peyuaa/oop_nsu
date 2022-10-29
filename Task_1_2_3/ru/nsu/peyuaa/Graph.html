@@ -26,7 +26,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":10};
+var data = {"i0":10,"i1":10,"i2":10,"i3":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -174,7 +174,24 @@ extends java.lang.Object</pre>
 </tr>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>void</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#addEdge(int,ru.nsu.peyuaa.Graph.Vertex,ru.nsu.peyuaa.Graph.Vertex)">addEdge</a></span>&#8203;(int&nbsp;weight,
+       ru.nsu.peyuaa.Graph.Vertex&lt;<a href="Graph.html" title="type parameter in Graph">T</a>&gt;&nbsp;from,
+       ru.nsu.peyuaa.Graph.Vertex&lt;<a href="Graph.html" title="type parameter in Graph">T</a>&gt;&nbsp;to)</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i1" class="rowColor">
+<td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#addVertex(T)">addVertex</a></span>&#8203;(<a href="Graph.html" title="type parameter in Graph">T</a>&nbsp;value)</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i2" class="altColor">
+<td class="colFirst"><code>void</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#deleteVertex(T)">deleteVertex</a></span>&#8203;(<a href="Graph.html" title="type parameter in Graph">T</a>&nbsp;value)</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i3" class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#removeEdge(ru.nsu.peyuaa.Graph.Edge)">removeEdge</a></span>&#8203;(ru.nsu.peyuaa.Graph.Edge&lt;<a href="Graph.html" title="type parameter in Graph">T</a>&gt;&nbsp;edge)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 </table>
@@ -225,10 +242,41 @@ extends java.lang.Object</pre>
 </a><a id="addVertex(T)">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>addVertex</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;addVertex&#8203;(<a href="Graph.html" title="type parameter in Graph">T</a>&nbsp;value)</pre>
+</li>
+</ul>
+<a id="deleteVertex(java.lang.Object)">
+<!--   -->
+</a><a id="deleteVertex(T)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>deleteVertex</h4>
+<pre class="methodSignature">public&nbsp;void&nbsp;deleteVertex&#8203;(<a href="Graph.html" title="type parameter in Graph">T</a>&nbsp;value)</pre>
+</li>
+</ul>
+<a id="addEdge(int,ru.nsu.peyuaa.Graph.Vertex,ru.nsu.peyuaa.Graph.Vertex)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>addEdge</h4>
+<pre class="methodSignature">public&nbsp;void&nbsp;addEdge&#8203;(int&nbsp;weight,
+                    ru.nsu.peyuaa.Graph.Vertex&lt;<a href="Graph.html" title="type parameter in Graph">T</a>&gt;&nbsp;from,
+                    ru.nsu.peyuaa.Graph.Vertex&lt;<a href="Graph.html" title="type parameter in Graph">T</a>&gt;&nbsp;to)</pre>
+</li>
+</ul>
+<a id="removeEdge(ru.nsu.peyuaa.Graph.Edge)">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>removeEdge</h4>
+<pre class="methodSignature">public&nbsp;void&nbsp;removeEdge&#8203;(ru.nsu.peyuaa.Graph.Edge&lt;<a href="Graph.html" title="type parameter in Graph">T</a>&gt;&nbsp;edge)</pre>
 </li>
 </ul>
 </li>
