@@ -47,7 +47,7 @@ public class Graph<T> {
             Vertex<T> vertex = iterator.next();
             if (vertex.value.equals(value)) {
                 for (Edge<T> edge : vertex.edges) {
-                    removeEdge(edge);
+                    deleteEdge(edge);
                 }
                 iterator.remove();
             }
@@ -61,7 +61,7 @@ public class Graph<T> {
         to.edges.add(edge);
     }
 
-    public void removeEdge(Edge<T> edge) {
+    public void deleteEdge(Edge<T> edge) {
         edge.from.edges.remove(edge);
         edge.to.edges.remove(edge);
         edges.remove(edge);
