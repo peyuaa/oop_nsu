@@ -225,7 +225,7 @@ public class Tree<T> implements Iterable<Tree.Node<T>> {
     public List<T> breadthFirstTraversal() {
         List<T> traverseResult = new ArrayList<>();
 
-        Iterator<Node<T>> bfsIterator = new BreadthFirstSearchIterator();
+        var bfsIterator = new BreadthFirstSearchIterator();
         while (bfsIterator.hasNext()) {
             Node<T> currentNode = bfsIterator.next();
             traverseResult.add(currentNode.value);
