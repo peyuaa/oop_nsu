@@ -56,7 +56,7 @@ public class Graph<T> {
 
     public void addVertices(T[] values) {
         for (T value : values) {
-            vertices.add(new Vertex<>(value));
+            addVertex(value);
         }
     }
 
