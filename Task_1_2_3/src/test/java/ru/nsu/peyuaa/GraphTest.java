@@ -18,4 +18,10 @@ class GraphTest {
         Graph<String> graph = new Graph<>();
         graph.loadIncidenceMatrix("./src/test/resources/incidenceMatrixTest.txt");
     }
+
+    @Test
+    void adjacencyListLoadTest() throws  IOException {
+        Graph<String> graph = new Graph<>();
+        graph.loadAdjacencyList("./src/test/resources/adjacencyListTest.txt");
+    }
 }
