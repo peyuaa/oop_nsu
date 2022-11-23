@@ -31,6 +31,7 @@ public class Graph<T> {
 
     private Map<Vertex<T>, Map<Vertex<T>, Integer>> adjacencyMatrix;
     private Map<Vertex<T>, Map<Edge<T>, Integer>> incidenceMatrix;
+    private Map<Vertex<T>, List<Vertex<T>>> adjacencyList;
 
     private List<Vertex<T>> vertices;
     private List<Edge<T>> edges;
@@ -40,6 +41,7 @@ public class Graph<T> {
         edges = new LinkedList<>();
         adjacencyMatrix = new HashMap<>();
         incidenceMatrix = new HashMap<>();
+        adjacencyList = new HashMap<>();
     }
 
     private void addVertexToVertices(Vertex<T> vertex) {
@@ -54,12 +56,17 @@ public class Graph<T> {
         incidenceMatrix.put(vertex, new HashMap<>());
     }
 
+    private void addVertexToAdjacencyList(Vertex<T> vertex) {
+        adjacencyList.put(vertex, new LinkedList<>());
+    }
+
     public void addVertex(T value) {
         Vertex<T> vertex = new Vertex<>(value);
         vertex.edges = new LinkedList<>();
         addVertexToVertices(vertex);
         addVertexToAdjacencyMatrix(vertex);
         addVertexToIncidenceMatrix(vertex);
+        addVertexToAdjacencyList(vertex);
     }
 
     public void addVertices(T[] values) {
@@ -105,10 +112,21 @@ public class Graph<T> {
         incidenceMatrix.remove(vertex);
     }
 
+    private void deleteVertexFromAdjacencyList(T value) {
+        Vertex<T> vertex = getVertex(value);
+        for (Vertex<T> currentVertex : vertices) {
+            if (!currentVertex.equals(vertex)) {
+                adjacencyList.get(currentVertex).remove(vertex);
+            }
+        }
+        adjacencyList.remove(vertex);
+    }
+
     public void deleteVertex(T value) {
         deleteVertexFromAdjacencyMatrix(value);
-        deleteVertexFromVerticesList(value);
         deleteVertexFromIncidenceMatrix(value);
+        deleteVertexFromAdjacencyList(value);
+        deleteVertexFromVerticesList(value);
     }
 
     private void addEdgeToEdges(int weight, Vertex<T> from, Vertex<T> to) {
@@ -127,10 +145,15 @@ public class Graph<T> {
         incidenceMatrix.get(from).put(edge, weight);
     }
 
+    private void addEdgeInAdjacencyList(Vertex<T> from, Vertex<T> to) {
+        adjacencyList.get(from).add(to);
+    }
+
     public void addEdge(int weight, Vertex<T> from, Vertex<T> to) {
         addEdgeToEdges(weight, from, to);
         addEdgeInAdjacencyMatrix(weight, from, to);
         addEdgeInIncidenceMatrix(weight, from, to);
+        addEdgeInAdjacencyList(from, to);
     }
 
     private void deleteEdgeFromEdges(Edge<T> edge) {
@@ -150,10 +173,16 @@ public class Graph<T> {
             }
         }
     }
+
+    private void deleteEdgeFromAdjacencyList(Edge<T> edge) {
+        adjacencyList.get(edge.from).remove(edge.to);
+    }
+
     public void deleteEdge(Edge<T> edge) {
-        deleteEdgeFromEdges(edge);
         deleteEdgeFromAdjacencyMatrix(edge);
         deleteEdgeFromIncidenceMatrix(edge);
+        deleteEdgeFromAdjacencyList(edge)
+        deleteEdgeFromEdges(edge);
     }
 
     public T getValue(Vertex<T> vertex) {
@@ -242,6 +271,22 @@ public class Graph<T> {
             addEdge(weights[firstVertexIndex][i],
                     getVertex((T) verticesValues[secondVertexIndex]), getVertex((T) verticesValues[firstVertexIndex]));
 
+        }
+    }
+
+    public void loadAdjacencyList(String file) throws IOException {
+        BufferedReader reader = new BufferedReader(new FileReader(file));
+
+        String currentLine = reader.readLine();
+
+        String[] verticesValues = currentLine.split(" ");
+        addVertices((T[]) verticesValues);
+
+        while ((currentLine = reader.readLine()) != null) {
+            verticesValues = currentLine.split(" ");
+            for (int i = 1; i < verticesValues.length; i++) {
+                addEdge(1, getVertex((T) verticesValues[0]), getVertex((T) verticesValues[i]));
+            }
         }
     }
 }
