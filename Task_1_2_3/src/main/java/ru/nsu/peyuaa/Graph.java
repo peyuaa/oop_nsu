@@ -49,7 +49,7 @@ public class Graph<T> {
     }
 
     private void addVertexToAdjacencyMatrix(Vertex<T> vertex) {
-        adjacencyMatrix.put(vertex, new HashMap<Vertex<T>, Integer>());
+        adjacencyMatrix.put(vertex, new HashMap<>());
     }
 
     private void addVertexToIncidenceMatrix(Vertex<T> vertex) {
