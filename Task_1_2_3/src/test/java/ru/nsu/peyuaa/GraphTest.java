@@ -9,7 +9,7 @@ import java.io.IOException;
 class GraphTest {
     @Test
     void adjacencyMatrixLoadTest() throws IOException {
-        Graph<String> graph = new Graph();
+        Graph<String> graph = new Graph<>();
         graph.loadAdjacencyMatrix("./src/test/resources/adjacencyMatrixTest.txt");
     }
 
