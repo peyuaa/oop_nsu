@@ -6,11 +6,9 @@ package ru.nsu.peyuaa;
 import org.junit.jupiter.api.Test;
 import java.io.IOException;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class GraphTest {
     @Test
-    void addVertex() throws IOException {
+    void adjacencyMatrixLoadTest() throws IOException {
         Graph graph = new Graph();
         graph.loadAdjacencyMatrix("./src/test/resources/adjacencyTest.txt");
     }
