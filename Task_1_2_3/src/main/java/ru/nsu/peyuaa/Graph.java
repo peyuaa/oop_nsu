@@ -181,7 +181,7 @@ public class Graph<T> {
     public void deleteEdge(Edge<T> edge) {
         deleteEdgeFromAdjacencyMatrix(edge);
         deleteEdgeFromIncidenceMatrix(edge);
-        deleteEdgeFromAdjacencyList(edge)
+        deleteEdgeFromAdjacencyList(edge);
         deleteEdgeFromEdges(edge);
     }
 
