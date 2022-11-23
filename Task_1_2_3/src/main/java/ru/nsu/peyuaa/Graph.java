@@ -50,6 +50,7 @@ public class Graph<T> {
 
     public void addVertex(T value) {
         Vertex<T> vertex = new Vertex<>(value);
+        vertex.edges = new LinkedList<>();
         addVertexToVertices(vertex);
         addVertexToAdjacencyMatrix(vertex);
     }
