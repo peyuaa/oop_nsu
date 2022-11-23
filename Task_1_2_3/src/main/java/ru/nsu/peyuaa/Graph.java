@@ -251,6 +251,22 @@ public class Graph<T> {
         }
     }
 
+    public void printIncidenceMatrix() {
+        for (Vertex<T> vertex : vertices) {
+            System.out.print(vertex.value + " ");
+        }
+        System.out.println();
+
+        for (int i = 0; i < vertices.size(); i++) {
+            for (int j = 0; j < edges.size(); j++) {
+                int weight = incidenceMatrix.get(vertices.get(i)).get(edges.get(j)) != null ?
+                        incidenceMatrix.get(vertices.get(i)).get(edges.get(j)) : 0;
+               System.out.print(incidenceMatrix.get(vertices.get(i)).get(edges.get(j)) + " ");
+            }
+            System.out.println();
+        }
+    }
+
     public void loadIncidenceMatrix(String file) throws IOException {
         BufferedReader reader = new BufferedReader(new FileReader(file));
         String currentLine = reader.readLine();
