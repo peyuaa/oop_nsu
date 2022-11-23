@@ -236,6 +236,21 @@ public class Graph<T> {
         }
     }
 
+    public void printAdjacencyMatrix() {
+        for (Vertex<T> vertex : vertices) {
+            System.out.print(vertex.value + " ");
+        }
+        System.out.println();
+        for (int i = 0; i < vertices.size(); i++) {
+            for (int j = 0; j < vertices.size(); j++) {
+                int weight = adjacencyMatrix.get(vertices.get(i)).get(vertices.get(j)) != null ?
+                        adjacencyMatrix.get(vertices.get(i)).get(vertices.get(j)) : 0;
+                System.out.print(weight + " ");
+            }
+            System.out.println();
+        }
+    }
+
     public void loadIncidenceMatrix(String file) throws IOException {
         BufferedReader reader = new BufferedReader(new FileReader(file));
         String currentLine = reader.readLine();
