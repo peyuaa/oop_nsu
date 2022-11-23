@@ -129,8 +129,7 @@ public class Graph<T> {
         deleteVertexFromVerticesList(value);
     }
 
-    private void addEdgeToEdges(int weight, Vertex<T> from, Vertex<T> to) {
-        Edge<T> edge = new Edge<>(weight, from, to);
+    private void addEdgeToEdges(Vertex<T> from, Vertex<T> to, Edge<T> edge) {
         edges.add(edge);
         from.edges.add(edge);
         to.edges.add(edge);
@@ -140,9 +139,8 @@ public class Graph<T> {
         adjacencyMatrix.get(from).put(to, weight);
     }
 
-    private void addEdgeInIncidenceMatrix(int weight, Vertex<T> from, Vertex<T> to) {
-        Edge<T> edge = new Edge<>(weight, from, to);
-        incidenceMatrix.get(from).put(edge, weight);
+    private void addEdgeInIncidenceMatrix(Vertex<T> from, Edge<T> edge) {
+        incidenceMatrix.get(from).put(edge, edge.weight);
     }
 
     private void addEdgeInAdjacencyList(Vertex<T> from, Vertex<T> to) {
@@ -150,9 +148,10 @@ public class Graph<T> {
     }
 
     public void addEdge(int weight, Vertex<T> from, Vertex<T> to) {
-        addEdgeToEdges(weight, from, to);
+        Edge<T> edge = new Edge<>(weight, from, to);
+        addEdgeToEdges(from, to, edge);
         addEdgeInAdjacencyMatrix(weight, from, to);
-        addEdgeInIncidenceMatrix(weight, from, to);
+        addEdgeInIncidenceMatrix(from, edge);
         addEdgeInAdjacencyList(from, to);
     }
 
