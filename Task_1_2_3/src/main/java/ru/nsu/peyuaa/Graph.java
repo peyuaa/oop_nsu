@@ -261,7 +261,7 @@ public class Graph<T> {
             for (int j = 0; j < edges.size(); j++) {
                 int weight = incidenceMatrix.get(vertices.get(i)).get(edges.get(j)) != null ?
                         incidenceMatrix.get(vertices.get(i)).get(edges.get(j)) : 0;
-               System.out.print(incidenceMatrix.get(vertices.get(i)).get(edges.get(j)) + " ");
+               System.out.print(weight + " ");
             }
             System.out.println();
         }
