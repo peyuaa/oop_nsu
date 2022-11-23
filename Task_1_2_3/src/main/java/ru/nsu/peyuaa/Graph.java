@@ -30,6 +30,7 @@ public class Graph<T> {
     }
 
     private Map<Vertex<T>, Map<Vertex<T>, Integer>> adjacencyMatrix;
+    private Map<Vertex<T>, Map<Edge<T>, Integer>> incidenceMatrix;
 
     private List<Vertex<T>> vertices;
     private List<Edge<T>> edges;
@@ -38,6 +39,7 @@ public class Graph<T> {
         vertices = new LinkedList<>();
         edges = new LinkedList<>();
         adjacencyMatrix = new HashMap<>();
+        incidenceMatrix = new HashMap<>();
     }
 
     private void addVertexToVertices(Vertex<T> vertex) {
@@ -48,11 +50,16 @@ public class Graph<T> {
         adjacencyMatrix.put(vertex, new HashMap<Vertex<T>, Integer>());
     }
 
+    private void addVertexToIncidenceMatrix(Vertex<T> vertex) {
+        incidenceMatrix.put(vertex, new HashMap<>());
+    }
+
     public void addVertex(T value) {
         Vertex<T> vertex = new Vertex<>(value);
         vertex.edges = new LinkedList<>();
         addVertexToVertices(vertex);
         addVertexToAdjacencyMatrix(vertex);
+        addVertexToIncidenceMatrix(vertex);
     }
 
     public void addVertices(T[] values) {
@@ -93,9 +100,15 @@ public class Graph<T> {
         }
     }
 
+    private void deleteVertexFromIncidenceMatrix(T value) {
+        Vertex<T> vertex = getVertex(value);
+        incidenceMatrix.remove(vertex);
+    }
+
     public void deleteVertex(T value) {
         deleteVertexFromAdjacencyMatrix(value);
         deleteVertexFromVerticesList(value);
+        deleteVertexFromIncidenceMatrix(value);
     }
 
     private void addEdgeToEdges(int weight, Vertex<T> from, Vertex<T> to) {
@@ -109,9 +122,15 @@ public class Graph<T> {
         adjacencyMatrix.get(from).put(to, weight);
     }
 
+    private void addEdgeInIncidenceMatrix(int weight, Vertex<T> from, Vertex<T> to) {
+        Edge<T> edge = new Edge<>(weight, from, to);
+        incidenceMatrix.get(from).put(edge, weight);
+    }
+
     public void addEdge(int weight, Vertex<T> from, Vertex<T> to) {
         addEdgeToEdges(weight, from, to);
         addEdgeInAdjacencyMatrix(weight, from, to);
+        addEdgeInIncidenceMatrix(weight, from, to);
     }
 
     private void deleteEdgeFromEdges(Edge<T> edge) {
@@ -123,9 +142,18 @@ public class Graph<T> {
     private void deleteEdgeFromAdjacencyMatrix(Edge<T> edge) {
         adjacencyMatrix.get(edge.from).put(edge.to, 0);
     }
+
+    private void deleteEdgeFromIncidenceMatrix(Edge<T> edge) {
+        for (Vertex<T> vertex : vertices) {
+            if (incidenceMatrix.get(vertex).containsKey(edge)) {
+                incidenceMatrix.get(vertex).remove(edge);
+            }
+        }
+    }
     public void deleteEdge(Edge<T> edge) {
         deleteEdgeFromEdges(edge);
         deleteEdgeFromAdjacencyMatrix(edge);
+        deleteEdgeFromIncidenceMatrix(edge);
     }
 
     public T getValue(Vertex<T> vertex) {
@@ -144,9 +172,14 @@ public class Graph<T> {
         adjacencyMatrix.get(edge.from).put(edge.to, weight);
     }
 
+    private void changeWeightInIncidenceMatrix(Edge<T> edge, int weight) {
+        incidenceMatrix.get(edge.from).put(edge, weight);
+    }
+
     public void changeWeight(Edge<T> edge, int weight) {
         changeWeightInEdges(edge, weight);
         changeWeightInAdjacencyMatrix(edge, weight);
+        changeWeightInIncidenceMatrix(edge, weight);
     }
 
     public int getWeight(Edge<T> edge) {
@@ -171,6 +204,44 @@ public class Graph<T> {
                     addEdge(weights[j], firstVertex, getVertex((T) verticesValues[j]));
                 }
             }
+        }
+    }
+
+    public void loadIncidenceMatrix(String file) throws IOException {
+        BufferedReader reader = new BufferedReader(new FileReader(file));
+        String currentLine = reader.readLine();
+
+        String[] verticesValues = currentLine.split(" ");
+        addVertices((T[]) verticesValues);
+
+        int[][] weights = new int[verticesValues.length][verticesValues.length];
+
+        for (int i = 0; i < verticesValues.length; i++) {
+            currentLine = reader.readLine();
+            weights[i] = Arrays.stream(currentLine.split(" ")).mapToInt(Integer::parseInt).toArray();
+        }
+
+        for (int i = 0; i < verticesValues.length; i++) {
+            int firstVertexIndex = -1;
+            int secondVertexIndex = -1;
+
+            for (int j = 0; j < verticesValues.length; j++) {
+                if (weights[j][i] != 0) {
+                    if (firstVertexIndex == -1) {
+                        firstVertexIndex = j;
+                    } else if (secondVertexIndex == -1) {
+                        secondVertexIndex = j;
+                        break;
+                    }
+                }
+            }
+
+            addEdge(weights[firstVertexIndex][i],
+                    getVertex((T) verticesValues[firstVertexIndex]), getVertex((T) verticesValues[secondVertexIndex]));
+
+            addEdge(weights[firstVertexIndex][i],
+                    getVertex((T) verticesValues[secondVertexIndex]), getVertex((T) verticesValues[firstVertexIndex]));
+
         }
     }
 }
