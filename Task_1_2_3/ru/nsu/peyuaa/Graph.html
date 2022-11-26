@@ -235,7 +235,9 @@ extends java.lang.Object</pre>
 <tr id="i11" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#loadAdjacencyMatrix(java.lang.String)">loadAdjacencyMatrix</a></span>&#8203;(java.lang.String&nbsp;file)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Loads graph's initital state from adjacency matrix.</div>
+</td>
 </tr>
 <tr id="i12" class="altColor">
 <td class="colFirst"><code>void</code></td>
@@ -399,20 +401,6 @@ extends java.lang.Object</pre>
 <pre class="methodSignature">public&nbsp;int&nbsp;getWeight&#8203;(ru.nsu.peyuaa.Graph.Edge&lt;<a href="Graph.html" title="type parameter in Graph">T</a>&gt;&nbsp;edge)</pre>
 </li>
 </ul>
-<a id="loadAdjacencyMatrix(java.lang.String)">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>loadAdjacencyMatrix</h4>
-<pre class="methodSignature">public&nbsp;void&nbsp;loadAdjacencyMatrix&#8203;(java.lang.String&nbsp;file)
-                         throws java.io.IOException</pre>
-<dl>
-<dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code>java.io.IOException</code></dd>
-</dl>
-</li>
-</ul>
 <a id="printAdjacencyMatrix()">
 <!--   -->
 </a>
@@ -429,6 +417,26 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>printIncidenceMatrix</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;printIncidenceMatrix()</pre>
+</li>
+</ul>
+<a id="loadAdjacencyMatrix(java.lang.String)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>loadAdjacencyMatrix</h4>
+<pre class="methodSignature">public&nbsp;void&nbsp;loadAdjacencyMatrix&#8203;(java.lang.String&nbsp;file)
+                         throws java.io.IOException</pre>
+<div class="block">Loads graph's initital state from adjacency matrix.
+
+ A_ij = N if there is an edge from j to i with weight N.
+ A_ij = 0 otherwise.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>file</code> - with initial data.</dd>
+<dt><span class="throwsLabel">Throws:</span></dt>
+<dd><code>java.io.IOException</code></dd>
+</dl>
 </li>
 </ul>
 <a id="loadIncidenceMatrix(java.lang.String)">
