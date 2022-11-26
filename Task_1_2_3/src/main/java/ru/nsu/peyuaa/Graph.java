@@ -214,27 +214,6 @@ public class Graph<T> {
         return edge.weight;
     }
 
-    public void loadAdjacencyMatrix(String file) throws IOException {
-        BufferedReader reader = new BufferedReader(new FileReader(file));
-        String currentLine = reader.readLine();
-
-        String[] verticesValues = currentLine.split(" ");
-        addVertices((T[]) verticesValues);
-
-        for (int i = 0 ; i < verticesValues.length; i++) {
-            currentLine = reader.readLine();
-            int[] weights = Arrays.stream(currentLine.split(" ")).mapToInt(Integer::parseInt).toArray();
-
-            Vertex<T> firstVertex = getVertex((T) verticesValues[i]);
-
-            for (int j = 0; j < weights.length; j++) {
-                if (weights[j] != 0) {
-                    addEdge(weights[j], firstVertex, getVertex((T) verticesValues[j]));
-                }
-            }
-        }
-    }
-
     public void printAdjacencyMatrix() {
         for (Vertex<T> vertex : vertices) {
             System.out.print(vertex.value + " ");
@@ -263,6 +242,36 @@ public class Graph<T> {
                System.out.print(weight + " ");
             }
             System.out.println();
+        }
+    }
+
+    /**
+     * Loads graph's initital state from adjacency matrix.
+     *
+     * A_ij = N if there is an edge from j to i with weight N.
+     * A_ij = 0 otherwise.
+     *
+     * @param file with initial data.
+     * @throws IOException
+     */
+    public void loadAdjacencyMatrix(String file) throws IOException {
+        BufferedReader reader = new BufferedReader(new FileReader(file));
+        String currentLine = reader.readLine();
+
+        String[] verticesValues = currentLine.split(" ");
+        addVertices((T[]) verticesValues);
+
+        for (int i = 0 ; i < verticesValues.length; i++) {
+            currentLine = reader.readLine();
+            int[] weights = Arrays.stream(currentLine.split(" ")).mapToInt(Integer::parseInt).toArray();
+
+            Vertex<T> toVertex = getVertex((T) verticesValues[i]);
+
+            for (int j = 0; j < weights.length; j++) {
+                if (weights[j] != 0) {
+                    addEdge(weights[j], getVertex((T) verticesValues[j]), toVertex);
+                }
+            }
         }
     }
 
