@@ -295,26 +295,19 @@ public class Graph<T> {
         }
 
         for (int i = 0; i < verticesValues.length; i++) {
-            int firstVertexIndex = -1;
-            int secondVertexIndex = -1;
+            int fromVertexIndex = -1;
+            int toVertexIndex = -1;
 
             for (int j = 0; j < verticesValues.length; j++) {
-                if (weights[j][i] != 0) {
-                    if (firstVertexIndex == -1) {
-                        firstVertexIndex = j;
-                    } else if (secondVertexIndex == -1) {
-                        secondVertexIndex = j;
-                        break;
-                    }
+                if (weights[j][i] > 0) {
+                    toVertexIndex = j;
+                } else if (weights[j][i] < 0) {
+                    fromVertexIndex = j;
                 }
             }
 
-            addEdge(weights[firstVertexIndex][i],
-                    getVertex((T) verticesValues[firstVertexIndex]), getVertex((T) verticesValues[secondVertexIndex]));
-
-            addEdge(weights[firstVertexIndex][i],
-                    getVertex((T) verticesValues[secondVertexIndex]), getVertex((T) verticesValues[firstVertexIndex]));
-
+            addEdge(weights[toVertexIndex][i], getVertex((T) verticesValues[fromVertexIndex]),
+                    getVertex((T) verticesValues[toVertexIndex]));
         }
     }
 
