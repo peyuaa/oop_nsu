@@ -40,19 +40,31 @@ class GraphTest {
 
     @Test
     void incidenceMatrixLoadTest() throws IOException {
+        System.setOut(new PrintStream(outContent));
+        System.setErr(new PrintStream(errContent));
+
         Graph<String> graph = new Graph<>();
         graph.loadIncidenceMatrix("./src/test/resources/incidenceMatrixTest.txt");
         graph.printAdjacencyMatrix();
         graph.printIncidenceMatrix();
         graph.printAdjacencyList();
+
+        System.setOut(originalOut);
+        System.setErr(originalErr);
     }
 
     @Test
     void adjacencyListLoadTest() throws  IOException {
+        System.setOut(new PrintStream(outContent));
+        System.setErr(new PrintStream(errContent));
+
         Graph<String> graph = new Graph<>();
         graph.loadAdjacencyList("./src/test/resources/adjacencyListTest.txt");
         graph.printAdjacencyMatrix();
         graph.printIncidenceMatrix();
         graph.printAdjacencyList();
+
+        System.setOut(originalOut);
+        System.setErr(originalErr);
     }
 }
