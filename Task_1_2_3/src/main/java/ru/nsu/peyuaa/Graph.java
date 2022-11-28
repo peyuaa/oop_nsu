@@ -288,18 +288,18 @@ public class Graph<T> {
         String[] verticesValues = currentLine.split(" ");
         addVertices((T[]) verticesValues);
 
-        int[][] weights = new int[verticesValues.length][verticesValues.length];
+        int[][] weights = new int[verticesValues.length][];
 
         for (int i = 0; i < verticesValues.length; i++) {
             currentLine = reader.readLine();
             weights[i] = Arrays.stream(currentLine.split(" ")).mapToInt(Integer::parseInt).toArray();
         }
 
-        for (int i = 0; i < verticesValues.length; i++) {
+        for (int i = 0; i < weights[0].length; i++) {
             int fromVertexIndex = -1;
             int toVertexIndex = -1;
 
-            for (int j = 0; j < verticesValues.length; j++) {
+            for (int j = 0; j < weights.length; j++) {
                 if (weights[j][i] > 0) {
                     toVertexIndex = j;
                 } else if (weights[j][i] < 0) {
