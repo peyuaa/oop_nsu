@@ -49,6 +49,10 @@ class GraphTest {
         graph.printIncidenceMatrix();
         graph.printAdjacencyList();
 
+        Assertions.assertEquals(
+                new String(Files.readAllBytes(Paths.get("./src/test/resources/expected/incidenceMatrix.txt")),
+                        StandardCharsets.UTF_8), outContent.toString());
+
         System.setOut(originalOut);
         System.setErr(originalErr);
     }
@@ -63,6 +67,10 @@ class GraphTest {
         graph.printAdjacencyMatrix();
         graph.printIncidenceMatrix();
         graph.printAdjacencyList();
+
+        Assertions.assertEquals(
+                new String(Files.readAllBytes(Paths.get("./src/test/resources/expected/adjacencyList.txt")),
+                        StandardCharsets.UTF_8), outContent.toString());
 
         System.setOut(originalOut);
         System.setErr(originalErr);
