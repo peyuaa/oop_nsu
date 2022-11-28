@@ -221,6 +221,7 @@ public class Graph<T> {
     }
 
     public void printAdjacencyMatrix() {
+        System.out.println("Adjacency matrix:");
         for (Vertex<T> vertex : vertices) {
             System.out.print(vertex.value + " ");
         }
@@ -236,6 +237,7 @@ public class Graph<T> {
     }
 
     public void printIncidenceMatrix() {
+        System.out.println("Incidence matrix:");
         for (Vertex<T> vertex : vertices) {
             System.out.print(vertex.value + " ");
         }
@@ -252,6 +254,7 @@ public class Graph<T> {
     }
 
     public void printAdjacencyList() {
+        System.out.println("Adjacency list:");
         for (Vertex<T> vertex : vertices) {
             System.out.print(vertex.value + " ");
         }
