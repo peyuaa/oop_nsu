@@ -273,7 +273,7 @@ public class Graph<T> {
     }
 
     /**
-     * Loads graph's initital state from adjacency matrix.
+     * Loads graph's initial state from adjacency matrix.
      *
      * First line of the file - values of nodes.
      *
