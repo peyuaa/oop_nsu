@@ -1,18 +1,18 @@
 Adjacency matrix:
-Vertex1 Vertex2 Vertex3 Vertex4
-0 0 10 0
-3 0 0 4
-0 15 0 2
-16 0 0 0
+Vertex1 Vertex2 Vertex3 Vertex4 
+0 0 10 0 
+3 0 0 4 
+0 15 0 2 
+16 0 0 0 
 Incidence matrix:
-Vertex1 Vertex2 Vertex3 Vertex4
--3 10 0 0 -16 0
-3 0 4 0 0 -15
-0 -10 0 2 0 15
-0 0 -4 -2 16 0
+Vertex1 Vertex2 Vertex3 Vertex4 
+-3 10 0 0 -16 0 
+3 0 4 0 0 -15 
+0 -10 0 2 0 15 
+0 0 -4 -2 16 0 
 Adjacency list:
-Vertex1 Vertex2 Vertex3 Vertex4
-Vertex1 Vertex2 3 Vertex4 16
-Vertex2 Vertex3 15
-Vertex3 Vertex1 10
-Vertex4 Vertex2 4 Vertex3 2
+Vertex1 Vertex2 Vertex3 Vertex4 
+Vertex1 Vertex2 3 Vertex4 16 
+Vertex2 Vertex3 15 
+Vertex3 Vertex1 10 
+Vertex4 Vertex2 4 Vertex3 2 
