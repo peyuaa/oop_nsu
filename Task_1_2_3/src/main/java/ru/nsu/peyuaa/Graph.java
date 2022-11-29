@@ -502,15 +502,12 @@ public class Graph<T> {
 
     /**
      * Loads graph's initial state from incidence matrix.
-     *
      * First line of the file - values of vertices.
-     *
      * The order of the vertices in the matrix corresponds
      * to the order of the vertex values in the first line of the file.
-     *
-     * A_ij more than 0 if there is an edge into vertex i
-     * A_ij less than 0 if there is and edge from vertex i
-     * A_ij = 0 otherwise
+     * A_ij more than 0 if there is an edge into vertex i.
+     * A_ij less than 0 if there is and edge from vertex i.
+     * A_ij = 0 otherwise.
      *
      * @param file with initial data.
      * @throws IOException if there is any problems with file reading.
@@ -549,7 +546,6 @@ public class Graph<T> {
 
     /**
      * Loads graph's initial state from adjacency list.
-     *
      * First line of the file - values of nodes.
      * Other lines - first value in the line is a node from which edges go to another vertex.
      * After first values there is a pairs
