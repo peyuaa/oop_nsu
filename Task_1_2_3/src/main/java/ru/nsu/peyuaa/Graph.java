@@ -414,8 +414,8 @@ public class Graph<T> {
         System.out.println();
         for (int i = 0; i < vertices.size(); i++) {
             for (int j = 0; j < vertices.size(); j++) {
-                int weight = adjacencyMatrix.get(vertices.get(i)).get(vertices.get(j)) != null ?
-                        adjacencyMatrix.get(vertices.get(i)).get(vertices.get(j)) : 0;
+                int weight = adjacencyMatrix.get(vertices.get(i)).get(vertices.get(j)) != null
+                        ? adjacencyMatrix.get(vertices.get(i)).get(vertices.get(j)) : 0;
                 System.out.print(weight + " ");
             }
             System.out.println();
@@ -434,9 +434,9 @@ public class Graph<T> {
 
         for (int i = 0; i < vertices.size(); i++) {
             for (int j = 0; j < edges.size(); j++) {
-                int weight = incidenceMatrix.get(vertices.get(i)).get(edges.get(j)) != null ?
-                        incidenceMatrix.get(vertices.get(i)).get(edges.get(j)) : 0;
-               System.out.print(weight + " ");
+                int weight = incidenceMatrix.get(vertices.get(i)).get(edges.get(j)) != null
+                        ? incidenceMatrix.get(vertices.get(i)).get(edges.get(j)) : 0;
+                System.out.print(weight + " ");
             }
             System.out.println();
         }
