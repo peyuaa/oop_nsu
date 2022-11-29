@@ -201,23 +201,53 @@ public class Graph<T> {
         vertex.value = value;
     }
 
-
+    /**
+     * Change edge weight.
+     *
+     * @param edge which weight we want to change.
+     * @param weight is a new weight value.
+     */
     private void changeWeightInEdges(Edge<T> edge, int weight) {
         edge.weight = weight;
     }
+
+    /**
+     * Change edge weight in adjacency matrix.
+     *
+     * @param edge which weight we want to change.
+     * @param weight is a new weight value.
+     */
     private void changeWeightInAdjacencyMatrix(Edge<T> edge, int weight) {
         adjacencyMatrix.get(edge.to).put(edge.from, weight);
     }
 
+    /**
+     * Change edge weight in incidence matrix.
+     *
+     * @param edge which weight we want to change.
+     * @param weight is a new weight value.
+     */
     private void changeWeightInIncidenceMatrix(Edge<T> edge, int weight) {
         incidenceMatrix.get(edge.from).put(edge, -weight);
         incidenceMatrix.get(edge.to).put(edge, weight);
     }
 
+    /**
+     * Change edge weight in adjacency list.
+     *
+     * @param edge which weight we want to change.
+     * @param weight is a new weight value.
+     */
     private void changeWeightInAdjacencyList(Edge<T> edge, int weight) {
         adjacencyList.get(edge.from).put(edge.to, weight);
     }
 
+    /**
+     * Change edge weight.
+     *
+     * @param edge which weight we want to change.
+     * @param weight is a new weight value.
+     */
     public void changeWeight(Edge<T> edge, int weight) {
         changeWeightInEdges(edge, weight);
         changeWeightInAdjacencyMatrix(edge, weight);
