@@ -11,6 +11,7 @@ import java.io.PrintStream;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.List;
 
 class GraphTest {
 
@@ -70,6 +71,32 @@ class GraphTest {
 
         Assertions.assertEquals(
                 new String(Files.readAllBytes(Paths.get("./src/test/resources/expected/adjacencyList.txt")),
+                        StandardCharsets.UTF_8), outContent.toString());
+
+        System.setOut(originalOut);
+        System.setErr(originalErr);
+    }
+
+    @Test
+    void changeWeight() throws IOException {
+        System.setOut(new PrintStream(outContent));
+        System.setErr(new PrintStream(errContent));
+
+        Graph<String> graph = new Graph<>();
+        graph.loadAdjacencyMatrix("./src/test/resources/adjacencyMatrixTest.txt");
+
+        List<Graph.Edge<String>> edges = graph.getVertexEdges("A");
+
+        for (Graph.Edge<String> edge : edges) {
+            graph.changeWeight(edge, 7);
+        }
+
+        graph.printAdjacencyMatrix();
+        graph.printIncidenceMatrix();
+        graph.printAdjacencyList();
+
+        Assertions.assertEquals(
+                new String(Files.readAllBytes(Paths.get("./src/test/resources/expected/changeWeight.txt")),
                         StandardCharsets.UTF_8), outContent.toString());
 
         System.setOut(originalOut);
