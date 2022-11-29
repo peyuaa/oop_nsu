@@ -84,6 +84,14 @@ public class Graph<T> {
         return null;
     }
 
+    public List<Edge<T>> gerVertexEdges(T value) {
+        Vertex<T> vertex = getVertex(value);
+        if (vertex != null) {
+            return vertex.edges;
+        }
+        return null;
+    }
+
     private void deleteVertexFromAdjacencyMatrix(T value) {
         Vertex<T> vertex = getVertex(value);
         adjacencyMatrix.remove(vertex);
