@@ -469,7 +469,7 @@ public class Graph<T> {
 
     /**
      * Loads graph's initial state from adjacency matrix.
-     *
+     * <p>
      * First line of the file - values of nodes.
      *
      * The order of the vertices in the matrix corresponds
