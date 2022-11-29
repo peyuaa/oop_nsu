@@ -615,15 +615,12 @@ extends java.lang.Object</pre>
 <pre class="methodSignature">public&nbsp;void&nbsp;loadIncidenceMatrix&#8203;(java.lang.String&nbsp;file)
                          throws java.io.IOException</pre>
 <div class="block">Loads graph's initial state from incidence matrix.
-
  First line of the file - values of vertices.
-
  The order of the vertices in the matrix corresponds
  to the order of the vertex values in the first line of the file.
-
- A_ij more than 0 if there is an edge into vertex i
- A_ij less than 0 if there is and edge from vertex i
- A_ij = 0 otherwise</div>
+ A_ij more than 0 if there is an edge into vertex i.
+ A_ij less than 0 if there is and edge from vertex i.
+ A_ij = 0 otherwise.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>file</code> - with initial data.</dd>
@@ -641,7 +638,6 @@ extends java.lang.Object</pre>
 <pre class="methodSignature">public&nbsp;void&nbsp;loadAdjacencyList&#8203;(java.lang.String&nbsp;file)
                        throws java.io.IOException</pre>
 <div class="block">Loads graph's initial state from adjacency list.
-
  First line of the file - values of nodes.
  Other lines - first value in the line is a node from which edges go to another vertex.
  After first values there is a pairs
