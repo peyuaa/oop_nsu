@@ -225,10 +225,19 @@ public class Graph<T> {
         changeWeightInAdjacencyList(edge, weight);
     }
 
+    /**
+     * Return edge weight.
+     *
+     * @param edge which weight we want to get.
+     * @return
+     */
     public int getWeight(Edge<T> edge) {
         return edge.weight;
     }
 
+    /**
+     * Print adjacency matrix.
+     */
     public void printAdjacencyMatrix() {
         System.out.println("Adjacency matrix:");
         for (Vertex<T> vertex : vertices) {
@@ -245,6 +254,9 @@ public class Graph<T> {
         }
     }
 
+    /**
+     * Print incidence matrix.
+     */
     public void printIncidenceMatrix() {
         System.out.println("Incidence matrix:");
         for (Vertex<T> vertex : vertices) {
@@ -262,6 +274,9 @@ public class Graph<T> {
         }
     }
 
+    /**
+     * Prints adjacency list.
+     */
     public void printAdjacencyList() {
         System.out.println("Adjacency list:");
         for (Vertex<T> vertex : vertices) {
