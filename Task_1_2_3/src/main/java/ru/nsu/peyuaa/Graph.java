@@ -350,6 +350,17 @@ public class Graph<T> {
         }
     }
 
+    /**
+     * Loads graph's initial state from adjacency list.
+     *
+     * First line of the file - values of nodes.
+     * Other lines - first value in the line is a node from which edges go to another vertex.
+     * After first values there is a pairs
+     * [node_value] [weight of edge from first vertex in the line to the vertex with [node_balue]]
+     *
+     * @param file with initial data.
+     * @throws IOException
+     */
     public void loadAdjacencyList(String file) throws IOException {
         BufferedReader reader = new BufferedReader(new FileReader(file));
 
