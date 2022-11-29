@@ -378,7 +378,7 @@ public class Graph<T> {
      * Return edge weight.
      *
      * @param edge which weight we want to get.
-     * @return
+     * @return edge weight.
      */
     public int getWeight(Edge<T> edge) {
         return edge.weight;
@@ -496,7 +496,7 @@ public class Graph<T> {
      * A_ij = 0 otherwise
      *
      * @param file with initial data.
-     * @throws IOException
+     * @throws IOException if there is any problems with file reading.
      */
     public void loadIncidenceMatrix(String file) throws IOException {
         BufferedReader reader = new BufferedReader(new FileReader(file));
@@ -538,7 +538,7 @@ public class Graph<T> {
      * [node_value] [weight of edge from first vertex in the line to the vertex with [node_balue]]
      *
      * @param file with initial data.
-     * @throws IOException
+     * @throws IOException if there is any problems with file reading.
      */
     public void loadAdjacencyList(String file) throws IOException {
         BufferedReader reader = new BufferedReader(new FileReader(file));
