@@ -469,12 +469,9 @@ public class Graph<T> {
 
     /**
      * Loads graph's initial state from adjacency matrix.
-     * <p>
      * First line of the file - values of nodes.
-     *
      * The order of the vertices in the matrix corresponds
      * to the order of the vertex values in the first line of the file.
-     *
      * A_ij = N if there is an edge from j to i with weight N.
      * A_ij = 0 otherwise.
      *
