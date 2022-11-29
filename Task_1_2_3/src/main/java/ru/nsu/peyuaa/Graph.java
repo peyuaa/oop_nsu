@@ -457,8 +457,8 @@ public class Graph<T> {
                 System.out.print(vertices.get(i).value + " ");
                 for (int j = 0; j < vertices.size(); j++) {
                     if (adjacencyList.get(vertices.get(i)).containsKey(vertices.get(j))) {
-                        System.out.print(vertices.get(j).value + " " +
-                                adjacencyList.get(vertices.get(i)).get(vertices.get(j)) + " ");
+                        System.out.print(vertices.get(j).value + " "
+                                + adjacencyList.get(vertices.get(i)).get(vertices.get(j)) + " ");
                     }
                 }
                 System.out.println();
