@@ -490,8 +490,8 @@ public class Graph<T> {
 
         for (int i = 0; i < verticesValues.length; i++) {
             currentLine = reader.readLine();
-            int[] weights = Arrays.stream(currentLine.split(" ")).
-                    mapToInt(Integer::parseInt).toArray();
+            int[] weights = Arrays.stream(currentLine.split(" "))
+                            .mapToInt(Integer::parseInt).toArray();
 
             Vertex<T> toVertex = getVertex((T) verticesValues[i]);
 
@@ -529,8 +529,8 @@ public class Graph<T> {
 
         for (int i = 0; i < verticesValues.length; i++) {
             currentLine = reader.readLine();
-            weights[i] = Arrays.stream(currentLine.split(" ")).
-                    mapToInt(Integer::parseInt).toArray();
+            weights[i] = Arrays.stream(currentLine.split(" "))
+                            .mapToInt(Integer::parseInt).toArray();
         }
 
         for (int i = 0; i < weights[0].length; i++) {
