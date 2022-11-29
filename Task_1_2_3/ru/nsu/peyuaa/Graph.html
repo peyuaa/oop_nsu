@@ -258,7 +258,9 @@ extends java.lang.Object</pre>
 <tr id="i11" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#loadAdjacencyList(java.lang.String)">loadAdjacencyList</a></span>&#8203;(java.lang.String&nbsp;file)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Loads graph's initial state from adjacency list.</div>
+</td>
 </tr>
 <tr id="i12" class="altColor">
 <td class="colFirst"><code>void</code></td>
@@ -519,7 +521,15 @@ extends java.lang.Object</pre>
 <h4>loadAdjacencyList</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;loadAdjacencyList&#8203;(java.lang.String&nbsp;file)
                        throws java.io.IOException</pre>
+<div class="block">Loads graph's initial state from adjacency list.
+
+ First line of the file - values of nodes.
+ Other lines - first value in the line is a node from which edges go to another vertex.
+ After first values there is a pairs
+ [node_value] [weight of edge from first vertex in the line to the vertex with [node_balue]]</div>
 <dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>file</code> - with initial data.</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
 <dd><code>java.io.IOException</code></dd>
 </dl>
