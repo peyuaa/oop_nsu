@@ -206,11 +206,12 @@ public class Graph<T> {
         edge.weight = weight;
     }
     private void changeWeightInAdjacencyMatrix(Edge<T> edge, int weight) {
-        adjacencyMatrix.get(edge.from).put(edge.to, weight);
+        adjacencyMatrix.get(edge.to).put(edge.from, weight);
     }
 
     private void changeWeightInIncidenceMatrix(Edge<T> edge, int weight) {
-        incidenceMatrix.get(edge.from).put(edge, weight);
+        incidenceMatrix.get(edge.from).put(edge, -weight);
+        incidenceMatrix.get(edge.to).put(edge, weight);
     }
 
     private void changeWeightInAdjacencyList(Edge<T> edge, int weight) {
