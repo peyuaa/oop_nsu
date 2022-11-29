@@ -84,7 +84,7 @@ public class Graph<T> {
         return null;
     }
 
-    public List<Edge<T>> gerVertexEdges(T value) {
+    public List<Edge<T>> getVertexEdges(T value) {
         Vertex<T> vertex = getVertex(value);
         if (vertex != null) {
             return vertex.edges;
