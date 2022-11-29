@@ -7,6 +7,11 @@ package ru.nsu.peyuaa;
 import java.io.*;
 import java.util.*;
 
+/**
+ * Graph class.
+ *
+ * @param <T> type of the value.
+ */
 public class Graph<T> {
     private static class Vertex<T> {
         T value;
