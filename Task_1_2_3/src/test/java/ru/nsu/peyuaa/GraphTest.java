@@ -8,7 +8,6 @@ import org.junit.jupiter.api.Test;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.PrintStream;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
@@ -31,9 +30,8 @@ class GraphTest {
         graph.printIncidenceMatrix();
         graph.printAdjacencyList();
 
-        Assertions.assertEquals(
-                new String(Files.readAllBytes(Paths.get("./src/test/resources/expected/adjacencyMatrix.txt")),
-                        StandardCharsets.UTF_8), outContent.toString());
+        Assertions.assertEquals(Files.readString(Paths.get("./src/test/resources/expected/adjacencyMatrix.txt")),
+                outContent.toString());
 
         System.setOut(originalOut);
         System.setErr(originalErr);
@@ -50,9 +48,8 @@ class GraphTest {
         graph.printIncidenceMatrix();
         graph.printAdjacencyList();
 
-        Assertions.assertEquals(
-                new String(Files.readAllBytes(Paths.get("./src/test/resources/expected/incidenceMatrix.txt")),
-                        StandardCharsets.UTF_8), outContent.toString());
+        Assertions.assertEquals(Files.readString(Paths.get("./src/test/resources/expected/incidenceMatrix.txt")),
+                outContent.toString());
 
         System.setOut(originalOut);
         System.setErr(originalErr);
@@ -69,9 +66,8 @@ class GraphTest {
         graph.printIncidenceMatrix();
         graph.printAdjacencyList();
 
-        Assertions.assertEquals(
-                new String(Files.readAllBytes(Paths.get("./src/test/resources/expected/adjacencyList.txt")),
-                        StandardCharsets.UTF_8), outContent.toString());
+        Assertions.assertEquals(Files.readString(Paths.get("./src/test/resources/expected/adjacencyList.txt")),
+                outContent.toString());
 
         System.setOut(originalOut);
         System.setErr(originalErr);
@@ -95,9 +91,8 @@ class GraphTest {
         graph.printIncidenceMatrix();
         graph.printAdjacencyList();
 
-        Assertions.assertEquals(
-                new String(Files.readAllBytes(Paths.get("./src/test/resources/expected/changeWeight.txt")),
-                        StandardCharsets.UTF_8), outContent.toString());
+        Assertions.assertEquals(Files.readString(Paths.get("./src/test/resources/expected/changeWeight.txt")),
+                outContent.toString());
 
         System.setOut(originalOut);
         System.setErr(originalErr);
@@ -117,9 +112,8 @@ class GraphTest {
         graph.printIncidenceMatrix();
         graph.printAdjacencyList();
 
-        Assertions.assertEquals(
-                new String(Files.readAllBytes(Paths.get("./src/test/resources/expected/changeVertexValue.txt")),
-                        StandardCharsets.UTF_8), outContent.toString());
+        Assertions.assertEquals(Files.readString(Paths.get("./src/test/resources/expected/changeVertexValue.txt")),
+                outContent.toString());
 
         System.setOut(originalOut);
         System.setErr(originalErr);
@@ -140,8 +134,8 @@ class GraphTest {
         graph.printAdjacencyList();
 
         Assertions.assertEquals(
-                new String(Files.readAllBytes(Paths.get("./src/test/resources/expected/changeVertexValue2.txt")),
-                        StandardCharsets.UTF_8), outContent.toString());
+                Files.readString(Paths.get("./src/test/resources/expected/changeVertexValue2.txt")),
+                outContent.toString());
 
         System.setOut(originalOut);
         System.setErr(originalErr);
