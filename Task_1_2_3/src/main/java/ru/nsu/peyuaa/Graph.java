@@ -17,6 +17,11 @@ public class Graph<T> {
         }
     }
 
+    /**
+     * Edge class.
+     *
+     * @param <T> type of the vertex value.
+     */
     public static class Edge<T> {
         int weight;
         Vertex<T> from;
@@ -36,6 +41,9 @@ public class Graph<T> {
     private List<Vertex<T>> vertices;
     private List<Edge<T>> edges;
 
+    /**
+     * Graph constructor. Initialize all graph's fields.
+     */
     public Graph() {
         vertices = new LinkedList<>();
         edges = new LinkedList<>();
@@ -60,6 +68,11 @@ public class Graph<T> {
         adjacencyList.put(vertex, new HashMap<>());
     }
 
+    /**
+     * Add vertex with the value.
+     *
+     * @param value of the vertex.
+     */
     public void addVertex(T value) {
         Vertex<T> vertex = new Vertex<>(value);
         vertex.edges = new LinkedList<>();
@@ -69,12 +82,23 @@ public class Graph<T> {
         addVertexToAdjacencyList(vertex);
     }
 
+    /**
+     * Add vertices with values.
+     *
+     * @param values of the vertices.
+     */
     public void addVertices(T[] values) {
         for (T value : values) {
             addVertex(value);
         }
     }
 
+    /**
+     * Return vertex with the value.
+     *
+     * @param value of the vertex.
+     * @return vertex with the value.
+     */
     public Vertex<T> getVertex(T value) {
         for (Vertex<T> vertex : vertices) {
             if (vertex.value.equals(value)) {
@@ -84,6 +108,12 @@ public class Graph<T> {
         return null;
     }
 
+    /**
+     * Return incident edges.
+     *
+     * @param value of the vertex.
+     * @return list of the edges incident to vertex with the value.
+     */
     public List<Edge<T>> getVertexEdges(T value) {
         Vertex<T> vertex = getVertex(value);
         if (vertex != null) {
@@ -92,6 +122,11 @@ public class Graph<T> {
         return null;
     }
 
+    /**
+     * Delete vertex with the value in adjacency matrix.
+     *
+     * @param value delete vertex with the value.
+     */
     private void deleteVertexFromAdjacencyMatrix(T value) {
         Vertex<T> vertex = getVertex(value);
         adjacencyMatrix.remove(vertex);
@@ -103,6 +138,11 @@ public class Graph<T> {
         }
     }
 
+    /**
+     * Delete vertex with the value in vertices list.
+     *
+     * @param value delete vertex with the value.
+     */
     private void deleteVertexFromVerticesList(T value) {
         for (Iterator<Vertex<T>> iterator = vertices.listIterator(); iterator.hasNext();) {
             Vertex<T> vertex = iterator.next();
@@ -115,11 +155,21 @@ public class Graph<T> {
         }
     }
 
+    /**
+     * Delete vertex with the value in incidence matrix.
+     *
+     * @param value delete vertex with the value.
+     */
     private void deleteVertexFromIncidenceMatrix(T value) {
         Vertex<T> vertex = getVertex(value);
         incidenceMatrix.remove(vertex);
     }
 
+    /**
+     * Delete vertex with the value in adjacency list.
+     *
+     * @param value delete vertex with the value.
+     */
     private void deleteVertexFromAdjacencyList(T value) {
         Vertex<T> vertex = getVertex(value);
         for (Vertex<T> currentVertex : vertices) {
@@ -130,6 +180,11 @@ public class Graph<T> {
         adjacencyList.remove(vertex);
     }
 
+    /**
+     * Delete vertex with the value.
+     *
+     * @param value delete vertex with the value.
+     */
     public void deleteVertex(T value) {
         deleteVertexFromAdjacencyMatrix(value);
         deleteVertexFromIncidenceMatrix(value);
@@ -137,25 +192,52 @@ public class Graph<T> {
         deleteVertexFromVerticesList(value);
     }
 
+    /**
+     * Add edge in the list of edges.
+     *
+     * @param edge to add.
+     */
     private void addEdgeToEdges(Edge<T> edge) {
         edges.add(edge);
         edge.from.edges.add(edge);
         edge.to.edges.add(edge);
     }
 
+    /**
+     * Add edge in adjacency matrix.
+     *
+     * @param edge to add.
+     */
     private void addEdgeInAdjacencyMatrix(Edge<T> edge) {
         adjacencyMatrix.get(edge.to).put(edge.from, edge.weight);
     }
 
+    /**
+     * Add edge in incidence matrix.
+     *
+     * @param edge to add.
+     */
     private void addEdgeInIncidenceMatrix(Edge<T> edge) {
         incidenceMatrix.get(edge.from).put(edge, -edge.weight);
         incidenceMatrix.get(edge.to).put(edge, edge.weight);
     }
 
+    /**
+     * Add edge in adjacency list.
+     *
+     * @param edge to add.
+     */
     private void addEdgeInAdjacencyList(Edge<T> edge) {
         adjacencyList.get(edge.from).put(edge.to, edge.weight);
     }
 
+    /**
+     * Add new edge.
+     *
+     * @param weight of edge.
+     * @param from which vertex
+     * @param to which vertex
+     */
     public void addEdge(int weight, Vertex<T> from, Vertex<T> to) {
         Edge<T> edge = new Edge<>(weight, from, to);
         addEdgeToEdges(edge);
