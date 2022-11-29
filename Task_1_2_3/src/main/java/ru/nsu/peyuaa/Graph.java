@@ -17,7 +17,7 @@ public class Graph<T> {
         }
     }
 
-    private static class Edge<T> {
+    public static class Edge<T> {
         int weight;
         Vertex<T> from;
         Vertex<T> to;
