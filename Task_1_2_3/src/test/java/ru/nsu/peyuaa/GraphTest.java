@@ -102,4 +102,26 @@ class GraphTest {
         System.setOut(originalOut);
         System.setErr(originalErr);
     }
+
+    @Test
+    void changeVertexValue() throws IOException {
+        System.setOut(new PrintStream(outContent));
+        System.setErr(new PrintStream(errContent));
+
+        Graph<String> graph = new Graph<>();
+        graph.loadAdjacencyMatrix("./src/test/resources/adjacencyMatrixTest.txt");
+
+        graph.changeValue(graph.getVertex("A"), "Z");
+
+        graph.printAdjacencyMatrix();
+        graph.printIncidenceMatrix();
+        graph.printAdjacencyList();
+
+        Assertions.assertEquals(
+                new String(Files.readAllBytes(Paths.get("./src/test/resources/expected/changeVertexValue.txt")),
+                        StandardCharsets.UTF_8), outContent.toString());
+
+        System.setOut(originalOut);
+        System.setErr(originalErr);
+    }
 }
