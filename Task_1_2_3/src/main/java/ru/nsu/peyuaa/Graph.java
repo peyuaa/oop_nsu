@@ -164,16 +164,31 @@ public class Graph<T> {
         addEdgeInAdjacencyList(edge);
     }
 
+    /**
+     * Delete edge from edges list.
+     *
+     * @param edge we want to delete.
+     */
     private void deleteEdgeFromEdges(Edge<T> edge) {
         edge.from.edges.remove(edge);
         edge.to.edges.remove(edge);
         edges.remove(edge);
     }
 
+    /**
+     * Delete edge from adjacency matrix.
+     *
+     * @param edge we want to delete.
+     */
     private void deleteEdgeFromAdjacencyMatrix(Edge<T> edge) {
         adjacencyMatrix.get(edge.from).put(edge.to, 0);
     }
 
+    /**
+     * Delete edge from incidence matrix.
+     *
+     * @param edge we want to delete.
+     */
     private void deleteEdgeFromIncidenceMatrix(Edge<T> edge) {
         for (Vertex<T> vertex : vertices) {
             if (incidenceMatrix.get(vertex).containsKey(edge)) {
@@ -182,10 +197,20 @@ public class Graph<T> {
         }
     }
 
+    /**
+     * Delete edge from adjacency list.
+     *
+     * @param edge we want to delete.
+     */
     private void deleteEdgeFromAdjacencyList(Edge<T> edge) {
         adjacencyList.get(edge.from).remove(edge.to);
     }
 
+    /**
+     * Delete edge.
+     *
+     * @param edge we want to delete.
+     */
     public void deleteEdge(Edge<T> edge) {
         deleteEdgeFromAdjacencyMatrix(edge);
         deleteEdgeFromIncidenceMatrix(edge);
@@ -193,10 +218,22 @@ public class Graph<T> {
         deleteEdgeFromEdges(edge);
     }
 
+    /**
+     * Return vertex value.
+     *
+     * @param vertex which value we want to get.
+     * @return vertex value.
+     */
     public T getValue(Vertex<T> vertex) {
         return vertex.value;
     }
 
+    /**
+     * Change vertex value.
+     *
+     * @param vertex which value we want to change.
+     * @param value is new vertex value.
+     */
     public void changeValue(Vertex<T> vertex, T value) {
         vertex.value = value;
     }
