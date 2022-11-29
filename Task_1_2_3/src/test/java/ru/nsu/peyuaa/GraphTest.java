@@ -31,7 +31,8 @@ class GraphTest {
         graph.printIncidenceMatrix();
         graph.printAdjacencyList();
 
-        Assertions.assertEquals(Files.readString(Paths.get("./src/test/resources/expected/adjacencyMatrix.txt")),
+        Assertions.assertEquals(Files.readString(Paths.get(
+                "./src/test/resources/expected/adjacencyMatrix.txt")),
                 outContent.toString());
 
         System.setOut(originalOut);
@@ -49,7 +50,8 @@ class GraphTest {
         graph.printIncidenceMatrix();
         graph.printAdjacencyList();
 
-        Assertions.assertEquals(Files.readString(Paths.get("./src/test/resources/expected/incidenceMatrix.txt")),
+        Assertions.assertEquals(Files.readString(Paths.get(
+                "./src/test/resources/expected/incidenceMatrix.txt")),
                 outContent.toString());
 
         System.setOut(originalOut);
@@ -67,7 +69,8 @@ class GraphTest {
         graph.printIncidenceMatrix();
         graph.printAdjacencyList();
 
-        Assertions.assertEquals(Files.readString(Paths.get("./src/test/resources/expected/adjacencyList.txt")),
+        Assertions.assertEquals(Files.readString(Paths.get(
+                "./src/test/resources/expected/adjacencyList.txt")),
                 outContent.toString());
 
         System.setOut(originalOut);
@@ -92,7 +95,8 @@ class GraphTest {
         graph.printIncidenceMatrix();
         graph.printAdjacencyList();
 
-        Assertions.assertEquals(Files.readString(Paths.get("./src/test/resources/expected/changeWeight.txt")),
+        Assertions.assertEquals(Files.readString(Paths.get(
+                "./src/test/resources/expected/changeWeight.txt")),
                 outContent.toString());
 
         System.setOut(originalOut);
@@ -113,7 +117,8 @@ class GraphTest {
         graph.printIncidenceMatrix();
         graph.printAdjacencyList();
 
-        Assertions.assertEquals(Files.readString(Paths.get("./src/test/resources/expected/changeVertexValue.txt")),
+        Assertions.assertEquals(Files.readString(Paths.get(
+                "./src/test/resources/expected/changeVertexValue.txt")),
                 outContent.toString());
 
         System.setOut(originalOut);
