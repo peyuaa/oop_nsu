@@ -32,6 +32,13 @@ public class Graph<T> {
         Vertex<T> from;
         Vertex<T> to;
 
+        /**
+         * Edge constructor.
+         *
+         * @param weight of the edge.
+         * @param from which vertex edge come out.
+         * @param to which vertex edge come in.
+         */
         public Edge(int weight, Vertex<T> from, Vertex<T> to) {
             this.weight = weight;
             this.from = from;
