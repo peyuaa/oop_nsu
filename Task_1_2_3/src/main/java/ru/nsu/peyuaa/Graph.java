@@ -167,7 +167,7 @@ public class Graph<T> {
             Vertex<T> vertex = iterator.next();
             if (vertex.value.equals(value)) {
                 for (Edge<T> edge : vertex.edges) {
-                    deleteEdge(edge);
+                    deleteEdgeFromEdges(edge);
                 }
                 iterator.remove();
             }
@@ -181,6 +181,9 @@ public class Graph<T> {
      */
     private void deleteVertexFromIncidenceMatrix(T value) {
         Vertex<T> vertex = getVertex(value);
+        for (Edge<T> edge : vertex.edges) {
+            deleteEdgeFromIncidenceMatrix(edge);
+        }
         incidenceMatrix.remove(vertex);
     }
 
