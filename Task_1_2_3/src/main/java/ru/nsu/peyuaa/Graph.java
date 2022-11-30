@@ -282,7 +282,7 @@ public class Graph<T> {
      * @param edge we want to delete.
      */
     private void deleteEdgeFromAdjacencyMatrix(Edge<T> edge) {
-        adjacencyMatrix.get(edge.from).put(edge.to, 0);
+        adjacencyMatrix.get(edge.to).put(edge.from, 0);
     }
 
     /**
