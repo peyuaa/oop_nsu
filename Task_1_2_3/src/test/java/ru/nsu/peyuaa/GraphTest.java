@@ -146,4 +146,33 @@ class GraphTest {
         System.setOut(originalOut);
         System.setErr(originalErr);
     }
+
+    @Test
+    void deleteEdge() throws IOException {
+        System.setOut(new PrintStream(outContent));
+        System.setErr(new PrintStream(errContent));
+
+        Graph<String> graph = new Graph<>();
+        graph.loadAdjacencyMatrix("./src/test/resources/adjacencyMatrixTest.txt");
+
+        List<Graph.Edge<String>> edges = graph.getVertexEdges("A");
+
+        for (int i = 0; i < edges.size(); i++) {
+            if (edges.get(i).weight == 5) {
+                graph.deleteEdge(edges.get(i));
+                break;
+            }
+        }
+
+        graph.printAdjacencyMatrix();
+        graph.printIncidenceMatrix();
+        graph.printAdjacencyList();
+
+        Assertions.assertEquals(
+                Files.readString(Paths.get("./src/test/resources/expected/deleteEdge.txt")),
+                outContent.toString());
+
+        System.setOut(originalOut);
+        System.setErr(originalErr);
+    }
 }
