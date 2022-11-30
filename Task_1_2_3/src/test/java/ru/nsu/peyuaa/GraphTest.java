@@ -175,4 +175,26 @@ class GraphTest {
         System.setOut(originalOut);
         System.setErr(originalErr);
     }
+
+    @Test
+    void deleteVertex() throws IOException {
+        System.setOut(new PrintStream(outContent));
+        System.setErr(new PrintStream(errContent));
+
+        Graph<String> graph = new Graph<>();
+        graph.loadAdjacencyMatrix("./src/test/resources/adjacencyMatrixTest.txt");
+
+        graph.deleteVertex("A");
+
+        graph.printAdjacencyMatrix();
+        graph.printIncidenceMatrix();
+        graph.printAdjacencyList();
+
+        Assertions.assertEquals(
+                Files.readString(Paths.get("./src/test/resources/expected/deleteVertex.txt")),
+                outContent.toString());
+
+        System.setOut(originalOut);
+        System.setErr(originalErr);
+    }
 }
