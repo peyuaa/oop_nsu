@@ -7,8 +7,16 @@ package ru.nsu.peyuaa;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Stack;
 
 /**
  * Graph class.
@@ -623,8 +631,8 @@ public class Graph<T> {
             for (Entry<Vertex<T>, Integer> entry :
                     adjacencyList.get(vertices.get(topologicallySortedVertex)).entrySet()) {
                 int vertexTo = vertices.indexOf(entry.getKey());
-                if ((distance[vertexTo] == -1) ||
-                        (distance[vertexTo] > distance[topologicallySortedVertex] + entry.getValue())) {
+                if ((distance[vertexTo] == -1)
+                        || (distance[vertexTo] > distance[topologicallySortedVertex] + entry.getValue())) {
                     distance[vertexTo] = distance[topologicallySortedVertex] + entry.getValue();
                 }
             }
