@@ -410,9 +410,9 @@ public class Graph<T> {
         }
         System.out.println();
         for (int i = 0; i < vertices.size(); i++) {
-            for (int j = 0; j < vertices.size(); j++) {
-                int weight = adjacencyMatrix.get(vertices.get(i)).get(vertices.get(j)) != null
-                        ? adjacencyMatrix.get(vertices.get(i)).get(vertices.get(j)) : 0;
+            for (Vertex<T> vertex : vertices) {
+                int weight = adjacencyMatrix.get(vertices.get(i)).get(vertex) != null
+                        ? adjacencyMatrix.get(vertices.get(i)).get(vertex) : 0;
                 System.out.print(weight + " ");
             }
             System.out.println();
@@ -429,10 +429,10 @@ public class Graph<T> {
         }
         System.out.println();
 
-        for (int i = 0; i < vertices.size(); i++) {
-            for (int j = 0; j < edges.size(); j++) {
-                int weight = incidenceMatrix.get(vertices.get(i)).get(edges.get(j)) != null
-                        ? incidenceMatrix.get(vertices.get(i)).get(edges.get(j)) : 0;
+        for (Vertex<T> vertex : vertices) {
+            for (Edge<T> edge : edges) {
+                int weight = incidenceMatrix.get(vertex).get(edge) != null
+                        ? incidenceMatrix.get(vertex).get(edge) : 0;
                 System.out.print(weight + " ");
             }
             System.out.println();
@@ -452,10 +452,10 @@ public class Graph<T> {
         for (int i = 0; i < vertices.size(); i++) {
             if (adjacencyList.containsKey(vertices.get(i))) {
                 System.out.print(vertices.get(i).value + " ");
-                for (int j = 0; j < vertices.size(); j++) {
-                    if (adjacencyList.get(vertices.get(i)).containsKey(vertices.get(j))) {
-                        System.out.print(vertices.get(j).value + " "
-                                + adjacencyList.get(vertices.get(i)).get(vertices.get(j)) + " ");
+                for (Vertex<T> vertex : vertices) {
+                    if (adjacencyList.get(vertices.get(i)).containsKey(vertex)) {
+                        System.out.print(vertex.value + " "
+                                + adjacencyList.get(vertices.get(i)).get(vertex) + " ");
                     }
                 }
                 System.out.println();
@@ -482,12 +482,12 @@ public class Graph<T> {
         String[] verticesValues = currentLine.split(" ");
         addVertices((T[]) verticesValues);
 
-        for (int i = 0; i < verticesValues.length; i++) {
+        for (String verticesValue : verticesValues) {
             currentLine = reader.readLine();
             int[] weights = Arrays.stream(currentLine.split(" "))
-                            .mapToInt(Integer::parseInt).toArray();
+                    .mapToInt(Integer::parseInt).toArray();
 
-            Vertex<T> toVertex = getVertex((T) verticesValues[i]);
+            Vertex<T> toVertex = getVertex((T) verticesValue);
 
             for (int j = 0; j < weights.length; j++) {
                 if (weights[j] != 0) {
@@ -619,14 +619,14 @@ public class Graph<T> {
         }
         distance[index] = 0;
 
-        for (int i = 0; i < topologicallySortedVertices.size(); i++) {
+        for (Integer topologicallySortedVertex : topologicallySortedVertices) {
             for (Entry<Vertex<T>, Integer> entry :
-                    adjacencyList.get(vertices.get(topologicallySortedVertices.get(i))).entrySet()) {
+                    adjacencyList.get(vertices.get(topologicallySortedVertex)).entrySet()) {
                 int vertexTo = vertices.indexOf(entry.getKey());
-               if ((distance[vertexTo] == -1) ||
-                       (distance[vertexTo] > distance[topologicallySortedVertices.get(i)] + entry.getValue())) {
-                   distance[vertexTo] = distance[topologicallySortedVertices.get(i)] + entry.getValue();
-               }
+                if ((distance[vertexTo] == -1) ||
+                        (distance[vertexTo] > distance[topologicallySortedVertex] + entry.getValue())) {
+                    distance[vertexTo] = distance[topologicallySortedVertex] + entry.getValue();
+                }
             }
         }
 
