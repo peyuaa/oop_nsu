@@ -7,12 +7,9 @@ package ru.nsu.peyuaa;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.Map.Entry;
+import java.util.stream.Collectors;
 
 /**
  * Graph class.
@@ -572,5 +569,79 @@ public class Graph<T> {
                         getVertex((T) verticesValues[0]), getVertex((T) verticesValues[i]));
             }
         }
+    }
+
+    private void topologicalSortUtil(int v, boolean[] visited, Stack<Integer> stack) {
+        visited[v] = true;
+
+        for (Entry<Vertex<T>, Integer> entry : adjacencyList.get(vertices.get(v)).entrySet()) {
+            int index = vertices.indexOf(entry.getKey());
+            if (!visited[index]) {
+                topologicalSortUtil(index, visited, stack);
+            }
+        }
+
+        stack.push(v);
+    }
+
+    private List<Integer> topologicalSort(int v) {
+        Stack<Integer> stack = new Stack<>();
+
+        boolean[] visited = new boolean[vertices.size()];
+
+        for (int i = 0; i < vertices.size(); i++) {
+            visited[i] = false;
+        }
+
+        topologicalSortUtil(v, visited, stack);
+
+        for (int i = 0; i < vertices.size(); i++) {
+            if (visited[i] == false) {
+                topologicalSortUtil(i, visited, stack);
+            }
+        }
+
+        List<Integer> sortedVertices = new ArrayList<>(stack);
+        Collections.reverse(sortedVertices);
+
+        return sortedVertices;
+    }
+
+    public void sortVertices(T value) {
+        int index = vertices.indexOf(getVertex(value));
+        List<Integer> topologicallySortedVertices = topologicalSort(index);
+
+        int[] distance = new int[vertices.size()];
+        for (int i = 0; i < vertices.size(); i++) {
+            distance[i] = -1;
+        }
+        distance[index] = 0;
+
+        int[] predecessor = new int[vertices.size()];
+        for (int i = 0; i < vertices.size(); i++) {
+            predecessor[i] = -1;
+        }
+
+        for (int i = 0; i < topologicallySortedVertices.size(); i++) {
+            for (Entry<Vertex<T>, Integer> entry :
+                    adjacencyList.get(vertices.get(topologicallySortedVertices.get(i))).entrySet()) {
+                int vertexTo = vertices.indexOf(entry.getKey());
+               if ((distance[vertexTo] == -1) ||
+                       (distance[vertexTo] > distance[topologicallySortedVertices.get(i)] + entry.getValue())) {
+                   distance[vertexTo] = distance[topologicallySortedVertices.get(i)] + entry.getValue();
+                   predecessor[vertexTo] = topologicallySortedVertices.get(i);
+               }
+            }
+        }
+
+        Map<T, Integer> unsortedVertices = new HashMap<>();
+        for (int i = 0; i < vertices.size(); i++) {
+            unsortedVertices.put(vertices.get(i).value, distance[i]);
+        }
+
+        unsortedVertices.entrySet().stream()
+                .sorted(Entry.comparingByValue())
+                .forEach(k -> System.out.println(k.getKey() + ": " + k.getValue()));
+
     }
 }

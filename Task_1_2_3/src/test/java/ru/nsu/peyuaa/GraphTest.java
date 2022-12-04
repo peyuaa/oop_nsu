@@ -197,4 +197,22 @@ class GraphTest {
         System.setOut(originalOut);
         System.setErr(originalErr);
     }
+
+    @Test
+    void sort() throws IOException {
+        System.setOut(new PrintStream(outContent));
+        System.setErr(new PrintStream(errContent));
+
+        Graph<String> graph = new Graph<>();
+        graph.loadAdjacencyMatrix("./src/test/resources/DAGadjacencyMatrix.txt");
+
+        graph.sortVertices("A");
+
+        Assertions.assertEquals(
+                Files.readString(Paths.get("./src/test/resources/expected/sortTest.txt")),
+                outContent.toString());
+
+        System.setOut(originalOut);
+        System.setErr(originalErr);
+    }
 }
