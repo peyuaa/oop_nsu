@@ -593,7 +593,7 @@ public class Graph<T> {
         topologicalSortUtil(v, visited, stack);
 
         for (int i = 0; i < vertices.size(); i++) {
-            if (visited[i] == false) {
+            if (!visited[i]) {
                 topologicalSortUtil(i, visited, stack);
             }
         }
@@ -619,11 +619,6 @@ public class Graph<T> {
         }
         distance[index] = 0;
 
-        int[] predecessor = new int[vertices.size()];
-        for (int i = 0; i < vertices.size(); i++) {
-            predecessor[i] = -1;
-        }
-
         for (int i = 0; i < topologicallySortedVertices.size(); i++) {
             for (Entry<Vertex<T>, Integer> entry :
                     adjacencyList.get(vertices.get(topologicallySortedVertices.get(i))).entrySet()) {
@@ -631,7 +626,6 @@ public class Graph<T> {
                if ((distance[vertexTo] == -1) ||
                        (distance[vertexTo] > distance[topologicallySortedVertices.get(i)] + entry.getValue())) {
                    distance[vertexTo] = distance[topologicallySortedVertices.get(i)] + entry.getValue();
-                   predecessor[vertexTo] = topologicallySortedVertices.get(i);
                }
             }
         }
