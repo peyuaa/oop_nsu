@@ -157,9 +157,9 @@ class GraphTest {
 
         List<Graph.Edge<String>> edges = graph.getVertexEdges("A");
 
-        for (int i = 0; i < edges.size(); i++) {
-            if (edges.get(i).weight == 5) {
-                graph.deleteEdge(edges.get(i));
+        for (Graph.Edge<String> edge : edges) {
+            if (edge.weight == 5) {
+                graph.deleteEdge(edge);
                 break;
             }
         }
