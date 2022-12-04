@@ -607,6 +607,11 @@ public class Graph<T> {
         return sortedVertices;
     }
 
+    /**
+     * Sorts vertices by distance.
+     *
+     * @param value of the start vertex.
+     */
     public void sortVertices(T value) {
         int index = vertices.indexOf(getVertex(value));
         List<Integer> topologicallySortedVertices = topologicalSort(index);
