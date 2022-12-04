@@ -632,8 +632,8 @@ public class Graph<T> {
                     adjacencyList.get(vertices.get(topologicallySortedVertex)).entrySet()) {
                 int vertexTo = vertices.indexOf(entry.getKey());
                 if ((distance[vertexTo] == -1)
-                        || (distance[vertexTo] >
-                            distance[topologicallySortedVertex] + entry.getValue())) {
+                        || (distance[vertexTo]
+                            > distance[topologicallySortedVertex] + entry.getValue())) {
                     distance[vertexTo] = distance[topologicallySortedVertex] + entry.getValue();
                 }
             }
