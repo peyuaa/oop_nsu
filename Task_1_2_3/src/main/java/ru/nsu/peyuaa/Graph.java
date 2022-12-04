@@ -546,7 +546,7 @@ public class Graph<T> {
      * First line of the file - values of nodes.
      * Other lines - first value in the line is a node from which edges go to another vertex.
      * After first values there is a pairs
-     * [node_value] [weight of edge from first vertex in the line to the vertex with [node_balue]]
+     * [node_value] [weight of edge from first vertex in the line to the vertex with [node_value]]
      *
      * @param file with initial data.
      * @throws IOException if there is any problems with file reading.
