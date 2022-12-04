@@ -9,7 +9,6 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.*;
 import java.util.Map.Entry;
-import java.util.stream.Collectors;
 
 /**
  * Graph class.
@@ -50,12 +49,12 @@ public class Graph<T> {
         }
     }
 
-    private Map<Vertex<T>, Map<Vertex<T>, Integer>> adjacencyMatrix;
-    private Map<Vertex<T>, Map<Edge<T>, Integer>> incidenceMatrix;
-    private Map<Vertex<T>, Map<Vertex<T>, Integer>> adjacencyList;
+    private final Map<Vertex<T>, Map<Vertex<T>, Integer>> adjacencyMatrix;
+    private final Map<Vertex<T>, Map<Edge<T>, Integer>> incidenceMatrix;
+    private final Map<Vertex<T>, Map<Vertex<T>, Integer>> adjacencyList;
 
-    private List<Vertex<T>> vertices;
-    private List<Edge<T>> edges;
+    private final List<Vertex<T>> vertices;
+    private final List<Edge<T>> edges;
 
     /**
      * Graph constructor. Initialize all graph's fields.
@@ -292,9 +291,7 @@ public class Graph<T> {
      */
     private void deleteEdgeFromIncidenceMatrix(Edge<T> edge) {
         for (Vertex<T> vertex : vertices) {
-            if (incidenceMatrix.get(vertex).containsKey(edge)) {
-                incidenceMatrix.get(vertex).remove(edge);
-            }
+            incidenceMatrix.get(vertex).remove(edge);
         }
     }
 
