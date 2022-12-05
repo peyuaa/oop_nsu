@@ -1,1 +1,1 @@
-memberSearchIndex = [{"p":"task_1_5_1","c":"App","l":"App()","url":"%3Cinit%3E()"},{"p":"task_1_5_1","c":"App","l":"getGreeting()"},{"p":"task_1_5_1","c":"App","l":"main(String[])","url":"main(java.lang.String[])"}]
+memberSearchIndex = [{"p":"ru.nsu.peyuaa","c":"Calculator","l":"Calculator()","url":"%3Cinit%3E()"},{"p":"ru.nsu.peyuaa","c":"Calculator","l":"getGreeting()"},{"p":"ru.nsu.peyuaa","c":"Calculator","l":"main(String[])","url":"main(java.lang.String[])"}]
