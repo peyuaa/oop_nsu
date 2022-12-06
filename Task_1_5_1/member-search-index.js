@@ -1,1 +1,1 @@
-memberSearchIndex = [{"p":"ru.nsu.peyuaa","c":"Calculator","l":"Calculator()","url":"%3Cinit%3E()"}]
+memberSearchIndex = [{"p":"ru.nsu.peyuaa","c":"Calculator","l":"Calculator()","url":"%3Cinit%3E()"},{"p":"ru.nsu.peyuaa","c":"Calculator","l":"main(String[])","url":"main(java.lang.String[])"},{"p":"ru.nsu.peyuaa","c":"Calculator","l":"startCalculator()"}]
