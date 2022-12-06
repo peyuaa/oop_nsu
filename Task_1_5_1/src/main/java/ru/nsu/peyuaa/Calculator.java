@@ -4,5 +4,76 @@
 
 package ru.nsu.peyuaa;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Arrays;
+import java.util.Stack;
+
 public class Calculator {
+    private boolean isUnaryOperation(String operand) {
+        if (operand.equals("+") || operand.equals("-") || operand.equals("*") || operand.equals("/")) {
+            return true;
+        }
+        return false;
+    }
+
+    private double doUnaryOperation(String operand, String firstArgument, String secondArgument) {
+        double firstArg = Double.parseDouble(firstArgument);
+        double secondArg = Double.parseDouble(secondArgument);
+        switch (operand) {
+            case "+":
+                return firstArg + secondArg;
+            case "-":
+                return firstArg - secondArg;
+            case "*":
+                return firstArg * secondArg;
+            case "/":
+                return firstArg / secondArg;
+        }
+
+        throw new RuntimeException("Unsupported operation");
+    }
+
+    private void calculateExpression(String[] args) {
+        Stack<String> stack = new Stack<>();
+        Stack<String> helperStack = new Stack<>();
+
+        Arrays.stream(args).forEachOrdered(stack::push);
+
+        while (!stack.isEmpty()) {
+            String arg = stack.pop();
+            if (isUnaryOperation(arg)) {
+                if (helperStack.size() < 2) {
+                    throw new RuntimeException("Incorrect expression");
+                }
+                stack.push(Double.toString(doUnaryOperation(arg, helperStack.pop(),helperStack.pop())));
+
+            } else {
+                helperStack.push(arg);
+            }
+        }
+
+        System.out.println(helperStack.pop());
+    }
+
+    public void startCalculator() throws IOException {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        System.out.println("Enter the expression in prefix form:");
+
+        while (true) {
+            String expression = reader.readLine();
+            if (expression.isEmpty()) {
+                break;
+            }
+
+            calculateExpression(expression.split(" "));
+        }
+    }
+
+    public static void main(String[] args) throws IOException {
+        Calculator calculator = new Calculator();
+        calculator.startCalculator();
+    }
+
 }
