@@ -36,7 +36,8 @@ public class Calculator {
     }
 
     private boolean isBinaryOperation(String operand) {
-        if (operand.equals("+") || operand.equals("-") || operand.equals("*") || operand.equals("/")) {
+        if (operand.equals("+") || operand.equals("-") || operand.equals("*") || operand.equals("/")
+                || operand.equals("pow")) {
             return true;
         }
         return false;
@@ -54,6 +55,8 @@ public class Calculator {
                 return firstArg * secondArg;
             case "/":
                 return firstArg / secondArg;
+            case "pow":
+                return Math.pow(firstArg, secondArg);
         }
 
         throw new RuntimeException("Unsupported operation");
