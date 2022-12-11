@@ -57,22 +57,17 @@ public class Graph<T> {
         }
     }
 
-    private final Map<Vertex<T>, Map<Vertex<T>, Integer>> adjacencyMatrix;
-    private final Map<Vertex<T>, Map<Edge<T>, Integer>> incidenceMatrix;
-    private final Map<Vertex<T>, Map<Vertex<T>, Integer>> adjacencyList;
+    private final Map<Vertex<T>, Map<Vertex<T>, Integer>> adjacencyMatrix = new HashMap<>();
+    private final Map<Vertex<T>, Map<Edge<T>, Integer>> incidenceMatrix = new HashMap<>();
+    private final Map<Vertex<T>, Map<Vertex<T>, Integer>> adjacencyList = new HashMap<>();
 
-    private final List<Vertex<T>> vertices;
-    private final List<Edge<T>> edges;
+    private final List<Vertex<T>> vertices = new LinkedList<>();
+    private final List<Edge<T>> edges = new LinkedList<>();
 
     /**
      * Graph constructor. Initialize all graph's fields.
      */
     public Graph() {
-        vertices = new LinkedList<>();
-        edges = new LinkedList<>();
-        adjacencyMatrix = new HashMap<>();
-        incidenceMatrix = new HashMap<>();
-        adjacencyList = new HashMap<>();
     }
 
     private void addVertexToVertices(Vertex<T> vertex) {
