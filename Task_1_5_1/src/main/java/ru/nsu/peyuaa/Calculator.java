@@ -11,14 +11,14 @@ import java.util.Arrays;
 import java.util.Stack;
 
 public class Calculator {
-    private boolean isUnaryOperation(String operand) {
+    private boolean isBinaryOperation(String operand) {
         if (operand.equals("+") || operand.equals("-") || operand.equals("*") || operand.equals("/")) {
             return true;
         }
         return false;
     }
 
-    private double doUnaryOperation(String operand, String firstArgument, String secondArgument) {
+    private double doBinaryOperation(String operand, String firstArgument, String secondArgument) {
         double firstArg = Double.parseDouble(firstArgument);
         double secondArg = Double.parseDouble(secondArgument);
         switch (operand) {
@@ -43,11 +43,11 @@ public class Calculator {
 
         while (!stack.isEmpty()) {
             String arg = stack.pop();
-            if (isUnaryOperation(arg)) {
+            if (isBinaryOperation(arg)) {
                 if (helperStack.size() < 2) {
                     throw new RuntimeException("Incorrect expression");
                 }
-                stack.push(Double.toString(doUnaryOperation(arg, helperStack.pop(),helperStack.pop())));
+                stack.push(Double.toString(doBinaryOperation(arg, helperStack.pop(),helperStack.pop())));
 
             } else {
                 helperStack.push(arg);
