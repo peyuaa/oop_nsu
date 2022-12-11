@@ -76,6 +76,11 @@ public class Calculator {
                 }
                 stack.push(Double.toString(doBinaryOperation(arg, helperStack.pop(),helperStack.pop())));
 
+            } else if (isUnaryOperation(arg)) {
+                if (helperStack.size() < 1) {
+                    throw new RuntimeException("Incorrect expression");
+                }
+                stack.push(Double.toString(doUnaryOperation(arg, helperStack.pop())));
             } else {
                 helperStack.push(arg);
             }
