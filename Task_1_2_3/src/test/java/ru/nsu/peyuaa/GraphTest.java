@@ -10,7 +10,10 @@ import java.io.PrintStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
+
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class GraphTest {
@@ -20,11 +23,20 @@ class GraphTest {
     private final PrintStream originalOut = System.out;
     private final PrintStream originalErr = System.err;
 
-    @Test
-    void adjacencyMatrixLoadTest() throws IOException {
+    @BeforeEach
+    void setOurOutAndErr() {
         System.setOut(new PrintStream(outContent));
         System.setErr(new PrintStream(errContent));
+    }
 
+    @AfterEach
+    void setOriginalOutAndErr() {
+        System.setOut(originalOut);
+        System.setErr(originalErr);
+    }
+
+    @Test
+    void adjacencyMatrixLoadTest() throws IOException {
         Graph<String> graph = new Graph<>();
         graph.loadAdjacencyMatrix("./src/test/resources/adjacencyMatrixTest.txt");
         graph.printAdjacencyMatrix();
@@ -34,16 +46,10 @@ class GraphTest {
         Assertions.assertEquals(Files.readString(Paths.get(
                 "./src/test/resources/expected/adjacencyMatrix.txt")),
                 outContent.toString());
-
-        System.setOut(originalOut);
-        System.setErr(originalErr);
     }
 
     @Test
     void incidenceMatrixLoadTest() throws IOException {
-        System.setOut(new PrintStream(outContent));
-        System.setErr(new PrintStream(errContent));
-
         Graph<String> graph = new Graph<>();
         graph.loadIncidenceMatrix("./src/test/resources/incidenceMatrixTest.txt");
         graph.printAdjacencyMatrix();
@@ -53,16 +59,10 @@ class GraphTest {
         Assertions.assertEquals(Files.readString(Paths.get(
                 "./src/test/resources/expected/incidenceMatrix.txt")),
                 outContent.toString());
-
-        System.setOut(originalOut);
-        System.setErr(originalErr);
     }
 
     @Test
     void adjacencyListLoadTest() throws  IOException {
-        System.setOut(new PrintStream(outContent));
-        System.setErr(new PrintStream(errContent));
-
         Graph<String> graph = new Graph<>();
         graph.loadAdjacencyList("./src/test/resources/adjacencyListTest.txt");
         graph.printAdjacencyMatrix();
@@ -72,16 +72,10 @@ class GraphTest {
         Assertions.assertEquals(Files.readString(Paths.get(
                 "./src/test/resources/expected/adjacencyList.txt")),
                 outContent.toString());
-
-        System.setOut(originalOut);
-        System.setErr(originalErr);
     }
 
     @Test
     void changeWeight() throws IOException {
-        System.setOut(new PrintStream(outContent));
-        System.setErr(new PrintStream(errContent));
-
         Graph<String> graph = new Graph<>();
         graph.loadAdjacencyMatrix("./src/test/resources/adjacencyMatrixTest.txt");
 
@@ -98,16 +92,10 @@ class GraphTest {
         Assertions.assertEquals(Files.readString(Paths.get(
                 "./src/test/resources/expected/changeWeight.txt")),
                 outContent.toString());
-
-        System.setOut(originalOut);
-        System.setErr(originalErr);
     }
 
     @Test
     void changeVertexValue() throws IOException {
-        System.setOut(new PrintStream(outContent));
-        System.setErr(new PrintStream(errContent));
-
         Graph<String> graph = new Graph<>();
         graph.loadAdjacencyMatrix("./src/test/resources/adjacencyMatrixTest.txt");
 
@@ -120,16 +108,10 @@ class GraphTest {
         Assertions.assertEquals(Files.readString(Paths.get(
                 "./src/test/resources/expected/changeVertexValue.txt")),
                 outContent.toString());
-
-        System.setOut(originalOut);
-        System.setErr(originalErr);
     }
 
     @Test
     void changeVertexValue2() throws IOException {
-        System.setOut(new PrintStream(outContent));
-        System.setErr(new PrintStream(errContent));
-
         Graph<String> graph = new Graph<>();
         graph.loadAdjacencyMatrix("./src/test/resources/adjacencyMatrixTest.txt");
 
@@ -142,16 +124,10 @@ class GraphTest {
         Assertions.assertEquals(
                 Files.readString(Paths.get("./src/test/resources/expected/changeVertexValue2.txt")),
                 outContent.toString());
-
-        System.setOut(originalOut);
-        System.setErr(originalErr);
     }
 
     @Test
     void deleteEdge() throws IOException {
-        System.setOut(new PrintStream(outContent));
-        System.setErr(new PrintStream(errContent));
-
         Graph<String> graph = new Graph<>();
         graph.loadAdjacencyMatrix("./src/test/resources/adjacencyMatrixTest.txt");
 
@@ -171,16 +147,10 @@ class GraphTest {
         Assertions.assertEquals(
                 Files.readString(Paths.get("./src/test/resources/expected/deleteEdge.txt")),
                 outContent.toString());
-
-        System.setOut(originalOut);
-        System.setErr(originalErr);
     }
 
     @Test
     void deleteVertex() throws IOException {
-        System.setOut(new PrintStream(outContent));
-        System.setErr(new PrintStream(errContent));
-
         Graph<String> graph = new Graph<>();
         graph.loadAdjacencyMatrix("./src/test/resources/adjacencyMatrixTest.txt");
 
@@ -193,16 +163,10 @@ class GraphTest {
         Assertions.assertEquals(
                 Files.readString(Paths.get("./src/test/resources/expected/deleteVertex.txt")),
                 outContent.toString());
-
-        System.setOut(originalOut);
-        System.setErr(originalErr);
     }
 
     @Test
     void sort() throws IOException {
-        System.setOut(new PrintStream(outContent));
-        System.setErr(new PrintStream(errContent));
-
         Graph<String> graph = new Graph<>();
         graph.loadAdjacencyMatrix("./src/test/resources/DAGadjacencyMatrix.txt");
 
@@ -211,8 +175,5 @@ class GraphTest {
         Assertions.assertEquals(
                 Files.readString(Paths.get("./src/test/resources/expected/sortTest.txt")),
                 outContent.toString());
-
-        System.setOut(originalOut);
-        System.setErr(originalErr);
     }
 }
