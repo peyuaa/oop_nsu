@@ -11,6 +11,30 @@ import java.util.Arrays;
 import java.util.Stack;
 
 public class Calculator {
+    private boolean isUnaryOperation(String operand) {
+        if (operand.equals("log") || operand.equals("sqrt")
+                || operand.equals("sin") || operand.equals("cos")) {
+            return true;
+        }
+        return false;
+    }
+
+    private double doUnaryOperation(String operand, String argument) {
+        double arg = Double.parseDouble(argument);
+        switch (operand) {
+            case "log":
+                return Math.log(arg);
+            case "sqrt":
+                return Math.sqrt(arg);
+            case "sin":
+                return Math.sin(arg);
+            case "cos":
+                return Math.cos(arg);
+        }
+
+        throw new RuntimeException("Unsupported operation");
+    }
+
     private boolean isBinaryOperation(String operand) {
         if (operand.equals("+") || operand.equals("-") || operand.equals("*") || operand.equals("/")) {
             return true;
