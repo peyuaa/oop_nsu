@@ -288,7 +288,7 @@ extends java.lang.Object</pre>
 </tr>
 <tr id="i11" class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#loadAdjacencyList(java.lang.String)">loadAdjacencyList</a></span>&#8203;(java.lang.String&nbsp;file)</code></th>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#loadAdjacencyList(java.io.InputStream)">loadAdjacencyList</a></span>&#8203;(java.io.InputStream&nbsp;inputStream)</code></th>
 <td class="colLast">
 <div class="block">Loads graph's initial state from adjacency list.</div>
 </td>
@@ -636,13 +636,13 @@ extends java.lang.Object</pre>
 </dl>
 </li>
 </ul>
-<a id="loadAdjacencyList(java.lang.String)">
+<a id="loadAdjacencyList(java.io.InputStream)">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>loadAdjacencyList</h4>
-<pre class="methodSignature">public&nbsp;void&nbsp;loadAdjacencyList&#8203;(java.lang.String&nbsp;file)
+<pre class="methodSignature">public&nbsp;void&nbsp;loadAdjacencyList&#8203;(java.io.InputStream&nbsp;inputStream)
                        throws java.io.IOException</pre>
 <div class="block">Loads graph's initial state from adjacency list.
  First line of the file - values of nodes.
@@ -651,7 +651,7 @@ extends java.lang.Object</pre>
  [node_value] [weight of edge from first vertex in the line to the vertex with [node_value]]</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>file</code> - with initial data.</dd>
+<dd><code>inputStream</code> - with initial data.</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
 <dd><code>java.io.IOException</code> - if there is any problems with file reading.</dd>
 </dl>
