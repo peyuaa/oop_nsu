@@ -12,6 +12,9 @@ import java.io.PrintStream;
 import java.util.Arrays;
 import java.util.Stack;
 
+/**
+ * Calculate the expression if prefix form.
+ */
 public class Calculator {
     private final InputStream in;
     private final PrintStream out;
@@ -88,6 +91,11 @@ public class Calculator {
         out.println(helperStack.pop());
     }
 
+    /**
+     * Starts calculator.
+     *
+     * @throws IOException input/output exception
+     */
     public void startCalculator() throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(in));
 
@@ -96,6 +104,12 @@ public class Calculator {
         calculateExpression(expression.split(" "));
     }
 
+    /**
+     * Calculator constructor.
+     *
+     * @param in input stream.
+     * @param out output stream.
+     */
     public Calculator(InputStream in, PrintStream out) {
         this.in = in;
         this.out = out;
