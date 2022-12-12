@@ -4,8 +4,26 @@
 
 package ru.nsu.peyuaa;
 
+import java.io.*;
+import java.nio.charset.StandardCharsets;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
 
 class CalculatorTest {
+    @Test
+    void plus() throws IOException {
+        ByteArrayInputStream in = new ByteArrayInputStream("+ -7 5\n".getBytes());
+        String expected = "-2.0\n";
+
+        ByteArrayOutputStream actual = new ByteArrayOutputStream();
+        final String utf8 = StandardCharsets.UTF_8.name();
+        PrintStream ps = new PrintStream(actual, true, utf8);
+
+        Calculator calculator = new Calculator(in, ps);
+        calculator.startCalculator();
+
+        Assertions.assertEquals(expected, actual.toString(utf8));
+
+    }
+
 }
