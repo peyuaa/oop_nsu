@@ -76,7 +76,8 @@ public class Calculator {
                 if (helperStack.size() < 2) {
                     throw new RuntimeException("Incorrect expression");
                 }
-                stack.push(Double.toString(doBinaryOperation(arg, helperStack.pop(),helperStack.pop())));
+                stack.push(Double.toString(doBinaryOperation(arg,
+                        helperStack.pop(), helperStack.pop())));
 
             } else if (isUnaryOperation(arg)) {
                 if (helperStack.size() < 1) {
