@@ -7,6 +7,7 @@ package ru.nsu.peyuaa;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.Reader;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -479,22 +480,23 @@ public class Graph<T> {
      * @throws IOException if there is any problems with file reading.
      */
     public void loadAdjacencyMatrix(String file) throws IOException {
-        BufferedReader reader = new BufferedReader(new FileReader(file));
-        String currentLine = reader.readLine();
+        try (Reader reader = new BufferedReader(new FileReader(file))) {
+            String currentLine = ((BufferedReader) reader).readLine();
 
-        String[] verticesValues = currentLine.split(" ");
-        addVertices((T[]) verticesValues);
+            String[] verticesValues = currentLine.split(" ");
+            addVertices((T[]) verticesValues);
 
-        for (String verticesValue : verticesValues) {
-            currentLine = reader.readLine();
-            int[] weights = Arrays.stream(currentLine.split(" "))
-                    .mapToInt(Integer::parseInt).toArray();
+            for (String verticesValue : verticesValues) {
+                currentLine = ((BufferedReader) reader).readLine();
+                int[] weights = Arrays.stream(currentLine.split(" "))
+                        .mapToInt(Integer::parseInt).toArray();
 
-            Vertex<T> toVertex = getVertex((T) verticesValue);
+                Vertex<T> toVertex = getVertex((T) verticesValue);
 
-            for (int j = 0; j < weights.length; j++) {
-                if (weights[j] != 0) {
-                    addEdge(weights[j], getVertex((T) verticesValues[j]), toVertex);
+                for (int j = 0; j < weights.length; j++) {
+                    if (weights[j] != 0) {
+                        addEdge(weights[j], getVertex((T) verticesValues[j]), toVertex);
+                    }
                 }
             }
         }
@@ -513,34 +515,35 @@ public class Graph<T> {
      * @throws IOException if there is any problems with file reading.
      */
     public void loadIncidenceMatrix(String file) throws IOException {
-        BufferedReader reader = new BufferedReader(new FileReader(file));
-        String currentLine = reader.readLine();
+        try(Reader reader = new BufferedReader(new FileReader(file))) {
+            String currentLine = ((BufferedReader) reader).readLine();
 
-        String[] verticesValues = currentLine.split(" ");
-        addVertices((T[]) verticesValues);
+            String[] verticesValues = currentLine.split(" ");
+            addVertices((T[]) verticesValues);
 
-        int[][] weights = new int[verticesValues.length][];
+            int[][] weights = new int[verticesValues.length][];
 
-        for (int i = 0; i < verticesValues.length; i++) {
-            currentLine = reader.readLine();
-            weights[i] = Arrays.stream(currentLine.split(" "))
-                            .mapToInt(Integer::parseInt).toArray();
-        }
-
-        for (int i = 0; i < weights[0].length; i++) {
-            int fromVertexIndex = -1;
-            int toVertexIndex = -1;
-
-            for (int j = 0; j < weights.length; j++) {
-                if (weights[j][i] > 0) {
-                    toVertexIndex = j;
-                } else if (weights[j][i] < 0) {
-                    fromVertexIndex = j;
-                }
+            for (int i = 0; i < verticesValues.length; i++) {
+                currentLine = ((BufferedReader) reader).readLine();
+                weights[i] = Arrays.stream(currentLine.split(" "))
+                        .mapToInt(Integer::parseInt).toArray();
             }
 
-            addEdge(weights[toVertexIndex][i], getVertex((T) verticesValues[fromVertexIndex]),
-                    getVertex((T) verticesValues[toVertexIndex]));
+            for (int i = 0; i < weights[0].length; i++) {
+                int fromVertexIndex = -1;
+                int toVertexIndex = -1;
+
+                for (int j = 0; j < weights.length; j++) {
+                    if (weights[j][i] > 0) {
+                        toVertexIndex = j;
+                    } else if (weights[j][i] < 0) {
+                        fromVertexIndex = j;
+                    }
+                }
+
+                addEdge(weights[toVertexIndex][i], getVertex((T) verticesValues[fromVertexIndex]),
+                        getVertex((T) verticesValues[toVertexIndex]));
+            }
         }
     }
 
@@ -555,18 +558,18 @@ public class Graph<T> {
      * @throws IOException if there is any problems with file reading.
      */
     public void loadAdjacencyList(String file) throws IOException {
-        BufferedReader reader = new BufferedReader(new FileReader(file));
+        try (Reader reader = new BufferedReader(new FileReader(file))) {
+            String currentLine = ((BufferedReader) reader).readLine();
 
-        String currentLine = reader.readLine();
+            String[] verticesValues = currentLine.split(" ");
+            addVertices((T[]) verticesValues);
 
-        String[] verticesValues = currentLine.split(" ");
-        addVertices((T[]) verticesValues);
-
-        while ((currentLine = reader.readLine()) != null) {
-            verticesValues = currentLine.split(" ");
-            for (int i = 1; i < verticesValues.length; i = i + 2) {
-                addEdge(Integer.parseInt(verticesValues[i + 1]),
-                        getVertex((T) verticesValues[0]), getVertex((T) verticesValues[i]));
+            while ((currentLine = ((BufferedReader) reader).readLine()) != null) {
+                verticesValues = currentLine.split(" ");
+                for (int i = 1; i < verticesValues.length; i = i + 2) {
+                    addEdge(Integer.parseInt(verticesValues[i + 1]),
+                            getVertex((T) verticesValues[0]), getVertex((T) verticesValues[i]));
+                }
             }
         }
     }
