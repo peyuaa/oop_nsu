@@ -515,7 +515,7 @@ public class Graph<T> {
      * @throws IOException if there is any problems with file reading.
      */
     public void loadIncidenceMatrix(String file) throws IOException {
-        try(Reader reader = new BufferedReader(new FileReader(file))) {
+        try (Reader reader = new BufferedReader(new FileReader(file))) {
             String currentLine = ((BufferedReader) reader).readLine();
 
             String[] verticesValues = currentLine.split(" ");
