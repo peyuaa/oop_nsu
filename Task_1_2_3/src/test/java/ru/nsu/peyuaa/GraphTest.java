@@ -106,7 +106,8 @@ class GraphTest {
         graph.loadAdjacencyMatrix(getClass().getClassLoader()
                 .getResourceAsStream("adjacencyMatrixTest.txt"));
 
-        graph.changeValue(graph.getVertex("A"), "Z");
+        Optional<Graph.Vertex<String>> vertex = graph.getVertex("A");
+        vertex.ifPresent(stringVertex -> graph.changeValue(stringVertex, "Z"));
 
         graph.printAdjacencyMatrix();
         graph.printIncidenceMatrix();
@@ -123,7 +124,9 @@ class GraphTest {
         graph.loadAdjacencyMatrix(getClass().getClassLoader()
                 .getResourceAsStream("adjacencyMatrixTest.txt"));
 
-        graph.changeValue(graph.getVertex("B"), "N");
+        Optional<Graph.Vertex<String>> vertex = graph.getVertex("B");
+
+        vertex.ifPresent(stringVertex -> graph.changeValue(stringVertex, "N"));
 
         graph.printAdjacencyMatrix();
         graph.printIncidenceMatrix();

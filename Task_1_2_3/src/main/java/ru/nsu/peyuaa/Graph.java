@@ -18,7 +18,7 @@ import java.util.Map.Entry;
  * @param <T> type of the value.
  */
 public class Graph<T> {
-    private static class Vertex<T> {
+    public static class Vertex<T> {
         T value;
         List<Edge<T>> edges;
 
@@ -111,13 +111,13 @@ public class Graph<T> {
      * @param value of the vertex.
      * @return vertex with the value.
      */
-    public Vertex<T> getVertex(T value) {
+    public Optional<Vertex<T>> getVertex(T value) {
         for (Vertex<T> vertex : vertices) {
             if (vertex.value.equals(value)) {
-                return vertex;
+                return Optional.of(vertex);
             }
         }
-        return null;
+        return Optional.empty();
     }
 
     /**
@@ -127,9 +127,9 @@ public class Graph<T> {
      * @return list of the edges incident to vertex with the value.
      */
     public Optional<List<Edge<T>>> getVertexEdges(T value) {
-        Vertex<T> vertex = getVertex(value);
-        if (vertex != null) {
-            return Optional.of(vertex.edges);
+        Optional<Vertex<T>> vertex = getVertex(value);
+        if (vertex.isPresent()) {
+            return Optional.of(vertex.get().edges);
         }
         return Optional.empty();
     }
@@ -140,12 +140,14 @@ public class Graph<T> {
      * @param value delete vertex with the value.
      */
     private void deleteVertexFromAdjacencyMatrix(T value) {
-        Vertex<T> vertex = getVertex(value);
-        adjacencyMatrix.remove(vertex);
+        Optional<Vertex<T>> vertex = getVertex(value);
+        if (vertex.isPresent()) {
+            adjacencyMatrix.remove(vertex.get());
 
-        for (Vertex<T> currentVertex : vertices) {
-            if (!currentVertex.equals(vertex)) {
-                adjacencyMatrix.get(currentVertex).remove(vertex);
+            for (Vertex<T> currentVertex : vertices) {
+                if (!currentVertex.equals(vertex.get())) {
+                    adjacencyMatrix.get(currentVertex).remove(vertex.get());
+                }
             }
         }
     }
@@ -173,11 +175,13 @@ public class Graph<T> {
      * @param value delete vertex with the value.
      */
     private void deleteVertexFromIncidenceMatrix(T value) {
-        Vertex<T> vertex = getVertex(value);
-        for (Edge<T> edge : vertex.edges) {
-            deleteEdgeFromIncidenceMatrix(edge);
+        Optional<Vertex<T>> vertex = getVertex(value);
+        if (vertex.isPresent()) {
+            for (Edge<T> edge : vertex.get().edges) {
+                deleteEdgeFromIncidenceMatrix(edge);
+            }
+            incidenceMatrix.remove(vertex.get());
         }
-        incidenceMatrix.remove(vertex);
     }
 
     /**
@@ -186,13 +190,15 @@ public class Graph<T> {
      * @param value delete vertex with the value.
      */
     private void deleteVertexFromAdjacencyList(T value) {
-        Vertex<T> vertex = getVertex(value);
-        for (Vertex<T> currentVertex : vertices) {
-            if (!currentVertex.equals(vertex)) {
-                adjacencyList.get(currentVertex).remove(vertex);
+        Optional<Vertex<T>> vertex = getVertex(value);
+        if (vertex.isPresent()) {
+            for (Vertex<T> currentVertex : vertices) {
+                if (!currentVertex.equals(vertex.get())) {
+                    adjacencyList.get(currentVertex).remove(vertex.get());
+                }
             }
+            adjacencyList.remove(vertex.get());
         }
-        adjacencyList.remove(vertex);
     }
 
     /**
@@ -484,11 +490,15 @@ public class Graph<T> {
                 int[] weights = Arrays.stream(currentLine.split(" "))
                         .mapToInt(Integer::parseInt).toArray();
 
-                Vertex<T> toVertex = getVertex((T) verticesValue);
+                Optional<Vertex<T>> toVertex = getVertex((T) verticesValue);
 
                 for (int j = 0; j < weights.length; j++) {
                     if (weights[j] != 0) {
-                        addEdge(weights[j], getVertex((T) verticesValues[j]), toVertex);
+                        Optional<Vertex<T>> fromVertex = getVertex((T) verticesValues[j]);
+
+                        if (toVertex.isPresent() && fromVertex.isPresent()) {
+                            addEdge(weights[j], fromVertex.get(), toVertex.get());
+                        }
                     }
                 }
             }
@@ -533,9 +543,13 @@ public class Graph<T> {
                         fromVertexIndex = j;
                     }
                 }
+                Optional<Vertex<T>> fromVertex = getVertex((T) verticesValues[fromVertexIndex]);
+                Optional<Vertex<T>> toVertex = getVertex((T) verticesValues[toVertexIndex]);
 
-                addEdge(weights[toVertexIndex][i], getVertex((T) verticesValues[fromVertexIndex]),
-                        getVertex((T) verticesValues[toVertexIndex]));
+                if (fromVertex.isPresent() && toVertex.isPresent()) {
+                    addEdge(weights[toVertexIndex][i], fromVertex.get(),
+                            toVertex.get());
+                }
             }
         }
     }
@@ -560,8 +574,12 @@ public class Graph<T> {
             while ((currentLine = ((BufferedReader) reader).readLine()) != null) {
                 verticesValues = currentLine.split(" ");
                 for (int i = 1; i < verticesValues.length; i = i + 2) {
-                    addEdge(Integer.parseInt(verticesValues[i + 1]),
-                            getVertex((T) verticesValues[0]), getVertex((T) verticesValues[i]));
+                    Optional<Vertex<T>> fromVertex = getVertex((T) verticesValues[0]);
+                    Optional<Vertex<T>> toVertex = getVertex((T) verticesValues[i]);
+                    if (fromVertex.isPresent() && toVertex.isPresent()) {
+                        addEdge(Integer.parseInt(verticesValues[i + 1]),
+                                fromVertex.get(), toVertex.get());
+                    }
                 }
             }
         }
@@ -609,35 +627,38 @@ public class Graph<T> {
      * @param value of the start vertex.
      */
     public void sortVertices(T value) {
-        int index = vertices.indexOf(getVertex(value));
-        List<Integer> topologicallySortedVertices = topologicalSort(index);
+        Optional<Vertex<T>> initialVertex = getVertex(value);
+        if (initialVertex.isPresent()) {
+            int index = vertices.indexOf(initialVertex.get());
+            List<Integer> topologicallySortedVertices = topologicalSort(index);
 
-        int[] distance = new int[vertices.size()];
-        for (int i = 0; i < vertices.size(); i++) {
-            distance[i] = -1;
-        }
-        distance[index] = 0;
+            int[] distance = new int[vertices.size()];
+            for (int i = 0; i < vertices.size(); i++) {
+                distance[i] = -1;
+            }
+            distance[index] = 0;
 
-        for (Integer topologicallySortedVertex : topologicallySortedVertices) {
-            for (Entry<Vertex<T>, Integer> entry :
-                    adjacencyList.get(vertices.get(topologicallySortedVertex)).entrySet()) {
-                int vertexTo = vertices.indexOf(entry.getKey());
-                if ((distance[vertexTo] == -1)
-                        || (distance[vertexTo]
+            for (Integer topologicallySortedVertex : topologicallySortedVertices) {
+                for (Entry<Vertex<T>, Integer> entry :
+                        adjacencyList.get(vertices.get(topologicallySortedVertex)).entrySet()) {
+                    int vertexTo = vertices.indexOf(entry.getKey());
+                    if ((distance[vertexTo] == -1)
+                            || (distance[vertexTo]
                             > distance[topologicallySortedVertex] + entry.getValue())) {
-                    distance[vertexTo] = distance[topologicallySortedVertex] + entry.getValue();
+                        distance[vertexTo] = distance[topologicallySortedVertex] + entry.getValue();
+                    }
                 }
             }
+
+            Map<T, Integer> unsortedVertices = new HashMap<>();
+            for (int i = 0; i < vertices.size(); i++) {
+                unsortedVertices.put(vertices.get(i).value, distance[i]);
+            }
+
+            unsortedVertices.entrySet().stream()
+                    .sorted(Entry.comparingByValue())
+                    .forEach(k -> System.out.println(k.getKey() + ": " + k.getValue()));
+
         }
-
-        Map<T, Integer> unsortedVertices = new HashMap<>();
-        for (int i = 0; i < vertices.size(); i++) {
-            unsortedVertices.put(vertices.get(i).value, distance[i]);
-        }
-
-        unsortedVertices.entrySet().stream()
-                .sorted(Entry.comparingByValue())
-                .forEach(k -> System.out.println(k.getKey() + ": " + k.getValue()));
-
     }
 }
