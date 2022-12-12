@@ -28,6 +28,11 @@ import java.util.Optional;
  * @param <T> type of the value.
  */
 public class Graph<T> {
+    /**
+     * Vertex class.
+     *
+     * @param <T> type of the vertex value.
+     */
     public static class Vertex<T> {
         T value;
         List<Edge<T>> edges;
