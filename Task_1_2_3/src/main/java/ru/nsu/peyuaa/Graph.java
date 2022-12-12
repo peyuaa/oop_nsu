@@ -4,10 +4,7 @@
 
 package ru.nsu.peyuaa;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.Reader;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -476,11 +473,11 @@ public class Graph<T> {
      * A_ij = N if there is an edge from j to i with weight N.
      * A_ij = 0 otherwise.
      *
-     * @param file with initial data.
+     * @param inputStream with initial data.
      * @throws IOException if there is any problems with file reading.
      */
-    public void loadAdjacencyMatrix(String file) throws IOException {
-        try (Reader reader = new BufferedReader(new FileReader(file))) {
+    public void loadAdjacencyMatrix(InputStream inputStream) throws IOException {
+        try (Reader reader = new BufferedReader(new InputStreamReader(inputStream))) {
             String currentLine = ((BufferedReader) reader).readLine();
 
             String[] verticesValues = currentLine.split(" ");
