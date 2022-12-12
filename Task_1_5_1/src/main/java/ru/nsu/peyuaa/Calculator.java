@@ -6,11 +6,16 @@ package ru.nsu.peyuaa;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.PrintStream;
 import java.util.Arrays;
 import java.util.Stack;
 
 public class Calculator {
+    private final InputStream in;
+    private final PrintStream out;
+
     private boolean isUnaryOperation(String operand) {
         return operand.equals("log") || operand.equals("sqrt")
                 || operand.equals("sin") || operand.equals("cos");
@@ -84,22 +89,16 @@ public class Calculator {
     }
 
     public void startCalculator() throws IOException {
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        System.out.println("Enter the expression in prefix form:");
+        BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+        out.println("Enter the expression in prefix form:");
 
-        while (true) {
-            String expression = reader.readLine();
-            if (expression.isEmpty()) {
-                break;
-            }
+        String expression = reader.readLine();
 
-            calculateExpression(expression.split(" "));
-        }
+        calculateExpression(expression.split(" "));
     }
 
-    public static void main(String[] args) throws IOException {
-        Calculator calculator = new Calculator();
-        calculator.startCalculator();
+    public Calculator(InputStream in, PrintStream out) {
+        this.in = in;
+        this.out = out;
     }
-
 }
