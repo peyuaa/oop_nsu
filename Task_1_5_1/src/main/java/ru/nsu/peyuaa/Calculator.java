@@ -19,18 +19,14 @@ public class Calculator {
     private double doUnaryOperation(String operand, String argument) {
         double arg = Double.parseDouble(argument);
         switch (operand) {
-            case "log" -> {
+            case "log":
                 return Math.log(arg);
-            }
-            case "sqrt" -> {
+            case "sqrt":
                 return Math.sqrt(arg);
-            }
-            case "sin" -> {
+            case "sin":
                 return Math.sin(arg);
-            }
-            case "cos" -> {
+            case "cos":
                 return Math.cos(arg);
-            }
         }
 
         throw new RuntimeException("Unsupported operation");
@@ -45,21 +41,16 @@ public class Calculator {
         double firstArg = Double.parseDouble(firstArgument);
         double secondArg = Double.parseDouble(secondArgument);
         switch (operand) {
-            case "+" -> {
+            case "+":
                 return firstArg + secondArg;
-            }
-            case "-" -> {
+            case "-":
                 return firstArg - secondArg;
-            }
-            case "*" -> {
+            case "*":
                 return firstArg * secondArg;
-            }
-            case "/" -> {
+            case "/":
                 return firstArg / secondArg;
-            }
-            case "pow" -> {
+            case "pow":
                 return Math.pow(firstArg, secondArg);
-            }
         }
 
         throw new RuntimeException("Unsupported operation");
