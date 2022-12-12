@@ -35,9 +35,9 @@ public class Calculator {
                 return Math.sin(arg);
             case "cos":
                 return Math.cos(arg);
+            default:
+                throw new RuntimeException("Unsupported operation");
         }
-
-        throw new RuntimeException("Unsupported operation");
     }
 
     private boolean isBinaryOperation(String operand) {
@@ -59,9 +59,9 @@ public class Calculator {
                 return firstArg / secondArg;
             case "pow":
                 return Math.pow(firstArg, secondArg);
+            default:
+                throw new RuntimeException("Unsupported operation");
         }
-
-        throw new RuntimeException("Unsupported operation");
     }
 
     private void calculateExpression(String[] args) {
