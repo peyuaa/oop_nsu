@@ -149,4 +149,63 @@ class CalculatorTest {
         Assertions.assertEquals(expected, actual.toString(utf8));
     }
 
+    @Test
+    void hardExpression1() throws IOException {
+        ByteArrayInputStream in = new ByteArrayInputStream("sin + - 1 2 1\n".getBytes());
+        String expected = "0.0\n";
+
+        ByteArrayOutputStream actual = new ByteArrayOutputStream();
+        final String utf8 = StandardCharsets.UTF_8.name();
+        PrintStream ps = new PrintStream(actual, true, utf8);
+
+        Calculator calculator = new Calculator(in, ps);
+        calculator.startCalculator();
+
+        Assertions.assertEquals(expected, actual.toString(utf8));
+    }
+
+    @Test
+    void hardExpression2() throws IOException {
+        ByteArrayInputStream in = new ByteArrayInputStream("+ 6 * -1 5\n".getBytes());
+        String expected = "1.0\n";
+
+        ByteArrayOutputStream actual = new ByteArrayOutputStream();
+        final String utf8 = StandardCharsets.UTF_8.name();
+        PrintStream ps = new PrintStream(actual, true, utf8);
+
+        Calculator calculator = new Calculator(in, ps);
+        calculator.startCalculator();
+
+        Assertions.assertEquals(expected, actual.toString(utf8));
+    }
+
+    @Test
+    void hardExpression3() throws IOException {
+        ByteArrayInputStream in = new ByteArrayInputStream("* + 3 4 2\n".getBytes());
+        String expected = "14.0\n";
+
+        ByteArrayOutputStream actual = new ByteArrayOutputStream();
+        final String utf8 = StandardCharsets.UTF_8.name();
+        PrintStream ps = new PrintStream(actual, true, utf8);
+
+        Calculator calculator = new Calculator(in, ps);
+        calculator.startCalculator();
+
+        Assertions.assertEquals(expected, actual.toString(utf8));
+    }
+
+    @Test
+    void hardExpression4() throws IOException {
+        ByteArrayInputStream in = new ByteArrayInputStream("+ + sin 1.57079633 * sqrt 64 cos 0 pow 2 2\n".getBytes());
+        String expected = "13.0\n";
+
+        ByteArrayOutputStream actual = new ByteArrayOutputStream();
+        final String utf8 = StandardCharsets.UTF_8.name();
+        PrintStream ps = new PrintStream(actual, true, utf8);
+
+        Calculator calculator = new Calculator(in, ps);
+        calculator.startCalculator();
+
+        Assertions.assertEquals(expected, actual.toString(utf8));
+    }
 }
