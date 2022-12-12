@@ -196,7 +196,8 @@ class CalculatorTest {
 
     @Test
     void hardExpression4() throws IOException {
-        ByteArrayInputStream in = new ByteArrayInputStream("+ + sin 1.57079633 * sqrt 64 cos 0 pow 2 2\n".getBytes());
+        ByteArrayInputStream in =
+                new ByteArrayInputStream("+ + sin 1.57079633 * sqrt 64 cos 0 pow 2 2\n".getBytes());
         String expected = "13.0\n";
 
         ByteArrayOutputStream actual = new ByteArrayOutputStream();
