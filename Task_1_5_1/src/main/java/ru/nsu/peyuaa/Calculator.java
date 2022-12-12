@@ -12,11 +12,8 @@ import java.util.Stack;
 
 public class Calculator {
     private boolean isUnaryOperation(String operand) {
-        if (operand.equals("log") || operand.equals("sqrt")
-                || operand.equals("sin") || operand.equals("cos")) {
-            return true;
-        }
-        return false;
+        return operand.equals("log") || operand.equals("sqrt")
+                || operand.equals("sin") || operand.equals("cos");
     }
 
     private double doUnaryOperation(String operand, String argument) {
@@ -36,11 +33,8 @@ public class Calculator {
     }
 
     private boolean isBinaryOperation(String operand) {
-        if (operand.equals("+") || operand.equals("-") || operand.equals("*") || operand.equals("/")
-                || operand.equals("pow")) {
-            return true;
-        }
-        return false;
+        return operand.equals("+") || operand.equals("-") || operand.equals("*") || operand.equals("/")
+                || operand.equals("pow");
     }
 
     private double doBinaryOperation(String operand, String firstArgument, String secondArgument) {
