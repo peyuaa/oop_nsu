@@ -295,7 +295,7 @@ extends java.lang.Object</pre>
 </tr>
 <tr id="i12" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#loadAdjacencyMatrix(java.lang.String)">loadAdjacencyMatrix</a></span>&#8203;(java.lang.String&nbsp;file)</code></th>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#loadAdjacencyMatrix(java.io.InputStream)">loadAdjacencyMatrix</a></span>&#8203;(java.io.InputStream&nbsp;inputStream)</code></th>
 <td class="colLast">
 <div class="block">Loads graph's initial state from adjacency matrix.</div>
 </td>
@@ -591,13 +591,13 @@ extends java.lang.Object</pre>
 <div class="block">Prints adjacency list.</div>
 </li>
 </ul>
-<a id="loadAdjacencyMatrix(java.lang.String)">
+<a id="loadAdjacencyMatrix(java.io.InputStream)">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>loadAdjacencyMatrix</h4>
-<pre class="methodSignature">public&nbsp;void&nbsp;loadAdjacencyMatrix&#8203;(java.lang.String&nbsp;file)
+<pre class="methodSignature">public&nbsp;void&nbsp;loadAdjacencyMatrix&#8203;(java.io.InputStream&nbsp;inputStream)
                          throws java.io.IOException</pre>
 <div class="block">Loads graph's initial state from adjacency matrix.
  First line of the file - values of nodes.
@@ -607,7 +607,7 @@ extends java.lang.Object</pre>
  A_ij = 0 otherwise.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>file</code> - with initial data.</dd>
+<dd><code>inputStream</code> - with initial data.</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
 <dd><code>java.io.IOException</code> - if there is any problems with file reading.</dd>
 </dl>
