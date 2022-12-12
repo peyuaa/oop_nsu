@@ -10,6 +10,8 @@ import java.io.PrintStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
+import java.util.Optional;
+
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -83,9 +85,9 @@ class GraphTest {
         graph.loadAdjacencyMatrix(getClass().getClassLoader()
                 .getResourceAsStream("adjacencyMatrixTest.txt"));
 
-        List<Graph.Edge<String>> edges = graph.getVertexEdges("A");
+        Optional<List<Graph.Edge<String>>> edges = graph.getVertexEdges("A");
 
-        for (Graph.Edge<String> edge : edges) {
+        for (Graph.Edge<String> edge : edges.get()) {
             graph.changeWeight(edge, 7);
         }
 
@@ -138,9 +140,9 @@ class GraphTest {
         graph.loadAdjacencyMatrix(getClass().getClassLoader()
                 .getResourceAsStream("adjacencyMatrixTest.txt"));
 
-        List<Graph.Edge<String>> edges = graph.getVertexEdges("A");
+        Optional<List<Graph.Edge<String>>> edges = graph.getVertexEdges("A");
 
-        for (Graph.Edge<String> edge : edges) {
+        for (Graph.Edge<String> edge : edges.get()) {
             if (edge.weight == 5) {
                 graph.deleteEdge(edge);
                 break;

@@ -9,16 +9,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Deque;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.Map.Entry;
 
 /**
@@ -135,12 +126,12 @@ public class Graph<T> {
      * @param value of the vertex.
      * @return list of the edges incident to vertex with the value.
      */
-    public List<Edge<T>> getVertexEdges(T value) {
+    public Optional<List<Edge<T>>> getVertexEdges(T value) {
         Vertex<T> vertex = getVertex(value);
         if (vertex != null) {
-            return vertex.edges;
+            return Optional.of(vertex.edges);
         }
-        return null;
+        return Optional.empty();
     }
 
     /**
