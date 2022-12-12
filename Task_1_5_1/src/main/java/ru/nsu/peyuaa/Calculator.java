@@ -41,8 +41,8 @@ public class Calculator {
     }
 
     private boolean isBinaryOperation(String operand) {
-        return operand.equals("+") || operand.equals("-") || operand.equals("*") || operand.equals("/")
-                || operand.equals("pow");
+        return operand.equals("+") || operand.equals("-") || operand.equals("*")
+                || operand.equals("/") || operand.equals("pow");
     }
 
     private double doBinaryOperation(String operand, String firstArgument, String secondArgument) {
