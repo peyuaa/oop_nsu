@@ -86,8 +86,10 @@ class GraphTest {
 
         Optional<List<Graph.Edge<String>>> edges = graph.getVertexEdges("A");
 
-        for (Graph.Edge<String> edge : edges.get()) {
-            graph.changeWeight(edge, 7);
+        if (edges.isPresent()) {
+            for (Graph.Edge<String> edge : edges.get()) {
+                graph.changeWeight(edge, 7);
+            }
         }
 
         graph.printAdjacencyMatrix();
@@ -144,10 +146,12 @@ class GraphTest {
 
         Optional<List<Graph.Edge<String>>> edges = graph.getVertexEdges("A");
 
-        for (Graph.Edge<String> edge : edges.get()) {
-            if (edge.weight == 5) {
-                graph.deleteEdge(edge);
-                break;
+        if (edges.isPresent()) {
+            for (Graph.Edge<String> edge : edges.get()) {
+                if (edge.weight == 5) {
+                    graph.deleteEdge(edge);
+                    break;
+                }
             }
         }
 
