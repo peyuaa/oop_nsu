@@ -9,16 +9,17 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
+import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Deque;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
-import java.util.Stack;
 
 /**
  * Graph class.
@@ -575,21 +576,21 @@ public class Graph<T> {
         }
     }
 
-    private void topologicalSortUtil(int v, boolean[] visited, Stack<Integer> stack) {
+    private void topologicalSortUtil(int v, boolean[] visited, Deque<Integer> deque) {
         visited[v] = true;
 
         for (Entry<Vertex<T>, Integer> entry : adjacencyList.get(vertices.get(v)).entrySet()) {
             int index = vertices.indexOf(entry.getKey());
             if (!visited[index]) {
-                topologicalSortUtil(index, visited, stack);
+                topologicalSortUtil(index, visited, deque);
             }
         }
 
-        stack.push(v);
+        deque.addLast(v);
     }
 
     private List<Integer> topologicalSort(int v) {
-        Stack<Integer> stack = new Stack<>();
+        Deque<Integer> deque = new ArrayDeque<>();
 
         boolean[] visited = new boolean[vertices.size()];
 
@@ -597,15 +598,15 @@ public class Graph<T> {
             visited[i] = false;
         }
 
-        topologicalSortUtil(v, visited, stack);
+        topologicalSortUtil(v, visited, deque);
 
         for (int i = 0; i < vertices.size(); i++) {
             if (!visited[i]) {
-                topologicalSortUtil(i, visited, stack);
+                topologicalSortUtil(i, visited, deque);
             }
         }
 
-        List<Integer> sortedVertices = new ArrayList<>(stack);
+        List<Integer> sortedVertices = new ArrayList<>(deque);
         Collections.reverse(sortedVertices);
 
         return sortedVertices;
