@@ -551,11 +551,11 @@ public class Graph<T> {
      * After first values there is a pairs
      * [node_value] [weight of edge from first vertex in the line to the vertex with [node_value]]
      *
-     * @param file with initial data.
+     * @param inputStream with initial data.
      * @throws IOException if there is any problems with file reading.
      */
-    public void loadAdjacencyList(String file) throws IOException {
-        try (Reader reader = new BufferedReader(new FileReader(file))) {
+    public void loadAdjacencyList(InputStream inputStream) throws IOException {
+        try (Reader reader = new BufferedReader(new InputStreamReader(inputStream))) {
             String currentLine = ((BufferedReader) reader).readLine();
 
             String[] verticesValues = currentLine.split(" ");

@@ -64,7 +64,7 @@ class GraphTest {
     @Test
     void adjacencyListLoadTest() throws  IOException {
         Graph<String> graph = new Graph<>();
-        graph.loadAdjacencyList("./src/test/resources/adjacencyListTest.txt");
+        graph.loadAdjacencyList(getClass().getClassLoader().getResourceAsStream("adjacencyListTest.txt"));
         graph.printAdjacencyMatrix();
         graph.printIncidenceMatrix();
         graph.printAdjacencyList();
