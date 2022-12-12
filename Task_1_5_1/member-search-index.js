@@ -1,1 +1,1 @@
-memberSearchIndex = [{"p":"ru.nsu.peyuaa","c":"Calculator","l":"Calculator()","url":"%3Cinit%3E()"},{"p":"ru.nsu.peyuaa","c":"Calculator","l":"main(String[])","url":"main(java.lang.String[])"},{"p":"ru.nsu.peyuaa","c":"Calculator","l":"startCalculator()"}]
+memberSearchIndex = [{"p":"ru.nsu.peyuaa","c":"Calculator","l":"Calculator(InputStream, PrintStream)","url":"%3Cinit%3E(java.io.InputStream,java.io.PrintStream)"},{"p":"ru.nsu.peyuaa","c":"Calculator","l":"startCalculator()"}]
