@@ -508,11 +508,11 @@ public class Graph<T> {
      * A_ij less than 0 if there is and edge from vertex i.
      * A_ij = 0 otherwise.
      *
-     * @param file with initial data.
+     * @param inputStream with initial data.
      * @throws IOException if there is any problems with file reading.
      */
-    public void loadIncidenceMatrix(String file) throws IOException {
-        try (Reader reader = new BufferedReader(new FileReader(file))) {
+    public void loadIncidenceMatrix(InputStream inputStream) throws IOException {
+        try (Reader reader = new BufferedReader(new InputStreamReader(inputStream))) {
             String currentLine = ((BufferedReader) reader).readLine();
 
             String[] verticesValues = currentLine.split(" ");

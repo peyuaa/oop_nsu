@@ -51,7 +51,7 @@ class GraphTest {
     @Test
     void incidenceMatrixLoadTest() throws IOException {
         Graph<String> graph = new Graph<>();
-        graph.loadIncidenceMatrix("./src/test/resources/incidenceMatrixTest.txt");
+        graph.loadIncidenceMatrix(getClass().getClassLoader().getResourceAsStream("incidenceMatrixTest.txt"));
         graph.printAdjacencyMatrix();
         graph.printIncidenceMatrix();
         graph.printAdjacencyList();
