@@ -85,12 +85,11 @@ public class Calculator {
             }
         }
 
-        System.out.println(helperStack.pop());
+        out.println(helperStack.pop());
     }
 
     public void startCalculator() throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(in));
-        out.println("Enter the expression in prefix form:");
 
         String expression = reader.readLine();
 
