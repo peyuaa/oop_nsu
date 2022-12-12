@@ -74,4 +74,79 @@ class CalculatorTest {
         Assertions.assertEquals(expected, actual.toString(utf8));
     }
 
+    @Test
+    void pow() throws IOException {
+        ByteArrayInputStream in = new ByteArrayInputStream("pow 2 5\n".getBytes());
+        String expected = "32.0\n";
+
+        ByteArrayOutputStream actual = new ByteArrayOutputStream();
+        final String utf8 = StandardCharsets.UTF_8.name();
+        PrintStream ps = new PrintStream(actual, true, utf8);
+
+        Calculator calculator = new Calculator(in, ps);
+        calculator.startCalculator();
+
+        Assertions.assertEquals(expected, actual.toString(utf8));
+    }
+
+    @Test
+    void log() throws IOException {
+        ByteArrayInputStream in = new ByteArrayInputStream("log 17\n".getBytes());
+        String expected = "2.833213344056216\n";
+
+        ByteArrayOutputStream actual = new ByteArrayOutputStream();
+        final String utf8 = StandardCharsets.UTF_8.name();
+        PrintStream ps = new PrintStream(actual, true, utf8);
+
+        Calculator calculator = new Calculator(in, ps);
+        calculator.startCalculator();
+
+        Assertions.assertEquals(expected, actual.toString(utf8));
+    }
+
+    @Test
+    void sqrt() throws IOException {
+        ByteArrayInputStream in = new ByteArrayInputStream("sqrt 16\n".getBytes());
+        String expected = "4.0\n";
+
+        ByteArrayOutputStream actual = new ByteArrayOutputStream();
+        final String utf8 = StandardCharsets.UTF_8.name();
+        PrintStream ps = new PrintStream(actual, true, utf8);
+
+        Calculator calculator = new Calculator(in, ps);
+        calculator.startCalculator();
+
+        Assertions.assertEquals(expected, actual.toString(utf8));
+    }
+
+    @Test
+    void sin() throws IOException {
+        ByteArrayInputStream in = new ByteArrayInputStream("sin 0\n".getBytes());
+        String expected = "0.0\n";
+
+        ByteArrayOutputStream actual = new ByteArrayOutputStream();
+        final String utf8 = StandardCharsets.UTF_8.name();
+        PrintStream ps = new PrintStream(actual, true, utf8);
+
+        Calculator calculator = new Calculator(in, ps);
+        calculator.startCalculator();
+
+        Assertions.assertEquals(expected, actual.toString(utf8));
+    }
+
+    @Test
+    void cos() throws IOException {
+        ByteArrayInputStream in = new ByteArrayInputStream("cos 0\n".getBytes());
+        String expected = "1.0\n";
+
+        ByteArrayOutputStream actual = new ByteArrayOutputStream();
+        final String utf8 = StandardCharsets.UTF_8.name();
+        PrintStream ps = new PrintStream(actual, true, utf8);
+
+        Calculator calculator = new Calculator(in, ps);
+        calculator.startCalculator();
+
+        Assertions.assertEquals(expected, actual.toString(utf8));
+    }
+
 }
