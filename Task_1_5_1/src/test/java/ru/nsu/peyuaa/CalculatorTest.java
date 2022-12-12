@@ -29,4 +29,49 @@ class CalculatorTest {
 
     }
 
+    @Test
+    void multiplication() throws IOException {
+        ByteArrayInputStream in = new ByteArrayInputStream("* 17 9\n".getBytes());
+        String expected = "153.0\n";
+
+        ByteArrayOutputStream actual = new ByteArrayOutputStream();
+        final String utf8 = StandardCharsets.UTF_8.name();
+        PrintStream ps = new PrintStream(actual, true, utf8);
+
+        Calculator calculator = new Calculator(in, ps);
+        calculator.startCalculator();
+
+        Assertions.assertEquals(expected, actual.toString(utf8));
+    }
+
+    @Test
+    void division() throws IOException {
+        ByteArrayInputStream in = new ByteArrayInputStream("/ 13 4\n".getBytes());
+        String expected = "3.25\n";
+
+        ByteArrayOutputStream actual = new ByteArrayOutputStream();
+        final String utf8 = StandardCharsets.UTF_8.name();
+        PrintStream ps = new PrintStream(actual, true, utf8);
+
+        Calculator calculator = new Calculator(in, ps);
+        calculator.startCalculator();
+
+        Assertions.assertEquals(expected, actual.toString(utf8));
+    }
+
+    @Test
+    void minus() throws IOException {
+        ByteArrayInputStream in = new ByteArrayInputStream("- -91 9\n".getBytes());
+        String expected = "-100.0\n";
+
+        ByteArrayOutputStream actual = new ByteArrayOutputStream();
+        final String utf8 = StandardCharsets.UTF_8.name();
+        PrintStream ps = new PrintStream(actual, true, utf8);
+
+        Calculator calculator = new Calculator(in, ps);
+        calculator.startCalculator();
+
+        Assertions.assertEquals(expected, actual.toString(utf8));
+    }
+
 }
