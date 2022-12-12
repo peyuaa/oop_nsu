@@ -38,7 +38,8 @@ class GraphTest {
     void adjacencyMatrixLoadTest() throws IOException {
         Graph<String> graph = new Graph<>();
 
-        graph.loadAdjacencyMatrix(getClass().getClassLoader().getResourceAsStream("adjacencyMatrixTest.txt"));
+        graph.loadAdjacencyMatrix(getClass().getClassLoader()
+                .getResourceAsStream("adjacencyMatrixTest.txt"));
         graph.printAdjacencyMatrix();
         graph.printIncidenceMatrix();
         graph.printAdjacencyList();
@@ -51,7 +52,8 @@ class GraphTest {
     @Test
     void incidenceMatrixLoadTest() throws IOException {
         Graph<String> graph = new Graph<>();
-        graph.loadIncidenceMatrix(getClass().getClassLoader().getResourceAsStream("incidenceMatrixTest.txt"));
+        graph.loadIncidenceMatrix(getClass().getClassLoader()
+                .getResourceAsStream("incidenceMatrixTest.txt"));
         graph.printAdjacencyMatrix();
         graph.printIncidenceMatrix();
         graph.printAdjacencyList();
@@ -64,7 +66,8 @@ class GraphTest {
     @Test
     void adjacencyListLoadTest() throws  IOException {
         Graph<String> graph = new Graph<>();
-        graph.loadAdjacencyList(getClass().getClassLoader().getResourceAsStream("adjacencyListTest.txt"));
+        graph.loadAdjacencyList(getClass().getClassLoader()
+                .getResourceAsStream("adjacencyListTest.txt"));
         graph.printAdjacencyMatrix();
         graph.printIncidenceMatrix();
         graph.printAdjacencyList();
@@ -77,7 +80,8 @@ class GraphTest {
     @Test
     void changeWeight() throws IOException {
         Graph<String> graph = new Graph<>();
-        graph.loadAdjacencyMatrix(getClass().getClassLoader().getResourceAsStream("adjacencyMatrixTest.txt"));
+        graph.loadAdjacencyMatrix(getClass().getClassLoader()
+                .getResourceAsStream("adjacencyMatrixTest.txt"));
 
         List<Graph.Edge<String>> edges = graph.getVertexEdges("A");
 
@@ -97,7 +101,8 @@ class GraphTest {
     @Test
     void changeVertexValue() throws IOException {
         Graph<String> graph = new Graph<>();
-        graph.loadAdjacencyMatrix(getClass().getClassLoader().getResourceAsStream("adjacencyMatrixTest.txt"));
+        graph.loadAdjacencyMatrix(getClass().getClassLoader()
+                .getResourceAsStream("adjacencyMatrixTest.txt"));
 
         graph.changeValue(graph.getVertex("A"), "Z");
 
@@ -113,7 +118,8 @@ class GraphTest {
     @Test
     void changeVertexValue2() throws IOException {
         Graph<String> graph = new Graph<>();
-        graph.loadAdjacencyMatrix(getClass().getClassLoader().getResourceAsStream("adjacencyMatrixTest.txt"));
+        graph.loadAdjacencyMatrix(getClass().getClassLoader()
+                .getResourceAsStream("adjacencyMatrixTest.txt"));
 
         graph.changeValue(graph.getVertex("B"), "N");
 
@@ -129,7 +135,8 @@ class GraphTest {
     @Test
     void deleteEdge() throws IOException {
         Graph<String> graph = new Graph<>();
-        graph.loadAdjacencyMatrix(getClass().getClassLoader().getResourceAsStream("adjacencyMatrixTest.txt"));
+        graph.loadAdjacencyMatrix(getClass().getClassLoader()
+                .getResourceAsStream("adjacencyMatrixTest.txt"));
 
         List<Graph.Edge<String>> edges = graph.getVertexEdges("A");
 
@@ -152,7 +159,8 @@ class GraphTest {
     @Test
     void deleteVertex() throws IOException {
         Graph<String> graph = new Graph<>();
-        graph.loadAdjacencyMatrix(getClass().getClassLoader().getResourceAsStream("adjacencyMatrixTest.txt"));
+        graph.loadAdjacencyMatrix(getClass().getClassLoader()
+                .getResourceAsStream("adjacencyMatrixTest.txt"));
 
         graph.deleteVertex("A");
 
@@ -168,7 +176,8 @@ class GraphTest {
     @Test
     void sort() throws IOException {
         Graph<String> graph = new Graph<>();
-        graph.loadAdjacencyMatrix(getClass().getClassLoader().getResourceAsStream("DAGadjacencyMatrix.txt"));
+        graph.loadAdjacencyMatrix(getClass().getClassLoader()
+                .getResourceAsStream("DAGadjacencyMatrix.txt"));
 
         graph.sortVertices("A");
 
