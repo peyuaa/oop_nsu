@@ -164,6 +164,11 @@ extends java.lang.Object</pre>
 <div class="block">Edge class.</div>
 </td>
 </tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static class&nbsp;</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="Graph.Vertex.html" title="class in ru.nsu.peyuaa">Graph.Vertex</a>&lt;<a href="Graph.Vertex.html" title="type parameter in Graph.Vertex">T</a>&gt;</span></code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
 </table>
 </li>
 </ul>
@@ -208,8 +213,8 @@ extends java.lang.Object</pre>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#addEdge(int,ru.nsu.peyuaa.Graph.Vertex,ru.nsu.peyuaa.Graph.Vertex)">addEdge</a></span>&#8203;(int&nbsp;weight,
-       ru.nsu.peyuaa.Graph.Vertex&lt;<a href="Graph.html" title="type parameter in Graph">T</a>&gt;&nbsp;from,
-       ru.nsu.peyuaa.Graph.Vertex&lt;<a href="Graph.html" title="type parameter in Graph">T</a>&gt;&nbsp;to)</code></th>
+       <a href="Graph.Vertex.html" title="class in ru.nsu.peyuaa">Graph.Vertex</a>&lt;<a href="Graph.html" title="type parameter in Graph">T</a>&gt;&nbsp;from,
+       <a href="Graph.Vertex.html" title="class in ru.nsu.peyuaa">Graph.Vertex</a>&lt;<a href="Graph.html" title="type parameter in Graph">T</a>&gt;&nbsp;to)</code></th>
 <td class="colLast">
 <div class="block">Add new edge.</div>
 </td>
@@ -230,7 +235,7 @@ extends java.lang.Object</pre>
 </tr>
 <tr id="i3" class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#changeValue(ru.nsu.peyuaa.Graph.Vertex,T)">changeValue</a></span>&#8203;(ru.nsu.peyuaa.Graph.Vertex&lt;<a href="Graph.html" title="type parameter in Graph">T</a>&gt;&nbsp;vertex,
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#changeValue(ru.nsu.peyuaa.Graph.Vertex,T)">changeValue</a></span>&#8203;(<a href="Graph.Vertex.html" title="class in ru.nsu.peyuaa">Graph.Vertex</a>&lt;<a href="Graph.html" title="type parameter in Graph">T</a>&gt;&nbsp;vertex,
            <a href="Graph.html" title="type parameter in Graph">T</a>&nbsp;value)</code></th>
 <td class="colLast">
 <div class="block">Change vertex value.</div>
@@ -260,13 +265,13 @@ extends java.lang.Object</pre>
 </tr>
 <tr id="i7" class="rowColor">
 <td class="colFirst"><code><a href="Graph.html" title="type parameter in Graph">T</a></code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getValue(ru.nsu.peyuaa.Graph.Vertex)">getValue</a></span>&#8203;(ru.nsu.peyuaa.Graph.Vertex&lt;<a href="Graph.html" title="type parameter in Graph">T</a>&gt;&nbsp;vertex)</code></th>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getValue(ru.nsu.peyuaa.Graph.Vertex)">getValue</a></span>&#8203;(<a href="Graph.Vertex.html" title="class in ru.nsu.peyuaa">Graph.Vertex</a>&lt;<a href="Graph.html" title="type parameter in Graph">T</a>&gt;&nbsp;vertex)</code></th>
 <td class="colLast">
 <div class="block">Return vertex value.</div>
 </td>
 </tr>
 <tr id="i8" class="altColor">
-<td class="colFirst"><code>ru.nsu.peyuaa.Graph.Vertex&lt;<a href="Graph.html" title="type parameter in Graph">T</a>&gt;</code></td>
+<td class="colFirst"><code>java.util.Optional&lt;<a href="Graph.Vertex.html" title="class in ru.nsu.peyuaa">Graph.Vertex</a>&lt;<a href="Graph.html" title="type parameter in Graph">T</a>&gt;&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getVertex(T)">getVertex</a></span>&#8203;(<a href="Graph.html" title="type parameter in Graph">T</a>&nbsp;value)</code></th>
 <td class="colLast">
 <div class="block">Return vertex with the value.</div>
@@ -419,7 +424,7 @@ extends java.lang.Object</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>getVertex</h4>
-<pre class="methodSignature">public&nbsp;ru.nsu.peyuaa.Graph.Vertex&lt;<a href="Graph.html" title="type parameter in Graph">T</a>&gt;&nbsp;getVertex&#8203;(<a href="Graph.html" title="type parameter in Graph">T</a>&nbsp;value)</pre>
+<pre class="methodSignature">public&nbsp;java.util.Optional&lt;<a href="Graph.Vertex.html" title="class in ru.nsu.peyuaa">Graph.Vertex</a>&lt;<a href="Graph.html" title="type parameter in Graph">T</a>&gt;&gt;&nbsp;getVertex&#8203;(<a href="Graph.html" title="type parameter in Graph">T</a>&nbsp;value)</pre>
 <div class="block">Return vertex with the value.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -470,8 +475,8 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>addEdge</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;addEdge&#8203;(int&nbsp;weight,
-                    ru.nsu.peyuaa.Graph.Vertex&lt;<a href="Graph.html" title="type parameter in Graph">T</a>&gt;&nbsp;from,
-                    ru.nsu.peyuaa.Graph.Vertex&lt;<a href="Graph.html" title="type parameter in Graph">T</a>&gt;&nbsp;to)</pre>
+                    <a href="Graph.Vertex.html" title="class in ru.nsu.peyuaa">Graph.Vertex</a>&lt;<a href="Graph.html" title="type parameter in Graph">T</a>&gt;&nbsp;from,
+                    <a href="Graph.Vertex.html" title="class in ru.nsu.peyuaa">Graph.Vertex</a>&lt;<a href="Graph.html" title="type parameter in Graph">T</a>&gt;&nbsp;to)</pre>
 <div class="block">Add new edge.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -501,7 +506,7 @@ extends java.lang.Object</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>getValue</h4>
-<pre class="methodSignature">public&nbsp;<a href="Graph.html" title="type parameter in Graph">T</a>&nbsp;getValue&#8203;(ru.nsu.peyuaa.Graph.Vertex&lt;<a href="Graph.html" title="type parameter in Graph">T</a>&gt;&nbsp;vertex)</pre>
+<pre class="methodSignature">public&nbsp;<a href="Graph.html" title="type parameter in Graph">T</a>&nbsp;getValue&#8203;(<a href="Graph.Vertex.html" title="class in ru.nsu.peyuaa">Graph.Vertex</a>&lt;<a href="Graph.html" title="type parameter in Graph">T</a>&gt;&nbsp;vertex)</pre>
 <div class="block">Return vertex value.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -519,7 +524,7 @@ extends java.lang.Object</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>changeValue</h4>
-<pre class="methodSignature">public&nbsp;void&nbsp;changeValue&#8203;(ru.nsu.peyuaa.Graph.Vertex&lt;<a href="Graph.html" title="type parameter in Graph">T</a>&gt;&nbsp;vertex,
+<pre class="methodSignature">public&nbsp;void&nbsp;changeValue&#8203;(<a href="Graph.Vertex.html" title="class in ru.nsu.peyuaa">Graph.Vertex</a>&lt;<a href="Graph.html" title="type parameter in Graph">T</a>&gt;&nbsp;vertex,
                         <a href="Graph.html" title="type parameter in Graph">T</a>&nbsp;value)</pre>
 <div class="block">Change vertex value.</div>
 <dl>
