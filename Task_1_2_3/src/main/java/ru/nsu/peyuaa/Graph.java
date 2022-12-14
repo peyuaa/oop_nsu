@@ -127,12 +127,7 @@ public class Graph<T> {
      * @return vertex with the value.
      */
     public Optional<Vertex<T>> getVertex(T value) {
-        for (Vertex<T> vertex : vertices) {
-            if (vertex.value.equals(value)) {
-                return Optional.of(vertex);
-            }
-        }
-        return Optional.empty();
+        return vertices.stream().filter(vertex -> vertex.value.equals(value)).findAny();
     }
 
     /**
