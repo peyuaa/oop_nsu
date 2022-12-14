@@ -209,4 +209,21 @@ class CalculatorTest {
 
         Assertions.assertEquals(expected, actual.toString(utf8));
     }
+
+    @Test
+    void hardExpression5() throws IOException {
+        ByteArrayInputStream in =
+                new ByteArrayInputStream(("* + + sin 1.57079633 * sqrt 64 cos 0 pow 2 2 + + +" +
+                        " sin 1.57079633 * sqrt 64 cos 0 pow 2 2 sin - pow 2 5 sqrt pow 32 2\n").getBytes());
+        String expected = "169.0\n";
+
+        ByteArrayOutputStream actual = new ByteArrayOutputStream();
+        final String utf8 = StandardCharsets.UTF_8.name();
+        PrintStream ps = new PrintStream(actual, true, utf8);
+
+        Calculator calculator = new Calculator(in, ps);
+        calculator.startCalculator();
+
+        Assertions.assertEquals(expected, actual.toString(utf8));
+    }
 }
