@@ -489,14 +489,14 @@ public class Graph<T> {
      * @throws IOException if there is any problems with file reading.
      */
     public void loadAdjacencyMatrix(InputStream inputStream) throws IOException {
-        try (Reader reader = new BufferedReader(new InputStreamReader(inputStream))) {
-            String currentLine = ((BufferedReader) reader).readLine();
+        try (var reader = new BufferedReader(new InputStreamReader(inputStream))) {
+            String currentLine = reader.readLine();
 
             String[] verticesValues = currentLine.split(" ");
             addVertices((T[]) verticesValues);
 
             for (String verticesValue : verticesValues) {
-                currentLine = ((BufferedReader) reader).readLine();
+                currentLine = reader.readLine();
                 int[] weights = Arrays.stream(currentLine.split(" "))
                         .mapToInt(Integer::parseInt).toArray();
 
@@ -528,8 +528,8 @@ public class Graph<T> {
      * @throws IOException if there is any problems with file reading.
      */
     public void loadIncidenceMatrix(InputStream inputStream) throws IOException {
-        try (Reader reader = new BufferedReader(new InputStreamReader(inputStream))) {
-            String currentLine = ((BufferedReader) reader).readLine();
+        try (var reader = new BufferedReader(new InputStreamReader(inputStream))) {
+            String currentLine = reader.readLine();
 
             String[] verticesValues = currentLine.split(" ");
             addVertices((T[]) verticesValues);
@@ -537,7 +537,7 @@ public class Graph<T> {
             int[][] weights = new int[verticesValues.length][];
 
             for (int i = 0; i < verticesValues.length; i++) {
-                currentLine = ((BufferedReader) reader).readLine();
+                currentLine = reader.readLine();
                 weights[i] = Arrays.stream(currentLine.split(" "))
                         .mapToInt(Integer::parseInt).toArray();
             }
@@ -575,13 +575,13 @@ public class Graph<T> {
      * @throws IOException if there is any problems with file reading.
      */
     public void loadAdjacencyList(InputStream inputStream) throws IOException {
-        try (Reader reader = new BufferedReader(new InputStreamReader(inputStream))) {
-            String currentLine = ((BufferedReader) reader).readLine();
+        try (var reader = new BufferedReader(new InputStreamReader(inputStream))) {
+            String currentLine = reader.readLine();
 
             String[] verticesValues = currentLine.split(" ");
             addVertices((T[]) verticesValues);
 
-            while ((currentLine = ((BufferedReader) reader).readLine()) != null) {
+            while ((currentLine = reader.readLine()) != null) {
                 verticesValues = currentLine.split(" ");
                 for (int i = 1; i < verticesValues.length; i = i + 2) {
                     Optional<Vertex<T>> fromVertex = getVertex((T) verticesValues[0]);
