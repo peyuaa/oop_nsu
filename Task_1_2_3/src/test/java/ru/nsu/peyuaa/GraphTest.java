@@ -6,6 +6,7 @@ package ru.nsu.peyuaa;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -39,8 +40,11 @@ class GraphTest {
     void adjacencyMatrixLoadTest() throws IOException {
         Graph<String> graph = new Graph<>();
 
-        graph.loadAdjacencyMatrix(getClass().getClassLoader()
-                .getResourceAsStream("adjacencyMatrixTest.txt"));
+        try (InputStream inputStream = getClass().getClassLoader()
+                .getResourceAsStream("adjacencyMatrixTest.txt")) {
+            graph.loadAdjacencyMatrix(inputStream);
+        }
+
         graph.printAdjacencyMatrix();
         graph.printIncidenceMatrix();
         graph.printAdjacencyList();
@@ -53,8 +57,12 @@ class GraphTest {
     @Test
     void incidenceMatrixLoadTest() throws IOException {
         Graph<String> graph = new Graph<>();
-        graph.loadIncidenceMatrix(getClass().getClassLoader()
-                .getResourceAsStream("incidenceMatrixTest.txt"));
+
+        try (InputStream inputStream = getClass().getClassLoader()
+                .getResourceAsStream("incidenceMatrixTest.txt")) {
+            graph.loadIncidenceMatrix(inputStream);
+        }
+
         graph.printAdjacencyMatrix();
         graph.printIncidenceMatrix();
         graph.printAdjacencyList();
@@ -67,8 +75,12 @@ class GraphTest {
     @Test
     void adjacencyListLoadTest() throws  IOException {
         Graph<String> graph = new Graph<>();
-        graph.loadAdjacencyList(getClass().getClassLoader()
-                .getResourceAsStream("adjacencyListTest.txt"));
+
+        try (InputStream inputStream = getClass().getClassLoader()
+                .getResourceAsStream("adjacencyListTest.txt")) {
+            graph.loadAdjacencyList(inputStream);
+        }
+
         graph.printAdjacencyMatrix();
         graph.printIncidenceMatrix();
         graph.printAdjacencyList();
@@ -81,8 +93,11 @@ class GraphTest {
     @Test
     void changeWeight() throws IOException {
         Graph<String> graph = new Graph<>();
-        graph.loadAdjacencyMatrix(getClass().getClassLoader()
-                .getResourceAsStream("adjacencyMatrixTest.txt"));
+
+        try (InputStream inputStream = getClass().getClassLoader()
+                .getResourceAsStream("adjacencyMatrixTest.txt")) {
+            graph.loadAdjacencyMatrix(inputStream);
+        }
 
         Optional<List<Graph.Edge<String>>> edges = graph.getVertexEdges("A");
 
@@ -104,8 +119,11 @@ class GraphTest {
     @Test
     void changeVertexValue() throws IOException {
         Graph<String> graph = new Graph<>();
-        graph.loadAdjacencyMatrix(getClass().getClassLoader()
-                .getResourceAsStream("adjacencyMatrixTest.txt"));
+
+        try (InputStream inputStream = getClass().getClassLoader()
+                .getResourceAsStream("adjacencyMatrixTest.txt")) {
+            graph.loadAdjacencyMatrix(inputStream);
+        }
 
         Optional<Graph.Vertex<String>> vertex = graph.getVertex("A");
         vertex.ifPresent(stringVertex -> graph.changeValue(stringVertex, "Z"));
@@ -122,8 +140,11 @@ class GraphTest {
     @Test
     void changeVertexValue2() throws IOException {
         Graph<String> graph = new Graph<>();
-        graph.loadAdjacencyMatrix(getClass().getClassLoader()
-                .getResourceAsStream("adjacencyMatrixTest.txt"));
+
+        try (InputStream inputStream = getClass().getClassLoader()
+                .getResourceAsStream("adjacencyMatrixTest.txt")) {
+            graph.loadAdjacencyMatrix(inputStream);
+        }
 
         Optional<Graph.Vertex<String>> vertex = graph.getVertex("B");
 
@@ -141,8 +162,11 @@ class GraphTest {
     @Test
     void deleteEdge() throws IOException {
         Graph<String> graph = new Graph<>();
-        graph.loadAdjacencyMatrix(getClass().getClassLoader()
-                .getResourceAsStream("adjacencyMatrixTest.txt"));
+
+        try (InputStream inputStream = getClass().getClassLoader()
+                .getResourceAsStream("adjacencyMatrixTest.txt")) {
+            graph.loadAdjacencyMatrix(inputStream);
+        }
 
         Optional<List<Graph.Edge<String>>> edges = graph.getVertexEdges("A");
 
@@ -167,8 +191,11 @@ class GraphTest {
     @Test
     void deleteVertex() throws IOException {
         Graph<String> graph = new Graph<>();
-        graph.loadAdjacencyMatrix(getClass().getClassLoader()
-                .getResourceAsStream("adjacencyMatrixTest.txt"));
+
+        try (InputStream inputStream = getClass().getClassLoader()
+                .getResourceAsStream("adjacencyMatrixTest.txt")) {
+            graph.loadAdjacencyMatrix(inputStream);
+        }
 
         graph.deleteVertex("A");
 
@@ -184,8 +211,11 @@ class GraphTest {
     @Test
     void sort() throws IOException {
         Graph<String> graph = new Graph<>();
-        graph.loadAdjacencyMatrix(getClass().getClassLoader()
-                .getResourceAsStream("DAGadjacencyMatrix.txt"));
+
+        try (InputStream inputStream = getClass().getClassLoader()
+                .getResourceAsStream("DAGadjacencyMatrix.txt")) {
+            graph.loadAdjacencyMatrix(inputStream);
+        }
 
         graph.sortVertices("A");
 
