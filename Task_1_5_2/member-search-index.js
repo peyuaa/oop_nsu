@@ -1,0 +1,1 @@
+memberSearchIndex = [{"p":"ru.nsu.peyuaa","c":"App","l":"App()","url":"%3Cinit%3E()"},{"p":"ru.nsu.peyuaa","c":"App","l":"getGreeting()"},{"p":"ru.nsu.peyuaa","c":"App","l":"main(String[])","url":"main(java.lang.String[])"}]
