@@ -175,13 +175,10 @@ public class Graph<T> {
      * @param value delete vertex with the value.
      */
     private void deleteVertexFromIncidenceMatrix(T value) {
-        Optional<Vertex<T>> vertex = getVertex(value);
-        if (vertex.isPresent()) {
-            for (Edge<T> edge : vertex.get().edges) {
-                deleteEdgeFromIncidenceMatrix(edge);
-            }
-            incidenceMatrix.remove(vertex.get());
-        }
+        getVertex(value).ifPresent(vertex -> {
+            vertex.edges.stream().forEach(edge -> deleteEdgeFromIncidenceMatrix(edge));
+            incidenceMatrix.remove(vertex);
+        });
     }
 
     /**
