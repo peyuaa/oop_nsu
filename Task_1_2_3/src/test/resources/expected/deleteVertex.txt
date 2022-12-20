@@ -1,0 +1,12 @@
+Adjacency matrix:
+B C 
+0 0 
+6 0 
+Incidence matrix:
+B C 
+0 -6 
+0 6 
+Adjacency list:
+B C 
+B C 6 
+C 
