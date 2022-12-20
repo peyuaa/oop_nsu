@@ -148,7 +148,7 @@ public class Graph<T> {
         getVertex(value).ifPresent(vertex -> {
             adjacencyMatrix.remove(vertex);
             vertices.stream().filter(currentVertex -> !currentVertex.equals(vertex))
-                    .map(currentVertex -> adjacencyMatrix.get(currentVertex).remove(vertex));
+                    .forEach(currentVertex -> adjacencyMatrix.get(currentVertex).remove(vertex));
         });
     }
 
