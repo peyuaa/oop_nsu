@@ -187,15 +187,11 @@ public class Graph<T> {
      * @param value delete vertex with the value.
      */
     private void deleteVertexFromAdjacencyList(T value) {
-        Optional<Vertex<T>> vertex = getVertex(value);
-        if (vertex.isPresent()) {
-            for (Vertex<T> currentVertex : vertices) {
-                if (!currentVertex.equals(vertex.get())) {
-                    adjacencyList.get(currentVertex).remove(vertex.get());
-                }
-            }
-            adjacencyList.remove(vertex.get());
-        }
+        getVertex(value).ifPresent(vertex -> {
+            vertices.stream().filter(currentVertex -> !currentVertex.equals(vertex))
+                    .forEach(currentVertex -> adjacencyList.get(currentVertex).remove(vertex));
+            adjacencyList.remove(vertex);
+        });
     }
 
     /**
