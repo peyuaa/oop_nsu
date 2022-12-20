@@ -4,6 +4,37 @@
 
 package ru.nsu.peyuaa;
 
-public class Notebook {
+import java.util.Date;
+import java.util.LinkedList;
+import java.util.List;
 
+public class Notebook {
+    private class Note {
+        private String title;
+        private String content;
+        private Date created;
+
+        public Note(String title, String content) {
+            this.created = new Date();
+            this.title = title;
+            this.content = content;
+        }
+    }
+    private List<Note> notes = new LinkedList<>();
+
+    private void addNote(String title, String content) {
+        Note note = new Note(title, content);
+        boolean isAdded = false;
+
+        for (int i = 0; i < notes.size(); i++) {
+            if (notes.get(i).created.after(note.created)) {
+                notes.add(i, note);
+                isAdded = true;
+            }
+        }
+
+        if (!isAdded) {
+            notes.add(note);
+        }
+    }
 }
