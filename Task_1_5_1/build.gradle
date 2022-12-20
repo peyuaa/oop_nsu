@@ -10,7 +10,7 @@ plugins {
     // Apply the application plugin to add support for building a CLI application in Java.
     id 'application'
     id 'jacoco'
-    id 'java'
+    id 'java-library'
 }
 
 repositories {
@@ -43,6 +43,7 @@ jacocoTestReport {
 }
 
 java {
-    sourceCompatibility = 1.19
-    targetCompatibility = 1.19
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(19)
+    }
 }
