@@ -136,7 +136,7 @@ public class Graph<T> {
      * @return list of the edges incident to vertex with the value.
      */
     public Optional<List<Edge<T>>> getVertexEdges(T value) {
-        return Optional.ofNullable(getVertex(value).map(vertex -> vertex.edges).orElse(null));
+        return getVertex(value).map(vertex -> vertex.edges);
     }
 
     /**
