@@ -26,18 +26,13 @@ public class Calculator {
 
     private double doUnaryOperation(String operand, String argument) {
         double arg = Double.parseDouble(argument);
-        switch (operand) {
-            case "log":
-                return Math.log(arg);
-            case "sqrt":
-                return Math.sqrt(arg);
-            case "sin":
-                return Math.sin(arg);
-            case "cos":
-                return Math.cos(arg);
-            default:
-                throw new RuntimeException("Unsupported operation");
-        }
+        return switch (operand) {
+            case "log" -> Math.log(arg);
+            case "sqrt" -> Math.sqrt(arg);
+            case "sin" -> Math.sin(arg);
+            case "cos" -> Math.cos(arg);
+            default -> throw new RuntimeException("Unsupported operation");
+        };
     }
 
     private boolean isBinaryOperation(String operand) {
@@ -48,20 +43,14 @@ public class Calculator {
     private double doBinaryOperation(String operand, String firstArgument, String secondArgument) {
         double firstArg = Double.parseDouble(firstArgument);
         double secondArg = Double.parseDouble(secondArgument);
-        switch (operand) {
-            case "+":
-                return firstArg + secondArg;
-            case "-":
-                return firstArg - secondArg;
-            case "*":
-                return firstArg * secondArg;
-            case "/":
-                return firstArg / secondArg;
-            case "pow":
-                return Math.pow(firstArg, secondArg);
-            default:
-                throw new RuntimeException("Unsupported operation");
-        }
+        return switch (operand) {
+            case "+" -> firstArg + secondArg;
+            case "-" -> firstArg - secondArg;
+            case "*" -> firstArg * secondArg;
+            case "/" -> firstArg / secondArg;
+            case "pow" -> Math.pow(firstArg, secondArg);
+            default -> throw new RuntimeException("Unsupported operation");
+        };
     }
 
     private void calculateExpression(String[] args) {
