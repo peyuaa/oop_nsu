@@ -4,9 +4,7 @@
 
 package ru.nsu.peyuaa;
 
-import java.util.Date;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 public class Notebook {
     private class Note {
@@ -20,7 +18,15 @@ public class Notebook {
             this.content = content;
         }
     }
-    private List<Note> notes = new LinkedList<>();
+
+    private class NoteTitleComparator implements Comparator<Note> {
+        @Override
+        public int compare(Note o1, Note o2) {
+            return o1.title.equals(o2.title) ? 0 : 1;
+        }
+    }
+
+    private List<Note> notes = new ArrayList<>();
 
     private void addNote(String title, String content) {
         Note note = new Note(title, content);
@@ -35,6 +41,14 @@ public class Notebook {
 
         if (!isAdded) {
             notes.add(note);
+        }
+    }
+
+    private void deleteNote(String title) {
+        int noteIndex = Collections
+                .binarySearch(notes, new Note(title,""), new NoteTitleComparator());
+        if (noteIndex >= 0) {
+            notes.remove(noteIndex);
         }
     }
 }
