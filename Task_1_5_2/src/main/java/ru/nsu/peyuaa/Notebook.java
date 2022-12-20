@@ -8,6 +8,15 @@ import java.util.*;
 
 public class Notebook {
     private class Note {
+        @Override
+        public String toString() {
+            return "Note{" +
+                    "title='" + title + '\'' +
+                    ", content='" + content + '\'' +
+                    ", created=" + created +
+                    '}';
+        }
+
         private String title;
         private String content;
         private Date created;
@@ -49,6 +58,12 @@ public class Notebook {
                 .binarySearch(notes, new Note(title,""), new NoteTitleComparator());
         if (noteIndex >= 0) {
             notes.remove(noteIndex);
+        }
+    }
+
+    private void printNotes() {
+        for (Note note : notes) {
+            System.out.println(note);
         }
     }
 }
