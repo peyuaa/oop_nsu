@@ -7,9 +7,9 @@ package ru.nsu.peyuaa;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-class AppTest {
+class NotebookTest {
     @Test void appHasAGreeting() {
-        App classUnderTest = new App();
+        Notebook classUnderTest = new Notebook();
         assertNotNull(classUnderTest.getGreeting(), "app should have a greeting");
     }
 }
