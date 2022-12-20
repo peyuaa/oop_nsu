@@ -145,16 +145,11 @@ public class Graph<T> {
      * @param value delete vertex with the value.
      */
     private void deleteVertexFromAdjacencyMatrix(T value) {
-        Optional<Vertex<T>> vertex = getVertex(value);
-        if (vertex.isPresent()) {
-            adjacencyMatrix.remove(vertex.get());
-
-            for (Vertex<T> currentVertex : vertices) {
-                if (!currentVertex.equals(vertex.get())) {
-                    adjacencyMatrix.get(currentVertex).remove(vertex.get());
-                }
-            }
-        }
+        getVertex(value).ifPresent(vertex -> {
+            adjacencyMatrix.remove(vertex);
+            vertices.stream().filter(currentVertex -> !currentVertex.equals(vertex))
+                    .map(currentVertex -> adjacencyMatrix.get(currentVertex).remove(vertex));
+        });
     }
 
     /**
