@@ -176,7 +176,7 @@ public class Graph<T> {
      */
     private void deleteVertexFromIncidenceMatrix(T value) {
         getVertex(value).ifPresent(vertex -> {
-            vertex.edges.stream().forEach(edge -> deleteEdgeFromIncidenceMatrix(edge));
+            vertex.edges.forEach(edge -> deleteEdgeFromIncidenceMatrix(edge));
             incidenceMatrix.remove(vertex);
         });
     }
