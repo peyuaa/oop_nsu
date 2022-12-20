@@ -5,11 +5,5 @@
 package ru.nsu.peyuaa;
 
 public class Notebook {
-    public String getGreeting() {
-        return "Hello World!";
-    }
 
-    public static void main(String[] args) {
-        System.out.println(new Notebook().getGreeting());
-    }
 }
