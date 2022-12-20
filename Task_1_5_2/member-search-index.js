@@ -1,1 +1,1 @@
-memberSearchIndex = [{"p":"ru.nsu.peyuaa","c":"Notebook","l":"Notebook()","url":"%3Cinit%3E()"}]
+memberSearchIndex = [{"p":"ru.nsu.peyuaa","c":"Notebook","l":"Notebook()","u":"%3Cinit%3E()"}];updateSearchResults();
