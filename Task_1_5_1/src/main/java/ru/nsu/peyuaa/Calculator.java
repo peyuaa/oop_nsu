@@ -86,7 +86,7 @@ public class Calculator {
      *
      * @throws IOException input/output exception
      */
-    public void startCalculator() throws IOException {
+    public void start() throws IOException {
         try (var reader = new BufferedReader(new InputStreamReader(in))) {
             String expression = reader.readLine();
             calculateExpression(expression.split(" "));
@@ -106,6 +106,6 @@ public class Calculator {
 
     public static void main(String[] args) throws IOException {
         var calculator = new Calculator(System.in, System.out);
-        calculator.startCalculator();
+        calculator.start();
     }
 }

@@ -25,7 +25,7 @@ class CalculatorTest {
             String expected = "-2.0\n";
 
             Calculator calculator = new Calculator(in, ps);
-            calculator.startCalculator();
+            calculator.start();
 
             Assertions.assertEquals(expected, actual.toString(utf8));
         }
@@ -41,7 +41,7 @@ class CalculatorTest {
             String expected = "153.0\n";
 
             Calculator calculator = new Calculator(in, ps);
-            calculator.startCalculator();
+            calculator.start();
 
             Assertions.assertEquals(expected, actual.toString(utf8));
         }
@@ -57,7 +57,7 @@ class CalculatorTest {
             String expected = "3.25\n";
 
             Calculator calculator = new Calculator(in, ps);
-            calculator.startCalculator();
+            calculator.start();
 
             Assertions.assertEquals(expected, actual.toString(utf8));
         }
@@ -73,7 +73,7 @@ class CalculatorTest {
             String expected = "-100.0\n";
 
             Calculator calculator = new Calculator(in, ps);
-            calculator.startCalculator();
+            calculator.start();
 
             Assertions.assertEquals(expected, actual.toString(utf8));
         }
@@ -89,7 +89,7 @@ class CalculatorTest {
             String expected = "32.0\n";
 
             Calculator calculator = new Calculator(in, ps);
-            calculator.startCalculator();
+            calculator.start();
 
             Assertions.assertEquals(expected, actual.toString(utf8));
         }
@@ -105,7 +105,7 @@ class CalculatorTest {
             String expected = "2.833213344056216\n";
 
             Calculator calculator = new Calculator(in, ps);
-            calculator.startCalculator();
+            calculator.start();
 
             Assertions.assertEquals(expected, actual.toString(utf8));
         }
@@ -121,7 +121,7 @@ class CalculatorTest {
             String expected = "4.0\n";
 
             Calculator calculator = new Calculator(in, ps);
-            calculator.startCalculator();
+            calculator.start();
 
             Assertions.assertEquals(expected, actual.toString(utf8));
         }
@@ -137,7 +137,7 @@ class CalculatorTest {
             String expected = "0.0\n";
 
             Calculator calculator = new Calculator(in, ps);
-            calculator.startCalculator();
+            calculator.start();
 
             Assertions.assertEquals(expected, actual.toString(utf8));
         }
@@ -153,7 +153,7 @@ class CalculatorTest {
             String expected = "1.0\n";
 
             Calculator calculator = new Calculator(in, ps);
-            calculator.startCalculator();
+            calculator.start();
 
             Assertions.assertEquals(expected, actual.toString(utf8));
         }
@@ -169,7 +169,7 @@ class CalculatorTest {
             String expected = "0.0\n";
 
             Calculator calculator = new Calculator(in, ps);
-            calculator.startCalculator();
+            calculator.start();
 
             Assertions.assertEquals(expected, actual.toString(utf8));
         }
@@ -185,7 +185,7 @@ class CalculatorTest {
             String expected = "1.0\n";
 
             Calculator calculator = new Calculator(in, ps);
-            calculator.startCalculator();
+            calculator.start();
 
             Assertions.assertEquals(expected, actual.toString(utf8));
         }
@@ -201,7 +201,7 @@ class CalculatorTest {
             String expected = "14.0\n";
 
             Calculator calculator = new Calculator(in, ps);
-            calculator.startCalculator();
+            calculator.start();
 
             Assertions.assertEquals(expected, actual.toString(utf8));
         }
@@ -219,7 +219,7 @@ class CalculatorTest {
             String expected = "13.0\n";
 
             Calculator calculator = new Calculator(in, ps);
-            calculator.startCalculator();
+            calculator.start();
 
             Assertions.assertEquals(expected, actual.toString(utf8));
         }
@@ -238,7 +238,7 @@ class CalculatorTest {
             String expected = "169.0\n";
 
             Calculator calculator = new Calculator(in, ps);
-            calculator.startCalculator();
+            calculator.start();
 
             Assertions.assertEquals(expected, actual.toString(utf8));
         }
