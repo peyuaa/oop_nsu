@@ -70,16 +70,10 @@ public class Notebook {
 
     private void addNote(String title, String content) {
         Note note = new Note(title, content);
-        boolean isAdded = false;
-
-        for (int i = 0; i < notes.size(); i++) {
-            if (notes.get(i).created.after(note.created)) {
-                notes.add(i, note);
-                isAdded = true;
-            }
-        }
-
-        if (!isAdded) {
+        int indexToAdd = indexOfNoteAfterDate(note.created);
+        if (indexToAdd != -1) {
+            notes.add(indexToAdd, note);
+        } else {
             notes.add(note);
         }
     }
