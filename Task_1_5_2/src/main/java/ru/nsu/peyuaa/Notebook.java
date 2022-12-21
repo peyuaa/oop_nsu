@@ -28,6 +28,12 @@ public class Notebook {
         }
     }
 
+    private final static String add = "-add";
+    private final static String remove = "-rm";
+    private final static String show = "-show";
+    private final static String whitespace = " ";
+
+
     private static class NoteTitleComparator implements Comparator<Note> {
         @Override
         public int compare(Note o1, Note o2) {
