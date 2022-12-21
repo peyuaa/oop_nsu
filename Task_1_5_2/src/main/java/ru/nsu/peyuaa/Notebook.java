@@ -7,7 +7,7 @@ package ru.nsu.peyuaa;
 import java.util.*;
 
 public class Notebook {
-    private class Note {
+    private static class Note {
         @Override
         public String toString() {
             return "Note{" +
@@ -28,7 +28,7 @@ public class Notebook {
         }
     }
 
-    private class NoteTitleComparator implements Comparator<Note> {
+    private static class NoteTitleComparator implements Comparator<Note> {
         @Override
         public int compare(Note o1, Note o2) {
             return o1.title.equals(o2.title) ? 0 : 1;
