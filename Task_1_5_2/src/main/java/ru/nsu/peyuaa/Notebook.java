@@ -17,9 +17,9 @@ public class Notebook {
                     '}';
         }
 
-        private String title;
-        private String content;
-        private Date created;
+        private final String title;
+        private final String content;
+        private final Date created;
 
         public Note(String title, String content) {
             this.created = new Date();
