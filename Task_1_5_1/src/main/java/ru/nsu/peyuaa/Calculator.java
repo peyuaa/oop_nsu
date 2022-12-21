@@ -103,4 +103,9 @@ public class Calculator {
         this.in = in;
         this.out = out;
     }
+
+    public static void main(String[] args) throws IOException {
+        var calculator = new Calculator(System.in, System.out);
+        calculator.startCalculator();
+    }
 }
