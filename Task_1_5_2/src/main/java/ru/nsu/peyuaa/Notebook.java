@@ -37,6 +37,37 @@ public class Notebook {
 
     private List<Note> notes = new ArrayList<>();
 
+    /**
+     * Finds and returns index of first note created after the date.
+     * If there is a note with time creation equals to that date, returns index of that note.
+     * If there is several notes with time creation equals to the date,
+     * it returns first encountered note during binary search.
+     * Otherwise, returns -1.
+     *
+     * @param date find after or equals to that date
+     * @return index
+     */
+    private int indexOfNoteAfterDate(Date date) {
+        int left = 0;
+        int right = notes.size() - 1;
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
+            Note midNote = notes.get(mid);
+            if (midNote.created.equals(date)) {
+                return mid;
+            }
+            if (midNote.created.after(date)) {
+                if (mid - 1 >= 0 && notes.get(mid - 1).created.before(date)) {
+                    return mid;
+                }
+                right = mid - 1;
+            } else {
+                left = mid + 1;
+            }
+        }
+        return -1;
+    }
+
     private void addNote(String title, String content) {
         Note note = new Note(title, content);
         boolean isAdded = false;
