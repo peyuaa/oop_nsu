@@ -14,6 +14,7 @@ import org.junit.jupiter.api.Test;
 
 class CalculatorTest {
     final String utf8 = StandardCharsets.UTF_8.name();
+
     @Test
     void plus() throws IOException {
         try (
