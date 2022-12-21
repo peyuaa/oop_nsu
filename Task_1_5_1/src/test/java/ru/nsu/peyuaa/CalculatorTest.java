@@ -13,14 +13,15 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 class CalculatorTest {
+    final String utf8 = StandardCharsets.UTF_8.name();
     @Test
     void plus() throws IOException {
-        try (ByteArrayInputStream in = new ByteArrayInputStream("+ -7 5\n".getBytes())) {
+        try (
+                ByteArrayInputStream in = new ByteArrayInputStream("+ -7 5\n".getBytes());
+                ByteArrayOutputStream actual = new ByteArrayOutputStream();
+                PrintStream ps = new PrintStream(actual, true, utf8)
+        ) {
             String expected = "-2.0\n";
-
-            ByteArrayOutputStream actual = new ByteArrayOutputStream();
-            final String utf8 = StandardCharsets.UTF_8.name();
-            PrintStream ps = new PrintStream(actual, true, utf8);
 
             Calculator calculator = new Calculator(in, ps);
             calculator.startCalculator();
@@ -31,12 +32,12 @@ class CalculatorTest {
 
     @Test
     void multiplication() throws IOException {
-        try (ByteArrayInputStream in = new ByteArrayInputStream("* 17 9\n".getBytes())) {
+        try (
+                ByteArrayInputStream in = new ByteArrayInputStream("* 17 9\n".getBytes());
+                ByteArrayOutputStream actual = new ByteArrayOutputStream();
+                PrintStream ps = new PrintStream(actual, true, utf8)
+        ) {
             String expected = "153.0\n";
-
-            ByteArrayOutputStream actual = new ByteArrayOutputStream();
-            final String utf8 = StandardCharsets.UTF_8.name();
-            PrintStream ps = new PrintStream(actual, true, utf8);
 
             Calculator calculator = new Calculator(in, ps);
             calculator.startCalculator();
@@ -47,12 +48,12 @@ class CalculatorTest {
 
     @Test
     void division() throws IOException {
-        try (ByteArrayInputStream in = new ByteArrayInputStream("/ 13 4\n".getBytes())) {
+        try (
+                ByteArrayInputStream in = new ByteArrayInputStream("/ 13 4\n".getBytes());
+                ByteArrayOutputStream actual = new ByteArrayOutputStream();
+                PrintStream ps = new PrintStream(actual, true, utf8)
+        ) {
             String expected = "3.25\n";
-
-            ByteArrayOutputStream actual = new ByteArrayOutputStream();
-            final String utf8 = StandardCharsets.UTF_8.name();
-            PrintStream ps = new PrintStream(actual, true, utf8);
 
             Calculator calculator = new Calculator(in, ps);
             calculator.startCalculator();
@@ -63,12 +64,12 @@ class CalculatorTest {
 
     @Test
     void minus() throws IOException {
-        try (ByteArrayInputStream in = new ByteArrayInputStream("- -91 9\n".getBytes())) {
+        try (
+                ByteArrayInputStream in = new ByteArrayInputStream("- -91 9\n".getBytes());
+                ByteArrayOutputStream actual = new ByteArrayOutputStream();
+                PrintStream ps = new PrintStream(actual, true, utf8)
+        ) {
             String expected = "-100.0\n";
-
-            ByteArrayOutputStream actual = new ByteArrayOutputStream();
-            final String utf8 = StandardCharsets.UTF_8.name();
-            PrintStream ps = new PrintStream(actual, true, utf8);
 
             Calculator calculator = new Calculator(in, ps);
             calculator.startCalculator();
@@ -79,12 +80,12 @@ class CalculatorTest {
 
     @Test
     void pow() throws IOException {
-        try (ByteArrayInputStream in = new ByteArrayInputStream("pow 2 5\n".getBytes())) {
+        try (
+                ByteArrayInputStream in = new ByteArrayInputStream("pow 2 5\n".getBytes());
+                ByteArrayOutputStream actual = new ByteArrayOutputStream();
+                PrintStream ps = new PrintStream(actual, true, utf8)
+        ) {
             String expected = "32.0\n";
-
-            ByteArrayOutputStream actual = new ByteArrayOutputStream();
-            final String utf8 = StandardCharsets.UTF_8.name();
-            PrintStream ps = new PrintStream(actual, true, utf8);
 
             Calculator calculator = new Calculator(in, ps);
             calculator.startCalculator();
@@ -95,12 +96,12 @@ class CalculatorTest {
 
     @Test
     void log() throws IOException {
-        try (ByteArrayInputStream in = new ByteArrayInputStream("log 17\n".getBytes())) {
+        try (
+                ByteArrayInputStream in = new ByteArrayInputStream("log 17\n".getBytes());
+                ByteArrayOutputStream actual = new ByteArrayOutputStream();
+                PrintStream ps = new PrintStream(actual, true, utf8)
+        ) {
             String expected = "2.833213344056216\n";
-
-            ByteArrayOutputStream actual = new ByteArrayOutputStream();
-            final String utf8 = StandardCharsets.UTF_8.name();
-            PrintStream ps = new PrintStream(actual, true, utf8);
 
             Calculator calculator = new Calculator(in, ps);
             calculator.startCalculator();
@@ -111,12 +112,12 @@ class CalculatorTest {
 
     @Test
     void sqrt() throws IOException {
-        try (ByteArrayInputStream in = new ByteArrayInputStream("sqrt 16\n".getBytes())) {
+        try (
+                ByteArrayInputStream in = new ByteArrayInputStream("sqrt 16\n".getBytes());
+                ByteArrayOutputStream actual = new ByteArrayOutputStream();
+                PrintStream ps = new PrintStream(actual, true, utf8)
+        ) {
             String expected = "4.0\n";
-
-            ByteArrayOutputStream actual = new ByteArrayOutputStream();
-            final String utf8 = StandardCharsets.UTF_8.name();
-            PrintStream ps = new PrintStream(actual, true, utf8);
 
             Calculator calculator = new Calculator(in, ps);
             calculator.startCalculator();
@@ -127,12 +128,12 @@ class CalculatorTest {
 
     @Test
     void sin() throws IOException {
-        try (ByteArrayInputStream in = new ByteArrayInputStream("sin 0\n".getBytes())) {
+        try (
+                ByteArrayInputStream in = new ByteArrayInputStream("sin 0\n".getBytes());
+                ByteArrayOutputStream actual = new ByteArrayOutputStream();
+                PrintStream ps = new PrintStream(actual, true, utf8)
+        ) {
             String expected = "0.0\n";
-
-            ByteArrayOutputStream actual = new ByteArrayOutputStream();
-            final String utf8 = StandardCharsets.UTF_8.name();
-            PrintStream ps = new PrintStream(actual, true, utf8);
 
             Calculator calculator = new Calculator(in, ps);
             calculator.startCalculator();
@@ -143,12 +144,12 @@ class CalculatorTest {
 
     @Test
     void cos() throws IOException {
-        try (ByteArrayInputStream in = new ByteArrayInputStream("cos 0\n".getBytes())) {
+        try (
+                ByteArrayInputStream in = new ByteArrayInputStream("cos 0\n".getBytes());
+                ByteArrayOutputStream actual = new ByteArrayOutputStream();
+                PrintStream ps = new PrintStream(actual, true, utf8)
+        ) {
             String expected = "1.0\n";
-
-            ByteArrayOutputStream actual = new ByteArrayOutputStream();
-            final String utf8 = StandardCharsets.UTF_8.name();
-            PrintStream ps = new PrintStream(actual, true, utf8);
 
             Calculator calculator = new Calculator(in, ps);
             calculator.startCalculator();
@@ -159,12 +160,12 @@ class CalculatorTest {
 
     @Test
     void hardExpression1() throws IOException {
-        try (ByteArrayInputStream in = new ByteArrayInputStream("sin + - 1 2 1\n".getBytes())) {
+        try (
+                ByteArrayInputStream in = new ByteArrayInputStream("sin + - 1 2 1\n".getBytes());
+                ByteArrayOutputStream actual = new ByteArrayOutputStream();
+                PrintStream ps = new PrintStream(actual, true, utf8)
+        ) {
             String expected = "0.0\n";
-
-            ByteArrayOutputStream actual = new ByteArrayOutputStream();
-            final String utf8 = StandardCharsets.UTF_8.name();
-            PrintStream ps = new PrintStream(actual, true, utf8);
 
             Calculator calculator = new Calculator(in, ps);
             calculator.startCalculator();
@@ -175,12 +176,12 @@ class CalculatorTest {
 
     @Test
     void hardExpression2() throws IOException {
-        try (ByteArrayInputStream in = new ByteArrayInputStream("+ 6 * -1 5\n".getBytes())) {
+        try (
+                ByteArrayInputStream in = new ByteArrayInputStream("+ 6 * -1 5\n".getBytes());
+                ByteArrayOutputStream actual = new ByteArrayOutputStream();
+                PrintStream ps = new PrintStream(actual, true, utf8)
+        ) {
             String expected = "1.0\n";
-
-            ByteArrayOutputStream actual = new ByteArrayOutputStream();
-            final String utf8 = StandardCharsets.UTF_8.name();
-            PrintStream ps = new PrintStream(actual, true, utf8);
 
             Calculator calculator = new Calculator(in, ps);
             calculator.startCalculator();
@@ -191,12 +192,12 @@ class CalculatorTest {
 
     @Test
     void hardExpression3() throws IOException {
-        try (ByteArrayInputStream in = new ByteArrayInputStream("* + 3 4 2\n".getBytes())) {
+        try (
+                ByteArrayInputStream in = new ByteArrayInputStream("* + 3 4 2\n".getBytes());
+                ByteArrayOutputStream actual = new ByteArrayOutputStream();
+                PrintStream ps = new PrintStream(actual, true, utf8)
+        ) {
             String expected = "14.0\n";
-
-            ByteArrayOutputStream actual = new ByteArrayOutputStream();
-            final String utf8 = StandardCharsets.UTF_8.name();
-            PrintStream ps = new PrintStream(actual, true, utf8);
 
             Calculator calculator = new Calculator(in, ps);
             calculator.startCalculator();
@@ -207,14 +208,14 @@ class CalculatorTest {
 
     @Test
     void hardExpression4() throws IOException {
-        try (ByteArrayInputStream in =
-                new ByteArrayInputStream("+ + sin 1.57079633 * sqrt 64 cos 0 pow 2 2\n"
-                        .getBytes())) {
+        try (
+                ByteArrayInputStream in =
+                        new ByteArrayInputStream("+ + sin 1.57079633 * sqrt 64 cos 0 pow 2 2\n"
+                        .getBytes());
+                ByteArrayOutputStream actual = new ByteArrayOutputStream();
+                PrintStream ps = new PrintStream(actual, true, utf8)
+        ) {
             String expected = "13.0\n";
-
-            ByteArrayOutputStream actual = new ByteArrayOutputStream();
-            final String utf8 = StandardCharsets.UTF_8.name();
-            PrintStream ps = new PrintStream(actual, true, utf8);
 
             Calculator calculator = new Calculator(in, ps);
             calculator.startCalculator();
@@ -225,15 +226,15 @@ class CalculatorTest {
 
     @Test
     void hardExpression5() throws IOException {
-        try (ByteArrayInputStream in =
+        try (
+                ByteArrayInputStream in =
                 new ByteArrayInputStream(("* + + sin 1.57079633 * sqrt 64 cos 0 pow 2 2 + + +"
                         + " sin 1.57079633 * sqrt 64 cos 0 pow 2 2 sin"
-                        + " - pow 2 5 sqrt pow 32 2\n").getBytes())) {
+                        + " - pow 2 5 sqrt pow 32 2\n").getBytes());
+                ByteArrayOutputStream actual = new ByteArrayOutputStream();
+                PrintStream ps = new PrintStream(actual, true, utf8)
+        ) {
             String expected = "169.0\n";
-
-            ByteArrayOutputStream actual = new ByteArrayOutputStream();
-            final String utf8 = StandardCharsets.UTF_8.name();
-            PrintStream ps = new PrintStream(actual, true, utf8);
 
             Calculator calculator = new Calculator(in, ps);
             calculator.startCalculator();
