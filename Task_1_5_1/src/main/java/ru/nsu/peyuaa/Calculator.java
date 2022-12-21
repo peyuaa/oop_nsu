@@ -87,7 +87,7 @@ public class Calculator {
      * @throws IOException input/output exception
      */
     public void startCalculator() throws IOException {
-        try (BufferedReader reader = new BufferedReader(new InputStreamReader(in))) {
+        try (var reader = new BufferedReader(new InputStreamReader(in))) {
             String expression = reader.readLine();
             calculateExpression(expression.split(" "));
         }
