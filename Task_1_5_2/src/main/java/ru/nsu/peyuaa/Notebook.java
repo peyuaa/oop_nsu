@@ -105,7 +105,7 @@ public class Notebook {
         int index = indexOfNoteAfterDate(from);
         if (index != -1) {
             while (index < notes.size()
-                    && (notes.get(index).created.before(to) || notes.get(index).equals(to))) {
+                    && (notes.get(index).created.before(to) || notes.get(index).created.equals(to))) {
                 if (isNoteContainsKeywords(notes.get(index), keywords)) {
                     System.out.println(notes.get(index));
                 }
