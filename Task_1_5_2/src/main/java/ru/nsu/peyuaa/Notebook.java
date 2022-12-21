@@ -91,4 +91,25 @@ public class Notebook {
             System.out.println(note);
         }
     }
+
+    private boolean isNoteContainsKeywords(Note note, String ...keywords) {
+        for (String keyword : keywords) {
+            if (note.content.contains(keyword)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private void printNotes(Date from, Date to, String ...keywords) {
+        int index = indexOfNoteAfterDate(from);
+        if (index != -1) {
+            while (index < notes.size()
+                    && (notes.get(index).created.before(to) || notes.get(index).equals(to))) {
+                if (isNoteContainsKeywords(notes.get(index), keywords)) {
+                    System.out.println(notes.get(index));
+                }
+            }
+        }
+    }
 }
