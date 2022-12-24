@@ -24,6 +24,9 @@ dependencies {
 
     // This dependency is used by the application.
     implementation 'com.google.guava:guava:31.1-jre'
+
+    // The Java JSON library.
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.14.1'
 }
 
 application {
