@@ -93,7 +93,7 @@ public class Notebook {
     }
 
     private void printNotes() {
-        notes.stream().forEach(note -> System.out.println(note));
+        notes.forEach(note -> System.out.println(note));
     }
 
     private boolean isNoteContainsKeywords(Note note, String ...keywords) {
