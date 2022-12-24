@@ -41,7 +41,7 @@ public class Notebook {
         }
     }
 
-    private List<Note> notes = new ArrayList<>();
+    private final List<Note> notes = new ArrayList<>();
 
     /**
      * Finds and returns index of first note created after the date.
