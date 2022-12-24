@@ -93,11 +93,11 @@ public class Notebook {
     }
 
     private void printNotes() {
-        notes.forEach(note -> System.out.println(note));
+        notes.forEach(System.out::println);
     }
 
     private boolean isNoteContainsKeywords(Note note, String ...keywords) {
-        return Arrays.stream(keywords).anyMatch(keyword -> note.content.contains(keyword));
+        return Arrays.stream(keywords).anyMatch(note.content::contains);
     }
 
     private void printNotes(Date from, Date to, String ...keywords) {
