@@ -99,12 +99,7 @@ public class Notebook {
     }
 
     private boolean isNoteContainsKeywords(Note note, String ...keywords) {
-        for (String keyword : keywords) {
-            if (note.content.contains(keyword)) {
-                return true;
-            }
-        }
-        return false;
+        return Arrays.stream(keywords).anyMatch(keyword -> note.content.contains(keyword));
     }
 
     private void printNotes(Date from, Date to, String ...keywords) {
