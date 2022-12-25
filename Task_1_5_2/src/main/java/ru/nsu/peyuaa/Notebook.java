@@ -231,6 +231,11 @@ public class Notebook {
         }
     }
 
+    private void deleteNotebook() {
+        File file = new File(fileName);
+        file.delete();
+    }
+
     public static void run(PrintStream out, PrintStream err, String[] args) throws IOException, ParseException {
         Notebook notebook = getNotebook(out);
         if (isInputValid(args)) {
