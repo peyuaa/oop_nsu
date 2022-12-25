@@ -88,7 +88,7 @@ public class Notebook {
         return -1;
     }
 
-    private void addNote(String title, String content) {
+    private void addNote(String title, String content) throws IOException {
         Note note = new Note(title, content);
         int indexToAdd = indexOfNoteAfterDate(note.created);
         if (indexToAdd != -1) {
@@ -96,14 +96,16 @@ public class Notebook {
         } else {
             notes.add(note);
         }
+        serialize();
     }
 
-    private void deleteNote(String title) {
+    private void deleteNote(String title) throws IOException {
         int noteIndex = Collections
                 .binarySearch(notes, new Note(title,""), new NoteTitleComparator());
         if (noteIndex >= 0) {
             notes.remove(noteIndex);
         }
+        serialize();
     }
 
     private void printNotes() {
