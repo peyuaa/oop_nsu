@@ -134,7 +134,7 @@ public class Notebook {
     }
 
     private boolean isNoteContainsKeywords(Note note, String ...keywords) {
-        return Arrays.stream(keywords).anyMatch(note.content::contains);
+        return Arrays.stream(keywords).anyMatch(note.title::contains);
     }
 
     private void printNotes(Date from, Date to, String ...keywords) {
