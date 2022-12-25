@@ -220,12 +220,16 @@ public class Notebook {
         }
     }
 
-    public static void main(String[] args) throws IOException, ParseException {
+    public static void run(String[] args) throws IOException, ParseException {
         Notebook notebook = getNotebook();
         if (isInputValid(args)) {
             notebook.processInput(args);
         } else {
             System.err.println("Incorrect input");
         }
+    }
+
+    public static void main(String[] args) throws IOException, ParseException {
+        run(args);
     }
 }
