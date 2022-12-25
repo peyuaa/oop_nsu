@@ -154,12 +154,12 @@ public class Notebook {
         serialize();
     }
 
-    private void printNotes() {
-        notes.forEach(out::println);
-    }
-
     private boolean isNoteContainsKeywords(Note note, String ... keywords) {
         return Arrays.stream(keywords).anyMatch(note.title::contains);
+    }
+
+    private void printNotes() {
+        notes.forEach(out::println);
     }
 
     private void printNotes(Date from, Date to, String ... keywords) {
@@ -252,6 +252,7 @@ public class Notebook {
             case add -> addNote(args[1], args[2]);
             case remove -> deleteNote(args[1]);
             case show -> showNotes(args);
+            default -> {}
         }
     }
 
