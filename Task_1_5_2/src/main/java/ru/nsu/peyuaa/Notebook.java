@@ -21,12 +21,23 @@ import java.util.Date;
 import java.util.List;
 
 public class Notebook {
-    public Notebook(PrintStream out) {
-        this.out = out;
+    interface DateTime {
+        Date getDate();
     }
 
-    private Notebook(){
+    public static class DateTimeImpl implements DateTime {
+        @Override
+        public Date getDate() {
+            return new Date();
+        }
+    }
 
+    public Notebook(PrintStream out, DateTime dateTime) {
+        this.out = out;
+        this.dateTime = dateTime;
+    }
+
+    private Notebook() {
     }
 
     private static class Note {
@@ -48,8 +59,9 @@ public class Notebook {
         private final Date created;
 
         @JsonCreator(mode = JsonCreator.Mode.PROPERTIES)
-        public Note(@JsonProperty("title") String title, @JsonProperty("content") String content) {
-            this.created = new Date();
+        public Note(@JsonProperty("title") String title, @JsonProperty("content") String content,
+                    @JsonProperty("created") Date created) {
+            this.created = created;
             this.title = title;
             this.content = content;
         }
@@ -80,6 +92,7 @@ public class Notebook {
     private final List<Note> notes = new ArrayList<>();
     private PrintStream out;
     private String fileName;
+    private DateTime dateTime;
 
     /**
      * Finds and returns index of first note created after the date.
@@ -115,7 +128,7 @@ public class Notebook {
     }
 
     private void addNote(String title, String content) throws IOException {
-        Note note = new Note(title, content);
+        Note note = new Note(title, content, dateTime.getDate());
         int indexToAdd = indexOfNoteAfterDate(note.created);
         if (indexToAdd != -1) {
             notes.add(indexToAdd, note);
@@ -127,7 +140,7 @@ public class Notebook {
 
     private void deleteNote(String title) throws IOException {
         int noteIndex = Collections
-                .binarySearch(notes, new Note(title,""), new NoteTitleComparator());
+                .binarySearch(notes, new Note(title,"", dateTime.getDate()), new NoteTitleComparator());
         if (noteIndex >= 0) {
             notes.remove(noteIndex);
         }
@@ -170,15 +183,16 @@ public class Notebook {
         objectMapper.writeValue(new File(fileName), this);
     }
 
-    private static Notebook getNotebook(PrintStream out, String fileName) {
+    private static Notebook getNotebook(PrintStream out, String fileName, DateTime dateTime) {
         Notebook notebook;
         try {
             notebook = objectMapper.readValue(new File(fileName), Notebook.class);
             notebook.out = out;
         } catch (Exception e) {
-            notebook = new Notebook(out);
+            notebook = new Notebook(out, dateTime);
         }
         notebook.fileName = fileName;
+        notebook.dateTime = dateTime;
         return notebook;
     }
 
@@ -233,8 +247,9 @@ public class Notebook {
         }
     }
 
-    public static void run(PrintStream out, PrintStream err, String fileName, String[] args) throws IOException, ParseException {
-        Notebook notebook = getNotebook(out, fileName);
+    public static void run(PrintStream out, PrintStream err, String fileName,
+                           DateTime dateTime, String[] args) throws IOException, ParseException {
+        Notebook notebook = getNotebook(out, fileName, dateTime);
         if (isInputValid(args)) {
             notebook.processInput(args);
         } else {
@@ -243,6 +258,6 @@ public class Notebook {
     }
 
     public static void main(String[] args) throws IOException, ParseException {
-        run(System.out, System.err, defaultFileName, args);
+        run(System.out, System.err, defaultFileName, new DateTimeImpl(), args);
     }
 }
