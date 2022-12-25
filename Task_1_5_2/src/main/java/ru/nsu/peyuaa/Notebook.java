@@ -252,7 +252,7 @@ public class Notebook {
             case add -> addNote(args[1], args[2]);
             case remove -> deleteNote(args[1]);
             case show -> showNotes(args);
-            default -> {}
+            default -> { }
         }
     }
 
