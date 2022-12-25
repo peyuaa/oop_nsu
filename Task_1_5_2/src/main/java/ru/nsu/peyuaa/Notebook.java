@@ -49,11 +49,11 @@ public class Notebook {
     private static class Note {
         @Override
         public String toString() {
-            return "Note{" +
-                    "title='" + title + '\'' +
-                    ", content='" + content + '\'' +
-                    ", created=" + created +
-                    '}';
+            return "Note{"
+                    + "title='" + title + '\''
+                    + ", content='" + content + '\''
+                    + ", created=" + created
+                    + '}';
         }
 
         @JsonProperty("title")
