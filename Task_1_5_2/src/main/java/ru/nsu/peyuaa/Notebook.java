@@ -73,18 +73,18 @@ public class Notebook {
         }
     }
 
-    private final static String add = "-add";
-    private final static String remove = "-rm";
-    private final static String show = "-show";
-    private final static String defaultFileName = "notebook.json";
-    private final static String inputDateFormat = "dd.MM.yyyy HH:mm";
-    private final static int keyWordsStartIndex = 3;
-    private final static int addNumberOfArguments = 3;
-    private final static int removeNumberOfArguments = 2;
-    private final static int showAllNumberOfArguments = 1;
-    private final static int showMinimalNumberOfArguments = 4;
-    private final static int minimalNumberOfArguments = 1;
-    private final static ObjectMapper objectMapper = new ObjectMapper();
+    private static final String add = "-add";
+    private static final String remove = "-rm";
+    private static final String show = "-show";
+    private static final String defaultFileName = "notebook.json";
+    private static final String inputDateFormat = "dd.MM.yyyy HH:mm";
+    private static final int keyWordsStartIndex = 3;
+    private static final int addNumberOfArguments = 3;
+    private static final int removeNumberOfArguments = 2;
+    private static final int showAllNumberOfArguments = 1;
+    private static final int showMinimalNumberOfArguments = 4;
+    private static final int minimalNumberOfArguments = 1;
+    private static final ObjectMapper objectMapper = new ObjectMapper();
 
 
     private static class NoteTitleComparator implements Comparator<Note> {
