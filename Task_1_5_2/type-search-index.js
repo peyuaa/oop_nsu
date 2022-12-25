@@ -1,1 +1,1 @@
-typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"ru.nsu.peyuaa","l":"Notebook"}];updateSearchResults();
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"ru.nsu.peyuaa","l":"Notebook.DateTimeImpl"},{"p":"ru.nsu.peyuaa","l":"Notebook"}];updateSearchResults();
