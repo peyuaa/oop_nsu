@@ -90,7 +90,9 @@ public class Notebook {
                 return mid;
             }
             if (midNote.created.after(date)) {
-                if (mid - 1 >= 0 && notes.get(mid - 1).created.before(date)) {
+                if (mid == 0) {
+                    return mid;
+                } else if (notes.get(mid - 1).created.before(date)) {
                     return mid;
                 }
                 right = mid - 1;
