@@ -1,1 +1,1 @@
-memberSearchIndex = [{"p":"ru.nsu.peyuaa","c":"Notebook","l":"main(String[])","u":"main(java.lang.String[])"},{"p":"ru.nsu.peyuaa","c":"Notebook","l":"Notebook()","u":"%3Cinit%3E()"}];updateSearchResults();
+memberSearchIndex = [{"p":"ru.nsu.peyuaa","c":"Notebook","l":"main(String[])","u":"main(java.lang.String[])"},{"p":"ru.nsu.peyuaa","c":"Notebook","l":"Notebook()","u":"%3Cinit%3E()"},{"p":"ru.nsu.peyuaa","c":"Notebook","l":"run(String[])","u":"run(java.lang.String[])"}];updateSearchResults();
