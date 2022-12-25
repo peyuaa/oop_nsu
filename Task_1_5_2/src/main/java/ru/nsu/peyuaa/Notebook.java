@@ -20,11 +20,17 @@ import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * Notebook implementation.
+ */
 public class Notebook {
     interface DateTime {
         Date getDate();
     }
 
+    /**
+     * DateTimeImpl implements DateTime.
+     */
     public static class DateTimeImpl implements DateTime {
         @Override
         public Date getDate() {
