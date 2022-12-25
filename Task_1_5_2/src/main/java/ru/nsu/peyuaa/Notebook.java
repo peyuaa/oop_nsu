@@ -58,7 +58,7 @@ public class Notebook {
     private final static String add = "-add";
     private final static String remove = "-rm";
     private final static String show = "-show";
-    private final static String fileName = "notebook.json";
+    private final static String defaultFileName = "notebook.json";
     private final static String inputDateFormat = "dd.MM.yyyy HH:mm";
     private final static int keyWordsStartIndex = 3;
     private final static int addNumberOfArguments = 3;
@@ -79,6 +79,7 @@ public class Notebook {
     @JsonProperty("notes")
     private final List<Note> notes = new ArrayList<>();
     private PrintStream out;
+    private String fileName;
 
     /**
      * Finds and returns index of first note created after the date.
@@ -169,7 +170,7 @@ public class Notebook {
         objectMapper.writeValue(new File(fileName), this);
     }
 
-    private static Notebook getNotebook(PrintStream out) {
+    private static Notebook getNotebook(PrintStream out, String fileName) {
         Notebook notebook;
         try {
             notebook = objectMapper.readValue(new File(fileName), Notebook.class);
@@ -177,6 +178,7 @@ public class Notebook {
         } catch (Exception e) {
             notebook = new Notebook(out);
         }
+        notebook.fileName = fileName;
         return notebook;
     }
 
@@ -236,8 +238,8 @@ public class Notebook {
         file.delete();
     }
 
-    public static void run(PrintStream out, PrintStream err, String[] args) throws IOException, ParseException {
-        Notebook notebook = getNotebook(out);
+    public static void run(PrintStream out, PrintStream err, String fileName, String[] args) throws IOException, ParseException {
+        Notebook notebook = getNotebook(out, fileName);
         if (isInputValid(args)) {
             notebook.processInput(args);
         } else {
@@ -246,6 +248,6 @@ public class Notebook {
     }
 
     public static void main(String[] args) throws IOException, ParseException {
-        run(System.out, System.err, args);
+        run(System.out, System.err, defaultFileName, args);
     }
 }
