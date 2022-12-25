@@ -4,6 +4,11 @@
 
 package ru.nsu.peyuaa;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import java.io.File;
+import java.io.IOException;
 import java.util.*;
 
 public class Notebook {
@@ -17,8 +22,12 @@ public class Notebook {
                     '}';
         }
 
+        @JsonProperty("title")
         private final String title;
+        @JsonProperty("content")
         private final String content;
+        @JsonProperty("created")
+        @JsonFormat(shape= JsonFormat.Shape.STRING, pattern="yyyy-MM-dd'T'HH:mm:ss.SSSZ")
         private final Date created;
 
         public Note(String title, String content) {
@@ -32,6 +41,7 @@ public class Notebook {
     private final static String remove = "-rm";
     private final static String show = "-show";
     private final static String whitespace = " ";
+    private final static ObjectMapper objectMapper = new ObjectMapper();
 
 
     private static class NoteTitleComparator implements Comparator<Note> {
@@ -41,6 +51,7 @@ public class Notebook {
         }
     }
 
+    @JsonProperty("notes")
     private final List<Note> notes = new ArrayList<>();
 
     /**
@@ -110,5 +121,9 @@ public class Notebook {
                 }
             }
         }
+    }
+
+    private void serialize() throws IOException {
+        objectMapper.writeValue(new File("notebook.json"), this);
     }
 }
