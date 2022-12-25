@@ -139,6 +139,7 @@ public class Notebook {
                 if (isNoteContainsKeywords(notes.get(index), keywords)) {
                     System.out.println(notes.get(index));
                 }
+                index++;
             }
         }
     }
