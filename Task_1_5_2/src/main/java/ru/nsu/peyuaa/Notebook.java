@@ -146,7 +146,8 @@ public class Notebook {
 
     private void deleteNote(String title) throws IOException {
         int noteIndex = Collections
-                .binarySearch(notes, new Note(title,"", dateTime.getDate()), new NoteTitleComparator());
+                .binarySearch(notes, new Note(title, "",
+                        dateTime.getDate()), new NoteTitleComparator());
         if (noteIndex >= 0) {
             notes.remove(noteIndex);
         }
@@ -157,15 +158,16 @@ public class Notebook {
         notes.forEach(out::println);
     }
 
-    private boolean isNoteContainsKeywords(Note note, String ...keywords) {
+    private boolean isNoteContainsKeywords(Note note, String ... keywords) {
         return Arrays.stream(keywords).anyMatch(note.title::contains);
     }
 
-    private void printNotes(Date from, Date to, String ...keywords) {
+    private void printNotes(Date from, Date to, String ... keywords) {
         int index = indexOfNoteAfterDate(from);
         if (index != -1) {
             while (index < notes.size()
-                    && (notes.get(index).created.before(to) || notes.get(index).created.equals(to))) {
+                    && (notes.get(index).created.before(to)
+                            || notes.get(index).created.equals(to))) {
                 if (isNoteContainsKeywords(notes.get(index), keywords)) {
                     out.println(notes.get(index));
                 }
@@ -253,6 +255,17 @@ public class Notebook {
         }
     }
 
+    /**
+     * Run notebook.
+     *
+     * @param out stream.
+     * @param err stream.
+     * @param fileName where notebook stored.
+     * @param dateTime implements DateTime interface.
+     * @param args command line arguments;
+     * @throws IOException if exception with IO.
+     * @throws ParseException if exception during parse of date.
+     */
     public static void run(PrintStream out, PrintStream err, String fileName,
                            DateTime dateTime, String[] args) throws IOException, ParseException {
         Notebook notebook = getNotebook(out, fileName, dateTime);
