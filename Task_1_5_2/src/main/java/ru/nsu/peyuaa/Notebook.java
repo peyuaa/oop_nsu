@@ -131,4 +131,18 @@ public class Notebook {
     private void serialize() throws IOException {
         objectMapper.writeValue(new File(fileName), this);
     }
+
+    private static Notebook getNotebook() {
+        Notebook notebook;
+        try {
+            notebook = objectMapper.readValue(new File(fileName), Notebook.class);
+        } catch (Exception e) {
+            notebook = new Notebook();
+        }
+        return notebook;
+    }
+
+    public static void main(String[] args) throws IOException {
+        Notebook notebook = getNotebook();
+    }
 }
