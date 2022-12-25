@@ -4,6 +4,7 @@
 
 package ru.nsu.peyuaa;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -30,7 +31,8 @@ public class Notebook {
         @JsonFormat(shape= JsonFormat.Shape.STRING, pattern="yyyy-MM-dd'T'HH:mm:ss.SSSZ")
         private final Date created;
 
-        public Note(String title, String content) {
+        @JsonCreator(mode = JsonCreator.Mode.PROPERTIES)
+        public Note(@JsonProperty("title") String title, @JsonProperty("content") String content) {
             this.created = new Date();
             this.title = title;
             this.content = content;
