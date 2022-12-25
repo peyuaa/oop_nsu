@@ -25,6 +25,10 @@ public class Notebook {
         this.out = out;
     }
 
+    private Notebook(){
+
+    }
+
     private static class Note {
         @Override
         public String toString() {
