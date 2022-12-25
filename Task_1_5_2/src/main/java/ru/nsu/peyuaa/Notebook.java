@@ -10,6 +10,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.File;
 import java.io.IOException;
+import java.io.PrintStream;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -20,6 +21,10 @@ import java.util.Date;
 import java.util.List;
 
 public class Notebook {
+    public Notebook(PrintStream out) {
+        this.out = out;
+    }
+
     private static class Note {
         @Override
         public String toString() {
@@ -69,6 +74,7 @@ public class Notebook {
 
     @JsonProperty("notes")
     private final List<Note> notes = new ArrayList<>();
+    private PrintStream out;
 
     /**
      * Finds and returns index of first note created after the date.
@@ -124,7 +130,7 @@ public class Notebook {
     }
 
     private void printNotes() {
-        notes.forEach(System.out::println);
+        notes.forEach(out::println);
     }
 
     private boolean isNoteContainsKeywords(Note note, String ...keywords) {
@@ -137,7 +143,7 @@ public class Notebook {
             while (index < notes.size()
                     && (notes.get(index).created.before(to) || notes.get(index).created.equals(to))) {
                 if (isNoteContainsKeywords(notes.get(index), keywords)) {
-                    System.out.println(notes.get(index));
+                    out.println(notes.get(index));
                 }
                 index++;
             }
@@ -159,12 +165,13 @@ public class Notebook {
         objectMapper.writeValue(new File(fileName), this);
     }
 
-    private static Notebook getNotebook() {
+    private static Notebook getNotebook(PrintStream out) {
         Notebook notebook;
         try {
             notebook = objectMapper.readValue(new File(fileName), Notebook.class);
+            notebook.out = out;
         } catch (Exception e) {
-            notebook = new Notebook();
+            notebook = new Notebook(out);
         }
         return notebook;
     }
@@ -220,16 +227,16 @@ public class Notebook {
         }
     }
 
-    public static void run(String[] args) throws IOException, ParseException {
-        Notebook notebook = getNotebook();
+    public static void run(PrintStream out, PrintStream err, String[] args) throws IOException, ParseException {
+        Notebook notebook = getNotebook(out);
         if (isInputValid(args)) {
             notebook.processInput(args);
         } else {
-            System.err.println("Incorrect input");
+            err.println("Incorrect input");
         }
     }
 
     public static void main(String[] args) throws IOException, ParseException {
-        run(args);
+        run(System.out, System.err, args);
     }
 }
