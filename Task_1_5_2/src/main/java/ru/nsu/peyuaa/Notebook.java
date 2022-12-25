@@ -41,6 +41,7 @@ public class Notebook {
     private final static String remove = "-rm";
     private final static String show = "-show";
     private final static String whitespace = " ";
+    private final static String fileName = "notebook.json";
     private final static ObjectMapper objectMapper = new ObjectMapper();
 
 
@@ -124,6 +125,6 @@ public class Notebook {
     }
 
     private void serialize() throws IOException {
-        objectMapper.writeValue(new File("notebook.json"), this);
+        objectMapper.writeValue(new File(fileName), this);
     }
 }
