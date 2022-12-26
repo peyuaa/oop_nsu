@@ -5,14 +5,12 @@
 package ru.nsu.peyuaa;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -61,7 +59,6 @@ public class Notebook {
         @JsonProperty("content")
         private final String content;
         @JsonProperty("created")
-        @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ")
         private final Date created;
 
         @JsonCreator(mode = JsonCreator.Mode.PROPERTIES)
@@ -77,7 +74,6 @@ public class Notebook {
     private static final String remove = "-rm";
     private static final String show = "-show";
     private static final String defaultFileName = "notebook.json";
-    private static final String inputDateFormat = "dd.MM.yyyy HH:mm";
     private static final int keyWordsStartIndex = 3;
     private static final int addNumberOfArguments = 3;
     private static final int removeNumberOfArguments = 2;
@@ -176,13 +172,12 @@ public class Notebook {
         }
     }
 
-    private void showNotes(String[] args) throws ParseException {
+    private void showNotes(String[] args) {
         if (args.length == 1) {
             printNotes();
         } else {
-            SimpleDateFormat format = new SimpleDateFormat(inputDateFormat);
-            Date from = format.parse(args[1]);
-            Date to = format.parse(args[2]);
+            Date from = new Date(Long.parseUnsignedLong(args[1]));
+            Date to = new Date(Long.parseUnsignedLong(args[2]));
             printNotes(from, to, Arrays.copyOfRange(args, keyWordsStartIndex, args.length));
         }
     }
@@ -213,14 +208,12 @@ public class Notebook {
     }
 
     private static boolean isDateValid(String date) {
-        SimpleDateFormat format = new SimpleDateFormat(inputDateFormat);
-        Date parsedDate;
         try {
-            parsedDate = format.parse(date);
-        } catch (ParseException e) {
+            Long.parseUnsignedLong(date);
+        } catch (NumberFormatException e) {
             return false;
         }
-        return date.equals(format.format(parsedDate));
+        return true;
     }
 
     private static boolean isShowValid(String[] args) {
@@ -247,7 +240,7 @@ public class Notebook {
         };
     }
 
-    private void processInput(String[] args) throws IOException, ParseException {
+    private void processInput(String[] args) throws IOException {
         switch (args[0]) {
             case add -> addNote(args[1], args[2]);
             case remove -> deleteNote(args[1]);
