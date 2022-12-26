@@ -41,6 +41,7 @@ class NotebookTest {
 
             String expected = "Note{title='my note', content='to be honest I hate notes', "
                     + "created=Tue Apr 12 00:00:00 NOVST 2005}\n";
+            System.out.println(outByte);
 
             file.delete();
 
