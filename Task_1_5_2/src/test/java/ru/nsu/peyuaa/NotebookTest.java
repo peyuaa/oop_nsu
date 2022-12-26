@@ -17,6 +17,7 @@ import java.nio.file.Paths;
 import java.text.ParseException;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.TimeZone;
 
 class NotebookTest {
     @Test
@@ -29,17 +30,21 @@ class NotebookTest {
             File file = new File(fileName);
             file.delete();
 
+            GregorianCalendar calendar = (GregorianCalendar) GregorianCalendar.getInstance();
+            calendar.clear();
+            calendar.setTimeZone(TimeZone.getTimeZone("Asia/Novosibirsk"));
+            calendar.set(2005, Calendar.APRIL, 13, 0, 0, 0);
+
             Notebook.DateTime mockedDateImpl = mock();
-            when(mockedDateImpl.getDate()).thenReturn(
-                    new GregorianCalendar(2005, Calendar.APRIL, 12).getTime());
+            when(mockedDateImpl.getDate()).thenReturn(calendar.getTime());
 
             String[] addNote = new String[]{"-add", "my note", "to be honest I hate notes"};
             Notebook.run(out, err, fileName, mockedDateImpl, addNote);
 
             String expected = "{\"notes\":[{\"title\":\"my note\",\"content\":\"to "
-                    + "be honest I hate notes\",\"created\":1113238800000}]}";
+                    + "be honest I hate notes\",\"created\":1113325200000}]}";
 
-//            Assertions.assertEquals(expected, Files.readString(Paths.get(fileName)));
+            Assertions.assertEquals(expected, Files.readString(Paths.get(fileName)));
 
             file.delete();
         }
