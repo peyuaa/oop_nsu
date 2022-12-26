@@ -22,7 +22,7 @@ import org.junit.jupiter.api.Test;
 
 class NotebookTest {
     @Test
-    void addNote() throws IOException, ParseException {
+    void addNote() throws IOException {
         try (
                 PrintStream out = new PrintStream(new ByteArrayOutputStream());
                 PrintStream err = new PrintStream(new ByteArrayOutputStream())
@@ -52,7 +52,7 @@ class NotebookTest {
     }
 
     @Test
-    void removeNote() throws IOException, ParseException {
+    void removeNote() throws IOException {
         try (
                 PrintStream out = new PrintStream(new ByteArrayOutputStream());
                 PrintStream err = new PrintStream(new ByteArrayOutputStream())
@@ -84,7 +84,7 @@ class NotebookTest {
     }
 
     @Test
-    void showAll() throws IOException, ParseException {
+    void showAll() throws IOException {
         try (
                 ByteArrayOutputStream outByte = new ByteArrayOutputStream();
                 PrintStream out = new PrintStream(outByte);
