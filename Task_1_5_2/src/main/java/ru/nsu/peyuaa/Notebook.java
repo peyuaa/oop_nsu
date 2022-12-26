@@ -10,13 +10,15 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintStream;
-import java.text.ParseException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
+import java.util.TimeZone;
 
 /**
  * Notebook implementation.
@@ -50,7 +52,7 @@ public class Notebook {
             return "Note{"
                     + "title='" + title + '\''
                     + ", content='" + content + '\''
-                    + ", created=" + created
+                    + ", created=" + dateFormat.format(created)
                     + '}';
         }
 
@@ -80,6 +82,7 @@ public class Notebook {
     private static final int showAllNumberOfArguments = 1;
     private static final int showMinimalNumberOfArguments = 4;
     private static final int minimalNumberOfArguments = 1;
+    private final static DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss Z");
     private static final ObjectMapper objectMapper = new ObjectMapper();
 
 
@@ -258,11 +261,11 @@ public class Notebook {
      * @param dateTime implements DateTime interface.
      * @param args command line arguments;
      * @throws IOException if exception with IO.
-     * @throws ParseException if exception during parse of date.
      */
     public static void run(PrintStream out, PrintStream err, String fileName,
-                           DateTime dateTime, String[] args) throws IOException, ParseException {
+                           DateTime dateTime, String[] args) throws IOException {
         Notebook notebook = getNotebook(out, fileName, dateTime);
+        dateFormat.setTimeZone(TimeZone.getTimeZone("Asia/Novosibirsk"));
         if (isInputValid(args)) {
             notebook.processInput(args);
         } else {
@@ -270,7 +273,7 @@ public class Notebook {
         }
     }
 
-    public static void main(String[] args) throws IOException, ParseException {
+    public static void main(String[] args) throws IOException {
         run(System.out, System.err, defaultFileName, new DateTimeImpl(), args);
     }
 }
