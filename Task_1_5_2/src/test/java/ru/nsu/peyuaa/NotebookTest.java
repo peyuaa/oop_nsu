@@ -12,6 +12,8 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintStream;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.text.ParseException;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -20,10 +22,8 @@ class NotebookTest {
     @Test
     void addNote() throws IOException, ParseException {
         try (
-                var outByte = new ByteArrayOutputStream();
-                var errByte = new ByteArrayOutputStream();
-                PrintStream out = new PrintStream(outByte);
-                PrintStream err = new PrintStream(errByte)
+                PrintStream out = new PrintStream(new ByteArrayOutputStream());
+                PrintStream err = new PrintStream(new ByteArrayOutputStream())
         ) {
             String fileName = "test.json";
             File file = new File(fileName);
@@ -36,17 +36,12 @@ class NotebookTest {
             String[] addNote = new String[]{"-add", "my note", "to be honest I hate notes"};
             Notebook.run(out, err, fileName, mockedDateImpl, addNote);
 
-            String[] printNote = new String[]{"-show"};
-            Notebook.run(out, err, fileName, mockedDateImpl, printNote);
+            String expected = "{\"notes\":[{\"title\":\"my note\",\"content\":\"to "
+                    + "be honest I hate notes\",\"created\":1113238800000}]}";
 
-            String expected = "Note{title='my note', content='to be honest I hate notes', "
-                    + "created=Tue Apr 12 00:00:00 NOVST 2005}\n";
-            System.out.println(outByte);
+            Assertions.assertEquals(expected, Files.readString(Paths.get(fileName)));
 
             file.delete();
-
-            Assertions.assertEquals("", errByte.toString());
-            Assertions.assertEquals(expected, outByte.toString());
         }
     }
 }
