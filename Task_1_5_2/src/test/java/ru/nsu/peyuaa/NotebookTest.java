@@ -50,4 +50,36 @@ class NotebookTest {
             file.delete();
         }
     }
+
+    @Test
+    void removeNote() throws IOException, ParseException {
+        try (
+                PrintStream out = new PrintStream(new ByteArrayOutputStream());
+                PrintStream err = new PrintStream(new ByteArrayOutputStream())
+        ) {
+            String fileName = "test.json";
+            File file = new File(fileName);
+            file.delete();
+
+            GregorianCalendar calendar = (GregorianCalendar) GregorianCalendar.getInstance();
+            calendar.clear();
+            calendar.setTimeZone(TimeZone.getTimeZone("Asia/Novosibirsk"));
+            calendar.set(2005, Calendar.APRIL, 13, 0, 0, 0);
+
+            Notebook.DateTime mockedDateImpl = mock();
+            when(mockedDateImpl.getDate()).thenReturn(calendar.getTime());
+
+            String[] addNote = new String[]{"-add", "my note", "to be honest I hate notes"};
+            Notebook.run(out, err, fileName, mockedDateImpl, addNote);
+
+            String[] removeNote = new String[]{"-rm", "my note"};
+            Notebook.run(out, err, fileName, mockedDateImpl, removeNote);
+
+            String expected = "{\"notes\":[]}";
+
+            Assertions.assertEquals(expected, Files.readString(Paths.get(fileName)));
+
+            file.delete();
+        }
+    }
 }
