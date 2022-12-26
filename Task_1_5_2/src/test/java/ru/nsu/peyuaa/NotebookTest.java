@@ -4,5 +4,48 @@
 
 package ru.nsu.peyuaa;
 
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.IOException;
+import java.io.PrintStream;
+import java.text.ParseException;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+
 class NotebookTest {
+    @Test
+    void addNote() throws IOException, ParseException {
+        try (
+                var outByte = new ByteArrayOutputStream();
+                var errByte = new ByteArrayOutputStream();
+                PrintStream out = new PrintStream(outByte);
+                PrintStream err = new PrintStream(errByte)
+        ) {
+            String fileName = "test.json";
+            File file = new File(fileName);
+            file.delete();
+
+            Notebook.DateTime mockedDateImpl = mock();
+            when(mockedDateImpl.getDate()).thenReturn(
+                    new GregorianCalendar(2005, Calendar.APRIL, 12).getTime());
+
+            String[] addNote = new String[]{"-add", "my note", "to be honest I hate notes"};
+            Notebook.run(out, err, fileName, mockedDateImpl, addNote);
+
+            String[] printNote = new String[]{"-show"};
+            Notebook.run(out, err, fileName, mockedDateImpl, printNote);
+
+            String expected = "Note{title='my note', content='to be honest I hate notes', "
+                    + "created=Tue Apr 12 00:00:00 NOVST 2005}\n";
+
+            file.delete();
+
+            Assertions.assertEquals("", errByte.toString());
+            Assertions.assertEquals(expected, outByte.toString());
+        }
+    }
 }
