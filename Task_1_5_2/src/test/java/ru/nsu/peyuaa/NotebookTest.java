@@ -105,7 +105,8 @@ class NotebookTest {
             secondCalendar.set(2009, Calendar.FEBRUARY, 13, 3, 7, 3);
 
             Notebook.DateTime mockedDateImpl = mock();
-            when(mockedDateImpl.getDate()).thenReturn(firstCalendar.getTime(), secondCalendar.getTime());
+            when(mockedDateImpl.getDate()).thenReturn(firstCalendar.getTime(),
+                    secondCalendar.getTime());
 
             String[] addFirstNote = new String[]{"-add", "my note", "to be honest I hate notes"};
             Notebook.run(out, err, fileName, mockedDateImpl, addFirstNote);
@@ -117,8 +118,8 @@ class NotebookTest {
             Notebook.run(out, err, fileName, mockedDateImpl, showAll);
 
             String expected = "Note{title='my note', content='to be honest I hate notes',"
-                    + " created=13.04.2005 00:00:00 +0700}\n" +
-                    "Note{title='my second note', content='nvmd I love them', "
+                    + " created=13.04.2005 00:00:00 +0700}\n"
+                    + "Note{title='my second note', content='nvmd I love them', "
                     + "created=13.02.2009 03:07:03 +0600}\n";
 
             Assertions.assertEquals(expected, outByte.toString());

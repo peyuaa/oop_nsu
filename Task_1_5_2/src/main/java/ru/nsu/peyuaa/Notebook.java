@@ -82,7 +82,7 @@ public class Notebook {
     private static final int showAllNumberOfArguments = 1;
     private static final int showMinimalNumberOfArguments = 4;
     private static final int minimalNumberOfArguments = 1;
-    private final static DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss Z");
+    private static final DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss Z");
     private static final ObjectMapper objectMapper = new ObjectMapper();
 
 
