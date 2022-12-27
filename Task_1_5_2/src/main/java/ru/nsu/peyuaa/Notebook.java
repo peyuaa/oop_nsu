@@ -53,7 +53,7 @@ public class Notebook {
             return "Note{"
                     + "title='" + title + '\''
                     + ", content='" + content + '\''
-                    + ", created=" + dateFormat.format(created)
+                    + ", created=" + outputDateFormat.format(created)
                     + '}';
         }
 
@@ -84,7 +84,7 @@ public class Notebook {
     private static final int showAllNumberOfArguments = 1;
     private static final int showMinimalNumberOfArguments = 4;
     private static final int minimalNumberOfArguments = 1;
-    private static final DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss Z");
+    private static final DateFormat outputDateFormat = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss Z");
     private static final ObjectMapper objectMapper = new ObjectMapper();
 
 
@@ -271,7 +271,7 @@ public class Notebook {
     public static void run(PrintStream out, PrintStream err, String fileName,
                            DateTime dateTime, String[] args) throws IOException, ParseException {
         Notebook notebook = getNotebook(out, fileName, dateTime);
-        dateFormat.setTimeZone(TimeZone.getTimeZone("Asia/Novosibirsk"));
+        outputDateFormat.setTimeZone(TimeZone.getTimeZone("Asia/Novosibirsk"));
         if (isInputValid(args)) {
             notebook.processInput(args);
         } else {
