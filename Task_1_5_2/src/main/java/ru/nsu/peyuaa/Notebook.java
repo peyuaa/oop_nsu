@@ -11,6 +11,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -76,6 +77,7 @@ public class Notebook {
     private static final String remove = "-rm";
     private static final String show = "-show";
     private static final String defaultFileName = "notebook.json";
+    private static final String inputDateFormat = "dd.MM.yyyy HH:mm";
     private static final int keyWordsStartIndex = 3;
     private static final int addNumberOfArguments = 3;
     private static final int removeNumberOfArguments = 2;
@@ -175,12 +177,13 @@ public class Notebook {
         }
     }
 
-    private void showNotes(String[] args) {
+    private void showNotes(String[] args) throws ParseException {
         if (args.length == 1) {
             printNotes();
         } else {
-            Date from = new Date(Long.parseUnsignedLong(args[1]));
-            Date to = new Date(Long.parseUnsignedLong(args[2]));
+            SimpleDateFormat format = new SimpleDateFormat(inputDateFormat);
+            Date from = format.parse(args[1]);
+            Date to = format.parse(args[2]);
             printNotes(from, to, Arrays.copyOfRange(args, keyWordsStartIndex, args.length));
         }
     }
@@ -211,12 +214,14 @@ public class Notebook {
     }
 
     private static boolean isDateValid(String date) {
+        SimpleDateFormat format = new SimpleDateFormat(inputDateFormat);
+        Date parsedDate;
         try {
-            Long.parseUnsignedLong(date);
-        } catch (NumberFormatException e) {
+            parsedDate = format.parse(date);
+        } catch (ParseException e) {
             return false;
         }
-        return true;
+        return date.equals(format.format(parsedDate));
     }
 
     private static boolean isShowValid(String[] args) {
@@ -243,7 +248,7 @@ public class Notebook {
         };
     }
 
-    private void processInput(String[] args) throws IOException {
+    private void processInput(String[] args) throws IOException, ParseException {
         switch (args[0]) {
             case add -> addNote(args[1], args[2]);
             case remove -> deleteNote(args[1]);
@@ -263,7 +268,7 @@ public class Notebook {
      * @throws IOException if exception with IO.
      */
     public static void run(PrintStream out, PrintStream err, String fileName,
-                           DateTime dateTime, String[] args) throws IOException {
+                           DateTime dateTime, String[] args) throws IOException, ParseException {
         Notebook notebook = getNotebook(out, fileName, dateTime);
         dateFormat.setTimeZone(TimeZone.getTimeZone("Asia/Novosibirsk"));
         if (isInputValid(args)) {
@@ -273,7 +278,7 @@ public class Notebook {
         }
     }
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, ParseException {
         run(System.out, System.err, defaultFileName, new DateTimeImpl(), args);
     }
 }
