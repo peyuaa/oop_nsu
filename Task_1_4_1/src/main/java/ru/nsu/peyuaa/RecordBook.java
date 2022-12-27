@@ -4,6 +4,14 @@
 
 package ru.nsu.peyuaa;
 
-public class RecordBook {
+import java.util.HashMap;
+import java.util.Map;
 
+public class RecordBook {
+    private final Map<String, Integer> grades = new HashMap<>();
+
+    public double getGPA() {
+        double sum = grades.values().stream().reduce(0, Integer::sum);
+        return sum / grades.size();
+    }
 }
