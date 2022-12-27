@@ -17,20 +17,31 @@ import java.text.ParseException;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.TimeZone;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class NotebookTest {
+    String fileName = "test.json";
+    File file = new File(fileName);
+
+    @BeforeEach
+    void prepareFile() {
+        file.delete();
+    }
+
+    @AfterEach
+    void deleteFile() {
+        file.delete();
+    }
+
     @Test
     void addNote() throws IOException, ParseException {
         try (
                 PrintStream out = new PrintStream(new ByteArrayOutputStream());
                 PrintStream err = new PrintStream(new ByteArrayOutputStream())
         ) {
-            String fileName = "test.json";
-            File file = new File(fileName);
-            file.delete();
-
             GregorianCalendar calendar = (GregorianCalendar) GregorianCalendar.getInstance();
             calendar.clear();
             calendar.setTimeZone(TimeZone.getTimeZone("Asia/Novosibirsk"));
@@ -46,8 +57,6 @@ class NotebookTest {
                     + "be honest I hate notes\",\"created\":1113325200000}]}";
 
             Assertions.assertEquals(expected, Files.readString(Paths.get(fileName)));
-
-            file.delete();
         }
     }
 
@@ -57,10 +66,6 @@ class NotebookTest {
                 PrintStream out = new PrintStream(new ByteArrayOutputStream());
                 PrintStream err = new PrintStream(new ByteArrayOutputStream())
         ) {
-            String fileName = "test.json";
-            File file = new File(fileName);
-            file.delete();
-
             GregorianCalendar calendar = (GregorianCalendar) GregorianCalendar.getInstance();
             calendar.clear();
             calendar.setTimeZone(TimeZone.getTimeZone("Asia/Novosibirsk"));
@@ -78,8 +83,6 @@ class NotebookTest {
             String expected = "{\"notes\":[]}";
 
             Assertions.assertEquals(expected, Files.readString(Paths.get(fileName)));
-
-            file.delete();
         }
     }
 
@@ -90,10 +93,6 @@ class NotebookTest {
                 PrintStream out = new PrintStream(outByte);
                 PrintStream err = new PrintStream(new ByteArrayOutputStream())
         ) {
-            String fileName = "test.json";
-            File file = new File(fileName);
-            file.delete();
-
             GregorianCalendar firstCalendar = (GregorianCalendar) GregorianCalendar.getInstance();
             firstCalendar.clear();
             firstCalendar.setTimeZone(TimeZone.getTimeZone("Asia/Novosibirsk"));
@@ -123,8 +122,6 @@ class NotebookTest {
                     + "created=13.02.2009 03:07:03 +0600}\n";
 
             Assertions.assertEquals(expected, outByte.toString());
-
-            file.delete();
         }
     }
 
@@ -135,10 +132,6 @@ class NotebookTest {
                 PrintStream out = new PrintStream(outByte);
                 PrintStream err = new PrintStream(new ByteArrayOutputStream())
         ) {
-            String fileName = "test.json";
-            File file = new File(fileName);
-            file.delete();
-
             GregorianCalendar firstCalendar = (GregorianCalendar) GregorianCalendar.getInstance();
             firstCalendar.clear();
             firstCalendar.setTimeZone(TimeZone.getTimeZone("Asia/Novosibirsk"));
@@ -176,8 +169,6 @@ class NotebookTest {
                     + "created=13.02.2009 03:08:00 +0600}\n";
 
             Assertions.assertEquals(expected, outByte.toString());
-
-            file.delete();
         }
     }
 }
