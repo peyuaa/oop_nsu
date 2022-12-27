@@ -1,1 +1,1 @@
-memberSearchIndex = [{"p":"ru.nsu.peyuaa","c":"RecordBook","l":"RecordBook()","u":"%3Cinit%3E()"}];updateSearchResults();
+memberSearchIndex = [{"p":"ru.nsu.peyuaa","c":"RecordBook","l":"getGPA()"},{"p":"ru.nsu.peyuaa","c":"RecordBook","l":"RecordBook()","u":"%3Cinit%3E()"}];updateSearchResults();
