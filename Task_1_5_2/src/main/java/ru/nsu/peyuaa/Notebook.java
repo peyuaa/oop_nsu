@@ -77,7 +77,6 @@ public class Notebook {
     private static final String remove = "-rm";
     private static final String show = "-show";
     private static final String defaultFileName = "notebook.json";
-    private static final String inputDateFormat = "dd.MM.yyyy HH:mm";
     private static final int keyWordsStartIndex = 3;
     private static final int addNumberOfArguments = 3;
     private static final int removeNumberOfArguments = 2;
@@ -85,6 +84,8 @@ public class Notebook {
     private static final int showMinimalNumberOfArguments = 4;
     private static final int minimalNumberOfArguments = 1;
     private static final DateFormat outputDateFormat = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss Z");
+    private static final DateFormat inputDateFormat = new SimpleDateFormat("dd.MM.yyyy HH:mm");
+    private static final String timeZone = "Asia/Novosibirsk";
     private static final ObjectMapper objectMapper = new ObjectMapper();
 
 
@@ -181,10 +182,8 @@ public class Notebook {
         if (args.length == 1) {
             printNotes();
         } else {
-            SimpleDateFormat format = new SimpleDateFormat(inputDateFormat);
-            format.setTimeZone(TimeZone.getTimeZone("Asia/Novosibirsk"));
-            Date from = format.parse(args[1]);
-            Date to = format.parse(args[2]);
+            Date from = inputDateFormat.parse(args[1]);
+            Date to = inputDateFormat.parse(args[2]);
             printNotes(from, to, Arrays.copyOfRange(args, keyWordsStartIndex, args.length));
         }
     }
@@ -215,14 +214,13 @@ public class Notebook {
     }
 
     private static boolean isDateValid(String date) {
-        SimpleDateFormat format = new SimpleDateFormat(inputDateFormat);
         Date parsedDate;
         try {
-            parsedDate = format.parse(date);
+            parsedDate = inputDateFormat.parse(date);
         } catch (ParseException e) {
             return false;
         }
-        return date.equals(format.format(parsedDate));
+        return date.equals(inputDateFormat.format(parsedDate));
     }
 
     private static boolean isShowValid(String[] args) {
@@ -271,7 +269,8 @@ public class Notebook {
     public static void run(PrintStream out, PrintStream err, String fileName,
                            DateTime dateTime, String[] args) throws IOException, ParseException {
         Notebook notebook = getNotebook(out, fileName, dateTime);
-        outputDateFormat.setTimeZone(TimeZone.getTimeZone("Asia/Novosibirsk"));
+        outputDateFormat.setTimeZone(TimeZone.getTimeZone(timeZone));
+        inputDateFormat.setTimeZone(TimeZone.getTimeZone(timeZone));
         if (isInputValid(args)) {
             notebook.processInput(args);
         } else {
