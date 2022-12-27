@@ -182,6 +182,7 @@ public class Notebook {
             printNotes();
         } else {
             SimpleDateFormat format = new SimpleDateFormat(inputDateFormat);
+            format.setTimeZone(TimeZone.getTimeZone("Asia/Novosibirsk"));
             Date from = format.parse(args[1]);
             Date to = format.parse(args[2]);
             printNotes(from, to, Arrays.copyOfRange(args, keyWordsStartIndex, args.length));
