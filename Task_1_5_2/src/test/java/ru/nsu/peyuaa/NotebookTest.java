@@ -160,12 +160,13 @@ class NotebookTest {
             String[] addThirdNote = new String[]{"-add", "big secret", "I'm insane"};
             Notebook.run(out, err, fileName, mockedDateImpl, addThirdNote);
 
-            String[] show = new String[]{"-show", "13.02.2009 03:07", "13.02.2009 03:09", "secret", "note"};
+            String[] show = new String[]{"-show", "13.02.2009 03:07",
+                    "13.02.2009 03:09", "secret", "note"};
             Notebook.run(out, err, fileName, mockedDateImpl, show);
 
             String expected = "Note{title='my second note', content='nvmd I love them',"
-                    + " created=13.02.2009 03:07:03 +0600}\n" +
-                    "Note{title='big secret', content='I'm insane', "
+                    + " created=13.02.2009 03:07:03 +0600}\n"
+                    + "Note{title='big secret', content='I'm insane', "
                     + "created=13.02.2009 03:08:00 +0600}\n";
 
             Assertions.assertEquals(expected, outByte.toString());
