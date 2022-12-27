@@ -161,7 +161,7 @@ class NotebookTest {
             Notebook.run(out, err, fileName, mockedDateImpl, addThirdNote);
 
             String[] show = new String[]{"-show", "13.02.2009 03:07",
-                    "13.02.2009 03:09", "secret", "note"};
+                "13.02.2009 03:09", "secret", "note"};
             Notebook.run(out, err, fileName, mockedDateImpl, show);
 
             String expected = "Note{title='my second note', content='nvmd I love them',"
