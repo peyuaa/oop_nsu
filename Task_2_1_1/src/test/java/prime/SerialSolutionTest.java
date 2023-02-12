@@ -20,13 +20,15 @@ class SerialSolutionTest {
                 {2, 3, 5, 7, 11, 13, 17, 19, 23, 29},
                 {-1, -2, -3, -4, -5, -6, -7, -8, -9, -10}
         };
+
         boolean[] expectedResults = {
-                false,
-                true,
-                true,
-                false,
-                true
+            false,
+            true,
+            true,
+            false,
+            true
         };
+
         for (int i = 0; i < testCases.length; i++) {
             assertEquals(expectedResults[i], serialSolution.containsNonPrime(testCases[i]));
         }
