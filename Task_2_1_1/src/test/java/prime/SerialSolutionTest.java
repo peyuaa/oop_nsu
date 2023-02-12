@@ -20,19 +20,20 @@ class SerialSolutionTest {
         };
 
         boolean[] expectedResults = {
-                false,
-                true,
-                true,
-                false,
-                true,
-                false,
-                true
+            false,
+            true,
+            true,
+            false,
+            true,
+            false,
+            true
         };
 
         for (int i = 0; i < testCases.length; i++) {
             boolean result = serialSolution.containsNonPrime(testCases[i]);
             assertEquals(expectedResults[i], result,
-                    String.format("Test case %d failed. Expected %b but got %b", i + 1, expectedResults[i], result));
+                    String.format("Test case %d failed. Expected %b but got %b",
+                            i + 1, expectedResults[i], result));
         }
     }
 }
