@@ -9,7 +9,7 @@ import java.util.stream.IntStream;
 
 public class SerialSolution {
     public boolean containsNonPrime(int[] arr) {
-        int max = Arrays.stream(arr).max().orElseThrow();
+        int max = Arrays.stream(arr).max().getAsInt();
 
         if (max < 2) {
             return true;
