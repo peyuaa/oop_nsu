@@ -5,13 +5,11 @@
 package prime;
 
 import java.util.Arrays;
+import java.util.stream.IntStream;
 
 public class SerialSolution {
     public boolean containsNonPrime(int[] arr) {
-        int max = 0;
-        for (int k : arr) {
-            max = Math.max(max, k);
-        }
+        int max = Arrays.stream(arr).max().getAsInt();
 
         if (max < 2) {
             return true;
@@ -20,20 +18,14 @@ public class SerialSolution {
         boolean[] isPrime = new boolean[max + 1];
         Arrays.fill(isPrime, true);
         isPrime[0] = isPrime[1] = false;
-        for (int i = 2; i <= Math.sqrt(max); i++) {
-            if (isPrime[i]) {
-                for (int j = i * i; j <= max; j += i) {
-                    isPrime[j] = false;
-                }
-            }
-        }
 
-        for (int j : arr) {
-            if (!isPrime[j]) {
-                return true;
-            }
-        }
-        return false;
+        IntStream.rangeClosed(2, (int) Math.sqrt(max))
+                .filter(x -> isPrime[x])
+                .forEach(x -> IntStream.rangeClosed(x * x, max)
+                        .filter(y -> y % x == 0)
+                        .forEach(y -> isPrime[y] = false));
+
+        return Arrays.stream(arr).anyMatch(x -> !isPrime[x]);
     }
 
     public SerialSolution() {
