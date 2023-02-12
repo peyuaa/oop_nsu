@@ -27,8 +27,11 @@ public class SerialSolution {
                 }
             }
         }
+
         for (int j : arr) {
-            if (!isPrime[j]) return true;
+            if (!isPrime[j]) {
+                return true;
+            }
         }
         return false;
     }
