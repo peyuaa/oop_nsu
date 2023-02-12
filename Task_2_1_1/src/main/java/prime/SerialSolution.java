@@ -31,8 +31,11 @@ public class SerialSolution {
      * @return Returns true if the array contains any non-prime numbers, false otherwise.
      */
     public boolean containsNonPrime(int[] arr) {
-        int max = Arrays.stream(arr).max().getAsInt();
+        if (arr.length == 0) {
+            return false;
+        }
 
+        int max = Arrays.stream(arr).max().getAsInt();
         if (max < 2) {
             return true;
         }

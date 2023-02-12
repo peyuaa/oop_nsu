@@ -10,6 +10,7 @@ class SerialSolutionTest {
     @Test
     public void testContainsNonPrime() {
         int[][] testCases = {
+                {},
                 {2, 3, 5, 7, 11, 13, 17},
                 {4, 6, 8, 9, 10, 12, 14},
                 {0, 1, 2, 3, 4, 5, 6, 7, 8, 9},
@@ -20,6 +21,7 @@ class SerialSolutionTest {
         };
 
         boolean[] expectedResults = {
+            false,
             false,
             true,
             true,
