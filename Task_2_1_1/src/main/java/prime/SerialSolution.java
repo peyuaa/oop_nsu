@@ -1,3 +1,8 @@
+package prime;
+
+import java.util.Arrays;
+import java.util.stream.IntStream;
+
 /**
  * The class {@code SerialSolution} contains a single public method {@link #containsNonPrime(int[])}
  * which takes in an integer array and returns a boolean indicating if the array contains a non-prime number.
@@ -12,11 +17,6 @@
  * <p>
  * Finally, the method returns true if the array contains any number that is not marked as prime in the boolean array.
  */
-package prime;
-
-import java.util.Arrays;
-import java.util.stream.IntStream;
-
 public class SerialSolution {
 
     /**
