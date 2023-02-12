@@ -1,1 +1,1 @@
-memberSearchIndex = [{"p":"prime","c":"App","l":"App()","u":"%3Cinit%3E()"},{"p":"prime","c":"App","l":"getGreeting()"},{"p":"prime","c":"App","l":"main(String[])","u":"main(java.lang.String[])"}];updateSearchResults();
+memberSearchIndex = [{"p":"prime","c":"SerialSolution","l":"containsNonPrime(int[])"},{"p":"prime","c":"SerialSolution","l":"SerialSolution()","u":"%3Cinit%3E()"}];updateSearchResults();
