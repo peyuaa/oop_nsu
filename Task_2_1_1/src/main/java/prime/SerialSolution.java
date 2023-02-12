@@ -9,7 +9,7 @@ import java.util.stream.IntStream;
 
 public class SerialSolution {
     public boolean containsNonPrime(int[] arr) {
-        int max = Arrays.stream(arr).max().getAsInt();
+        int max = Arrays.stream(arr).max().orElseThrow();
 
         if (max < 2) {
             return true;
@@ -21,9 +21,13 @@ public class SerialSolution {
 
         IntStream.rangeClosed(2, (int) Math.sqrt(max))
                 .filter(x -> isPrime[x])
-                .forEach(x -> IntStream.rangeClosed(x * x, max)
-                        .filter(y -> y % x == 0)
-                        .forEach(y -> isPrime[y] = false));
+                .forEach(x -> {
+                    int start = x * x;
+                    while (start <= max) {
+                        isPrime[start] = false;
+                        start += x;
+                    }
+                });
 
         return Arrays.stream(arr).anyMatch(x -> !isPrime[x]);
     }
