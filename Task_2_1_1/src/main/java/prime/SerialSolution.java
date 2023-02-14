@@ -35,12 +35,12 @@ public class SerialSolution {
             return false;
         }
 
-        int max = Arrays.stream(arr).max().getAsInt();
-
         int min = Arrays.stream(arr).min().getAsInt();
         if (min < 2) {
             return true;
         }
+
+        int max = Arrays.stream(arr).max().getAsInt();
 
         boolean[] isPrime = new boolean[max + 1];
         Arrays.fill(isPrime, true);
