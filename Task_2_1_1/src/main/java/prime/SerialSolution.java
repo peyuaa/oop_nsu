@@ -36,7 +36,9 @@ public class SerialSolution {
         }
 
         int max = Arrays.stream(arr).max().getAsInt();
-        if (max < 2) {
+
+        int min = Arrays.stream(arr).min().getAsInt();
+        if (min < 2) {
             return true;
         }
 

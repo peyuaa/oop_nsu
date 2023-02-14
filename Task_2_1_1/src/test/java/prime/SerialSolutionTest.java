@@ -17,7 +17,8 @@ class SerialSolutionTest {
                 {2, 3, 5, 7, 11, 13, 17, 19, 23, 29},
                 {-1, -2, -3, -4, -5, -6, -7, -8, -9, -10},
                 {3, 5, 7, 11, 13, 17, 19, 23, 29, 31},
-                {4, 6, 8, 10, 12, 14, 16, 18, 20, 22}
+                {4, 6, 8, 10, 12, 14, 16, 18, 20, 22},
+                {3, -2}
         };
 
         boolean[] expectedResults = {
@@ -28,6 +29,7 @@ class SerialSolutionTest {
             false,
             true,
             false,
+            true,
             true
         };
 
