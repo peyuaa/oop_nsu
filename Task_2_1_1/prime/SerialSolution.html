@@ -91,23 +91,6 @@ loadScripts(document, 'script');</script>
 <hr>
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">SerialSolution</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></span></div>
-<div class="block">The class <code>SerialSolution</code> has a single public method,
- <a href="#containsNonPrime(int%5B%5D)"><code>containsNonPrime(int[])</code></a>, which takes an integer array and
- returns a boolean indicating if the array contains a non-prime number.
-
- <p>The method first finds the max element in the array and creates a boolean
- array to store the prime numbers up to the max. The boolean array is
- initialized with all elements set to true and the first two elements, 0 and
- 1, set to false (since they are not primes).
-
- <p>The method then uses the Sieve of Eratosthenes algorithm to fill the
- boolean array with the prime numbers. It iterates through the numbers
- from 2 to the sqrt of the max element, filtering out the non-prime numbers.
- For each prime number, the method sets all its multiples as non-prime in
- the boolean array.
-
- <p>Finally, the method returns true if the array contains any number that is
- not marked as prime in the boolean array.</div>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -120,9 +103,7 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-first">Constructor</div>
 <div class="table-header col-last">Description</div>
 <div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E()" class="member-name-link">SerialSolution</a>()</code></div>
-<div class="col-last even-row-color">
-<div class="block">Constructs a new instance of the <code>SerialSolution</code> class.</div>
-</div>
+<div class="col-last even-row-color">&nbsp;</div>
 </div>
 </section>
 </li>
@@ -139,9 +120,10 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>boolean</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#containsNonPrime(int%5B%5D)" class="member-name-link">containsNonPrime</a><wbr>(int[]&nbsp;arr)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">ContainsNonPrime checks if the given array contains any non-prime numbers.</div>
-</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>boolean</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#isPrime(int)" class="member-name-link">isPrime</a><wbr>(int&nbsp;n)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
 </div>
 </div>
 </div>
@@ -163,7 +145,6 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="&lt;init&gt;()">
 <h3>SerialSolution</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">SerialSolution</span>()</div>
-<div class="block">Constructs a new instance of the <code>SerialSolution</code> class.</div>
 </section>
 </li>
 </ul>
@@ -175,16 +156,15 @@ loadScripts(document, 'script');</script>
 <h2>Method Details</h2>
 <ul class="member-list">
 <li>
+<section class="detail" id="isPrime(int)">
+<h3>isPrime</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">isPrime</span><wbr><span class="parameters">(int&nbsp;n)</span></div>
+</section>
+</li>
+<li>
 <section class="detail" id="containsNonPrime(int[])">
 <h3>containsNonPrime</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">containsNonPrime</span><wbr><span class="parameters">(int[]&nbsp;arr)</span></div>
-<div class="block">ContainsNonPrime checks if the given array contains any non-prime numbers.</div>
-<dl class="notes">
-<dt>Parameters:</dt>
-<dd><code>arr</code> - The array to check for non-prime numbers</dd>
-<dt>Returns:</dt>
-<dd>Returns true if the array contains any non-prime numbers, false otherwise.</dd>
-</dl>
 </section>
 </li>
 </ul>
