@@ -11,6 +11,7 @@ plugins {
     id 'application'
     id 'java-library'
     id 'jacoco'
+    id "me.champeau.jmh" version "0.6.8"
 }
 
 repositories {
@@ -24,6 +25,9 @@ dependencies {
 
     // This dependency is used by the application.
     implementation 'com.google.guava:guava:31.1-jre'
+
+    implementation 'org.openjdk.jmh:jmh-core:1.36'
+    annotationProcessor 'org.openjdk.jmh:jmh-generator-annprocess:1.36'
 }
 
 application {
