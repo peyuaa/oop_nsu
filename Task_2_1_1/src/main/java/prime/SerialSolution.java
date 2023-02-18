@@ -16,6 +16,10 @@ public class SerialSolution {
     }
 
     public boolean containsNonPrime(int[] arr) {
+        if (arr == null) {
+            return false;
+        }
+
         for (int num : arr) {
             if (!isPrime(num)) {
                 return true;

@@ -3,7 +3,7 @@ package prime;
 import java.lang.Math;
 
 public class ParallelSolution {
-    private int numThreads;
+    private final int numThreads;
 
     public ParallelSolution(int numThreads) {
         this.numThreads = numThreads;
@@ -22,6 +22,10 @@ public class ParallelSolution {
     }
 
     public boolean containsNonPrime(int[] arr) throws InterruptedException {
+        if (arr == null) {
+            return false;
+        }
+
         int chunkSize = (int) Math.ceil((double) arr.length / numThreads);
         CheckPrimeThread[] threads = new CheckPrimeThread[numThreads];
 
@@ -45,9 +49,9 @@ public class ParallelSolution {
     }
 
     private class CheckPrimeThread extends Thread {
-        private int[] arr;
-        private int startIndex;
-        private int endIndex;
+        private final int[] arr;
+        private final int startIndex;
+        private final int endIndex;
         private boolean nonPrimeFound;
 
         public CheckPrimeThread(int[] arr, int startIndex, int endIndex) {

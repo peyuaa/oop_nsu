@@ -17,6 +17,10 @@ public class ParallelStreamSolution {
     }
 
     public boolean containsNonPrime(int[] arr) {
+        if (arr == null) {
+            return false;
+        }
+
         return Arrays.stream(arr)
                 .parallel()
                 .anyMatch(this::isNonPrime);
