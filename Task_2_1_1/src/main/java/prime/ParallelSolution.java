@@ -73,7 +73,8 @@ public class ParallelSolution {
     }
 
     /**
-     * A private inner class representing a thread that checks a portion of an integer array for non-prime numbers.
+     * A private inner class representing a thread
+     * that checks a portion of an integer array for non-prime numbers.
      */
     private class CheckPrimeThread extends Thread {
         private final int[] arr;
