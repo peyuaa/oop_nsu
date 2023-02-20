@@ -2,13 +2,26 @@ package prime;
 
 import java.lang.Math;
 
+/**
+ * The ParallelSolution class provides a parallelized solution for determining whether an integer array
+ * contains any non-prime numbers. It uses multiple threads to check portions of the array simultaneously.
+ */
 public class ParallelSolution {
     private final int numThreads;
 
+    /**
+     * Constructs a ParallelSolution object with a specified number of threads.
+     * @param numThreads the number of threads to use for checking the array
+     */
     public ParallelSolution(int numThreads) {
         this.numThreads = numThreads;
     }
 
+    /**
+     * Determines whether a given integer is a prime number.
+     * @param n the integer to check
+     * @return true if n is a prime number, false otherwise
+     */
     public boolean isPrime(int n) {
         if (n < 2) {
             return false;
@@ -21,6 +34,12 @@ public class ParallelSolution {
         return true;
     }
 
+    /**
+     * Determines whether an integer array contains any non-prime numbers, using multiple threads.
+     * @param arr the integer array to check
+     * @return true if the array contains at least one non-prime number, false otherwise
+     * @throws InterruptedException if any of the threads are interrupted during execution
+     */
     public boolean containsNonPrime(int[] arr) throws InterruptedException {
         if (arr == null) {
             return false;
@@ -48,6 +67,9 @@ public class ParallelSolution {
         return hasNonPrime;
     }
 
+    /**
+     * A private inner class representing a thread that checks a portion of an integer array for non-prime numbers.
+     */
     private class CheckPrimeThread extends Thread {
         private final int[] arr;
         private final int startIndex;
