@@ -1,0 +1,4 @@
+Benchmark                                   Mode  Cnt        Score        Error   Units
+NonPrimeArrayBenchmark.testMultiThreaded   thrpt   50   779776.272 ± 107090.132  ops/ms
+NonPrimeArrayBenchmark.testParallelStream  thrpt   50   879969.348 ±  84694.706  ops/ms
+NonPrimeArrayBenchmark.testSingleThreaded  thrpt   50  1005926.601 ± 177251.637  ops/ms
