@@ -23,7 +23,7 @@ import org.openjdk.jmh.runner.options.OptionsBuilder;
 @Warmup(iterations = 5, time = 500, timeUnit = TimeUnit.MILLISECONDS)
 @Measurement(iterations = 10, time = 500, timeUnit = TimeUnit.MILLISECONDS)
 @State(Scope.Benchmark)
-class NonPrimeArrayBenchmark {
+public class NonPrimeArrayBenchmark {
     private static final int ARRAY_SIZE = 10_000_000;
     private static final int THREAD_COUNT = 4;
     private static int[] array;
@@ -58,7 +58,6 @@ class NonPrimeArrayBenchmark {
         parallelStreamSolution.containsNonPrime(array);
     }
 
-    @Test
     public void runBenchmark() throws RunnerException {
         Options opt = new OptionsBuilder()
                 .include(NonPrimeArrayBenchmark.class.getSimpleName())
