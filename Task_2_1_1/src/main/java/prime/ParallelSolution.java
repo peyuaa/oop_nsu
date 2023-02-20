@@ -40,6 +40,7 @@ public class ParallelSolution {
 
     /**
      * Determines whether an integer array contains any non-prime numbers, using multiple threads.
+     *
      * @param arr the integer array to check
      * @return true if the array contains at least one non-prime number, false otherwise
      * @throws InterruptedException if any of the threads are interrupted during execution
