@@ -1,4 +1,4 @@
-package prime;
+package ru.nsu.peyuaa;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeAll;
@@ -24,7 +24,7 @@ import java.util.concurrent.TimeUnit;
 @Warmup(iterations = 5, time = 500, timeUnit = TimeUnit.MILLISECONDS)
 @Measurement(iterations = 10, time = 500, timeUnit = TimeUnit.MILLISECONDS)
 @State(Scope.Benchmark)
-public class NonPrimeArrayBenchmark {
+class NonPrimeArrayBenchmark {
     private static final int ARRAY_SIZE = 10_000_000;
     private static final int THREAD_COUNT = 4;
     private static int[] array;

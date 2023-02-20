@@ -1,4 +1,4 @@
-package prime;
+package ru.nsu.peyuaa;
 
 import java.lang.Math;
 

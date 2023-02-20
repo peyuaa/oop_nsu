@@ -1,4 +1,4 @@
-package prime;
+package ru.nsu.peyuaa;
 
 import org.junit.jupiter.api.Test;
 
@@ -8,7 +8,7 @@ class SerialSolutionTest {
     SerialSolution serialSolution = new SerialSolution();
 
     @Test
-    public void testContainsNonPrime() {
+    void testContainsNonPrime() {
         int[][] testCases = {
                 {},
                 {2, 3, 5, 7, 11, 13, 17},
