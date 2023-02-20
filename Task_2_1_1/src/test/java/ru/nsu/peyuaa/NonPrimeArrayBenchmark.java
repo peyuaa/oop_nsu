@@ -70,9 +70,10 @@ public class NonPrimeArrayBenchmark {
 
     /**
      * Runs the benchmark tests for the NonPrimeArrayBenchmark class using the JMH Runner class.
-     * The method creates a new Options object with the class name as the include pattern and uses it to build a
-     * new OptionsBuilder object. It then creates a new Runner object with the OptionsBuilder object
-     * and runs the benchmark tests. The method throws a RunnerException if the benchmark tests fail to run.
+     * The method creates a new Options object with the class name as the include pattern and
+     * uses it to build a new OptionsBuilder object. It then creates a new Runner object
+     * with the OptionsBuilder object and runs the benchmark tests.
+     * The method throws a RunnerException if the benchmark tests fail to run.
      */
     public void runBenchmark() throws RunnerException {
         Options opt = new OptionsBuilder()
