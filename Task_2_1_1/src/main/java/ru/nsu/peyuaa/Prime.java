@@ -1,5 +1,9 @@
 package ru.nsu.peyuaa;
 
+/**
+ * The Prime class provides methods for checking
+ * whether a given integer is a non-prime number.
+ */
 public class Prime {
 
     /**
