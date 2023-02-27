@@ -21,24 +21,6 @@ public class ParallelSolution {
     }
 
     /**
-     * Determines whether a given integer is a prime number.
-     *
-     * @param n the integer to check
-     * @return true if n is a prime number, false otherwise
-     */
-    public boolean isPrime(int n) {
-        if (n < 2) {
-            return false;
-        }
-        for (int i = 2; i <= Math.sqrt(n); i++) {
-            if (n % i == 0) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    /**
      * Determines whether an integer array contains any non-prime numbers, using multiple threads.
      *
      * @param arr the integer array to check
@@ -98,7 +80,7 @@ public class ParallelSolution {
                 if (num == 2) {
                     continue;
                 }
-                if (num % 2 == 0 || !isPrime(num)) {
+                if (num % 2 == 0 || Prime.isNonPrime(num)) {
                     nonPrimeFound = true;
                     break;
                 }

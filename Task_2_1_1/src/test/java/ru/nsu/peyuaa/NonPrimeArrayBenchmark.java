@@ -28,7 +28,7 @@ import org.openjdk.jmh.runner.options.OptionsBuilder;
 @State(Scope.Benchmark)
 public class NonPrimeArrayBenchmark {
     private static final int ARRAY_SIZE = 10_000_000;
-    private static final int THREAD_COUNT = 4;
+    private static final int THREAD_COUNT = 2;
     private static int[] array;
 
     /**
