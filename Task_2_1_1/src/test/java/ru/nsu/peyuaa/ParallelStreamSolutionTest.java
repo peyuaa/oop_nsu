@@ -18,11 +18,11 @@ class ParallelStreamSolutionTest {
         };
 
         boolean[] expectedResults = {
-                false,
-                true,
-                false,
-                true,
-                false
+            false,
+            true,
+            false,
+            true,
+            false
         };
 
         for (int i = 0; i < testCases.length; i++) {
