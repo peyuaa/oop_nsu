@@ -13,20 +13,28 @@ class ParallelStreamSolutionTest {
 
     @Test
     void testHasNonPrime() {
-        int[] arr1 = {2, 3, 5, 7, 11, 13};
-        assertFalse(parallelStreamSolution.containsNonPrime(arr1));
+        int[][] testCases = {
+                {2, 3, 5, 7, 11, 13},
+                {2, 3, 4, 5, 7, 11, 13},
+                {2, 3, 5, 7, 11, 13, 17, 19, 23, 29},
+                {2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 30},
+                {2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31}
+        };
 
-        int[] arr2 = {2, 3, 4, 5, 7, 11, 13};
-        assertTrue(parallelStreamSolution.containsNonPrime(arr2));
+        boolean[] expectedResults = {
+                false,
+                true,
+                false,
+                true,
+                false
+        };
 
-        int[] arr3 = {2, 3, 5, 7, 11, 13, 17, 19, 23, 29};
-        assertFalse(parallelStreamSolution.containsNonPrime(arr3));
-
-        int[] arr4 = {2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 30};
-        assertTrue(parallelStreamSolution.containsNonPrime(arr4));
-
-        int[] arr5 = {2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31};
-        assertFalse(parallelStreamSolution.containsNonPrime(arr5));
+        for (int i = 0; i < testCases.length; i++) {
+            boolean result = parallelStreamSolution.containsNonPrime(testCases[i]);
+            assertEquals(expectedResults[i], result,
+                    String.format("Test case %d failed. Expected %b but got %b",
+                            i + 1, expectedResults[i], result));
+        }
     }
 }
 
