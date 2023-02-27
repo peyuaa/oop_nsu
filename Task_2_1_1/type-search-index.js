@@ -1,1 +1,1 @@
-typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"ru.nsu.peyuaa","l":"ParallelSolution"},{"p":"ru.nsu.peyuaa","l":"ParallelStreamSolution"},{"p":"ru.nsu.peyuaa","l":"SerialSolution"}];updateSearchResults();
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"ru.nsu.peyuaa","l":"ParallelSolution"},{"p":"ru.nsu.peyuaa","l":"ParallelStreamSolution"},{"p":"ru.nsu.peyuaa","l":"Prime"},{"p":"ru.nsu.peyuaa","l":"SerialSolution"}];updateSearchResults();
