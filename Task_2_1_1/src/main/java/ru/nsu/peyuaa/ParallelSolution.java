@@ -1,7 +1,6 @@
 package ru.nsu.peyuaa;
 
 import jakarta.validation.constraints.NotNull;
-
 import java.lang.Math;
 
 /**
