@@ -3,12 +3,12 @@
  */
 package task_2_2_1;
 
-public class App {
+public class Pizzeria {
     public String getGreeting() {
         return "Hello World!";
     }
 
     public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
+        System.out.println(new Pizzeria().getGreeting());
     }
 }
