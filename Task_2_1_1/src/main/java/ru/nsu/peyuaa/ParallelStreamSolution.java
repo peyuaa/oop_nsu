@@ -1,5 +1,7 @@
 package ru.nsu.peyuaa;
 
+import jakarta.validation.constraints.NotNull;
+
 import java.util.Arrays;
 
 /**
@@ -16,11 +18,7 @@ public class ParallelStreamSolution {
      * @param arr the integer array to check
      * @return true if the array contains at least one non-prime number, false otherwise
      */
-    public boolean containsNonPrime(int[] arr) {
-        if (arr == null) {
-            return false;
-        }
-
+    public boolean containsNonPrime(@NotNull int[] arr) {
         return Arrays.stream(arr)
                 .parallel()
                 .anyMatch(Prime::isNonPrime);

@@ -1,5 +1,7 @@
 package ru.nsu.peyuaa;
 
+import jakarta.validation.constraints.NotNull;
+
 import java.lang.Math;
 
 /**
@@ -27,11 +29,7 @@ public class ParallelSolution {
      * @return true if the array contains at least one non-prime number, false otherwise
      * @throws InterruptedException if any of the threads are interrupted during execution
      */
-    public boolean containsNonPrime(int[] arr) throws InterruptedException {
-        if (arr == null) {
-            return false;
-        }
-
+    public boolean containsNonPrime(@NotNull int[] arr) throws InterruptedException {
         int chunkSize = (int) Math.ceil((double) arr.length / numThreads);
         CheckPrimeThread[] threads = new CheckPrimeThread[numThreads];
 
