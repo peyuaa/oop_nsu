@@ -1,1 +1,1 @@
-memberSearchIndex = [{"p":"task_2_2_1","c":"Pizzeria","l":"getGreeting()"},{"p":"task_2_2_1","c":"Pizzeria","l":"main(String[])","u":"main(java.lang.String[])"},{"p":"task_2_2_1","c":"Pizzeria","l":"Pizzeria()","u":"%3Cinit%3E()"}];updateSearchResults();
+memberSearchIndex = [{"p":"ru.nsu.peyuaa","c":"Pizzeria","l":"getGreeting()"},{"p":"ru.nsu.peyuaa","c":"Pizzeria","l":"main(String[])","u":"main(java.lang.String[])"},{"p":"ru.nsu.peyuaa","c":"Pizzeria","l":"Pizzeria()","u":"%3Cinit%3E()"}];updateSearchResults();
