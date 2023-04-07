@@ -36,7 +36,8 @@ class CustomerTest {
         // Call the run method of the Customer
         customer.start();
 
-        // Verify that the makeAnOrder method was called on the mock Pizzeria with a new Pizza object
+        // Verify that the makeAnOrder method
+        // was called on the mock Pizzeria with a new Pizza object
         verify(pizzeria).makeAnOrder(any(Pizza.class));
     }
 }
