@@ -6,9 +6,6 @@ package ru.nsu.peyuaa;
  */
 public class Customer extends Thread {
 
-    /**
-     * The `Pizzeria` from which the customer wants to order a pizza.
-     */
     private final Pizzeria pizzeria;
 
     /**
