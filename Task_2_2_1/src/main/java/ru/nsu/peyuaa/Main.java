@@ -12,6 +12,12 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * This class represents the entry point of the pizza delivery simulation program.
+ * It reads the configuration file and creates the necessary objects to run the simulation.
+ * It starts the threads for the customers and the pizzeria,
+ * which in turn start the threads for the couriers, bakers, and warehouse.
+ */
 public class Main {
     private static final String CONFIG_PATH = "./src/main/resources/config.json";
     public static void main(String[] args) throws IOException {
