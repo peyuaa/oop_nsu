@@ -30,14 +30,20 @@ public class Courier extends Thread {
     private final List<Order> orders;
 
     /**
+     * The time it takes for this `Courier` to deliver a pizza, in milliseconds.
+     */
+    private final int deliveryTime;
+
+    /**
      * Constructs a new `Courier` object with the specified settings.
      *
      * @param maxVolume the maximum number of pizzas that this `Courier` can deliver at once
      * @param warehouse the `Warehouse` from which this `Courier` picks up pizzas
      */
-    public Courier(int maxVolume, Warehouse warehouse) {
+    public Courier(int maxVolume, int deliveryTime, Warehouse warehouse) {
         this.maxVolume = maxVolume;
         this.warehouse = warehouse;
+        this.deliveryTime = deliveryTime;
         this.orders = new ArrayList<>();
     }
 
@@ -73,7 +79,7 @@ public class Courier extends Thread {
                 for (Order order : orders) {
                     addOrder(order);
                     try {
-                        Thread.sleep(5000);
+                        Thread.sleep(deliveryTime);
                     } catch (InterruptedException e) {
                         throw new RuntimeException(e);
                     }

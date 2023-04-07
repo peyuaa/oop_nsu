@@ -36,6 +36,11 @@ public class Config {
     public int warehouseSize;
 
     /**
+     * The time it takes for a `Courier` to deliver a pizza, in milliseconds.
+     */
+    public int courierDeliveryTime;
+
+    /**
      * Constructs a new `Config` object with the specified settings.
      *
      * @param bakersNum the number of `Baker`s to employ
@@ -46,12 +51,14 @@ public class Config {
      * @param warehouseSize the maximum number of orders that the `Warehouse` can hold
      */
     public Config(int bakersNum, int bakersTimeToCook, int couriersNum,
-                    int couriersMaxVolume, int customersNum, int warehouseSize) {
+                    int couriersMaxVolume, int customersNum, int warehouseSize,
+                        int courierDeliveryTime) {
         this.bakersNum = bakersNum;
         this.bakersTimeToCook = bakersTimeToCook;
         this.couriersNum = couriersNum;
         this.couriersMaxVolume = couriersMaxVolume;
         this.customersNum = customersNum;
         this.warehouseSize = warehouseSize;
+        this.courierDeliveryTime = courierDeliveryTime;
     }
 }

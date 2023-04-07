@@ -3,6 +3,7 @@
   "bakersTimeToCook": 1000,
   "couriersNum": 2,
   "couriersMaxVolume": 2,
+  "deliveryTime": 5000,
   "customersNum": 5,
   "warehouseSize": 10
 }

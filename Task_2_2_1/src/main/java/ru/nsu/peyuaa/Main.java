@@ -45,7 +45,8 @@ public class Main {
             bakers.add(new Baker(pizzeria, config.bakersTimeToCook));
         }
         for (int i = 0; i < config.couriersNum; i++) {
-            couriers.add(new Courier(2, warehouse));
+            couriers.add(new Courier(config.couriersMaxVolume, config.courierDeliveryTime,
+                    warehouse));
         }
 
         pizzeria.setCouriers(couriers);
