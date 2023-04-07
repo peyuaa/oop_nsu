@@ -1,13 +1,35 @@
 package ru.nsu.peyuaa;
 
+/**
+ * A `Baker` represents an employee of a `Pizzeria` who cooks pizzas.
+ * Each `Baker` is run as a separate thread.
+ */
 public class Baker extends Thread {
+
+    /**
+     * The time it takes to cook a pizza, in milliseconds.
+     */
     private static final int timeToCook = 1000;
+
+    /**
+     * The `Pizzeria` where the `Baker` works.
+     */
     private final Pizzeria pizzeria;
 
+    /**
+     * Constructs a new `Baker` object with the specified `Pizzeria`.
+     *
+     * @param pizzeria the `Pizzeria` where the `Baker` works
+     */
     public Baker(Pizzeria pizzeria) {
         this.pizzeria = pizzeria;
     }
 
+    /**
+     * Cooks a pizza for the specified `Order`.
+     *
+     * @param order the `Order` for which to cook a pizza
+     */
     private void makePizza(Order order) {
         order.setState(OrderState.COOKING);
         try {
@@ -18,6 +40,9 @@ public class Baker extends Thread {
         order.setState(OrderState.COOKED);
     }
 
+    /**
+     * Starts the `Baker` thread and has them cook pizzas for orders until interrupted.
+     */
     public void run() {
         System.out.println("Baker is ready");
         while (true) {
