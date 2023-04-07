@@ -49,7 +49,8 @@ public class Warehouse extends Thread {
         while (isFull()) {
             try {
                 Thread.sleep(1000); // Wait for 1 second
-            } catch (InterruptedException ignored) {
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
             }
         }
         orders.add(order);
@@ -85,7 +86,8 @@ public class Warehouse extends Thread {
             if (isEmpty()) {
                 try {
                     Thread.sleep(1000);
-                } catch (InterruptedException ignored) {
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
                 }
             }
         }
