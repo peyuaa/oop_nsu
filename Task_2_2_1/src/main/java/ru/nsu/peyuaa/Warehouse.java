@@ -14,6 +14,7 @@ public class Warehouse extends Thread {
 
     /**
      * Creates a new instance of the Warehouse class with a specified maximum size.
+     *
      * @param maxSize The maximum number of orders that the warehouse can hold.
      */
     public Warehouse(int maxSize) {
@@ -23,6 +24,7 @@ public class Warehouse extends Thread {
 
     /**
      * Checks if the warehouse is full.
+     *
      * @return true if the warehouse is full, false otherwise.
      */
     public boolean isFull() {
@@ -31,6 +33,7 @@ public class Warehouse extends Thread {
 
     /**
      * Checks if the warehouse is empty.
+     *
      * @return true if the warehouse is empty, false otherwise.
      */
     public boolean isEmpty() {
@@ -39,6 +42,7 @@ public class Warehouse extends Thread {
 
     /**
      * Adds an order to the warehouse.
+     *
      * @param order The order to add.
      */
     public void addOrder(Order order) {
@@ -54,6 +58,7 @@ public class Warehouse extends Thread {
 
     /**
      * Picks up a specified number of pizza orders from the warehouse and removes them.
+     *
      * @param count The number of orders to pick up.
      * @return A list of removed orders.
      */
