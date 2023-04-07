@@ -23,8 +23,8 @@ public class Customer extends Thread {
     /**
      * Tells the `Pizzeria` to make an order for a new `Pizza`.
      */
-    public void makeOrder() {
-        pizzeria.makeAnOrder(new Pizza());
+    public void makeOrder(Pizza pizza) {
+        pizzeria.makeAnOrder(pizza);
     }
 
     /**
@@ -32,6 +32,6 @@ public class Customer extends Thread {
      */
     public void run() {
         System.out.println("Customer started");
-        makeOrder();
+        makeOrder(new Pizza());
     }
 }
