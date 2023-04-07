@@ -3,7 +3,7 @@ package ru.nsu.peyuaa;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-public class OrderTest {
+class OrderTest {
 
     @Test
     public void testNewOrderCreatedWithQueuedState() {
@@ -13,7 +13,7 @@ public class OrderTest {
     }
 
     @Test
-    public void testNewOrderCreatedWithUniqueID() {
+    public void testNewOrderCreatedWithUniqueId() {
         Pizza pizza1 = new Pizza();
         Order order1 = new Order(pizza1);
 
@@ -24,7 +24,7 @@ public class OrderTest {
     }
 
     @Test
-    public void testGenerateOrderIdMethodGeneratesUniqueIDs() {
+    public void testGenerateOrderIdMethodGeneratesUniqueIds() {
         Order order1 = new Order(new Pizza());
         Order order2 = new Order(new Pizza());
         Assertions.assertEquals(order1.getOrderId() + 1, order2.getOrderId());
