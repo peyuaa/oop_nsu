@@ -36,5 +36,10 @@ public class Main {
             customers.add(new Customer(pizzeria));
         }
 
+        for (Customer customer : customers) {
+            customer.start();
+        }
+
+        pizzeria.start();
     }
 }

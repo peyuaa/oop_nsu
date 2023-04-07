@@ -1,6 +1,6 @@
 package ru.nsu.peyuaa;
 
-public class Customer {
+public class Customer extends Thread {
 
     private Pizzeria pizzeria;
 
@@ -10,5 +10,10 @@ public class Customer {
 
     public void makeOrder() {
         pizzeria.makeAnOrder(new Pizza());
+    }
+
+    public void run() {
+        System.out.println("Customer started");
+        makeOrder();
     }
 }

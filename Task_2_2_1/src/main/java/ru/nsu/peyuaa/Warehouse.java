@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class Warehouse {
+public class Warehouse extends Thread {
     private final int maxSize;
     private final List<Order> orders;
 
@@ -25,14 +25,14 @@ public class Warehouse {
         while (isFull()) {
             try {
                 Thread.sleep(1000); // Wait for 1 second
-            } catch (InterruptedException e) {
+            } catch (InterruptedException ignored) {
             }
         }
         orders.add(order);
         order.setState(OrderState.WAREHOUSE);
     }
 
-    public List<Order> pickUpPizzas(int count) {
+    public synchronized List<Order> pickUpPizzas(int count) {
         List<Order> removedPizzas = new ArrayList<>();
         int volume = 0;
         Iterator<Order> iterator = orders.iterator();
@@ -43,6 +43,17 @@ public class Warehouse {
             iterator.remove();
         }
         return removedPizzas;
+    }
+
+    public void run() {
+        while (true) {
+            if (isEmpty()) {
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException ignored) {
+                }
+            }
+        }
     }
 }
 

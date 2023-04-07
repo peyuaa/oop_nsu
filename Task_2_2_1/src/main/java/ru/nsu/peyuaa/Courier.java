@@ -23,6 +23,7 @@ public class Courier extends Thread {
 
     @Override
     public void run() {
+        System.out.println("Courier " + courierCount++ + " is ready");
         while (true) {
             if (warehouse.isEmpty()) {
                 try {

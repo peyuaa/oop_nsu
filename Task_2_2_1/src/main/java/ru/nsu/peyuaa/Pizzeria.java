@@ -4,11 +4,11 @@ import java.util.List;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
-public class Pizzeria {
+public class Pizzeria extends Thread {
     private List<Courier> couriers;
     private List<Baker> bakers;
-    private Warehouse warehouse;
-    private BlockingQueue<Order> orders;
+    private final Warehouse warehouse;
+    private final BlockingQueue<Order> orders;
 
     public Pizzeria(Warehouse warehouse) {
         this.warehouse = warehouse;
@@ -41,5 +41,18 @@ public class Pizzeria {
 
     public Warehouse getWarehouse() {
         return warehouse;
+    }
+
+
+    @Override
+    public void run() {
+        System.out.println("Pizzeria is open");
+        for (Baker baker : bakers) {
+            baker.start();
+        }
+        for (Courier courier : couriers) {
+            courier.start();
+        }
+        warehouse.start();
     }
 }

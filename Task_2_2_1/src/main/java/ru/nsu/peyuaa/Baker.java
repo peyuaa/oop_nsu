@@ -19,15 +19,16 @@ public class Baker extends Thread {
     }
 
     public void run() {
+        System.out.println("Baker is ready");
         while (true) {
-            if (pizzeria.getOrder() == null) {
+            Order order = pizzeria.getOrder();
+            if (order == null) {
                 try {
                     Thread.sleep(1000);
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }
             } else {
-                Order order = pizzeria.getOrder();
                 makePizza(order);
                 pizzeria.getWarehouse().addOrder(order);
             }
