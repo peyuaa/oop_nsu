@@ -21,6 +21,13 @@ import org.apache.commons.io.FileUtils;
 public class Main {
     private static final String CONFIG_PATH = "./src/main/resources/config.json";
 
+    /**
+     * The main method of the application.
+     * Parses the configuration file, creates and starts the necessary threads, and starts the simulation.
+     *
+     * @param args The command-line arguments, which are not used in this application.
+     * @throws IOException If an I/O error occurs while reading the configuration file.
+     */
     public static void main(String[] args) throws IOException {
         Gson g = new Gson();
         String json = FileUtils.readFileToString(new File(CONFIG_PATH), StandardCharsets.UTF_8);
