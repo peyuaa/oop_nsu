@@ -29,5 +29,12 @@ class OrderTest {
         Order order2 = new Order(new Pizza());
         Assertions.assertEquals(order1.getOrderId() + 1, order2.getOrderId());
     }
+
+    @Test
+    public void testOrderStateCanBeChanged() {
+        Order order = new Order(new Pizza());
+        order.setState(OrderState.COOKING);
+        Assertions.assertEquals(OrderState.COOKING, order.getState());
+    }
 }
 
