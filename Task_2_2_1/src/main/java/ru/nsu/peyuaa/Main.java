@@ -42,7 +42,7 @@ public class Main {
         Pizzeria pizzeria = new Pizzeria(warehouse);
 
         for (int i = 0; i < config.bakersNum; i++) {
-            bakers.add(new Baker(pizzeria));
+            bakers.add(new Baker(pizzeria, config.bakersTimeToCook));
         }
         for (int i = 0; i < config.couriersNum; i++) {
             couriers.add(new Courier(2, warehouse));

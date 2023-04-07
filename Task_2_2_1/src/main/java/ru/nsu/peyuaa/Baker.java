@@ -9,7 +9,7 @@ public class Baker extends Thread {
     /**
      * The time it takes to cook a pizza, in milliseconds.
      */
-    private static final int timeToCook = 1000;
+    private final int timeToCook;
 
     /**
      * The `Pizzeria` where the `Baker` works.
@@ -21,8 +21,9 @@ public class Baker extends Thread {
      *
      * @param pizzeria the `Pizzeria` where the `Baker` works
      */
-    public Baker(Pizzeria pizzeria) {
+    public Baker(Pizzeria pizzeria, int timeToCook) {
         this.pizzeria = pizzeria;
+        this.timeToCook = timeToCook;
     }
 
     /**
