@@ -25,8 +25,9 @@ class CustomerTest {
         verify(pizzeria).makeAnOrder(pizza);
     }
 
+    // very stupid test
     @Test
-    public void testRun() {
+    public void testRun() throws InterruptedException {
         // Create a mock Pizzeria
         Pizzeria pizzeria = mock(Pizzeria.class);
 
@@ -35,6 +36,8 @@ class CustomerTest {
 
         // Call the run method of the Customer
         customer.start();
+
+        Thread.sleep(1000);
 
         // Verify that the makeAnOrder method
         // was called on the mock Pizzeria with a new Pizza object
