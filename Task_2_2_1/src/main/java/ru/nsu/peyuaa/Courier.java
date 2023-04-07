@@ -5,9 +5,9 @@ import java.util.List;
 
 public class Courier extends Thread {
     private static int courierCount = 0;
-    private int maxVolume;
-    private Warehouse warehouse;
-    private List<Order> orders;
+    private final int maxVolume;
+    private final Warehouse warehouse;
+    private final List<Order> orders;
 
     public Courier(int maxVolume, Warehouse warehouse) {
         this.maxVolume = maxVolume;
@@ -16,7 +16,6 @@ public class Courier extends Thread {
     }
 
     public void addOrder(Order order) {
-        order.setCourier(this);
         order.setState(OrderState.DELIVERING);
         orders.add(order);
     }
@@ -29,6 +28,7 @@ public class Courier extends Thread {
                 try {
                     Thread.sleep(1000);
                 } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
                 }
             } else {
                 List<Order> orders = warehouse.pickUpPizzas(maxVolume);
@@ -37,6 +37,7 @@ public class Courier extends Thread {
                     try {
                         Thread.sleep(5000);
                     } catch (InterruptedException e) {
+                        throw new RuntimeException(e);
                     }
                     order.setState(OrderState.DELIVERED);
                 }

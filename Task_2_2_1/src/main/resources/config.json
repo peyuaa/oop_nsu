@@ -1,0 +1,8 @@
+{
+  "bakersNum": 3,
+  "bakersTimeToCook": 1000,
+  "couriersNum": 2,
+  "couriersMaxVolume": 2,
+  "customersNum": 5,
+  "warehouseSize": 10
+}

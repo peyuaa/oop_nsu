@@ -4,35 +4,39 @@
 
 package ru.nsu.peyuaa;
 
+import com.google.gson.Gson;
+import org.apache.commons.io.FileUtils;
+import java.io.File;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
-    public static void main(String[] args) {
-        // Set up the pizzeria
-        int numBakers = 3;
-        int numCouriers = 2;
-        int warehouseSize = 10;
-        int numCustomers = 5;
+    private static final String CONFIG_PATH = "./src/main/resources/config.json";
+    public static void main(String[] args) throws IOException {
+        Gson g = new Gson();
+        String json = FileUtils.readFileToString(new File(CONFIG_PATH), StandardCharsets.UTF_8);
+        Config config = g.fromJson(json, Config.class);
 
         List<Baker> bakers = new ArrayList<>();
         List<Courier> couriers = new ArrayList<>();
         List<Customer> customers = new ArrayList<>();
 
-        Warehouse warehouse = new Warehouse(warehouseSize);
+        Warehouse warehouse = new Warehouse(config.warehouseSize);
         Pizzeria pizzeria = new Pizzeria(warehouse);
 
-        for (int i = 0; i < numBakers; i++) {
+        for (int i = 0; i < config.bakersNum; i++) {
             bakers.add(new Baker(pizzeria));
         }
-        for (int i = 0; i < numCouriers; i++) {
+        for (int i = 0; i < config.couriersNum; i++) {
             couriers.add(new Courier(2, warehouse));
         }
 
         pizzeria.setCouriers(couriers);
         pizzeria.setBakers(bakers);
 
-        for (int i = 0; i < numCustomers; i++) {
+        for (int i = 0; i < config.customersNum; i++) {
             customers.add(new Customer(pizzeria));
         }
 

@@ -2,7 +2,7 @@ package ru.nsu.peyuaa;
 
 public class Customer extends Thread {
 
-    private Pizzeria pizzeria;
+    private final Pizzeria pizzeria;
 
     public Customer(Pizzeria pizzeria) {
         this.pizzeria = pizzeria;
