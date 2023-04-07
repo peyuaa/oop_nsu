@@ -60,7 +60,7 @@ public class Order {
     }
 
     /**
-     * Returns order's state
+     * Returns order's state.
      *
      * @return order's state
      */
