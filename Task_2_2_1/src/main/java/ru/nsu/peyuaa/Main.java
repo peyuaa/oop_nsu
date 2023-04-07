@@ -23,7 +23,8 @@ public class Main {
 
     /**
      * The main method of the application.
-     * Parses the configuration file, creates and starts the necessary threads, and starts the simulation.
+     * Parses the configuration file,
+     * creates and starts the necessary threads, starts the simulation.
      *
      * @param args The command-line arguments, which are not used in this application.
      * @throws IOException If an I/O error occurs while reading the configuration file.
