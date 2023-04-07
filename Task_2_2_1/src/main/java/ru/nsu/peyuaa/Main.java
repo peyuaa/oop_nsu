@@ -20,6 +20,7 @@ import org.apache.commons.io.FileUtils;
  */
 public class Main {
     private static final String CONFIG_PATH = "./src/main/resources/config.json";
+
     public static void main(String[] args) throws IOException {
         Gson g = new Gson();
         String json = FileUtils.readFileToString(new File(CONFIG_PATH), StandardCharsets.UTF_8);
