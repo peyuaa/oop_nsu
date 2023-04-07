@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * A `Courier` represents an employee of a pizzeria who is responsible for delivering pizzas to customers.
+ * A `Courier` represents an employee of a pizzeria
+ * who is responsible for delivering pizzas to customers.
  */
 public class Courier extends Thread {
 
