@@ -79,9 +79,12 @@ public class Pizzeria extends Thread {
     }
 
     /**
-     * Starts the pizzeria operation by initializing and starting the bakers, couriers, and warehouse threads.
-     * This method should be called after setting the bakers and couriers lists and starting the pizzeria thread.
-     * Once the pizzeria is open, it will continuously listen for new orders from the customers and add them to
+     * Starts the pizzeria operation by initializing
+     * and starting the bakers, couriers, and warehouse threads.
+     * This method should be called after setting the bakers and couriers lists
+     * and starting the pizzeria thread.
+     * Once the pizzeria is open,
+     * it will continuously listen for new orders from the customers and add them to
      * the orders queue until the program is terminated.
      */
     @Override
