@@ -1,5 +1,6 @@
 package ru.nsu.peyuaa;
 
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
@@ -22,5 +23,20 @@ class CustomerTest {
 
         // verify that the Pizzeria's makeAnOrder method was called with a new Pizza object
         verify(pizzeria).makeAnOrder(pizza);
+    }
+
+    @Test
+    public void testRun() {
+        // Create a mock Pizzeria
+        Pizzeria pizzeria = mock(Pizzeria.class);
+
+        // Create a new Customer with the mock Pizzeria
+        Customer customer = new Customer(pizzeria);
+
+        // Call the run method of the Customer
+        customer.start();
+
+        // Verify that the makeAnOrder method was called on the mock Pizzeria with a new Pizza object
+        verify(pizzeria).makeAnOrder(any(Pizza.class));
     }
 }
