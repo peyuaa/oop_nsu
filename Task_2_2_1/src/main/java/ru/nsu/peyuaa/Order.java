@@ -58,5 +58,23 @@ public class Order {
         this.state = state;
         System.out.printf("[%d], [%s]\n", orderId, this.state);
     }
+
+    /**
+     * Returns order's state
+     *
+     * @return order's state
+     */
+    public OrderState getState() {
+        return state;
+    }
+
+    /**
+     * Returns order's ID.
+     *
+     * @return order's ID
+     */
+    public int getOrderId() {
+        return orderId;
+    }
 }
 
