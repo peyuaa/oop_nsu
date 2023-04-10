@@ -11,7 +11,9 @@ class BakerTest {
         Pizzeria pizzeria = new Pizzeria(warehouse);
         Baker baker = new Baker(pizzeria, 500);
         Order order = new Order(new Pizza());
+        baker.start();
         baker.makePizza(order);
+        baker.interrupt();
         assertEquals(OrderState.COOKED, order.getState());
     }
 
