@@ -1,5 +1,6 @@
 package ru.nsu.peyuaa;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
@@ -23,6 +24,8 @@ public class Pizzeria extends Thread {
     public Pizzeria(Warehouse warehouse) {
         this.warehouse = warehouse;
         orders = new LinkedBlockingQueue<>();
+        this.couriers = new ArrayList<>();
+        this.bakers = new ArrayList<>();
     }
 
     /**
