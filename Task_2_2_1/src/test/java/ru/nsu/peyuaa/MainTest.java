@@ -1,10 +1,9 @@
 package ru.nsu.peyuaa;
 
+import java.io.IOException;
 import org.junit.jupiter.api.Test;
 
-import java.io.IOException;
-
-public class MainTest {
+class MainTest {
     @Test
     void testMain() throws IOException {
         Main.main(new String[] {});
