@@ -31,7 +31,7 @@ public class Baker extends Thread {
      *
      * @param order the `Order` for which to cook a pizza
      */
-    private void makePizza(Order order) {
+    void makePizza(Order order) {
         order.setState(OrderState.COOKING);
         try {
             Thread.sleep(timeToCook);
