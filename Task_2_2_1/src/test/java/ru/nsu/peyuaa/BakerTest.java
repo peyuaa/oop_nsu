@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class BakerTest {
+class BakerTest {
     @Test
     public void testMakePizza() {
         Warehouse warehouse = new Warehouse(10);
