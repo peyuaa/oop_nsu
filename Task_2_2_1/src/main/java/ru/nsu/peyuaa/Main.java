@@ -5,12 +5,13 @@
 package ru.nsu.peyuaa;
 
 import com.google.gson.Gson;
-import java.io.File;
+
+import java.io.BufferedReader;
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
-import org.apache.commons.io.FileUtils;
+import java.util.Objects;
 
 /**
  * This class represents the entry point of the pizza delivery simulation program.
@@ -19,7 +20,7 @@ import org.apache.commons.io.FileUtils;
  * which in turn start the threads for the couriers, bakers, and warehouse.
  */
 public class Main {
-    private static final String CONFIG_PATH = "./src/main/resources/config.json";
+    private static final String CONFIG = "config.json";
 
     /**
      * The main method of the application.
@@ -30,9 +31,19 @@ public class Main {
      * @throws IOException If an I/O error occurs while reading the configuration file.
      */
     public static void main(String[] args) throws IOException {
+        StringBuilder sb = new StringBuilder();
+        try (BufferedReader reader = new BufferedReader(
+                new InputStreamReader(
+                        Objects.requireNonNull(
+                                Main.class.getClassLoader().getResourceAsStream(CONFIG))))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                sb.append(line).append("\n");
+            }
+        }
+
         Gson g = new Gson();
-        String json = FileUtils.readFileToString(new File(CONFIG_PATH), StandardCharsets.UTF_8);
-        Config config = g.fromJson(json, Config.class);
+        Config config = g.fromJson(sb.toString(), Config.class);
 
         List<Baker> bakers = new ArrayList<>();
         List<Courier> couriers = new ArrayList<>();
