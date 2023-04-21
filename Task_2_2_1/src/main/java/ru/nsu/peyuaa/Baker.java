@@ -46,7 +46,7 @@ public class Baker extends Thread {
      */
     public void run() {
         System.out.println("Baker is ready");
-        while (true) {
+        while (!isInterrupted()) {
             Order order = pizzeria.getOrder();
             makePizza(order);
             pizzeria.getWarehouse().addOrder(order);
