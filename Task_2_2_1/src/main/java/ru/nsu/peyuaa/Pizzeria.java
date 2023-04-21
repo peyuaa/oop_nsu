@@ -99,6 +99,5 @@ public class Pizzeria extends Thread {
         for (Courier courier : couriers) {
             courier.start();
         }
-        warehouse.start();
     }
 }

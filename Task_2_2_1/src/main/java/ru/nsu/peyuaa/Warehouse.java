@@ -8,7 +8,7 @@ import java.util.List;
  * A warehouse class that stores pizza orders until they are picked up by couriers for delivery.
  * The warehouse has a maximum size limit and allows adding and removing orders.
  */
-public class Warehouse extends Thread {
+public class Warehouse {
     private final int maxSize;
     private final List<Order> orders;
 
@@ -45,13 +45,11 @@ public class Warehouse extends Thread {
      *
      * @param order The order to add.
      */
-    public void addOrder(Order order) {
-        while (isFull()) {
-            try {
-                Thread.sleep(1000); // Wait for 1 second
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
+    public synchronized void addOrder(Order order) {
+        try {
+            Thread.sleep(1000); // Wait for 1 second
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
         orders.add(order);
         order.setState(OrderState.WAREHOUSE);
@@ -74,22 +72,5 @@ public class Warehouse extends Thread {
             iterator.remove();
         }
         return removedPizzas;
-    }
-
-    /**
-     * Runs the warehouse process in a separate thread.
-     * The warehouse checks if it is empty and waits for new orders to arrive.
-     * When a new order is added, it waits until there is space in the warehouse to store it.
-     */
-    public void run() {
-        while (true) {
-            if (isEmpty()) {
-                try {
-                    Thread.sleep(1000);
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
-            }
-        }
     }
 }
