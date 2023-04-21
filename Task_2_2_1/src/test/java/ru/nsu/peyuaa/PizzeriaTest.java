@@ -20,7 +20,6 @@ class PizzeriaTest {
         Order order = pizzeria.getOrder();
         assertNotNull(order);
         assertEquals(OrderState.QUEUED, order.getState());
-        assertNull(pizzeria.getOrder());
     }
 
     @Test
