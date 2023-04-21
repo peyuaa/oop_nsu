@@ -69,7 +69,11 @@ public class Pizzeria extends Thread {
      * @return the next order, or null if the queue is empty
      */
     public Order getOrder() {
-        return orders.poll();
+        try {
+            return orders.take();
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     /**

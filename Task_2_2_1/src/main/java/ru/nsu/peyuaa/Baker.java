@@ -48,16 +48,8 @@ public class Baker extends Thread {
         System.out.println("Baker is ready");
         while (true) {
             Order order = pizzeria.getOrder();
-            if (order == null) {
-                try {
-                    Thread.sleep(1000);
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
-            } else {
-                makePizza(order);
-                pizzeria.getWarehouse().addOrder(order);
-            }
+            makePizza(order);
+            pizzeria.getWarehouse().addOrder(order);
         }
     }
 }
