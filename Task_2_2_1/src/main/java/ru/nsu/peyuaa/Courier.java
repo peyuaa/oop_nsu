@@ -67,7 +67,7 @@ public class Courier extends Thread {
     @Override
     public void run() {
         System.out.println("Courier " + courierCount++ + " is ready");
-        while (true) {
+        while (!isInterrupted()) {
             if (warehouse.isEmpty()) {
                 try {
                     Thread.sleep(1000);
