@@ -28,7 +28,7 @@ public class Order {
 
     /**
      * Creates a new Order object with the specified pizza.
-     * The initial state of the order is set to QUEUED.
+     * The initial state of the order is set to the state QUEUED.
      *
      * @param pizza the pizza associated with this order
      */
