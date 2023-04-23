@@ -1,8 +1,9 @@
 package ru.nsu.peyuaa;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.LinkedBlockingQueue;
 
 /**
  * A warehouse class that stores pizza orders until they are picked up by couriers for delivery.
@@ -10,7 +11,7 @@ import java.util.List;
  */
 public class Warehouse {
     private final int maxSize;
-    private final List<Order> orders;
+    private final BlockingQueue<Order> orders;
 
     /**
      * Creates a new instance of the Warehouse class with a specified maximum size.
@@ -19,7 +20,7 @@ public class Warehouse {
      */
     public Warehouse(int maxSize) {
         this.maxSize = maxSize;
-        this.orders = new ArrayList<>();
+        this.orders = new LinkedBlockingQueue<>();
     }
 
     /**
@@ -61,15 +62,24 @@ public class Warehouse {
      * @param count The number of orders to pick up.
      * @return A list of removed orders.
      */
-    public synchronized List<Order> pickUpPizzas(int count) {
+    public List<Order> pickUpPizzas(int count) {
         List<Order> removedPizzas = new ArrayList<>();
-        int volume = 0;
-        Iterator<Order> iterator = orders.iterator();
-        while (iterator.hasNext() && volume < count) {
-            Order order = iterator.next();
-            volume += 1;
+        for (int i = 0; i < count; i++) {
+            Order order;
+            if (i == 0) {
+                try {
+                    order = orders.take();
+                    removedPizzas.add(order);
+                    continue;
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+            order = orders.poll();
+            if (order == null) {
+                break;
+            }
             removedPizzas.add(order);
-            iterator.remove();
         }
         return removedPizzas;
     }

@@ -68,25 +68,17 @@ public class Courier extends Thread {
     public void run() {
         System.out.println("Courier " + courierCount++ + " is ready");
         while (!isInterrupted()) {
-            if (warehouse.isEmpty()) {
+            List<Order> orders = warehouse.pickUpPizzas(maxVolume);
+            for (Order order : orders) {
+                addOrder(order);
                 try {
-                    Thread.sleep(1000);
+                    Thread.sleep(deliveryTime);
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }
-            } else {
-                List<Order> orders = warehouse.pickUpPizzas(maxVolume);
-                for (Order order : orders) {
-                    addOrder(order);
-                    try {
-                        Thread.sleep(deliveryTime);
-                    } catch (InterruptedException e) {
-                        throw new RuntimeException(e);
-                    }
-                    order.setState(OrderState.DELIVERED);
-                }
-                orders.clear();
+                order.setState(OrderState.DELIVERED);
             }
+            orders.clear();
         }
     }
 }
