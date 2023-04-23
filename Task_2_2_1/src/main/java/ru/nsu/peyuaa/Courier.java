@@ -51,7 +51,8 @@ public class Courier extends Thread {
         try {
             Thread.sleep(deliveryTime);
         } catch (InterruptedException e) {
-            throw new RuntimeException(e);
+            System.out.println("Courier stopped delivering the pizza");
+            Thread.currentThread().interrupt();
         }
         order.setState(OrderState.DELIVERED);
     }

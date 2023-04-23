@@ -57,7 +57,8 @@ public class Pizzeria extends Thread {
         try {
             orders.put(order);
         } catch (InterruptedException e) {
-            throw new RuntimeException(e);
+            System.out.println("Pizzeria stopped accepting orders");
+            Thread.currentThread().interrupt();
         }
     }
 
@@ -70,8 +71,10 @@ public class Pizzeria extends Thread {
         try {
             return orders.take();
         } catch (InterruptedException e) {
-            throw new RuntimeException(e);
+            System.out.println("Order was not taken");
+            Thread.currentThread().interrupt();
         }
+        return null;
     }
 
     /**

@@ -50,7 +50,8 @@ public class Warehouse {
         try {
             Thread.sleep(1000); // Wait for 1 second
         } catch (InterruptedException e) {
-            throw new RuntimeException(e);
+            System.out.println("Warehouse stopped accepting orders");
+            Thread.currentThread().interrupt();
         }
         orders.add(order);
         order.setState(OrderState.WAREHOUSE);
@@ -72,7 +73,8 @@ public class Warehouse {
                     removedPizzas.add(order);
                     continue;
                 } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
+                    System.out.println("Delivering is cancelled");;
+                    Thread.currentThread().interrupt();
                 }
             }
             order = orders.poll();

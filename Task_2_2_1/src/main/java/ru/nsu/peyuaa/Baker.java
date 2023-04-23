@@ -36,7 +36,8 @@ public class Baker extends Thread {
         try {
             Thread.sleep(timeToCook);
         } catch (InterruptedException e) {
-            throw new RuntimeException(e);
+            System.out.println("Baker stopped cooking the pizza");
+            Thread.currentThread().interrupt();
         }
         order.setState(OrderState.COOKED);
     }
@@ -48,6 +49,9 @@ public class Baker extends Thread {
         System.out.println("Baker is ready");
         while (!isInterrupted()) {
             Order order = pizzeria.getOrder();
+            if (order == null) {
+                continue;
+            }
             makePizza(order);
             pizzeria.getWarehouse().addOrder(order);
         }
