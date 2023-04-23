@@ -54,12 +54,10 @@ public class Pizzeria extends Thread {
     public void makeAnOrder(Pizza pizza) {
         Order order = new Order(pizza);
         order.setState(OrderState.QUEUED);
-        while (!orders.offer(order)) {
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
+        try {
+            orders.put(order);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
     }
 
