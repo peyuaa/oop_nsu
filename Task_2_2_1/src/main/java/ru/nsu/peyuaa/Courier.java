@@ -47,6 +47,15 @@ public class Courier extends Thread {
         this.orders = new ArrayList<>();
     }
 
+    private void deliverOrder(Order order) {
+        try {
+            Thread.sleep(deliveryTime);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        order.setState(OrderState.DELIVERED);
+    }
+
     /**
      * Adds the specified `Order` to this `Courier`'s list of orders to deliver.
      * Sets the state of the `Order` to `DELIVERING`.
@@ -68,15 +77,12 @@ public class Courier extends Thread {
     public void run() {
         System.out.println("Courier " + courierCount++ + " is ready");
         while (!isInterrupted()) {
-            List<Order> orders = warehouse.pickUpPizzas(maxVolume);
-            for (Order order : orders) {
+            List<Order> pickedUpPizzas = warehouse.pickUpPizzas(maxVolume);
+            for (Order order : pickedUpPizzas) {
                 addOrder(order);
-                try {
-                    Thread.sleep(deliveryTime);
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
-                order.setState(OrderState.DELIVERED);
+            }
+            for (Order order : orders) {
+                deliverOrder(order);
             }
             orders.clear();
         }
