@@ -52,7 +52,7 @@ public class Courier extends Thread {
             Thread.sleep(deliveryTime);
         } catch (InterruptedException e) {
             System.out.println("Courier stopped delivering the pizza");
-            Thread.currentThread().interrupt();
+            interrupt();
         }
         order.setState(OrderState.DELIVERED);
     }

@@ -58,7 +58,7 @@ public class Pizzeria extends Thread {
             orders.put(order);
         } catch (InterruptedException e) {
             System.out.println("Pizzeria stopped accepting orders");
-            Thread.currentThread().interrupt();
+            interrupt();
         }
     }
 
@@ -72,7 +72,7 @@ public class Pizzeria extends Thread {
             return orders.take();
         } catch (InterruptedException e) {
             System.out.println("Order was not taken");
-            Thread.currentThread().interrupt();
+            interrupt();
         }
         return null;
     }

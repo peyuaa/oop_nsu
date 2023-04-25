@@ -37,7 +37,7 @@ public class Baker extends Thread {
             Thread.sleep(timeToCook);
         } catch (InterruptedException e) {
             System.out.println("Baker stopped cooking the pizza");
-            Thread.currentThread().interrupt();
+            interrupt();
         }
         order.setState(OrderState.COOKED);
     }
