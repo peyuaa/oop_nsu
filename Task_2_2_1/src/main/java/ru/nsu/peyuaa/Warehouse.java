@@ -63,19 +63,14 @@ public class Warehouse {
      * @param count The number of orders to pick up.
      * @return A list of removed orders.
      */
-    public List<Order> pickUpPizzas(int count) {
+    public List<Order> pickUpPizzas(int count) throws InterruptedException {
         List<Order> removedPizzas = new ArrayList<>();
         for (int i = 0; i < count; i++) {
             Order order;
             if (i == 0) {
-                try {
-                    order = orders.take();
-                    removedPizzas.add(order);
-                    continue;
-                } catch (InterruptedException e) {
-                    System.out.println("Delivering is cancelled");;
-                    Thread.currentThread().interrupt();
-                }
+                order = orders.take();
+                removedPizzas.add(order);
+                continue;
             }
             order = orders.poll();
             if (order == null) {

@@ -34,6 +34,8 @@ public class Courier extends Thread {
      */
     private final int deliveryTime;
 
+    private final int courierID;
+
     /**
      * Constructs a new `Courier` object with the specified settings.
      *
@@ -41,19 +43,15 @@ public class Courier extends Thread {
      * @param warehouse the `Warehouse` from which this `Courier` picks up pizzas
      */
     public Courier(int maxVolume, int deliveryTime, Warehouse warehouse) {
+        this.courierID = courierCount++;
         this.maxVolume = maxVolume;
         this.warehouse = warehouse;
         this.deliveryTime = deliveryTime;
         this.orders = new ArrayList<>();
     }
 
-    private void deliverOrder(Order order) {
-        try {
-            Thread.sleep(deliveryTime);
-        } catch (InterruptedException e) {
-            System.out.println("Courier stopped delivering the pizza");
-            interrupt();
-        }
+    private void deliverOrder(Order order) throws InterruptedException {
+        Thread.sleep(deliveryTime);
         order.setState(OrderState.DELIVERED);
     }
 
@@ -76,16 +74,21 @@ public class Courier extends Thread {
      */
     @Override
     public void run() {
-        System.out.println("Courier " + courierCount++ + " is ready");
+        System.out.println("Courier " + courierID + " is ready");
         while (!isInterrupted()) {
-            List<Order> pickedUpPizzas = warehouse.pickUpPizzas(maxVolume);
-            for (Order order : pickedUpPizzas) {
-                addOrder(order);
+            try {
+                List<Order> pickedUpPizzas = warehouse.pickUpPizzas(maxVolume);
+                for (Order order : pickedUpPizzas) {
+                    addOrder(order);
+                }
+                for (Order order : orders) {
+                    deliverOrder(order);
+                }
+                orders.clear();
+            } catch (InterruptedException e) {
+                System.out.printf("Courier №%d stopped delivering pizzas\n", courierID);
+                interrupt();
             }
-            for (Order order : orders) {
-                deliverOrder(order);
-            }
-            orders.clear();
         }
     }
 }
