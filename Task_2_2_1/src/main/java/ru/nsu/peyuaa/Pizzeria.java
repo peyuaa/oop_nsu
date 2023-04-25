@@ -1,10 +1,10 @@
 package ru.nsu.peyuaa;
 
+import java.lang.Thread;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
-import java.lang.Thread;
 
 /**
  * The Pizzeria class represents a pizzeria where orders can be made and fulfilled.
@@ -106,6 +106,9 @@ public class Pizzeria {
         }
     }
 
+    /**
+     * Stops the pizzeria operation by interrupting the threads of all bakers and couriers.
+     */
     public void stop() {
         for (Baker baker : bakers) {
             baker.interrupt();
