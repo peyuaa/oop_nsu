@@ -68,14 +68,8 @@ public class Pizzeria {
      *
      * @return the next order, or null if the queue is empty
      */
-    public Order getOrder() {
-        try {
-            return orders.take();
-        } catch (InterruptedException e) {
-            System.out.println("Order was not taken");
-            Thread.currentThread().interrupt();
-        }
-        return null;
+    public Order getOrder() throws InterruptedException {
+        return orders.take();
     }
 
     /**

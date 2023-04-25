@@ -6,6 +6,10 @@ package ru.nsu.peyuaa;
  */
 public class Baker extends Thread {
 
+    private static int bakersCount = 0;
+
+    private final int bakerID;
+
     /**
      * The time it takes to cook a pizza, in milliseconds.
      */
@@ -22,6 +26,7 @@ public class Baker extends Thread {
      * @param pizzeria the `Pizzeria` where the `Baker` works
      */
     public Baker(Pizzeria pizzeria, int timeToCook) {
+        this.bakerID = bakersCount++;
         this.pizzeria = pizzeria;
         this.timeToCook = timeToCook;
     }
@@ -31,14 +36,9 @@ public class Baker extends Thread {
      *
      * @param order the `Order` for which to cook a pizza
      */
-    void makePizza(Order order) {
+    void makePizza(Order order) throws InterruptedException {
         order.setState(OrderState.COOKING);
-        try {
-            Thread.sleep(timeToCook);
-        } catch (InterruptedException e) {
-            System.out.println("Baker stopped cooking the pizza");
-            interrupt();
-        }
+        Thread.sleep(timeToCook);
         order.setState(OrderState.COOKED);
     }
 
@@ -46,14 +46,16 @@ public class Baker extends Thread {
      * Starts the `Baker` thread and has them cook pizzas for orders until interrupted.
      */
     public void run() {
-        System.out.println("Baker is ready");
+        System.out.printf("Baker %d is ready\n", bakerID);
         while (!isInterrupted()) {
-            Order order = pizzeria.getOrder();
-            if (order == null) {
-                continue;
+            try {
+                Order order = pizzeria.getOrder();
+                makePizza(order);
+                pizzeria.getWarehouse().addOrder(order);
+            } catch (InterruptedException e) {
+                System.out.printf("Baker №%d stopped cooking the pizza\n", bakerID);
+                interrupt();
             }
-            makePizza(order);
-            pizzeria.getWarehouse().addOrder(order);
         }
     }
 }

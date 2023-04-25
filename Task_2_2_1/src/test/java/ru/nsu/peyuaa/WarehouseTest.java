@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 class WarehouseTest {
 
     @Test
-    public void testAddOrder() {
+    public void testAddOrder() throws InterruptedException {
         Warehouse warehouse = new Warehouse(2);
         Order order = new Order(new Pizza());
         warehouse.addOrder(order);
@@ -31,7 +31,7 @@ class WarehouseTest {
     }
 
     @Test
-    public void testIsEmpty() {
+    public void testIsEmpty() throws InterruptedException {
         Warehouse warehouse = new Warehouse(1);
         assertTrue(warehouse.isEmpty());
         Order order = new Order(new Pizza());

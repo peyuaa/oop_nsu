@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 
 class PizzeriaTest {
     @Test
-    void testMakeAnOrder() {
+    void testMakeAnOrder() throws InterruptedException {
         Warehouse warehouse = new Warehouse(10);
         Pizzeria pizzeria = new Pizzeria(warehouse);
 
