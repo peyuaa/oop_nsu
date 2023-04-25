@@ -6,6 +6,10 @@ package ru.nsu.peyuaa;
  */
 public class Customer extends Thread {
 
+    private static int customerCount = 0;
+
+    private final int customerId;
+
     /**
      * The `Pizzeria` from which the customer wants to order a pizza.
      */
@@ -17,6 +21,7 @@ public class Customer extends Thread {
      * @param pizzeria the `Pizzeria` from which the customer wants to order a pizza
      */
     public Customer(Pizzeria pizzeria) {
+        this.customerId = customerCount++;
         this.pizzeria = pizzeria;
     }
 
@@ -31,7 +36,7 @@ public class Customer extends Thread {
      * Starts the `Customer` thread and tells it to make an order.
      */
     public void run() {
-        System.out.println("Customer started");
+        System.out.printf("Customer №%d started\n", customerId);
         makeOrder(new Pizza());
     }
 }
