@@ -11,6 +11,7 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.concurrent.Semaphore;
 
 /**
  * This class represents the entry point of the pizza delivery simulation program.
@@ -71,5 +72,32 @@ public class Main {
         }
 
         pizzeria.start();
+
+        Semaphore stopSemaphore = new Semaphore(0);
+
+        Thread stopThread = new Thread(() -> {
+            System.out.println("Press ENTER to stop the Pizzeria...");
+            try {
+                System.in.read();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            stopSemaphore.release();
+        });
+
+        stopThread.start();
+
+        try {
+            stopSemaphore.acquire();
+        } catch (InterruptedException e) {
+            System.out.println("Received interrupt signal, stopping Pizzeria...");
+        }
+
+        System.out.println("Received STOP command. Interrupting threads and shutting down Pizzeria...");
+
+        pizzeria.stop();
+        for (Customer customer : customers) {
+            customer.interrupt();
+        }
     }
 }

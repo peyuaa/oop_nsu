@@ -4,13 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
+import java.lang.Thread;
 
 /**
  * The Pizzeria class represents a pizzeria where orders can be made and fulfilled.
  * This class manages a set of bakers, couriers, and a warehouse where pizzas are baked,
  * stored, and picked up for delivery.
  */
-public class Pizzeria extends Thread {
+public class Pizzeria {
     private List<Courier> couriers;
     private List<Baker> bakers;
     private final Warehouse warehouse;
@@ -58,7 +59,7 @@ public class Pizzeria extends Thread {
             orders.put(order);
         } catch (InterruptedException e) {
             System.out.println("Pizzeria stopped accepting orders");
-            interrupt();
+            Thread.currentThread().interrupt();
         }
     }
 
@@ -72,7 +73,7 @@ public class Pizzeria extends Thread {
             return orders.take();
         } catch (InterruptedException e) {
             System.out.println("Order was not taken");
-            interrupt();
+            Thread.currentThread().interrupt();
         }
         return null;
     }
@@ -95,14 +96,22 @@ public class Pizzeria extends Thread {
      * it will continuously listen for new orders from the customers and add them to
      * the orders queue until the program is terminated.
      */
-    @Override
-    public void run() {
+    public void start() {
         System.out.println("Pizzeria is open");
         for (Baker baker : bakers) {
             baker.start();
         }
         for (Courier courier : couriers) {
             courier.start();
+        }
+    }
+
+    public void stop() {
+        for (Baker baker : bakers) {
+            baker.interrupt();
+        }
+        for (Courier courier : couriers) {
+            courier.interrupt();
         }
     }
 }
