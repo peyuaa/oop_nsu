@@ -214,13 +214,16 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="pickUpPizzas(int)">
 <h3>pickUpPizzas</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="Order.html" title="class in ru.nsu.peyuaa">Order</a>&gt;</span>&nbsp;<span class="element-name">pickUpPizzas</span><wbr><span class="parameters">(int&nbsp;count)</span></div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="Order.html" title="class in ru.nsu.peyuaa">Order</a>&gt;</span>&nbsp;<span class="element-name">pickUpPizzas</span><wbr><span class="parameters">(int&nbsp;count)</span>
+                         throws <span class="exceptions"><a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/lang/InterruptedException.html" title="class or interface in java.lang" class="external-link">InterruptedException</a></span></div>
 <div class="block">Picks up a specified number of pizza orders from the warehouse and removes them.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
 <dd><code>count</code> - The number of orders to pick up.</dd>
 <dt>Returns:</dt>
 <dd>A list of removed orders.</dd>
+<dt>Throws:</dt>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/lang/InterruptedException.html" title="class or interface in java.lang" class="external-link">InterruptedException</a></code></dd>
 </dl>
 </section>
 </li>
