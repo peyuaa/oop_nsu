@@ -93,7 +93,8 @@ public class Main {
             System.out.println("Received interrupt signal, stopping Pizzeria...");
         }
 
-        System.out.println("Received STOP command. Interrupting threads and shutting down Pizzeria...");
+        System.out.println("Received STOP command. " +
+                "Interrupting threads and shutting down Pizzeria...");
 
         pizzeria.stop();
         for (Customer customer : customers) {
