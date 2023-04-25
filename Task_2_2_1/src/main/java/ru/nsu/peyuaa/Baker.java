@@ -8,7 +8,7 @@ public class Baker extends Thread {
 
     private static int bakersCount = 0;
 
-    private final int bakerID;
+    private final int bakerId;
 
     /**
      * The time it takes to cook a pizza, in milliseconds.
@@ -26,7 +26,7 @@ public class Baker extends Thread {
      * @param pizzeria the `Pizzeria` where the `Baker` works
      */
     public Baker(Pizzeria pizzeria, int timeToCook) {
-        this.bakerID = bakersCount++;
+        this.bakerId = bakersCount++;
         this.pizzeria = pizzeria;
         this.timeToCook = timeToCook;
     }
@@ -46,14 +46,14 @@ public class Baker extends Thread {
      * Starts the `Baker` thread and has them cook pizzas for orders until interrupted.
      */
     public void run() {
-        System.out.printf("Baker %d is ready\n", bakerID);
+        System.out.printf("Baker №%d is ready\n", bakerId);
         while (!isInterrupted()) {
             try {
                 Order order = pizzeria.getOrder();
                 makePizza(order);
                 pizzeria.getWarehouse().addOrder(order);
             } catch (InterruptedException e) {
-                System.out.printf("Baker №%d stopped cooking the pizza\n", bakerID);
+                System.out.printf("Baker №%d stopped cooking the pizza\n", bakerId);
                 interrupt();
             }
         }

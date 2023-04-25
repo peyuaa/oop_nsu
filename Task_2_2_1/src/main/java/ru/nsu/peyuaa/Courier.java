@@ -34,7 +34,7 @@ public class Courier extends Thread {
      */
     private final int deliveryTime;
 
-    private final int courierID;
+    private final int courierId;
 
     /**
      * Constructs a new `Courier` object with the specified settings.
@@ -43,7 +43,7 @@ public class Courier extends Thread {
      * @param warehouse the `Warehouse` from which this `Courier` picks up pizzas
      */
     public Courier(int maxVolume, int deliveryTime, Warehouse warehouse) {
-        this.courierID = courierCount++;
+        this.courierId = courierCount++;
         this.maxVolume = maxVolume;
         this.warehouse = warehouse;
         this.deliveryTime = deliveryTime;
@@ -74,7 +74,7 @@ public class Courier extends Thread {
      */
     @Override
     public void run() {
-        System.out.println("Courier " + courierID + " is ready");
+        System.out.println("Courier №" + courierId + " is ready");
         while (!isInterrupted()) {
             try {
                 List<Order> pickedUpPizzas = warehouse.pickUpPizzas(maxVolume);
@@ -86,7 +86,7 @@ public class Courier extends Thread {
                 }
                 orders.clear();
             } catch (InterruptedException e) {
-                System.out.printf("Courier №%d stopped delivering pizzas\n", courierID);
+                System.out.printf("Courier №%d stopped delivering pizzas\n", courierId);
                 interrupt();
             }
         }
