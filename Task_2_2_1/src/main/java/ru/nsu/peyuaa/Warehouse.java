@@ -50,7 +50,8 @@ public class Warehouse {
         try {
             Thread.sleep(1000); // Wait for 1 second
         } catch (InterruptedException e) {
-            System.out.println("Warehouse stopped accepting orders");
+            System.out.printf("Order №%d delivery to warehouse was cancelled\n",
+                    order.getOrderId());
             Thread.currentThread().interrupt();
         }
         orders.add(order);
