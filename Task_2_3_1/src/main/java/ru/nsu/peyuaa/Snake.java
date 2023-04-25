@@ -13,7 +13,10 @@ public class Snake {
     // Список кусочков змеи.
     private final ArrayList<SnakeSection> sections;
 
-    public Snake(int x, int y) {
+    private Game game;
+
+    public Snake(Game game, int x, int y) {
+        this.game = game;
         sections = new ArrayList<>();
         sections.add(new SnakeSection(x, y));
         isAlive = true;
@@ -78,11 +81,11 @@ public class Snake {
         if (!isAlive) return;
 
         // Проверяем - не съела ли змея мышь.
-        Mouse mouse = Room.game.getMouse();
+        Mouse mouse = game.getMouse();
         if (head.x() == mouse.x() && head.y() == mouse.y()) // съела
         {
             sections.add(0, head);                  // Добавили новую голову
-            Room.game.eatMouse();                   // Хвост не удаляем, но создаем новую мышь.
+            game.eatMouse();                   // Хвост не удаляем, но создаем новую мышь.
         } else // просто движется
         {
             sections.add(0, head);                  // добавили новую голову
@@ -94,7 +97,7 @@ public class Snake {
      * Метод проверяет - находится ли новая голова в пределах комнаты
      */
     private void checkBorders(SnakeSection head) {
-        if ((head.x() < 0 || head.x() >= Room.game.getWidth()) || head.y() < 0 || head.y() >= Room.game.getHeight()) {
+        if ((head.x() < 0 || head.x() >= game.getWidth()) || head.y() < 0 || head.y() >= game.getHeight()) {
             isAlive = false;
         }
     }

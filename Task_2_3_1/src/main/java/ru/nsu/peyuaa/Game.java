@@ -6,17 +6,15 @@ import java.util.ArrayList;
 /**
  * Основной класс программы.
  */
-public class Room {
+public class Game {
     private int width;
     private int height;
     private Snake snake;
     private Mouse mouse;
 
-    public Room(int width, int height, Snake snake) {
+    public Game(int width, int height) {
         this.width = width;
         this.height = height;
-        this.snake = snake;
-        game = this;
     }
 
     public Snake getSnake() {
@@ -138,16 +136,6 @@ public class Room {
         int y = (int) (Math.random() * height);
 
         mouse = new Mouse(x, y);
-    }
-
-
-    public static Room game;
-
-    public static void main(String[] args) {
-        game = new Room(20, 20, new Snake(10, 10));
-        game.snake.setDirection(SnakeDirection.DOWN);
-        game.createMouse();
-        game.run();
     }
 
     /**

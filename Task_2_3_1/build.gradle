@@ -35,7 +35,7 @@ java {
 
 application {
     // Define the main class for the application.
-    mainClass = 'task_2_3_1.App'
+    mainClass = 'ru.nsu.peyuaa.Main'
 }
 
 tasks.named('test') {
