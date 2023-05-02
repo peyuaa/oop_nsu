@@ -47,13 +47,6 @@ public class Warehouse {
      * @param order The order to add.
      */
     public synchronized void addOrder(Order order) {
-        try {
-            Thread.sleep(1000); // Wait for 1 second
-        } catch (InterruptedException e) {
-            System.out.printf("Order №%d delivery to warehouse was cancelled\n",
-                    order.getOrderId());
-            Thread.currentThread().interrupt();
-        }
         orders.add(order);
         order.setState(OrderState.WAREHOUSE);
     }
