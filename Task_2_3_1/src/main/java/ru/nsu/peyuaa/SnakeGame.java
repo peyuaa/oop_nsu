@@ -73,6 +73,12 @@ public class SnakeGame extends Application {
     private int currentDirection;
     private int score = 0;
 
+    /**
+     * Application entry point.
+     *
+     * @param primaryStage the primary stage for this application, onto which
+     * the application scene can be set.
+     */
     @Override
     public void start(Stage primaryStage) {
         primaryStage.setTitle(gameTitle);
