@@ -91,14 +91,17 @@ public class SnakeGame extends Application {
 
         scene.setOnKeyPressed(event -> {
             KeyCode code = event.getCode();
-            if ((code == KeyCode.RIGHT || code == KeyCode.D) && currentDirection != LEFT) {
-                currentDirection = RIGHT;
-            } else if ((code == KeyCode.LEFT || code == KeyCode.A) && currentDirection != RIGHT) {
-                currentDirection = LEFT;
-            } else if ((code == KeyCode.UP || code == KeyCode.W) && currentDirection != DOWN) {
-                currentDirection = UP;
-            } else if ((code == KeyCode.DOWN || code == KeyCode.S) && currentDirection != UP) {
-                currentDirection = DOWN;
+            switch (code) {
+                case RIGHT, D -> currentDirection =
+                        currentDirection != LEFT ? RIGHT : currentDirection;
+                case LEFT, A -> currentDirection
+                        = currentDirection != RIGHT ? LEFT : currentDirection;
+                case UP, W -> currentDirection
+                        = currentDirection != DOWN ? UP : currentDirection;
+                case DOWN, S -> currentDirection
+                        = currentDirection != UP ? DOWN : currentDirection;
+                default -> {
+                }
             }
         });
 
