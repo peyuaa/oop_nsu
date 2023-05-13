@@ -52,6 +52,7 @@ public class Main extends Application {
     private int foodY;
     private boolean gameOver;
     private int currentDirection;
+    private int score = 0;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -101,6 +102,7 @@ public class Main extends Application {
         drawBackground(gc);
         drawFood(gc);
         drawSnake(gc);
+        drawScore(gc);
 
         for (int i = snakeBody.size() - 1; i > 0; i--) {
             snakeBody.get(i).x = snakeBody.get(i - 1).x;
@@ -115,6 +117,7 @@ public class Main extends Application {
         }
 
         gameOver();
+        eatFood();
     }
 
     private void drawBackground(GraphicsContext gc) {
@@ -188,6 +191,20 @@ public class Main extends Application {
                 break;
             }
         }
+    }
+
+    private void eatFood() {
+        if (snakeHead.getX() == foodX && snakeHead.getY() == foodY) {
+            snakeBody.add(new Point(-1, -1));
+            generateFood();
+            score += 5;
+        }
+    }
+
+    private void drawScore(GraphicsContext gc) {
+        gc.setFill(Color.WHITE);
+        gc.setFont(new Font("Digital-7", 35));
+        gc.fillText("Score: " + score, 10, 35);
     }
 
     public static void main(String[] args) {
