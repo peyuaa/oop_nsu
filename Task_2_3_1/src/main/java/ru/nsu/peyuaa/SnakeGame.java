@@ -76,10 +76,7 @@ public class SnakeGame extends Application {
     /**
      * Application entry point.
      *
-     * @param primaryStage the primary stage for this application, onto which
-     * the application scene can be set.
-     * Applications may create other stages, if needed, but they will not be
-     * primary stages.
+     * @param primaryStage the primary stage for this application.
      */
     @Override
     public void start(Stage primaryStage) {
