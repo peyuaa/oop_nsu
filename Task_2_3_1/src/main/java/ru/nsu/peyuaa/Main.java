@@ -20,15 +20,15 @@ public class Main extends Application {
     private static final int COLUMNS = ROWS;
     private static final int SQUARE_SIZE = WIDTH / ROWS;
     private static final String []FOODS_IMAGE = new String[]{
-            "/resources/ic_apple.png",
-            "/resources/ic_berry.png",
-            "/resources/ic_cherry.png",
-            "/resources/ic_coconut.png",
-            "/resources/ic_orange.png",
-            "/resources/ic_peach.png",
-            "/resources/ic_pomegranate.png",
-            "/resources/ic_tomato.png",
-            "/resources/ic_watermelon.png",
+            "apple.png",
+            "berry.png",
+            "cherry.png",
+            "coconut.png",
+            "orange.png",
+            "peach.png",
+            "pomegranate.png",
+            "tomato.png",
+            "watermelon.png",
     };
 
     private static final int RIGHT = 0;
