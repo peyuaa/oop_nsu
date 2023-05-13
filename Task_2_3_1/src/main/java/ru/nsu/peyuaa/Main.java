@@ -4,14 +4,12 @@ import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Application;
-import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
@@ -45,7 +43,7 @@ public class Main extends Application {
     private static final int DOWN = 3;
 
     private GraphicsContext gc;
-    private List<Point> snakeBody = new ArrayList<>();
+    private final List<Point> snakeBody = new ArrayList<>();
     private Point snakeHead;
     private Image foodImage;
     private int foodX;
@@ -55,7 +53,7 @@ public class Main extends Application {
     private int score = 0;
 
     @Override
-    public void start(Stage primaryStage) throws Exception {
+    public void start(Stage primaryStage) {
         primaryStage.setTitle("Snake");
         Group root = new Group();
         Canvas canvas = new Canvas(WIDTH, HEIGHT);
@@ -65,19 +63,16 @@ public class Main extends Application {
         primaryStage.show();
         gc = canvas.getGraphicsContext2D();
 
-        scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
-            @Override
-            public void handle(KeyEvent event) {
-                KeyCode code = event.getCode();
-                if ((code == KeyCode.RIGHT || code == KeyCode.D) && currentDirection != LEFT) {
-                    currentDirection = RIGHT;
-                } else if ((code == KeyCode.LEFT || code == KeyCode.A) && currentDirection != RIGHT) {
-                    currentDirection = LEFT;
-                } else if ((code == KeyCode.UP || code == KeyCode.W) && currentDirection != DOWN) {
-                    currentDirection = UP;
-                } else if ((code == KeyCode.DOWN || code == KeyCode.S) && currentDirection != UP) {
-                    currentDirection = DOWN;
-                }
+        scene.setOnKeyPressed(event -> {
+            KeyCode code = event.getCode();
+            if ((code == KeyCode.RIGHT || code == KeyCode.D) && currentDirection != LEFT) {
+                currentDirection = RIGHT;
+            } else if ((code == KeyCode.LEFT || code == KeyCode.A) && currentDirection != RIGHT) {
+                currentDirection = LEFT;
+            } else if ((code == KeyCode.UP || code == KeyCode.W) && currentDirection != DOWN) {
+                currentDirection = UP;
+            } else if ((code == KeyCode.DOWN || code == KeyCode.S) && currentDirection != UP) {
+                currentDirection = DOWN;
             }
         });
 
