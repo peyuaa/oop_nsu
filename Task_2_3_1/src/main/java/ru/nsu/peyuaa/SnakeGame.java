@@ -19,7 +19,7 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 
 
-public class Main extends Application {
+public class SnakeGame extends Application {
 
     private static final int WIDTH = 800;
     private static final int HEIGHT = 800;
