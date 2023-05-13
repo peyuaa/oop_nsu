@@ -202,7 +202,7 @@ public class SnakeGame extends Application {
         snakeHead.y++;
     }
 
-    public void gameOver() {
+    private void gameOver() {
         if  (snakeHead.x < 0 || snakeHead.y < 0
                 || snakeHead.x * SQUARE_SIZE >= WIDTH ||  snakeHead.y * SQUARE_SIZE >= HEIGHT) {
             gameOver = true;
