@@ -138,6 +138,7 @@ public class SnakeGame extends Application {
             case LEFT -> moveLeft();
             case UP -> moveUp();
             case DOWN -> moveDown();
+            default -> throw new IllegalStateException("Unexpected value: " + currentDirection);
         }
 
         gameOver();
