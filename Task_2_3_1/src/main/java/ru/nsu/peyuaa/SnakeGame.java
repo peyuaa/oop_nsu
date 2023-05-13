@@ -81,6 +81,7 @@ public class SnakeGame extends Application {
      * Applications may create other stages, if needed, but they will not be
      * primary stages.
      */
+    @Override
     public void start(Stage primaryStage) {
         primaryStage.setTitle(gameTitle);
         Group root = new Group();
