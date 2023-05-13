@@ -193,7 +193,8 @@ public class Main extends Application {
         }
 
         for (int i = 1; i < snakeBody.size(); i++) {
-            if (snakeHead.getX() == snakeBody.get(i).getX() && snakeHead.getY() == snakeBody.get(i).getY()) {
+            if (snakeHead.getX() == snakeBody.get(i).getX()
+                    && snakeHead.getY() == snakeBody.get(i).getY()) {
                 gameOver = true;
                 break;
             }
