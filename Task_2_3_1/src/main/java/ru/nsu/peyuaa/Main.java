@@ -27,15 +27,15 @@ public class Main extends Application {
     private static final int COLUMNS = ROWS;
     private static final int SQUARE_SIZE = WIDTH / ROWS;
     private static final String []FOODS_IMAGE = new String[]{
-            "apple.png",
-            "berry.png",
-            "cherry.png",
-            "coconut.png",
-            "orange.png",
-            "peach.png",
-            "pomegranate.png",
-            "tomato.png",
-            "watermelon.png",
+        "apple.png",
+        "berry.png",
+        "cherry.png",
+        "coconut.png",
+        "orange.png",
+        "peach.png",
+        "pomegranate.png",
+        "tomato.png",
+        "watermelon.png",
     };
 
     private static final String fontName = "Digital-7";
@@ -164,7 +164,8 @@ public class Main extends Application {
                 SQUARE_SIZE - 1, SQUARE_SIZE - 1, 35, 35);
 
         for (int i = 1; i < snakeBody.size(); i++) {
-            gc.fillRoundRect(snakeBody.get(i).getX() * SQUARE_SIZE, snakeBody.get(i).getY() * SQUARE_SIZE,
+            gc.fillRoundRect(snakeBody.get(i).getX() * SQUARE_SIZE,
+                    snakeBody.get(i).getY() * SQUARE_SIZE,
                     SQUARE_SIZE - 1, SQUARE_SIZE - 1, 20, 20);
         }
     }
@@ -186,8 +187,8 @@ public class Main extends Application {
     }
 
     public void gameOver() {
-        if  (snakeHead.x < 0 || snakeHead.y < 0 ||
-                snakeHead.x * SQUARE_SIZE >= WIDTH ||  snakeHead.y * SQUARE_SIZE >= HEIGHT) {
+        if  (snakeHead.x < 0 || snakeHead.y < 0
+                || snakeHead.x * SQUARE_SIZE >= WIDTH ||  snakeHead.y * SQUARE_SIZE >= HEIGHT) {
             gameOver = true;
         }
 
