@@ -18,7 +18,17 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
-
+/**
+ * Snake game class.
+ * Snake is controlled by arrows and WASD.
+ * Snake is moving by one square in the current direction each frame.
+ * Snake dies when it hits the wall or itself.
+ * Snake grows by one square when it eats food.
+ * Food is generated in a random square each time snake eats it.
+ * Food is represented by a random image from the resources.
+ * Score is displayed on the right side of the screen.
+ * Game over screen displayed when snake dies.
+ */
 public class SnakeGame extends Application {
 
     private static final int WIDTH = 800;
