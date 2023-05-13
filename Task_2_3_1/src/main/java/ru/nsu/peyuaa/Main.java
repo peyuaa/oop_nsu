@@ -13,6 +13,7 @@ import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import java.awt.Point;
@@ -91,6 +92,12 @@ public class Main extends Application {
     }
 
     private void run(GraphicsContext gc) {
+        if (gameOver) {
+            gc.setFill(Color.RED);
+            gc.setFont(new Font("Digital-7", 70));
+            gc.fillText("GAME OVER", WIDTH / 3.5, HEIGHT / 2.0);
+            return;
+        }
         drawBackground(gc);
         drawFood(gc);
         drawSnake(gc);
@@ -106,6 +113,8 @@ public class Main extends Application {
             case UP -> moveUp();
             case DOWN -> moveDown();
         }
+
+        gameOver();
     }
 
     private void drawBackground(GraphicsContext gc) {
@@ -165,6 +174,20 @@ public class Main extends Application {
 
     private void moveDown() {
         snakeHead.y++;
+    }
+
+    public void gameOver() {
+        if  (snakeHead.x < 0 || snakeHead.y < 0 ||
+                snakeHead.x * SQUARE_SIZE >= WIDTH ||  snakeHead.y * SQUARE_SIZE >= HEIGHT) {
+            gameOver = true;
+        }
+
+        for (int i = 1; i < snakeBody.size(); i++) {
+            if (snakeHead.getX() == snakeBody.get(i).getX() && snakeHead.getY() == snakeBody.get(i).getY()) {
+                gameOver = true;
+                break;
+            }
+        }
     }
 
     public static void main(String[] args) {
