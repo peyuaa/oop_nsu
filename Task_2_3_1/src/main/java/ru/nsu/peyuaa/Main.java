@@ -1,5 +1,8 @@
 package ru.nsu.peyuaa;
 
+import java.awt.Point;
+import java.util.ArrayList;
+import java.util.List;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -14,9 +17,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import java.awt.Point;
-import java.util.ArrayList;
-import java.util.List;
+
 
 public class Main extends Application {
 
