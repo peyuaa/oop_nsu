@@ -37,6 +37,16 @@ public class Main extends Application {
             "watermelon.png",
     };
 
+    private static final String fontName = "Digital-7";
+    private static final String gameTitle = "Snake";
+    private static final String gameOverText = "GAME OVER";
+    private static final int gameOverFontSize = 70;
+    private static final Color snakeColor = Color.web("4674E9");
+    private static final Color firstBackgroundColor = Color.web("AAD752");
+    private static final Color secondBackgroundColor = Color.web("A2D149");
+
+    private static final Duration frameUpdate = Duration.millis(130);
+
     private static final int RIGHT = 0;
     private static final int LEFT = 1;
     private static final int UP = 2;
@@ -54,7 +64,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        primaryStage.setTitle("Snake");
+        primaryStage.setTitle(gameTitle);
         Group root = new Group();
         Canvas canvas = new Canvas(WIDTH, HEIGHT);
         root.getChildren().add(canvas);
@@ -82,7 +92,7 @@ public class Main extends Application {
         snakeHead = snakeBody.get(0);
         generateFood();
 
-        Timeline timeline = new Timeline(new KeyFrame(Duration.millis(130), e -> run(gc)));
+        Timeline timeline = new Timeline(new KeyFrame(frameUpdate, e -> run(gc)));
         timeline.setCycleCount(Animation.INDEFINITE);
         timeline.play();
     }
@@ -90,8 +100,8 @@ public class Main extends Application {
     private void run(GraphicsContext gc) {
         if (gameOver) {
             gc.setFill(Color.RED);
-            gc.setFont(new Font("Digital-7", 70));
-            gc.fillText("GAME OVER", WIDTH / 3.5, HEIGHT / 2.0);
+            gc.setFont(new Font(fontName, gameOverFontSize));
+            gc.fillText(gameOverText, WIDTH / 3.5, HEIGHT / 2.0);
             return;
         }
         drawBackground(gc);
@@ -119,9 +129,9 @@ public class Main extends Application {
         for (int i = 0; i < ROWS; i++) {
             for (int j = 0; j < COLUMNS; j++) {
                 if ((i + j) % 2 == 0) {
-                    gc.setFill(Color.web("AAD751"));
+                    gc.setFill(firstBackgroundColor);
                 } else {
-                    gc.setFill(Color.web("A2D149"));
+                    gc.setFill(secondBackgroundColor);
                 }
                 gc.fillRect(i * SQUARE_SIZE, j * SQUARE_SIZE, SQUARE_SIZE, SQUARE_SIZE);
             }
@@ -148,7 +158,7 @@ public class Main extends Application {
     }
 
     private void drawSnake(GraphicsContext gc) {
-        gc.setFill(Color.web("4674E9"));
+        gc.setFill(snakeColor);
         gc.fillRoundRect(snakeHead.getX() * SQUARE_SIZE, snakeHead.getY() * SQUARE_SIZE,
                 SQUARE_SIZE - 1, SQUARE_SIZE - 1, 35, 35);
 
@@ -198,7 +208,7 @@ public class Main extends Application {
 
     private void drawScore(GraphicsContext gc) {
         gc.setFill(Color.WHITE);
-        gc.setFont(new Font("Digital-7", 35));
+        gc.setFont(new Font(fontName, 35));
         gc.fillText("Score: " + score, 10, 35);
     }
 
