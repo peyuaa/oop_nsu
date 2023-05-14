@@ -3,6 +3,7 @@ package ru.nsu.peyuaa;
 import java.awt.Point;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -36,7 +37,7 @@ public class SnakeGame extends Application {
     private static final int ROWS = 20;
     private static final int COLUMNS = ROWS;
     private static final int SQUARE_SIZE = WIDTH / ROWS;
-    private static final String []FOODS_IMAGE = new String[]{
+    private static final String [] FOODS = new String[]{
         "apple.png",
         "berry.png",
         "cherry.png",
@@ -47,6 +48,7 @@ public class SnakeGame extends Application {
         "tomato.png",
         "watermelon.png",
     };
+    private static final List<Image> FOODS_IMAGE = new ArrayList<>(FOODS.length);
 
     private static final String fontName = "Digital-7";
     private static final String gameTitle = "Snake";
@@ -80,6 +82,11 @@ public class SnakeGame extends Application {
      */
     @Override
     public void start(Stage primaryStage) {
+        for (String food : FOODS) {
+            FOODS_IMAGE.add(new Image(Objects.requireNonNull(getClass().
+                    getClassLoader().getResourceAsStream(food))));
+        }
+
         primaryStage.setTitle(gameTitle);
         Group root = new Group();
         Canvas canvas = new Canvas(WIDTH, HEIGHT);
@@ -168,7 +175,7 @@ public class SnakeGame extends Application {
                     continue start;
                 }
             }
-            foodImage = new Image(FOODS_IMAGE[(int) (Math.random() * FOODS_IMAGE.length)]);
+            foodImage = FOODS_IMAGE.get((int) (Math.random() * FOODS_IMAGE.size()));
             break;
         }
     }

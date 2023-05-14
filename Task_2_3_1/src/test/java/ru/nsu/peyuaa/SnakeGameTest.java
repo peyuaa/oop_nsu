@@ -9,8 +9,5 @@ import org.junit.jupiter.api.Test;
  */
 public class SnakeGameTest {
 
-    @Test
-    void test() {
-        assertEquals(1, 1);
-    }
+
 }
