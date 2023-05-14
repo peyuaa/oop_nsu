@@ -54,6 +54,7 @@ public class SnakeGame extends Application {
     private static final String gameTitle = "Snake";
     private static final String gameOverText = "GAME OVER";
     private static final int gameOverFontSize = 70;
+    private static final int scoreFontSize = 35;
     private static final Color snakeColor = Color.web("4674E9");
     private static final Color firstBackgroundColor = Color.web("AAD752");
     private static final Color secondBackgroundColor = Color.web("A2D149");
@@ -237,7 +238,7 @@ public class SnakeGame extends Application {
 
     private void drawScore(GraphicsContext gc) {
         gc.setFill(Color.WHITE);
-        gc.setFont(new Font(fontName, 35));
+        gc.setFont(new Font(fontName, scoreFontSize));
         gc.fillText("Score: " + score, 10, 35);
     }
 
