@@ -83,8 +83,8 @@ public class SnakeGame extends Application {
     @Override
     public void start(Stage primaryStage) {
         for (String food : FOODS) {
-            FOODS_IMAGE.add(new Image(Objects.requireNonNull(getClass().
-                    getClassLoader().getResourceAsStream(food))));
+            FOODS_IMAGE.add(new Image(Objects.requireNonNull(getClass()
+                    .getClassLoader().getResourceAsStream(food))));
         }
 
         primaryStage.setTitle(gameTitle);
